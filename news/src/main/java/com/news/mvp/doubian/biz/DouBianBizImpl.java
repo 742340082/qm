@@ -9,8 +9,8 @@ import com.baselibrary.utils.NetworkState;
 import com.baselibrary.utils.UIUtils;
 import com.news.api.NewsApi;
 import com.news.config.ConfigNews;
-import com.news.mvp.doubian.bean.DouBian;
-import com.news.mvp.doubian.bean.Posts;
+import com.news.mvp.doubian.model.DouBian;
+import com.news.mvp.doubian.model.DouBianPosts;
 import com.news.mvp.doubian.view.DouBianView;
 import com.news.utils.DateUtil;
 
@@ -66,18 +66,18 @@ public class DouBianBizImpl
                     if (douBian.getTotal() == 0) {
                         douBianView.error(ConfigStateCode.STATE_DATA_EMPTY,ConfigStateCode.STATE_DATA_EMPTY_VALUE);
                     } else {
-                        ArrayList<Posts> posts = douBian.getPosts();
+                        ArrayList<DouBianPosts> posts = douBian.getPosts();
                         for(int i=0;i<posts.size();i++)
                         {
-                            Posts posts1 = posts.get(i);
+                            DouBianPosts posts1 = posts.get(i);
                             if (posts1!=null) {
                                 posts1.setCacheDate(DateUtil.getCurrentTime()+ ConfigNews.NEWS_SAVE_TIME);
                                 posts1.setCount(posts1.getThumbs().size());
                                 if (posts1.getThumbs().size()>0) {
                                     posts1.setDescription(posts1.getThumbs().get(0).getDescription());
-                                    Posts.large large = posts1.getThumbs().get(0).getLarge();
-                                    Posts.medium medium = posts1.getThumbs().get(0).getMedium();
-                                    Posts.small small = posts1.getThumbs().get(0).getSmall();
+                                    DouBianPosts.large large = posts1.getThumbs().get(0).getLarge();
+                                    DouBianPosts.medium medium = posts1.getThumbs().get(0).getMedium();
+                                    DouBianPosts.small small = posts1.getThumbs().get(0).getSmall();
                                     if (large!=null)
                                     {
                                         posts1.setLarge_url(large.getUrl());
@@ -93,7 +93,7 @@ public class DouBianBizImpl
                                     }
                                 }
 
-                                if (DataSupport.where(new String[]{"posts_id=?", posts1.getPosts_id() + ""}).findFirst(Posts.class) == null) {
+                                if (DataSupport.where(new String[]{"posts_id=?", posts1.getPosts_id() + ""}).findFirst(DouBianPosts.class) == null) {
                                     posts1.save();
                                 }
                             }
@@ -118,7 +118,7 @@ public class DouBianBizImpl
             //没有网络的时候
             if (isLoadMore) {
                 //加载更多
-                List<Posts> postses = DataSupport.where(new String[]{"date=?", DateFormatter.DoubanDateFormat(date)}).find(Posts.class);
+                List<DouBianPosts> postses = DataSupport.where(new String[]{"date=?", DateFormatter.DoubanDateFormat(date)}).find(DouBianPosts.class);
 
                 if (postses.size() == 0) {
                     //加载更多的数据为0条的时候,加载失败
@@ -129,9 +129,9 @@ public class DouBianBizImpl
                 }
             } else {
                 //第一次充缓存取数据
-                Posts douBianBean = DataSupport.findFirst(Posts.class);
+                DouBianPosts douBianBean = DataSupport.findFirst(DouBianPosts.class);
                 if (douBianBean != null) {
-                    List<Posts> postses = DataSupport.where(new String[]{"date=?", DateFormatter.DoubanDateFormat(date)}).find(Posts.class);
+                    List<DouBianPosts> postses = DataSupport.where(new String[]{"date=?", DateFormatter.DoubanDateFormat(date)}).find(DouBianPosts.class);
                     if (postses.size()==0)
                     {
                         douBianView.error(ConfigStateCode.STATE_DATA_EMPTY,ConfigStateCode.STATE_DATA_EMPTY_VALUE);

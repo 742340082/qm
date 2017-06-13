@@ -9,7 +9,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.news.R;
-import com.news.mvp.guoke.bean.GuoKeResult;
+import com.news.mvp.guoke.model.GuoKeResult;
 
 import java.util.List;
 

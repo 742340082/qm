@@ -12,7 +12,7 @@ import com.baselibrary.utils.UIUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.getaddress.R;
-import com.getaddress.modle.TipMapLocation;
+import com.getaddress.modle.GetAddressTipMapLocation;
 
 import java.util.List;
 
@@ -20,14 +20,13 @@ import java.util.List;
  * Created by 74234 on 2017/4/30.
  */
 
-public class GetAddressSearchAdapter extends BaseQuickAdapter<TipMapLocation,BaseViewHolder> {
-    public GetAddressSearchAdapter(int layoutResId, List<TipMapLocation> data) {
+public class GetAddressSearchAdapter extends BaseQuickAdapter<GetAddressTipMapLocation,BaseViewHolder> {
+    public GetAddressSearchAdapter(int layoutResId, List<GetAddressTipMapLocation> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, TipMapLocation item) {
-        ForegroundColorSpan blueSpan = new ForegroundColorSpan(UIUtils.getColor(R.color.blue));
+    protected void convert(BaseViewHolder helper, GetAddressTipMapLocation item) {
         Logger.i("TAG",item.toString());
         TextView tv_address_title = helper.getView(R.id.tv_address_title);
         TextView tv_address_detail = helper.getView(R.id.tv_address_detail);
@@ -39,6 +38,7 @@ public class GetAddressSearchAdapter extends BaseQuickAdapter<TipMapLocation,Bas
             if (name.contains(searchText)) {
                 int indexOf = name.indexOf(searchText);
                 SpannableStringBuilder builder = new SpannableStringBuilder(name);
+                ForegroundColorSpan blueSpan = new ForegroundColorSpan(UIUtils.getColor(R.color.blue));
                 builder.setSpan(blueSpan, indexOf, indexOf + searchText.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                 tv_address_title.setText(builder);
             } else {

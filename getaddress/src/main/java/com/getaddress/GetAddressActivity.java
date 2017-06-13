@@ -45,10 +45,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.getaddress.adapter.CityAdapter;
 import com.getaddress.adapter.GetAddressSearchAdapter;
-import com.getaddress.modle.City;
-import com.getaddress.modle.PositionAddress;
-import com.getaddress.modle.ReturnAddress;
-import com.getaddress.modle.TipMapLocation;
+import com.getaddress.modle.GetAddressCity;
+import com.getaddress.modle.GetAddressPositionAddress;
+import com.getaddress.modle.GetAddressReturnAddress;
+import com.getaddress.modle.GetAddressTipMapLocation;
 import com.getaddress.presenter.GetAddressPresenter;
 import com.getaddress.view.GetAddressView;
 
@@ -116,9 +116,9 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
     private boolean isLoadCity;
     private HeaderRecyclerAndFooterWrapperAdapter mHeaderAdapter;
     private CityAdapter cityAdapter;
-    private List<City> mBodyDatas;
+    private List<GetAddressCity> mBodyDatas;
     private SuspensionDecoration mDecoration;
-    private List<City> mSourceDatas;
+    private List<GetAddressCity> mSourceDatas;
 
     @OnClick(R2.id.iv_back)
     void back() {
@@ -159,11 +159,11 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
 
     public void initData() {
 
-        RxBus.getDefault().toObservable(ConfigValues.VALUE_ADDRESS_RX_SEND_LOCATION, PositionAddress.class)
-                .subscribe(new Consumer<PositionAddress>() {
+        RxBus.getDefault().toObservable(ConfigValues.VALUE_ADDRESS_RX_SEND_LOCATION, GetAddressPositionAddress.class)
+                .subscribe(new Consumer<GetAddressPositionAddress>() {
 
                     @Override
-                    public void accept(PositionAddress positionAddress) throws Exception {
+                    public void accept(GetAddressPositionAddress positionAddress) throws Exception {
                         if (mapLocation != null) {
                             mapLocation.setCity(positionAddress.getCity());
                             mapLocation.setProvince(positionAddress.getProvince());
@@ -190,7 +190,7 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
             mBodyDatas = new ArrayList<>();
             mSourceDatas = new ArrayList<>();
 
-            City city = new City();
+            GetAddressCity city = new GetAddressCity();
             city.setFirstLetter(UIUtils.getString(R.string.location_city));
             if (mapLocation != null) {
                 city.setName(mapLocation.getCity());
@@ -204,7 +204,7 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
 
                 @Override
                 protected void onBindHeaderHolder(BaseViewHolder holder, int headerPos, int layoutId, Object o) {
-                    City city1 = (City) o;
+                    GetAddressCity city1 = (GetAddressCity) o;
                     holder.setText(R.id.tv_city, city1.getName());
                     final ImageView iv_getaddress_reset_location = holder.getView(R.id.iv_getaddress_reset_location);
                     final ProgressBar pb_getaddress_reset_location = holder.getView(R.id.pb_getaddress_reset_location);
@@ -248,7 +248,7 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
             qi_bar.setLinearLayoutManager(linearLayoutManager).showTextView(tv_quickindex_title);
             mHeaderAdapter.notifyDataSetChanged();
         } else {
-            City city = new City();
+            GetAddressCity city = new GetAddressCity();
             city.setFirstLetter("当前定位的城市");
             if (mapLocation != null) {
                 city.setName(mapLocation.getCity());
@@ -505,7 +505,7 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
 
             @Override
             public void onPageSelected(int position) {
-                PositionAddress positionAddress = new PositionAddress();
+                GetAddressPositionAddress positionAddress = new GetAddressPositionAddress();
                 positionAddress.setLatLng(new LatLng(GetAddressActivity.this.mapLocation.getLatitude(),
                         GetAddressActivity.this.mapLocation.getLongitude(), false));
                 positionAddress.setCity(GetAddressActivity.this.mapLocation.getCity());
@@ -522,7 +522,7 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
         });
 
         //初始化第一页数据
-        PositionAddress positionAddress = new PositionAddress();
+        GetAddressPositionAddress positionAddress = new GetAddressPositionAddress();
         positionAddress.setLatLng(new LatLng(mapLocation.getLatitude(), mapLocation.getLongitude(), false));
         positionAddress.setCity(mapLocation.getCity());
         RxBus.getDefault().post(ConfigValues.VALUE_ADDRESS_RX_SEND_LOCATION, positionAddress);
@@ -530,11 +530,11 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
 
     @Override
     public void searchSuccess(List<Tip> list, String searchText) {
-        ArrayList<TipMapLocation> tipMapLocations = new ArrayList<>();
-        TipMapLocation tipMapLocation = null;
+        ArrayList<GetAddressTipMapLocation> tipMapLocations = new ArrayList<>();
+        GetAddressTipMapLocation tipMapLocation = null;
         for (Tip tip :
                 list) {
-            tipMapLocation = new TipMapLocation();
+            tipMapLocation = new GetAddressTipMapLocation();
             tipMapLocation.setaMapLocation(mapLocation);
             tipMapLocation.setTip(tip);
             tipMapLocation.setSearchText(searchText);
@@ -547,8 +547,8 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
         getAddressSearchAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                TipMapLocation item = (TipMapLocation) adapter.getItem(position);
-                ReturnAddress returnAddress=new ReturnAddress();
+                GetAddressTipMapLocation item = (GetAddressTipMapLocation) adapter.getItem(position);
+                GetAddressReturnAddress returnAddress=new GetAddressReturnAddress();
                 returnAddress.setTitle(item.getTip().getName());
                 returnAddress.setLatLng(item.getTip().getPoint());
                 TextView tv_address_detail = (TextView) view.findViewById(R.id.tv_address_detail);
@@ -563,7 +563,7 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
     }
 
     @Override
-    public void citySuccess(final List<City> list) {
+    public void citySuccess(final List<GetAddressCity> list) {
         mCityLayoutManager.showContent();
         Collections.sort(list);
         mBodyDatas = list;
@@ -589,7 +589,7 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
                         if (i==1000) {
                             GeocodeAddress geocodeAddress = geocodeResult.getGeocodeAddressList().get(0);
                             LatLonPoint latLonPoint = geocodeResult.getGeocodeAddressList().get(0).getLatLonPoint();
-                            PositionAddress positionAddress = new PositionAddress();
+                            GetAddressPositionAddress positionAddress = new GetAddressPositionAddress();
                             positionAddress.setLatLng(new LatLng(latLonPoint.getLatitude(), latLonPoint.getLongitude(), false));
                             positionAddress.setCity(geocodeAddress.getCity());
                             positionAddress.setDistrict(geocodeAddress.getDistrict());
@@ -601,7 +601,7 @@ public class GetAddressActivity extends AppCompatActivity implements GetAddressV
                     }
                 });
                 // name表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode
-                City item = (City) adapter.getItem(position);
+                GetAddressCity item = (GetAddressCity) adapter.getItem(position);
                 GeocodeQuery query = new GeocodeQuery(item.getName() + "政府", item.getName());
 
                 geocoderSearch.getFromLocationNameAsyn(query);

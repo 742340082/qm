@@ -9,19 +9,19 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.news.R;
-import com.news.mvp.zhihu.modle.Storie;
+import com.news.mvp.zhihu.modle.ZhihuStorie;
 
 import java.util.List;
 
 public class NewZhiHuContentAdapter
-        extends BaseQuickAdapter<Storie, BaseViewHolder> {
+        extends BaseQuickAdapter<ZhihuStorie, BaseViewHolder> {
 
-    public NewZhiHuContentAdapter(int layoutId, List<Storie> list) {
+    public NewZhiHuContentAdapter(int layoutId, List<ZhihuStorie> list) {
         super(layoutId, list);
     }
 
 
-    protected void convert(BaseViewHolder viewHolder, Storie data) {
+    protected void convert(BaseViewHolder viewHolder, ZhihuStorie data) {
         Glide.with(UIUtils.getContext())
                 .load(data.getImageList().get(0))
                 .placeholder(R.drawable.lufei)

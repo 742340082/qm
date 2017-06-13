@@ -3,9 +3,9 @@ package com.news.api;
 
 import com.news.mvp.detail.modle.DoubanDetail;
 import com.news.mvp.detail.modle.ZhiHuDetail;
-import com.news.mvp.doubian.bean.DouBian;
-import com.news.mvp.guoke.bean.GuoKe;
-import com.news.mvp.zhihu.modle.ZhiHu;
+import com.news.mvp.doubian.model.DouBian;
+import com.news.mvp.guoke.model.GuoKe;
+import com.news.mvp.zhihu.modle.Zhihu;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -163,9 +163,9 @@ public interface NewsApi {
     String NEWS_ZHIHU_ROOT_API = "http://news.at.zhihu.com/api/4/news/";
 
     @GET("before/{date}")
-    Observable<ZhiHu> obtainZhiHuBefore(@Path("date") String date);
+    Observable<Zhihu> obtainZhiHuBefore(@Path("date") String date);
     @GET("latest")
-    Observable<ZhiHu> obtainZhiHuLatest();
+    Observable<Zhihu> obtainZhiHuLatest();
     @GET("{id}")
     Observable<ZhiHuDetail> obtainZhiHuDetail(@Path("id") String newsID);
 

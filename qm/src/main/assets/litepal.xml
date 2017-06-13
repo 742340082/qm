@@ -5,34 +5,41 @@
     <!--新闻-->
     <list>
         <!--知乎-->
-        <mapping class="com.news.mvp.zhihu.modle.Storie"></mapping>
-        <mapping class="com.news.mvp.zhihu.modle.TopStorie"></mapping>
+        <mapping class="com.news.mvp.zhihu.modle.ZhihuStorie"></mapping>
+        <mapping class="com.news.mvp.zhihu.modle.ZhihuTopStorie"></mapping>
         <mapping class="com.news.mvp.detail.modle.ZhiHuDetail"></mapping>
-        <mapping class="com.news.mvp.zhihu.modle.ZhiHu"></mapping>
+        <mapping class="com.news.mvp.zhihu.modle.Zhihu"></mapping>
         <!--豆瓣-->
-        <mapping class="com.news.mvp.doubian.bean.Posts"></mapping>
+        <mapping class="com.news.mvp.doubian.model.DouBianPosts"></mapping>
         <mapping class="com.news.mvp.detail.modle.DoubanDetail"></mapping>
-        <mapping class="com.news.mvp.doubian.bean.Thumbs"></mapping>
+        <mapping class="com.news.mvp.doubian.model.DouBianThumbs"></mapping>
         <!--果壳-->
-        <mapping class="com.news.mvp.guoke.bean.GuoKeResult"></mapping>
+        <mapping class="com.news.mvp.guoke.model.GuoKeResult"></mapping>
         <mapping class="com.news.mvp.detail.modle.GuokeDetail"></mapping>
-        <mapping class="com.news.mvp.guoke.bean.GuoKe"></mapping>
+        <mapping class="com.news.mvp.guoke.model.GuoKe"></mapping>
     </list>
     <!--游戏-->
     <list>
         <!--推荐-->
         <mapping class="com.game.mvp.model.Game"></mapping>
-        <mapping class="com.game.mvp.recommend.modle.Ext"></mapping>
-        <mapping class="com.game.mvp.recommend.modle.SubjectList"></mapping>
-        <mapping class="com.game.mvp.recommend.modle.SubjectGame"></mapping>
+        <mapping class="com.game.mvp.index.modle.IndexExt"></mapping>
+        <mapping class="com.game.mvp.index.modle.IndexSubjectList"></mapping>
+        <mapping class="com.game.mvp.index.modle.IndexSubjectGame"></mapping>
 
         <!--分类-->
         <mapping class="com.game.mvp.category.modle.CategoryResult"></mapping>
-        <mapping class="com.game.mvp.category.modle.Data"></mapping>
-        <mapping class="com.game.mvp.category.modle.Link"></mapping>
-        <mapping class="com.game.mvp.category.modle.Tag"></mapping>
+        <mapping class="com.game.mvp.category.modle.CategoryData"></mapping>
+        <mapping class="com.game.mvp.category.modle.CategoryLink"></mapping>
+        <mapping class="com.game.mvp.category.modle.CategoryTag"></mapping>
 
         <!--排行-->
         <mapping class="com.game.mvp.top.modle.TotalResult"></mapping>
+
+        <!--咨询-->
+        <mapping class="com.game.mvp.gamenews.model.GameNewsData"></mapping>
+        <mapping class="com.game.mvp.gamenews.model.GameNewsExt"></mapping>
+        <mapping class="com.game.mvp.gamenews.model.GameNewsGallary"></mapping>
+        <mapping class="com.game.mvp.gamenews.model.GameNewsLink"></mapping>
+        <mapping class="com.game.mvp.gamenews.model.GameNewsResult"></mapping>
     </list>
 </litepal>

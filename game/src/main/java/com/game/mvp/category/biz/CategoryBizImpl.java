@@ -10,9 +10,9 @@ import com.baselibrary.utils.UIUtils;
 import com.game.api.GameApi;
 import com.game.mvp.category.modle.Category;
 import com.game.mvp.category.modle.CategoryResult;
-import com.game.mvp.category.modle.Data;
-import com.game.mvp.category.modle.Link;
-import com.game.mvp.category.modle.Tag;
+import com.game.mvp.category.modle.CategoryData;
+import com.game.mvp.category.modle.CategoryLink;
+import com.game.mvp.category.modle.CategoryTag;
 import com.game.mvp.category.view.CategoryView;
 
 import org.litepal.crud.DataSupport;
@@ -65,13 +65,13 @@ public class CategoryBizImpl implements CategoryBiz {
                             Logger.e("TAG", value.toString());
                             CategoryResult result = value.getResult();
 
-                            List<Data> datas = result.getData();
-                            List<Link> links = result.getLinks();
+                            List<CategoryData> datas = result.getData();
+                            List<CategoryLink> links = result.getLinks();
                             List<CategoryResult> categoryResults = DataSupport.where("1=1").find(CategoryResult.class);
                             if (categoryResults.size() !=1) {
-                                for (Data data : datas) {
+                                for (CategoryData data : datas) {
 
-                                    List<Tag> tags = data.getTags();
+                                    List<CategoryTag> tags = data.getTags();
                                     DataSupport.saveAll(tags);
 
                                 }
@@ -104,13 +104,13 @@ public class CategoryBizImpl implements CategoryBiz {
                 if (categoryResult == null) {
                     categoryView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
                 } else {
-                    List<Data> datas = DataSupport.where("categoryresult_id=?", categoryResult.getId() + "").find(Data.class);
+                    List<CategoryData> datas = DataSupport.where("categoryresult_id=?", categoryResult.getId() + "").find(CategoryData.class);
                     for (int i = 0; i < datas.size(); i++) {
-                        Data data = datas.get(i);
-                        List<Tag> tags = DataSupport.where("data_id=?", data.getId() + "").find(Tag.class);
+                        CategoryData data = datas.get(i);
+                        List<CategoryTag> tags = DataSupport.where("data_id=?", data.getId() + "").find(CategoryTag.class);
                         data.setTags(tags);
                     }
-                    List<Link> links = DataSupport.where("categoryresult_id=?", categoryResult.getId() + "").find(Link.class);
+                    List<CategoryLink> links = DataSupport.where("categoryresult_id=?", categoryResult.getId() + "").find(CategoryLink.class);
                     categoryResult.setData(datas);
                     categoryResult.setLinks(links);
                     categoryView.success(categoryResult);

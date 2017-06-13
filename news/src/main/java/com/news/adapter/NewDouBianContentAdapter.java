@@ -9,23 +9,23 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.news.R;
-import com.news.mvp.doubian.bean.Posts;
+import com.news.mvp.doubian.model.DouBianPosts;
 
 import java.util.List;
 
 public class NewDouBianContentAdapter
-        extends BaseMultiItemQuickAdapter<Posts, BaseViewHolder> {
+        extends BaseMultiItemQuickAdapter<DouBianPosts, BaseViewHolder> {
     public   static  final int NEWS_DOUBIAN_NOIMG=1;
     public  static  final int NEWS_DOUBIAN_NORMAL=2;
 
-    public NewDouBianContentAdapter(List<Posts> list) {
+    public NewDouBianContentAdapter(List<DouBianPosts> list) {
         super(list);
         addItemType(NEWS_DOUBIAN_NOIMG, R.layout.item_news_doubian_noimg);
         addItemType(NEWS_DOUBIAN_NORMAL, R.layout.item_news_doubian_normal);
     }
 
 
-    protected void convert(BaseViewHolder viewHolder, Posts douBianBean) {
+    protected void convert(BaseViewHolder viewHolder, DouBianPosts douBianBean) {
         Logger.i("TAG","哈哈哈哈");
         switch (douBianBean.getItemType()) {
             case NEWS_DOUBIAN_NOIMG:

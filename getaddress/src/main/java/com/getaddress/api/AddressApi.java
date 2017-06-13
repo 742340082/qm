@@ -1,7 +1,7 @@
 package com.getaddress.api;
 
 import com.baselibrary.api.Result;
-import com.getaddress.modle.City;
+import com.getaddress.modle.GetAddressCity;
 
 import java.util.List;
 
@@ -13,5 +13,5 @@ public interface AddressApi {
 
 
     @GET("cityall.action")
-    Observable<Result<List<City>>> cityall();
+    Observable<Result<List<GetAddressCity>>> cityall();
 }

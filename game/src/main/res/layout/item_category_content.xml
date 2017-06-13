@@ -35,7 +35,6 @@
             android:textSize="@dimen/titleSize"
             android:text="新增96款"
             android:layout_alignParentRight="true"
-            android:textColor="@color/gray"
             android:drawableRight="@drawable/arrow_right"
             android:layout_marginRight="@dimen/qm10dp"
             android:layout_height="wrap_content" />

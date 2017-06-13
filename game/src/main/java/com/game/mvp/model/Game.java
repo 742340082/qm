@@ -1,6 +1,6 @@
 package com.game.mvp.model;
 
-import com.game.mvp.recommend.modle.Ext;
+import com.game.mvp.index.modle.IndexExt;
 import com.game.mvp.top.modle.TotalResult;
 import com.google.gson.annotations.SerializedName;
 
@@ -113,15 +113,15 @@ public class Game extends DataSupport {
         this.type = type;
     }
 
-    public Ext getExt() {
+    public IndexExt getExt() {
         return ext;
     }
 
-    public void setExt(Ext ext) {
+    public void setExt(IndexExt ext) {
         this.ext = ext;
     }
 
-    private Ext ext;
+    private IndexExt ext;
 
     public String getAppname() {
         return appname;

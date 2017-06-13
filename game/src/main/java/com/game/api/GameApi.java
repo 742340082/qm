@@ -2,7 +2,7 @@ package com.game.api;
 
 
 import com.game.mvp.category.modle.Category;
-import com.game.mvp.recommend.modle.Recommend;
+import com.game.mvp.index.modle.Index;
 import com.game.mvp.top.modle.Total;
 
 import io.reactivex.Observable;
@@ -18,7 +18,7 @@ public interface GameApi {
 
     //4399推荐API
     @GET("game-index-mareacode-999999.html")
-    Observable<Recommend> gameRecommend();
+    Observable<Index> gameRecommend();
 
     //4399分类API
     @GET("game-category-mareacode-999999-n-20-startKey-.html")
@@ -36,4 +36,9 @@ public interface GameApi {
     //4399排行API火的游戏
     @GET("game-top-mareacode-999999-n-20-startKey-{pageNumber}-type-hot.html")
     Observable<Total> gameTopHOT(@Path("pageNumber") int pageNumber);
+
+
+    //4399新闻
+    @GET("news-index-mareacode-999999-n-20-startKey-{pageNumber}.html")
+    Observable<Total> gameNEWS(@Path("pageNumber") int pageNumber);
 }

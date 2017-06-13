@@ -10,9 +10,9 @@ import com.baselibrary.utils.NetworkState;
 import com.baselibrary.utils.UIUtils;
 import com.news.api.NewsApi;
 import com.news.config.ConfigNews;
-import com.news.mvp.zhihu.modle.Storie;
-import com.news.mvp.zhihu.modle.TopStorie;
-import com.news.mvp.zhihu.modle.ZhiHu;
+import com.news.mvp.zhihu.modle.ZhihuStorie;
+import com.news.mvp.zhihu.modle.ZhihuTopStorie;
+import com.news.mvp.zhihu.modle.Zhihu;
 import com.news.mvp.zhihu.view.ZhiHuView;
 import com.news.utils.DateUtil;
 
@@ -66,27 +66,27 @@ public class ZhiHuBizImpl
 
             if (isLoadMore) {
                 //加载更多
-                ZhiHu zhiHuData = DataSupport.where(new String[]{"date=?", DateFormatter.DateFormat(date)}).findFirst(ZhiHu.class);
+                Zhihu zhiHuData = DataSupport.where(new String[]{"date=?", DateFormatter.DateFormat(date)}).findFirst(Zhihu.class);
                 if (zhiHuData== null) {
                     baseView.error(ConfigStateCode.STATE_LOAD_MORE_FAILURES, ConfigStateCode.STATE_LOAD_MORE_FAILURES_VALUE);
                 } else {
-                    List<Storie> stories = DataSupport.where(new String[]{"zhihu_id=?",zhiHuData.getId()+""}).find(Storie.class);
+                    List<ZhihuStorie> stories = DataSupport.where(new String[]{"zhihu_id=?",zhiHuData.getId()+""}).find(ZhihuStorie.class);
                     baseView.showContent(stories, null, true);
                 }
 
             } else {
                 //加载第一页数据
-                ZhiHu zhiHu = DataSupport.findFirst(ZhiHu.class);
+                Zhihu zhiHu = DataSupport.findFirst(Zhihu.class);
                 if (zhiHu == null ) {
                     baseView.error(ConfigStateCode.STATE_NO_NETWORK, ConfigStateCode.STATE_NO_NETWORK_VALUE);
                 } else {
-                    ZhiHu zhiHuData = DataSupport.where(new String[]{"date=?", DateFormatter.DateFormat(date)}).findFirst(ZhiHu.class);
+                    Zhihu zhiHuData = DataSupport.where(new String[]{"date=?", DateFormatter.DateFormat(date)}).findFirst(Zhihu.class);
 
                     if (zhiHuData==null) {
                         baseView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
                     } else {
-                        List<Storie> stories = DataSupport.where(new String[]{"zhihu_id=?",zhiHuData.getId()+""}).find(Storie.class);
-                        List<TopStorie> topStories = DataSupport.where(new String[]{"zhihu_id=?", zhiHuData.getId()+""}).find(TopStorie.class);
+                        List<ZhihuStorie> stories = DataSupport.where(new String[]{"zhihu_id=?",zhiHuData.getId()+""}).find(ZhihuStorie.class);
+                        List<ZhihuTopStorie> topStories = DataSupport.where(new String[]{"zhihu_id=?", zhiHuData.getId()+""}).find(ZhihuTopStorie.class);
                         baseView.showContent(stories, topStories, false);
                     }
                 }
@@ -107,21 +107,21 @@ public class ZhiHuBizImpl
                 })
                 .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ZhiHu>() {
+                .subscribe(new Observer<Zhihu>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                     }
 
                     @Override
-                    public void onNext(ZhiHu zhiHu) {
+                    public void onNext(Zhihu zhiHu) {
 
                         if (zhiHu.getStorieList().size() <= 0 && zhiHu.getTop_storieList().size() <= 0) {
                             baseView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
                         } else {
-                            List<Storie> storiess = zhiHu.getStorieList();
-                            List<TopStorie> top_storiess = zhiHu.getTop_storieList();
+                            List<ZhihuStorie> storiess = zhiHu.getStorieList();
+                            List<ZhihuTopStorie> top_storiess = zhiHu.getTop_storieList();
                             zhiHu.setCacheTime(DateUtil.getCurrentTime() + ConfigNews.NEWS_SAVE_TIME);
-                            if (DataSupport.where(new String[]{"id=?", zhiHu.getId() + ""}).findFirst(ZhiHu.class) == null) {
+                            if (DataSupport.where(new String[]{"id=?", zhiHu.getId() + ""}).findFirst(Zhihu.class) == null) {
                                 zhiHu.saveThrows();
 
                                 DataSupport.saveAll(storiess);
@@ -160,22 +160,22 @@ public class ZhiHuBizImpl
                 })
                 .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ZhiHu>() {
+                .subscribe(new Observer<Zhihu>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(ZhiHu zhiHu) {
+                    public void onNext(Zhihu zhiHu) {
 
                         //新闻条目
                         if (zhiHu.getStorieList().size() <= 0) {
                             baseView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
                         } else {
-                            List<Storie> storiess = zhiHu.getStorieList();
+                            List<ZhihuStorie> storiess = zhiHu.getStorieList();
                             zhiHu.setCacheTime(DateUtil.getCurrentTime() + ConfigNews.NEWS_SAVE_TIME);
-                            if (DataSupport.where(new String[]{"id=?", zhiHu.getId() + ""}).findFirst(ZhiHu.class) == null) {
+                            if (DataSupport.where(new String[]{"id=?", zhiHu.getId() + ""}).findFirst(Zhihu.class) == null) {
                                 zhiHu.saveThrows();
                                 DataSupport.saveAll(storiess);
                             }
@@ -227,19 +227,19 @@ public class ZhiHuBizImpl
             }
         }else {
             if (!time.equals(currenttTime)) {
-                ZhiHu zhiHu = DataSupport.findFirst(ZhiHu.class);
+                Zhihu zhiHu = DataSupport.findFirst(Zhihu.class);
                 //开始判读有没有数据
                 if (zhiHu==null) {
                     //没有数据
                     baseView.error(ConfigStateCode.STATE_NO_NETWORK, ConfigStateCode.STATE_NO_NETWORK_VALUE);
                 } else {
                     //有数据
-                    ZhiHu zhiHuData = DataSupport.where(new String[]{"date=?", DateFormatter.DateFormat(dateTime)}).findFirst(ZhiHu.class);
+                    Zhihu zhiHuData = DataSupport.where(new String[]{"date=?", DateFormatter.DateFormat(dateTime)}).findFirst(Zhihu.class);
                     if (zhiHuData==null) {
                         baseView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
                     } else {
-                        List<Storie> stories = DataSupport.where(new String[]{"zhihu_id=?",zhiHuData.getId()+""}).find(Storie.class);
-                        List<TopStorie> topStories = DataSupport.where(new String[]{"zhihu_id=?", zhiHuData.getId()+""}).find(TopStorie.class);
+                        List<ZhihuStorie> stories = DataSupport.where(new String[]{"zhihu_id=?",zhiHuData.getId()+""}).find(ZhihuStorie.class);
+                        List<ZhihuTopStorie> topStories = DataSupport.where(new String[]{"zhihu_id=?", zhiHuData.getId()+""}).find(ZhihuTopStorie.class);
                         baseView.showContent(stories, topStories, false);
                     }
                 }
@@ -247,19 +247,19 @@ public class ZhiHuBizImpl
             {
 
                 //开始判读有没有数据
-                ZhiHu zhiHu = DataSupport.findFirst(ZhiHu.class);
+                Zhihu zhiHu = DataSupport.findFirst(Zhihu.class);
                 if (zhiHu==null) {
                     //没有数据
                     baseView.error(ConfigStateCode.STATE_NO_NETWORK, ConfigStateCode.STATE_NO_NETWORK_VALUE);
                 } else {
                     //加载第一页数据
-                    ZhiHu zhiHuData = DataSupport.where(new String[]{"date=?", DateFormatter.DateFormat(dateTime)}).findFirst(ZhiHu.class);
+                    Zhihu zhiHuData = DataSupport.where(new String[]{"date=?", DateFormatter.DateFormat(dateTime)}).findFirst(Zhihu.class);
 
                     if (zhiHuData==null) {
                         baseView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
                     } else {
-                        List<Storie> stories = DataSupport.where(new String[]{"zhihu_id=?",zhiHuData.getId()+""}).find(Storie.class);
-                        List<TopStorie> topStories = DataSupport.where(new String[]{"zhihu_id=?", zhiHuData.getId()+""}).find(TopStorie.class);
+                        List<ZhihuStorie> stories = DataSupport.where(new String[]{"zhihu_id=?",zhiHuData.getId()+""}).find(ZhihuStorie.class);
+                        List<ZhihuTopStorie> topStories = DataSupport.where(new String[]{"zhihu_id=?", zhiHuData.getId()+""}).find(ZhihuTopStorie.class);
                         baseView.showContent(stories, topStories, false);
                     }
                 }

@@ -2,11 +2,11 @@ package com.news.mvp.doubian.view;
 
 
 import com.baselibrary.BaseView;
-import com.news.mvp.doubian.bean.Posts;
+import com.news.mvp.doubian.model.DouBianPosts;
 
 import java.util.List;
 
-public  interface DouBianView extends BaseView<List<Posts>>
+public  interface DouBianView extends BaseView<List<DouBianPosts>>
 {
-      void showContent(List<Posts> postses, boolean isloadMore);
+      void showContent(List<DouBianPosts> postses, boolean isloadMore);
 }

@@ -7,7 +7,7 @@ import com.news.mvp.detail.biz.NewsDetailBiz;
 import com.news.mvp.detail.biz.NewsDetailBizImpl;
 import com.news.mvp.detail.modle.DoubanDetail;
 import com.news.mvp.detail.view.NewsDetailView;
-import com.news.mvp.doubian.bean.Thumbs;
+import com.news.mvp.doubian.model.DouBianThumbs;
 
 import org.litepal.crud.DataSupport;
 
@@ -74,7 +74,7 @@ public class NewsDetailPresenter {
             css = "<link rel=\"stylesheet\" href=\"file:///android_asset/douban_light.css\" type=\"text/css\">";
         }
         String content = doubanDetail.getContent();
-        List<Thumbs> imageList = DataSupport.where(new String[]{"thumbs_id=?", doubanDetail.getDoubiandetail_id() + ""}).find(Thumbs.class);
+        List<DouBianThumbs> imageList = DataSupport.where(new String[]{"thumbs_id=?", doubanDetail.getDoubiandetail_id() + ""}).find(DouBianThumbs.class);
         for (int i = 0; i < imageList.size(); i++) {
             String old = "<img id=\"" + imageList.get(i).getTag_name() + "\" />";
             String newStr = "<img id=\"" + imageList.get(i).getTag_name() + "\" "

@@ -24,8 +24,8 @@ import com.news.adapter.NewZhiHuContentAdapter;
 import com.news.adapter.NewZhiHuTabAdapter;
 import com.news.config.ConfigNews;
 import com.news.mvp.detail.NewsDetailActivity;
-import com.news.mvp.zhihu.modle.Storie;
-import com.news.mvp.zhihu.modle.TopStorie;
+import com.news.mvp.zhihu.modle.ZhihuStorie;
+import com.news.mvp.zhihu.modle.ZhihuTopStorie;
 import com.news.mvp.zhihu.presenter.ZhiHuPresenter;
 import com.news.mvp.zhihu.view.ZhiHuView;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -50,7 +50,7 @@ public class ZhiHuFragment
     private NewZhiHuContentAdapter zhihuAdapter;
     public ZhiHuPresenter mPresenter;
     private StatusLayoutManager mStatusLayoutManager;
-    private List<Storie> storieS;
+    private List<ZhihuStorie> storieS;
 
 
     @Override
@@ -186,10 +186,10 @@ public class ZhiHuFragment
     }
 
     @Override
-    public void success(List<Storie> data) {
+    public void success(List<ZhihuStorie> data) {
         this.srl_news_content.setRefreshing(false);
         mStatusLayoutManager.showContent();
-        List<Storie> data1 = zhihuAdapter.getData();
+        List<ZhihuStorie> data1 = zhihuAdapter.getData();
         data1.clear();
         zhihuAdapter.addData(data);
         zhihuAdapter.notifyDataSetChanged();
@@ -197,7 +197,7 @@ public class ZhiHuFragment
 
 
     @Override
-    public void showContent(List<Storie> stories,List<TopStorie> topStories, boolean isLoadMore) {
+    public void showContent(List<ZhihuStorie> stories, List<ZhihuTopStorie> topStories, boolean isLoadMore) {
         this.storieS = stories;
         mStatusLayoutManager.showContent();
         srl_news_content.setRefreshing(false);
@@ -221,7 +221,7 @@ public class ZhiHuFragment
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
-                Storie item = (Storie) adapter.getItem(position);
+                ZhihuStorie item = (ZhihuStorie) adapter.getItem(position);
                 Intent intent=new Intent();
                 intent.putExtra(ConfigNews.NEWS_SEND_ID,item.getStorie_id());
                 intent.putExtra(ConfigNews.NEWS_SEND_NEWS_TYPE,ConfigNews.NEWS_ZHIHU_TYPE);
@@ -231,7 +231,7 @@ public class ZhiHuFragment
         });
     }
 
-    private void initTop(List<TopStorie> topStories) {
+    private void initTop(List<ZhihuTopStorie> topStories) {
 
         ViewPager viewPager = new ViewPager(getContext());
         viewPager.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, UIUtils.dip2px(200)));

@@ -20,7 +20,7 @@ import com.news.adapter.NewGuokeContentAdapter;
 import com.news.adapter.NewZhiHuContentAdapter;
 import com.news.config.ConfigNews;
 import com.news.mvp.detail.NewsDetailActivity;
-import com.news.mvp.guoke.bean.GuoKeResult;
+import com.news.mvp.guoke.model.GuoKeResult;
 import com.news.mvp.guoke.presenter.GuoKeDailyPresenter;
 import com.news.mvp.guoke.view.GuokeView;
 

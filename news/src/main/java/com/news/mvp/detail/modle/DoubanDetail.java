@@ -16,7 +16,7 @@
 
 package com.news.mvp.detail.modle;
 
-import com.news.mvp.doubian.bean.Thumbs;
+import com.news.mvp.doubian.model.DouBianThumbs;
 
 import org.litepal.crud.DataSupport;
 
@@ -33,7 +33,7 @@ public class DoubanDetail extends DataSupport{
     private String abs;
     private int app_css;
     private int like_count;
-    private ArrayList<Thumbs> thumbs;
+    private ArrayList<DouBianThumbs> thumbs;
     private String created_time;
     private int id;
     private boolean is_editor_choice;
@@ -89,7 +89,7 @@ public class DoubanDetail extends DataSupport{
         this.doubiandetail_id = doubiandetail_id;
     }
 
-    private ArrayList<Thumbs> photos;
+    private ArrayList<DouBianThumbs> photos;
     private String published_time;
     private String url;
     private String column;
@@ -136,11 +136,11 @@ public class DoubanDetail extends DataSupport{
         this.like_count = like_count;
     }
 
-    public ArrayList<Thumbs> getThumbs() {
+    public ArrayList<DouBianThumbs> getThumbs() {
         return thumbs;
     }
 
-    public void setThumbs(ArrayList<Thumbs> thumbs) {
+    public void setThumbs(ArrayList<DouBianThumbs> thumbs) {
         this.thumbs = thumbs;
     }
 
@@ -208,11 +208,11 @@ public class DoubanDetail extends DataSupport{
         this.is_liked = is_liked;
     }
 
-    public ArrayList<Thumbs> getPhotos() {
+    public ArrayList<DouBianThumbs> getPhotos() {
         return photos;
     }
 
-    public void setPhotos(ArrayList<Thumbs> photos) {
+    public void setPhotos(ArrayList<DouBianThumbs> photos) {
         this.photos = photos;
     }
 

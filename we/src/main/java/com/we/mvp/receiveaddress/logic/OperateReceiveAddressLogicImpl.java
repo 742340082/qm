@@ -4,7 +4,7 @@ package com.we.mvp.receiveaddress.logic;
 import com.baselibrary.config.ConfigStateCode;
 import com.baselibrary.utils.NetworkState;
 import com.baselibrary.utils.UIUtils;
-import com.getaddress.modle.ReturnAddress;
+import com.getaddress.modle.GetAddressReturnAddress;
 import com.we.config.ConfigReceiveAddress;
 import com.we.mvp.receiveaddress.modle.ReceiveAddress;
 import com.we.mvp.receiveaddress.view.OperateReveiveAddressView;
@@ -36,7 +36,7 @@ public class OperateReceiveAddressLogicImpl  implements OperateReceiveAddressLog
         String villageAddress = addressView.getVillageAddress();
         String account = addressView.getAccount();
         String name = addressView.getName();
-        ReturnAddress returnAddress = addressView.getmReturnAddress();
+        GetAddressReturnAddress returnAddress = addressView.getmReturnAddress();
         Long roleType = addressView.getRoleType();
         Long type = addressView.getType();
         if (detailAddress == null || houseNumber == null || telephone == null || villageAddress == null || account == null || name == null) {

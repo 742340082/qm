@@ -20,7 +20,7 @@ import com.news.adapter.NewDouBianContentAdapter;
 import com.news.adapter.NewZhiHuContentAdapter;
 import com.news.config.ConfigNews;
 import com.news.mvp.detail.NewsDetailActivity;
-import com.news.mvp.doubian.bean.Posts;
+import com.news.mvp.doubian.model.DouBianPosts;
 import com.news.mvp.doubian.presenter.DouBianPresenter;
 import com.news.mvp.doubian.view.DouBianView;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -48,7 +48,7 @@ public class DouBianFragment
     private NewDouBianContentAdapter mNewContentAdapter;
     public DouBianPresenter mPresenter;
     private StatusLayoutManager mStatusLayoutManager;
-    private List<Posts> postses;
+    private List<DouBianPosts> postses;
 
 
     @Override
@@ -143,7 +143,7 @@ public class DouBianFragment
     }
 
     @Override
-    public void showContent(List<Posts> postses, boolean isLoadMore) {
+    public void showContent(List<DouBianPosts> postses, boolean isLoadMore) {
         this.postses = postses;
         mStatusLayoutManager.showContent();
         srl_news_content.setRefreshing(false);
@@ -156,7 +156,7 @@ public class DouBianFragment
             mNewContentAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    Posts item = (Posts) adapter.getItem(position);
+                    DouBianPosts item = (DouBianPosts) adapter.getItem(position);
                     Intent intent = new Intent();
                     intent.putExtra(ConfigNews.NEWS_SEND_ID, item.getPosts_id());
                     intent.putExtra(ConfigNews.NEWS_SEND_NEWS_TYPE, ConfigNews.NEWS_DOUBIAN_TYPE);
@@ -208,7 +208,7 @@ public class DouBianFragment
     }
 
     @Override
-    public void success(List<Posts> postses) {
+    public void success(List<DouBianPosts> postses) {
 
     }
 

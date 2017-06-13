@@ -24,8 +24,8 @@ import com.getaddress.R2;
 import com.getaddress.adapter.GetAddressAdapter;
 import com.getaddress.fragment.presenter.TotalPresenter;
 import com.getaddress.fragment.view.TotalView;
-import com.getaddress.modle.PositionAddress;
-import com.getaddress.modle.ReturnAddress;
+import com.getaddress.modle.GetAddressPositionAddress;
+import com.getaddress.modle.GetAddressReturnAddress;
 
 import butterknife.BindView;
 import io.reactivex.functions.Consumer;
@@ -55,11 +55,11 @@ public class TotalFragment extends BaseFragmnet implements TotalView, OnRetryLis
 
 
     private void refreshData() {
-        RxBus.getDefault().toObservable(ConfigValues.VALUE_ADDRESS_RX_SEND_LOCATION, PositionAddress.class)
-                .subscribe(new Consumer<PositionAddress>() {
+        RxBus.getDefault().toObservable(ConfigValues.VALUE_ADDRESS_RX_SEND_LOCATION, GetAddressPositionAddress.class)
+                .subscribe(new Consumer<GetAddressPositionAddress>() {
 
                     @Override
-                    public void accept(PositionAddress positionAddress) throws Exception {
+                    public void accept(GetAddressPositionAddress positionAddress) throws Exception {
                         pageNum=0;
                         if (positionAddress.getLatLng().latitude!=latLngIndex.latitude
                                 ||positionAddress.getLatLng().longitude!=latLngIndex.longitude) {
@@ -146,7 +146,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, OnRetryLis
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
                     PoiItem item = (PoiItem) adapter.getItem(position);
-                    ReturnAddress returnAddress=new ReturnAddress();
+                    GetAddressReturnAddress returnAddress=new GetAddressReturnAddress();
                     returnAddress.setTitle(item.getTitle());
                     returnAddress.setLatLng(item.getLatLonPoint());
                     TextView tv_address_detail = (TextView) view.findViewById(R.id.tv_address_detail);

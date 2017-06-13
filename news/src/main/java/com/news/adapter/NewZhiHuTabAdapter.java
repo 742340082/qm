@@ -13,17 +13,17 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.news.R;
 import com.news.config.ConfigNews;
 import com.news.mvp.detail.NewsDetailActivity;
-import com.news.mvp.zhihu.modle.TopStorie;
+import com.news.mvp.zhihu.modle.ZhihuTopStorie;
 
 public class NewZhiHuTabAdapter
-        extends CommonPagerAdapter<TopStorie> {
+        extends CommonPagerAdapter<ZhihuTopStorie> {
 
 
     public NewZhiHuTabAdapter(Context context) {
         super(context);
     }
 
-    public void convert(ViewHolder viewholder,final TopStorie data, int position) {
+    public void convert(ViewHolder viewholder, final ZhihuTopStorie data, int position) {
         ImageView iv_new_tab_icon =  viewholder.getView(R.id.iv_new_tab_icon);
         Glide.with(UIUtils.getContext())
                 .load(data.getImage())

@@ -18,10 +18,10 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.game.R;
-import com.game.mvp.recommend.modle.Ext;
+import com.game.mvp.index.modle.IndexExt;
 import com.game.mvp.model.Game;
-import com.game.mvp.recommend.modle.SubjectGame;
-import com.game.mvp.recommend.modle.SubjectList;
+import com.game.mvp.index.modle.IndexSubjectGame;
+import com.game.mvp.index.modle.IndexSubjectList;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by 74234 on 2017/4/26.
  */
 
-public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, BaseViewHolder> {
+public class RecommendAdapter extends BaseMultiItemQuickAdapter<IndexSubjectGame, BaseViewHolder> {
 
 
     public final static int GAME_RECOMMEND_NORMAL = 1;
@@ -41,7 +41,7 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, Bas
     public final static int GAME_RECOMMEND_SUBJECT4 = 5;
     private static int k;
 
-    public RecommendAdapter(List<SubjectGame> data) {
+    public RecommendAdapter(List<IndexSubjectGame> data) {
         super(data);
         addItemType(GAME_RECOMMEND_NORMAL, R.layout.item_recommend_normal);
         addItemType(GAME_RECOMMEND_SUBJECT1, R.layout.item_recommend_subject1);
@@ -51,7 +51,7 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, Bas
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, SubjectGame item) {
+    protected void convert(BaseViewHolder helper, IndexSubjectGame item) {
         int itemType = item.getItemType();
         switch (itemType) {
             case GAME_RECOMMEND_NORMAL:
@@ -73,8 +73,8 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, Bas
         }
     }
 
-    private void initSubject4(BaseViewHolder helper, SubjectGame item) {
-        SubjectList subjectList = item.getSubjectList();
+    private void initSubject4(BaseViewHolder helper, IndexSubjectGame item) {
+        IndexSubjectList subjectList = item.getSubjectList();
         helper.setText(R.id.tv_subject_title, subjectList.getTitle());
         final LinearLayout ll_subject = helper.getView(R.id.ll_subject);
         LinearLayout ll_subject_game = helper.getView(R.id.ll_subject_game);
@@ -116,8 +116,8 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, Bas
 
     }
 
-    private void initSubject3(BaseViewHolder helper, SubjectGame item) {
-        SubjectList subjectList = item.getSubjectList();
+    private void initSubject3(BaseViewHolder helper, IndexSubjectGame item) {
+        IndexSubjectList subjectList = item.getSubjectList();
         helper.setText(R.id.tv_subject_title, subjectList.getTitle());
         helper.setText(R.id.tv_subject_desc, subjectList.getDesc());
         ImageView iv_subject_icon = helper.getView(R.id.iv_subject_icon);
@@ -129,8 +129,8 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, Bas
                 .into(iv_subject_icon);
     }
 
-    private void initSubject2(BaseViewHolder helper, SubjectGame item) {
-        SubjectList subjectList = item.getSubjectList();
+    private void initSubject2(BaseViewHolder helper, IndexSubjectGame item) {
+        IndexSubjectList subjectList = item.getSubjectList();
 
         LinearLayout convertView = (LinearLayout) helper.getConvertView();
         TextView tv_subject_title = helper.getView(R.id.tv_subject_title);
@@ -168,8 +168,8 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, Bas
 
     }
 
-    private void initSubject1(BaseViewHolder helper, SubjectGame item) {
-        SubjectList subjectList = item.getSubjectList();
+    private void initSubject1(BaseViewHolder helper, IndexSubjectGame item) {
+        IndexSubjectList subjectList = item.getSubjectList();
 
         final LinearLayout ll_subject = helper.getView(R.id.ll_subject);
         TextView tv_subject_title = helper.getView(R.id.tv_subject_title);
@@ -197,7 +197,7 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, Bas
         ll_subject_desc.setText(subjectList.getDesc());
         tv_subject_title.setText(subjectList.getTitle());
 
-        Ext ext = subjectList.getExt();
+        IndexExt ext = subjectList.getExt();
         switch (subjectList.getType()) {
             case 1:
                 Glide.with(UIUtils.getContext())
@@ -230,7 +230,7 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<SubjectGame, Bas
 
     }
 
-    private void initNormal(BaseViewHolder helper, SubjectGame item) {
+    private void initNormal(BaseViewHolder helper, IndexSubjectGame item) {
         Game game = item.getGame();
 
         ImageView iv_game_icon = helper.getView(R.id.iv_game_icon);

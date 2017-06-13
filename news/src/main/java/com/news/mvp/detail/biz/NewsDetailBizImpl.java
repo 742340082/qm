@@ -14,9 +14,9 @@ import com.news.mvp.detail.modle.DoubanDetail;
 import com.news.mvp.detail.modle.GuokeDetail;
 import com.news.mvp.detail.modle.ZhiHuDetail;
 import com.news.mvp.detail.view.NewsDetailView;
-import com.news.mvp.doubian.bean.Posts;
-import com.news.mvp.doubian.bean.Thumbs;
-import com.news.mvp.guoke.bean.GuoKeResult;
+import com.news.mvp.doubian.model.DouBianPosts;
+import com.news.mvp.doubian.model.DouBianThumbs;
+import com.news.mvp.guoke.model.GuoKeResult;
 import com.news.utils.DateUtil;
 
 import org.litepal.crud.DataSupport;
@@ -226,7 +226,7 @@ public class NewsDetailBizImpl implements NewsDetailBiz {
                         } else {
                             doubanDetail.setDoubiandetail_id(doubanDetail.getId());
                             doubanDetail.setCacheTime(DateUtil.getCurrentTime() + ConfigNews.NEWS_SAVE_TIME);
-                            Posts posts = DataSupport.where(new String[]{"posts_id=?", doubanDetail.getId() + ""}).findFirst(Posts.class);
+                            DouBianPosts posts = DataSupport.where(new String[]{"posts_id=?", doubanDetail.getId() + ""}).findFirst(DouBianPosts.class);
                             if (posts!=null) {
                                 doubanDetail.setLarge_url(posts.getLarge_url());
                                 doubanDetail.setMedium_url(posts.getMedium_url());
@@ -234,13 +234,13 @@ public class NewsDetailBizImpl implements NewsDetailBiz {
                             }
                             if (DataSupport.where(new String[]{"doubiandetail_id=?", doubanDetail.getDoubiandetail_id() + ""}).findFirst(DoubanDetail.class) == null) {
                                 doubanDetail.saveThrows();
-                                ArrayList<Thumbs> thumbs = doubanDetail.getPhotos();
-                                for (Thumbs item
+                                ArrayList<DouBianThumbs> thumbs = doubanDetail.getPhotos();
+                                for (DouBianThumbs item
                                         :
                                         thumbs) {
-                                    Posts.large large = item.getLarge();
-                                    Posts.small small = item.getSmall();
-                                    Posts.medium medium = item.getMedium();
+                                    DouBianPosts.large large = item.getLarge();
+                                    DouBianPosts.small small = item.getSmall();
+                                    DouBianPosts.medium medium = item.getMedium();
                                     if (large!=null)
                                     {
                                         item.setLarge_url(large.getUrl());

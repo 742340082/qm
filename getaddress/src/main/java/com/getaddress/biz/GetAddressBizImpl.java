@@ -34,8 +34,8 @@ import com.baselibrary.utils.RxBus;
 import com.baselibrary.utils.UIUtils;
 import com.getaddress.R;
 import com.getaddress.api.AddressApi;
-import com.getaddress.modle.City;
-import com.getaddress.modle.PositionAddress;
+import com.getaddress.modle.GetAddressCity;
+import com.getaddress.modle.GetAddressPositionAddress;
 import com.getaddress.view.GetAddressView;
 
 import java.util.List;
@@ -109,7 +109,7 @@ public class GetAddressBizImpl implements GetAddressBiz {
                     @Override
                     public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
                         if (num != 0) {
-                            PositionAddress positionAddress = new PositionAddress();
+                            GetAddressPositionAddress positionAddress = new GetAddressPositionAddress();
                             positionAddress.setLatLng(new LatLng(cameraPosition.target.latitude,cameraPosition.target.longitude,false) );
                             positionAddress.setCity(regeocodeResult.getRegeocodeAddress().getCity());
                             positionAddress.setDistrict(regeocodeResult.getRegeocodeAddress().getDistrict());
@@ -303,14 +303,14 @@ public class GetAddressBizImpl implements GetAddressBiz {
                 })
                 .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Result<List<City>>>() {
+                .subscribe(new Observer<Result<List<GetAddressCity>>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(Result<List<City>> value) {
+                    public void onNext(Result<List<GetAddressCity>> value) {
                             switch (value.getCode())
                             {
                                 case ConfigStateCode.RESULT_CITY_SUCCESS:

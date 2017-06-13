@@ -2,7 +2,7 @@ package com.getaddress.view;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.services.help.Tip;
-import com.getaddress.modle.City;
+import com.getaddress.modle.GetAddressCity;
 
 import java.util.List;
 
@@ -19,5 +19,5 @@ public interface GetAddressView {
     void startCityLoading();
     void  locationSuccess(AMapLocation mapLocation);
     void  searchSuccess(List<Tip> list, String searchText);
-    void  citySuccess(List<City> list);
+    void  citySuccess(List<GetAddressCity> list);
 }

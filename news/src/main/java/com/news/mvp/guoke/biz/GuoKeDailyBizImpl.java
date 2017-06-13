@@ -7,8 +7,8 @@ import com.baselibrary.utils.Logger;
 import com.baselibrary.utils.NetworkState;
 import com.baselibrary.utils.UIUtils;
 import com.news.api.NewsApi;
-import com.news.mvp.guoke.bean.GuoKe;
-import com.news.mvp.guoke.bean.GuoKeResult;
+import com.news.mvp.guoke.model.GuoKe;
+import com.news.mvp.guoke.model.GuoKeResult;
 import com.news.mvp.guoke.view.GuokeView;
 
 import org.litepal.crud.DataSupport;
