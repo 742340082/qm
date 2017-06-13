@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AppTheme"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/guide1"/>
+
+    <Button
+        android:id="@id/btn_guide_enter"
+        android:layout_width="@dimen/qm200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/qm100dp"
+        android:background="@drawable/bg_guide_enter"
+        android:padding="@dimen/qm10dp"
+        android:text="点击进入"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/titleSize"/>
+</RelativeLayout>

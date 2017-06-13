@@ -1,0 +1,14 @@
+<resources>
+    <string name="game_tab_name_recommend">推荐</string>
+    <string name="game_tab_name_category">分类</string>
+    <string name="game_tab_name_top">排行</string>
+    <string name="game_tab_name_consultation">咨询</string>
+    <string name="vedio">视频</string>
+    <string name="download">下载</string>
+    <string name="hot">人气</string>
+    <string name="active">活动</string>
+    <string name="game_new">新游</string>
+    <string name="game_net">网游</string>
+    <string name="game_single">单机</string>
+    <string name="game_hot">热游</string>
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="qm300dp" >300dp</dimen>
+    <dimen name="qm200dp" >200dp</dimen>
+    <dimen name="qm100dp" >100dp</dimen>
+    <dimen name="qm90dp" >90dp</dimen>
+    <dimen name="qm80dp" >80dp</dimen>
+    <dimen name="qm70dp" >70dp</dimen>
+    <dimen name="qm60dp" >60dp</dimen>
+    <dimen name="qm50dp" >50dp</dimen>
+    <dimen name="qm40dp" >40dp</dimen>
+    <dimen name="qm30dp" >30dp</dimen>
+    <dimen name="qm29dp" >29dp</dimen>
+    <dimen name="qm28dp" >28dp</dimen>
+    <dimen name="qm27dp" >27dp</dimen>
+    <dimen name="qm26dp" >26dp</dimen>
+    <dimen name="qm25dp" >25dp</dimen>
+    <dimen name="qm24dp" >24dp</dimen>
+    <dimen name="qm23dp" >23dp</dimen>
+    <dimen name="qm22dp" >22dp</dimen>
+    <dimen name="qm21dp" >21dp</dimen>
+    <dimen name="qm20dp" >20dp</dimen>
+    <dimen name="qm19dp" >19dp</dimen>
+    <dimen name="qm18dp" >18dp</dimen>
+    <dimen name="qm17dp" >17dp</dimen>
+    <dimen name="qm16dp" >16dp</dimen>
+    <dimen name="qm15dp" >15dp</dimen>
+    <dimen name="qm14dp" >14dp</dimen>
+    <dimen name="qm13dp" >13dp</dimen>
+    <dimen name="qm12dp" >12dp</dimen>
+    <dimen name="qm11dp" >11dp</dimen>
+    <dimen name="qm10dp" >10dp</dimen>
+    <dimen name="qm9dp" >9dp</dimen>
+    <dimen name="qm8dp" >8dp</dimen>
+    <dimen name="qm7dp" >7dp</dimen>
+    <dimen name="qm6dp" >6dp</dimen>
+    <dimen name="qm5dp" >5dp</dimen>
+    <dimen name="qm4dp" >4dp</dimen>
+    <dimen name="qm3dp" >3dp</dimen>
+    <dimen name="qm2dp" >2dp</dimen>
+    <dimen name="qm1dp" >1dp</dimen>
+    <dimen name="qm0dp" >0dp</dimen>
+
+
+    <dimen name="topTagSize" >16sp</dimen>
+    <dimen name="titleSize" >14sp</dimen>
+    <dimen name="textSize" >12sp</dimen>
+    <dimen name="textSizeMin" >10sp</dimen>
+    <dimen name="guideBarSize">14sp</dimen>
+    <dimen name="menuSize">14sp</dimen>
+    <dimen name="guideViewSize">40sp</dimen>
+
+    <dimen name="toolbarHeight">50dp</dimen>
+    <dimen name="guideBarHeight">40dp</dimen>
+
+    <dimen name="itemImageHeight">80dp</dimen>
+    <dimen name="itemImageWeight">80dp</dimen>
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/qm10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:foreground="?android:selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/qm2dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qm40dp">
+
+        <TextView
+            android:id="@id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:visibility="visible"
+            android:text="@string/loading"
+            android:textColor="@color/black"
+            android:textSize="@dimen/titleSize" />
+
+        <LinearLayout
+            android:id="@id/ll_getaddress_reset_location"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:gravity="center_vertical">
+
+            <ProgressBar
+                android:id="@id/pb_getaddress_reset_location"
+                android:layout_width="@dimen/qm20dp"
+                android:layout_height="@dimen/qm20dp"
+                android:layout_marginRight="@dimen/qm5dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@id/iv_getaddress_reset_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/qm5dp"
+                android:src="@drawable/icon_resetlocation"
+                android:visibility="visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/qm10dp"
+                android:text="@string/resetlocation"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/titleSize" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

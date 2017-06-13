@@ -1,0 +1,10 @@
+<resources>
+    <string name="main_tab_name_consult">咨询</string>
+    <string name="main_tab_name_fingerpost">指南</string>
+    <string name="main_tab_name_from">订单</string>
+    <string name="main_tab_name_news">新闻</string>
+    <string name="main_tab_name_takeout">外卖</string>
+    <string name="main_tab_name_app">应用</string>
+    <string name="main_tab_name_we">我</string>
+    <string name="main_tab_name_game">游戏</string>
+</resources>

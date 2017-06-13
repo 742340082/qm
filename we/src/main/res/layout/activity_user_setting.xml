@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@id/tv_header"
+        android:layout_width="@dimen/qm0dp"
+        android:layout_height="@dimen/qm0dp"/>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/toolbarHeight"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        android:background="@color/blue"
+        app:navigationIcon="@drawable/arrow_left"
+        app:title="@string/user_setting"
+        app:titleTextColor="@color/white"/>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@id/rl_user_account_safe"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/qm50dp"
+            android:background="@drawable/selector_total_item_select_bg"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/Tv14spBlack"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/qm10dp"
+                android:gravity="center_vertical"
+                android:text="@string/user_account_and_safe"/>
+
+            <TextView
+                android:id="@id/tv_user_account"
+                style="@style/Tv14spGray"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/qm10dp"
+                android:gravity="center_vertical"
+                android:text="@string/user_open_small_pay"/>
+        </RelativeLayout>
+
+        <include layout="@layout/cut_horizontal_apart"/>
+
+        <RelativeLayout
+            android:id="@id/rl_common"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/qm50dp"
+            android:background="@drawable/selector_total_item_select_bg"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/Tv14spBlack"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/qm10dp"
+                android:gravity="center_vertical"
+                android:text="@string/common"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@id/rl_abount"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/qm50dp"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:background="@drawable/selector_total_item_select_bg"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/Tv14spBlack"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:gravity="center_vertical"
+            android:text="@string/abount"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@id/btn_exit_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardView"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:background="@color/green"
+        android:text="@string/exit_login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/titleSize" />
+
+</LinearLayout>

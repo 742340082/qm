@@ -1,0 +1,97 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+    package="com.we">
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
+        <!--高德地图-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="4f22e3b4f572e7931292ad628e3370a7" />
+        <!--MOB-->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+
+        <!--TencentQQ-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent101391682" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--We-->
+        <activity
+            android:name="com.we.mvp.user.detail.UserDetailActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.we.mvp.user.UserActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.we.mvp.user.setting.SettingActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name="com.we.mvp.user.detail.UpdateNameActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.we.mvp.user.operate.OperateUserActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.we.mvp.user.detail.UpdatePasswordActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.we.mvp.receiveaddress.ReceiveAddressActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.we.mvp.receiveaddress.OperateReceiveAddressActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.getaddress.GetAddressActivity"
+            android:launchMode="standard"
+            android:theme="@style/AppTheme" />
+        <!--采集头像的activity-->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+
+        <!--存储拍照保存图片的provider-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.quickmeals.image"
+            android:enabled="true"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

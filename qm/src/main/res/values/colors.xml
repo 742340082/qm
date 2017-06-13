@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#3a3838</color>
+    <color name="blue">#ff1cf2f2</color>
+    <color name="card_bg">#ffe8e8e8</color>
+    <color name="black_transparent">#66d3c5c5</color>
+    <color name="colorAccent">#ffff4081</color>
+    <color name="colorPrimary">#ff09fdd4</color>
+    <color name="colorPrimaryDark">#ff09e3f6</color>
+
+    <color name="gray">#99e3e1e1</color>
+    <color name="green">#ff4ded4d</color>
+    <color name="layout_bg">#00000000</color>
+    <color name="button_bg">#ff04f554</color>
+
+    <color name="main_tab_color">#aad3c3c3</color>
+
+    <color name="red">#ffff0000</color>
+
+    <color name="saffronyellow">#fa6e3b</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="white">#ffffffff</color>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@id/new_fl_container"
+             style="@style/AppTheme"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@id/srl_news_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/rv_news_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="true"
+            android:scrollbarFadeDuration="1"
+            android:scrollbars="vertical"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@id/fab"
+        android:layout_width="@dimen/qm50dp"
+        android:layout_height="@dimen/qm50dp"
+        android:layout_gravity="end|bottom|center"
+        android:layout_marginRight="@dimen/qm10dp"
+        android:visibility="gone"
+        android:layout_marginBottom="@dimen/qm100dp"
+        android:src="@drawable/icon_placeholder"/>
+</FrameLayout>

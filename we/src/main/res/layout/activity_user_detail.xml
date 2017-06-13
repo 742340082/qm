@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/ll_user_account_and_safe"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/toolbarHeight"
+        android:background="@color/blue"
+        app:navigationIcon="@drawable/arrow_left"
+        app:title="@string/AccountandSecurity"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:titleTextColor="@color/white" />
+
+    <LinearLayout
+        android:id="@id/ll_user_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ScrollView
+            android:id="@id/sv_user_detail"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="@dimen/qm10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm100dp"
+                        android:background="@drawable/selector_total_item_select_bg">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@id/civ_user_icon"
+                            android:layout_width="@dimen/qm80dp"
+                            android:layout_height="@dimen/qm80dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="@dimen/qm10dp"
+                            android:layout_marginTop="@dimen/qm10dp"
+                            android:src="@drawable/lufei" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@id/rl_user_account"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+
+
+                        android:background="@drawable/selector_total_item_select_bg"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/Tv14spBlack"
+                            android:layout_alignBaseline="@id/tv_user_account"
+                            android:layout_alignBottom="@id/tv_user_account"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:layout_marginStart="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_derail_name" />
+
+                        <TextView
+                            android:id="@id/tv_user_account"
+                            style="@style/Tv14spGray"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="10.0dip"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_derail_name" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/cut_horizontal_apart" />
+
+                    <RelativeLayout
+                        android:id="@id/rl_user_name"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+
+
+                        android:background="@drawable/selector_total_item_select_bg"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@id/textView3"
+                            style="@style/Tv14spBlack"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_account" />
+
+                        <TextView
+                            android:id="@id/tv_user_name"
+                            style="@style/Tv14spGray"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignTop="@id/textView3"
+                            android:layout_marginEnd="@dimen/qm10dp"
+                            android:layout_marginRight="@dimen/qm10dp"
+                            android:ellipsize="end"
+                            android:gravity="center_vertical"
+                            android:maxEms="7"
+                            android:maxLines="1"
+                            android:text="@string/user_account" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginTop="@dimen/qm10dp"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+                        android:background="@drawable/selector_total_item_select_bg"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:layout_marginRight="@dimen/qm10dp"
+                            android:text="@string/account_bind" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/cut_horizontal_apart" />
+
+                    <RelativeLayout
+                        android:id="@id/rl_user_telephone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+                        android:background="@drawable/selector_total_item_select_bg"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/Tv14spBlack"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:drawableLeft="@drawable/icon_phone"
+                            android:drawablePadding="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_detail_telephone" />
+
+                        <TextView
+                            android:id="@id/tv_user_telephone"
+                            style="@style/Tv14spGray"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_third_bind"
+                            android:textColor="@color/user_detail_bind_color" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/cut_horizontal_apart" />
+
+                    <RelativeLayout
+                        android:id="@id/rl_user_weibo"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+
+                        android:background="@drawable/selector_total_item_select_bg"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/Tv14spBlack"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:drawableLeft="@drawable/icon_we_weibo"
+                            android:drawablePadding="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_detail_weibo" />
+
+                        <TextView
+                            android:id="@id/tv_user_weibo"
+                            style="@style/Tv14spGray"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_third_bind"
+                            android:textColor="@color/user_detail_bind_color" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/cut_horizontal_apart" />
+
+                    <RelativeLayout
+                        android:id="@id/rl_user_qq"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+                        android:background="@drawable/selector_total_item_select_bg"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/Tv14spBlack"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:drawableLeft="@drawable/icon_we_qq"
+                            android:drawablePadding="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_detail_qq" />
+
+                        <TextView
+                            android:id="@id/tv_user_qq"
+                            style="@style/Tv14spGray"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_third_bind"
+                            android:textColor="@color/user_detail_bind_color" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:text="@string/user_safe_setting" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/cut_horizontal_apart" />
+
+                    <RelativeLayout
+                        android:id="@id/rl_user_login_password"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+
+
+                        android:background="@drawable/selector_total_item_select_bg"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/Tv14spBlack"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:drawablePadding="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_detail_login_password" />
+
+                        <TextView
+                            android:id="@id/tv_user_login_password"
+                            style="@style/Tv14spGray"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_safe_default_setting"
+                            android:textColor="@color/blue" />
+                    </RelativeLayout>
+
+                    <include layout="@layout/cut_horizontal_apart" />
+
+
+                    <RelativeLayout
+                        android:id="@id/rl_user_min_money_pay"
+                        android:layout_width="fill_parent"
+                        android:layout_height="@dimen/qm50dp"
+                        android:background="@drawable/selector_total_item_select_bg"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            style="@style/Tv14spBlack"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:layout_marginRight="@dimen/qm10dp"
+                            android:drawablePadding="@dimen/qm10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/user_detail_min_money_pay" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</LinearLayout>

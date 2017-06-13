@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/toolbarHeight"
+        android:background="@color/blue"
+        app:navigationIcon="@drawable/arrow_left"
+        app:title="@string/user_bind_telephone"
+        app:titleTextAppearance="@style/Toolbar.TitleText"
+        app:titleTextColor="@color/white" />
+
+    <LinearLayout
+        android:id="@id/ll_user_telephone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_user_header"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/qm50dp"
+            android:orientation="horizontal">
+
+            <com.baselibrary.view.ClearEditText
+                android:id="@id/et_user_telephone"
+                android:layout_width="@dimen/qm0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@drawable/icon_we_regist_telephone"
+                android:drawablePadding="@dimen/qm10dp"
+                android:drawableRight="@drawable/icon_clear"
+                android:enabled="false"
+                android:hint="@string/user_account_telephone"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:paddingLeft="@dimen/qm10dp"
+                android:paddingRight="@dimen/qm10dp"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/titleSize" />
+
+            <TextView
+                android:id="@id/tv_obtain_code"
+                android:layout_width="@dimen/qm100dp"
+                android:layout_height="@dimen/qm30dp"
+                android:layout_marginRight="@dimen/qm4dp"
+                android:background="@drawable/bg_identifying_code"
+                android:enabled="false"
+
+                android:gravity="center"
+                android:inputType="number"
+                android:paddingLeft="@dimen/qm10dp"
+                android:paddingRight="@dimen/qm10dp"
+                android:text="@string/get_code"
+                android:textColor="@color/white"
+                android:textSize="@dimen/titleSize" />
+
+        </LinearLayout>
+
+        <include layout="@layout/cut_horizontal_apart" />
+
+        <com.baselibrary.view.ClearEditText
+            android:id="@id/et_user_code"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qm50dp"
+            android:layout_alignParentEnd="true"
+            android:background="@null"
+            android:clickable="true"
+            android:drawableLeft="@drawable/icon_we_regist_code"
+            android:drawablePadding="@dimen/qm10dp"
+            android:drawableRight="@drawable/icon_clear"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/code"
+            android:inputType="number"
+            android:maxLength="6"
+            android:paddingLeft="@dimen/qm10dp"
+            android:paddingRight="@dimen/qm10dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/titleSize" />
+    </LinearLayout>
+
+    <Button
+        android:id="@id/btn_regist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_user_telephone"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        android:textSize="@dimen/titleSize" />
+
+    <LinearLayout
+        android:id="@id/ll_voice_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_regist"
+        android:layout_marginLeft="@dimen/qm10dp"
+        android:layout_marginRight="@dimen/qm10dp"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/voice_content" />
+
+        <TextView
+            android:id="@id/tv_voice_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/voice_code"
+            android:textColor="@color/blue" />
+    </LinearLayout>
+</LinearLayout>

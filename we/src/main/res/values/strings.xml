@@ -1,0 +1,9 @@
+<resources>
+    <string name="switch_theme">夜间模式</string>
+    <string name="on">打开</string>
+    <string name="off">关闭</string>
+    <string name="third_app_authorize">第三方应用授权</string>
+    <string name="update_loading">修改中</string>
+    <string name="update_receice_address">修改地址</string>
+    <string name="delete_loading">删除中</string>
+</resources>

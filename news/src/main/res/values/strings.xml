@@ -1,0 +1,5 @@
+<resources>
+    <string name="news">新闻</string>
+    <string name="action_open_in_browser">在浏览器中打开</string>
+    <string name="refresh">刷新</string>
+</resources>

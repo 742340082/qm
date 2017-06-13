@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="toolbar" type="id" />
+    <item name="iv_back" type="id" />
+    <item name="ll_city" type="id" />
+    <item name="tv_city" type="id" />
+    <item name="iv_city" type="id" />
+    <item name="et_search_address" type="id" />
+    <item name="tv_cancle_search" type="id" />
+    <item name="rl_getaddress" type="id" />
+    <item name="map" type="id" />
+    <item name="ib_location" type="id" />
+    <item name="tl_getaddress" type="id" />
+    <item name="vp_getaddress" type="id" />
+    <item name="ll_getaddress_search_list" type="id" />
+    <item name="rv_getaddress_search_list" type="id" />
+    <item name="ll_getaddress_city_list" type="id" />
+    <item name="rl_getaddress_city_list" type="id" />
+    <item name="rv_getaddress_city_list" type="id" />
+    <item name="qi_bar" type="id" />
+    <item name="tv_quickindex_title" type="id" />
+    <item name="ll_getaddress_tab" type="id" />
+    <item name="rv_getaddress_tab" type="id" />
+    <item name="ll_address" type="id" />
+    <item name="location" type="id" />
+    <item name="tv_current" type="id" />
+    <item name="tv_address_title" type="id" />
+    <item name="tv_address_detail" type="id" />
+    <item name="ll_getaddress_reset_location" type="id" />
+    <item name="pb_getaddress_reset_location" type="id" />
+    <item name="iv_getaddress_reset_location" type="id" />
+</resources>

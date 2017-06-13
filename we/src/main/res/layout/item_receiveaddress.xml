@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_total_item_select_bg"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/qm0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/qm2dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/qm10dp"
+                android:layout_marginTop="@dimen/qm10dp">
+
+                <TextView
+                    android:id="@id/tv_receiveaddress_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/qm10dp"
+                    android:text="杨裕潘"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/titleSize" />
+
+                <TextView
+                    android:id="@id/tv_receiveaddress_role_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/qm5dp"
+                    android:text="先生"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/titleSize"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@id/tv_receiveaddress_telephone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="17309730436"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/titleSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl"
+                android:layout_marginBottom="@dimen/qm10dp"
+                android:layout_marginLeft="@dimen/qm10dp"
+                android:layout_marginTop="@dimen/qm5dp">
+
+                <FrameLayout
+                    android:id="@id/fl_receiveaddress_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@id/tv_receiveaddress_type_flyme"
+                        android:layout_width="@dimen/qm40dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_receiveaddress_label_saffronyellow"
+                        android:gravity="center"
+                        android:text="@string/flyme"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@id/tv_receiveaddress_type_school"
+                        android:layout_width="@dimen/qm40dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_receiveaddress_label_blue"
+                        android:gravity="center"
+                        android:text="@string/school"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@id/tv_receiveaddress_type_company"
+                        android:layout_width="@dimen/qm40dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_receiveaddress_label_green"
+                        android:gravity="center"
+                        android:text="@string/company"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@id/tv_receiveaddress_address"
+                    android:layout_width="@dimen/qm0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qm5dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="你说舒服多了塑料袋水电费会计手工雕刻机速度恢复健康数据库 盛开的回复即可随时打开恢复数据库"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/titleSize" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@id/iv_receiveaddress_update_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/qm10dp"
+            android:src="@drawable/icon_address_update" />
+    </LinearLayout>
+
+    <include layout="@layout/cut_horizontal_apart"/>
+</LinearLayout>

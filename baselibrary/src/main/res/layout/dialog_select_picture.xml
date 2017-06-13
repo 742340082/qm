@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_photo"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/user_from_photo_select"
+            android:textColor="@color/blue" />
+
+        <include layout="@layout/cut_horizontal_apart" />
+
+        <TextView
+            android:id="@+id/tv_take"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/user_from_take_select"
+            android:textColor="@color/blue" />
+
+        <include layout="@layout/cut_horizontal_apart" />
+
+
+        <TextView
+            android:id="@+id/tv_close"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="@string/cancle"
+            android:textColor="@color/blue" />
+    </LinearLayout>
+</RelativeLayout>

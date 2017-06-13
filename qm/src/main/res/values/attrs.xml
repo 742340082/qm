@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="progress_unreached_color" format="color" />
+    <attr name="progress_reached_color" format="color" />
+    <attr name="progress_reached_bar_height" format="dimension" />
+    <attr name="progress_unreached_bar_height" format="dimension" />
+    <attr name="progress_text_size" format="dimension" />
+    <attr name="progress_text_state">
+        <enum name="invisible" value="1" />
+        <enum name="visible" value="0" />
+    </attr>
+    <attr name="radius" format="dimension" />
+    <attr name="progress_text_color" format="color" />
+    <attr name="progress_text" format="string" />
+    <attr name="progress_text_offset" format="dimension" />
+    <attr name="progress_text_visibility">
+        <enum name="invisible" value="1" />
+        <enum name="visible" value="0" />
+    </attr>
+    <attr name="position">
+        <enum name="LEFT_BOTTOM" value="2" />
+        <enum name="LEFT_TOP" value="0" />
+        <enum name="RIGHT_BOTTOM" value="3" />
+        <enum name="RIGHT_TOP" value="1" />
+    </attr>
+
+</resources>

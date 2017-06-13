@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:foreground="?android:selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/qm2dp"
+    >
+
+    <ImageView
+        android:id="@id/iv_game_icon"
+        android:layout_width="@dimen/itemImageWeight"
+        android:layout_height="@dimen/itemImageHeight"
+        android:layout_margin="@dimen/qm10dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/lufei" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_game_icon"
+        android:layout_centerVertical="true"
+        >
+
+        <TextView
+            android:id="@+id/tv_game_title"
+            style="@style/Tv14spBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/AccountandSecurity" />
+
+        <LinearLayout
+            android:layout_below="@+id/tv_game_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/qm3dp"
+            android:id="@id/ll_game"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_vedio"
+                android:layout_width="@dimen/qm30dp"
+                android:layout_height="@dimen/qm16dp"
+                android:background="@drawable/vedio_selector"
+                android:gravity="center"
+                android:textSize="@dimen/textSize"
+                android:text="@string/vedio"
+                android:layout_marginRight="@dimen/qm6dp"
+                android:textColor="@color/green" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/textSize"
+                android:text="134554次下载"
+                android:id="@id/tv_download_count"
+                android:layout_marginRight="@dimen/qm6dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/textSize"
+                android:text="29.41M"
+                android:id="@id/tv_download_size"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_downlaod"
+            android:layout_width="@dimen/qm50dp"
+            android:text="@string/download"
+            android:layout_alignParentRight="true"
+            android:background="@color/green"
+            android:layout_marginRight="@dimen/qm10dp"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_height="@dimen/qm20dp" />
+        <TextView
+            android:layout_below="@id/ll_game"
+            android:layout_width="match_parent"
+            android:id="@id/tv_game_desc"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/textSize"
+            android:layout_marginTop="@dimen/qm3dp"
+            android:text="四大会计师法规和会计的高富帅的开好房间睡说过的话是个机会"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@id/iv_game_icon"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/cut_horizontal_apart"/>
+    </LinearLayout>
+</RelativeLayout>

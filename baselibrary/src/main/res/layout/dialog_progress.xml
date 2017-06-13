@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/white"
+    android:gravity="center">
+
+    <LinearLayout
+        android:background="@color/black_transparent"
+        android:layout_width="220.0dip"
+        android:layout_height="60.0dip"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_sundry_state"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:textSize="18.0sp"/>
+
+        <ProgressBar
+            android:id="@+id/pb_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="0.0dip"
+            android:layout_gravity="center"
+            android:max="100"
+            android:progress="50"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_weight="1.0"
+            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+            />
+    </LinearLayout>
+</RelativeLayout>

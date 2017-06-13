@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/rl_user_header"
+    style="@style/AppTheme"
+    android:layout_width="fill_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@id/rl_header"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/qm200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/header_bg">
+
+        <TextView
+            android:id="@id/tv_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@id/civ_user_icon"
+            style="@android:style/Theme.Material"
+            android:layout_width="@dimen/qm70dp"
+            android:layout_height="@dimen/qm70dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:src="@drawable/lufei"
+            android:stateListAnimator="@anim/fade_in"
+            android:transitionName="@string/sharedelement"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/civ_user_icon">
+
+            <TextView
+                android:id="@id/tv_user_name"
+                style="@style/Tv14spWhite"
+                android:text="@string/user_name"
+                android:ellipsize="end"
+                android:maxEms="7"
+                android:maxLines="1"
+                android:transitionName="@string/sharedelement"/>
+
+            <TextView
+                android:id="@id/tv_user_telephone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_user_name"
+                android:layout_marginTop="@dimen/qm10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/titleSize"
+                android:maxLines="1"
+                android:drawableLeft="@drawable/icon_phone"
+                android:gravity="center_vertical"
+                android:text="@string/user_telephone"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

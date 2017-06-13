@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/qm10dp"
+    android:foreground="?android:selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/qm2dp"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:id="@id/tv_city"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qm40dp"
+        android:gravity="center_vertical"
+        android:text="@string/city"
+        android:textSize="@dimen/titleSize" />
+
+    <include layout="@layout/cut_horizontal_apart"/>
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<litepal>
+    <dbname value="QM"></dbname>
+    <version value="1"></version>
+    <!--新闻-->
+    <list>
+        <!--知乎-->
+        <mapping class="com.news.mvp.zhihu.modle.Storie"></mapping>
+        <mapping class="com.news.mvp.zhihu.modle.TopStorie"></mapping>
+        <mapping class="com.news.mvp.detail.modle.ZhiHuDetail"></mapping>
+        <mapping class="com.news.mvp.zhihu.modle.ZhiHu"></mapping>
+        <!--豆瓣-->
+        <mapping class="com.news.mvp.doubian.bean.Posts"></mapping>
+        <mapping class="com.news.mvp.detail.modle.DoubanDetail"></mapping>
+        <mapping class="com.news.mvp.doubian.bean.Thumbs"></mapping>
+        <!--果壳-->
+        <mapping class="com.news.mvp.guoke.bean.GuoKeResult"></mapping>
+        <mapping class="com.news.mvp.detail.modle.GuokeDetail"></mapping>
+        <mapping class="com.news.mvp.guoke.bean.GuoKe"></mapping>
+    </list>
+    <!--游戏-->
+    <list>
+        <!--推荐-->
+        <mapping class="com.game.mvp.model.Game"></mapping>
+        <mapping class="com.game.mvp.recommend.modle.Ext"></mapping>
+        <mapping class="com.game.mvp.recommend.modle.SubjectList"></mapping>
+        <mapping class="com.game.mvp.recommend.modle.SubjectGame"></mapping>
+
+        <!--分类-->
+        <mapping class="com.game.mvp.category.modle.CategoryResult"></mapping>
+        <mapping class="com.game.mvp.category.modle.Data"></mapping>
+        <mapping class="com.game.mvp.category.modle.Link"></mapping>
+        <mapping class="com.game.mvp.category.modle.Tag"></mapping>
+
+        <!--排行-->
+        <mapping class="com.game.mvp.top.modle.TotalResult"></mapping>
+    </list>
+</litepal>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:foreground="?android:selectableItemBackground"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="@dimen/qm2dp"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@id/iv_news_item_icon"
+            android:layout_width="@dimen/qm100dp"
+            android:layout_height="@dimen/qm80dp"
+            android:layout_marginBottom="@dimen/qm10dp"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:visibility="invisible"
+            android:layout_marginTop="@dimen/qm10dp"
+            android:background="@drawable/shape_round_bg"
+            android:src="@drawable/lufei" />
+
+        <TextView
+            android:id="@id/tv_news_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:layout_marginRight="@dimen/qm10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/qm20dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="我说的话费卡萨海口市答复客户"
+            android:textColor="@color/black"
+            android:textSize="@dimen/titleSize" />
+    </RelativeLayout>
+
+    <include layout="@layout/cut_horizontal_apart" />
+</LinearLayout>
