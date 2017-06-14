@@ -19,9 +19,9 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.game.R;
 import com.game.mvp.index.modle.IndexExt;
-import com.game.mvp.model.Game;
 import com.game.mvp.index.modle.IndexSubjectGame;
 import com.game.mvp.index.modle.IndexSubjectList;
+import com.game.mvp.model.Game;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by 74234 on 2017/4/26.
  */
 
-public class RecommendAdapter extends BaseMultiItemQuickAdapter<IndexSubjectGame, BaseViewHolder> {
+public class IndexAdapter extends BaseMultiItemQuickAdapter<IndexSubjectGame, BaseViewHolder> {
 
 
     public final static int GAME_RECOMMEND_NORMAL = 1;
@@ -41,13 +41,13 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<IndexSubjectGame
     public final static int GAME_RECOMMEND_SUBJECT4 = 5;
     private static int k;
 
-    public RecommendAdapter(List<IndexSubjectGame> data) {
+    public IndexAdapter(List<IndexSubjectGame> data) {
         super(data);
-        addItemType(GAME_RECOMMEND_NORMAL, R.layout.item_recommend_normal);
-        addItemType(GAME_RECOMMEND_SUBJECT1, R.layout.item_recommend_subject1);
-        addItemType(GAME_RECOMMEND_SUBJECT2, R.layout.item_recommend_subject2);
-        addItemType(GAME_RECOMMEND_SUBJECT3, R.layout.item_recommend_subject3);
-        addItemType(GAME_RECOMMEND_SUBJECT4, R.layout.item_recommend_subject4);
+        addItemType(GAME_RECOMMEND_NORMAL, R.layout.item_index_normal);
+        addItemType(GAME_RECOMMEND_SUBJECT1, R.layout.item_index_subject1);
+        addItemType(GAME_RECOMMEND_SUBJECT2, R.layout.item_index_subject2);
+        addItemType(GAME_RECOMMEND_SUBJECT3, R.layout.item_index_subject3);
+        addItemType(GAME_RECOMMEND_SUBJECT4, R.layout.item_index_subject4);
     }
 
     @Override
@@ -240,6 +240,7 @@ public class RecommendAdapter extends BaseMultiItemQuickAdapter<IndexSubjectGame
         TextView tv_game_desc = helper.getView(R.id.tv_game_desc);
         TextView tv_vedio = helper.getView(R.id.tv_vedio);
         Button btn_downlaod = helper.getView(R.id.btn_downlaod);
+
 
 
         if (StringUtil.isEmpty(game.getVideo_url())) {

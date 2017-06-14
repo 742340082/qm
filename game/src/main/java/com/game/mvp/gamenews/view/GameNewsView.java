@@ -8,4 +8,5 @@ import com.game.mvp.gamenews.model.GameNewsResult;
  */
 
 public interface GameNewsView extends BaseView<GameNewsResult> {
+    void initHeader(GameNewsResult gameNewsResult);
 }

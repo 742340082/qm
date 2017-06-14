@@ -65,8 +65,10 @@ public class CategoryBizImpl implements CategoryBiz {
                             Logger.e("TAG", value.toString());
                             CategoryResult result = value.getResult();
 
-                            List<CategoryData> datas = result.getData();
+
                             List<CategoryLink> links = result.getLinks();
+
+                            List<CategoryData> datas = result.getData();
                             List<CategoryResult> categoryResults = DataSupport.where("1=1").find(CategoryResult.class);
                             if (categoryResults.size() !=1) {
                                 for (CategoryData data : datas) {
@@ -79,6 +81,7 @@ public class CategoryBizImpl implements CategoryBiz {
                                 DataSupport.saveAll(links);
                                 result.saveThrows();
                             }
+                            categoryView.initHeader(links);
                             categoryView.success(result);
                         }
 
@@ -107,12 +110,14 @@ public class CategoryBizImpl implements CategoryBiz {
                     List<CategoryData> datas = DataSupport.where("categoryresult_id=?", categoryResult.getId() + "").find(CategoryData.class);
                     for (int i = 0; i < datas.size(); i++) {
                         CategoryData data = datas.get(i);
-                        List<CategoryTag> tags = DataSupport.where("data_id=?", data.getId() + "").find(CategoryTag.class);
+                        List<CategoryTag> tags = DataSupport.where("categorydata_id=?", data.getId() + "").find(CategoryTag.class);
                         data.setTags(tags);
                     }
                     List<CategoryLink> links = DataSupport.where("categoryresult_id=?", categoryResult.getId() + "").find(CategoryLink.class);
                     categoryResult.setData(datas);
                     categoryResult.setLinks(links);
+
+                    categoryView.initHeader(links);
                     categoryView.success(categoryResult);
                 }
             }

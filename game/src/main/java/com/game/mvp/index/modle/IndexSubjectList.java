@@ -22,6 +22,15 @@ public class IndexSubjectList extends DataSupport{
     private String title;
     private int type;
     private IndexExt ext;
+    private IndexSubjectGame indexSubjectGame;
+
+    public IndexSubjectGame getIndexSubjectGame() {
+        return indexSubjectGame;
+    }
+
+    public void setIndexSubjectGame(IndexSubjectGame indexSubjectGame) {
+        this.indexSubjectGame = indexSubjectGame;
+    }
 
     public String getDesc() {
         return desc;

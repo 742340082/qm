@@ -10,15 +10,25 @@ public class GameNewsLink extends DataSupport {
     private String img;
     private String name;
     private int type;
-    private GameNewsExt gameNewsExt;
-    private GameNewsResult gameNewsResult;
+    private int id;
 
-    public GameNewsExt getGameNewsExt() {
-        return gameNewsExt;
+    public int getId() {
+        return id;
     }
 
-    public void setGameNewsExt(GameNewsExt gameNewsExt) {
-        this.gameNewsExt = gameNewsExt;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private GameNewsExt ext;
+    private GameNewsResult gameNewsResult;
+
+    public GameNewsExt getExt() {
+        return ext;
+    }
+
+    public void setExt(GameNewsExt ext) {
+        this.ext = ext;
     }
 
     public String getImg() {

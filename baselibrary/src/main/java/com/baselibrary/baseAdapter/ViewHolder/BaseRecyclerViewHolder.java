@@ -1,4 +1,4 @@
-package com.baselibrary.basepager.ViewHolder;
+package com.baselibrary.baseAdapter.ViewHolder;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

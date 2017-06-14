@@ -3,6 +3,7 @@ package com.game;
 import android.support.v4.app.Fragment;
 
 import com.game.mvp.category.CategoryFragment;
+import com.game.mvp.gamenews.GameNewsFragment;
 import com.game.mvp.index.IndexFragment;
 import com.game.mvp.top.TopFragment;
 
@@ -13,8 +14,8 @@ import com.game.mvp.top.TopFragment;
 public enum GameTab {
     RECOMMEND(0, R.string.game_tab_name_recommend,new IndexFragment()),
     CATEGORY(1, R.string.game_tab_name_category,new CategoryFragment()),
-    TOP(2,R.string.game_tab_name_top,new TopFragment());
-//    CONSULTATION(3,R.string.game_tab_name_consultation,new DefaultFragment());
+    TOP(2,R.string.game_tab_name_top,new TopFragment()),
+    GAMENEWS(3,R.string.game_tab_name_gamenews,new GameNewsFragment());
     public int getId() {
         return id;
     }

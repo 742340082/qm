@@ -25,6 +25,9 @@
         <mapping class="com.game.mvp.index.modle.IndexExt"></mapping>
         <mapping class="com.game.mvp.index.modle.IndexSubjectList"></mapping>
         <mapping class="com.game.mvp.index.modle.IndexSubjectGame"></mapping>
+        <mapping class="com.game.mvp.index.modle.IndexPosterBlock"></mapping>
+        <mapping class="com.game.mvp.index.modle.IndexRecPoster"></mapping>
+        <mapping class="com.game.mvp.index.modle.IndexRecBlock"></mapping>
 
         <!--分类-->
         <mapping class="com.game.mvp.category.modle.CategoryResult"></mapping>

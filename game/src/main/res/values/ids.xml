@@ -61,4 +61,10 @@
     <item name="btn_download" type="id" />
     <item name="rv_game_gamenews" type="id" />
     <item name="ll_game_gamenews" type="id" />
+    <item name="iv_gamenews_icon" type="id" />
+    <item name="tv_gamenews_title" type="id" />
+    <item name="tv_gamenews_publishtime" type="id" />
+    <item name="srl_game_gamenews" type="id" />
+    <item name="tv_gamenews_desc" type="id" />
+    <item name="vp_game_gamenews" type="id" />
 </resources>

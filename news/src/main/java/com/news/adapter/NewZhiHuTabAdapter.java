@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.baselibrary.basepager.CommonPagerAdapter;
-import com.baselibrary.basepager.ViewHolder.ViewHolder;
+import com.baselibrary.baseAdapter.CommonPagerAdapter;
+import com.baselibrary.baseAdapter.ViewHolder.ViewHolder;
 import com.baselibrary.utils.UIUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -24,7 +24,7 @@ public class NewZhiHuTabAdapter
     }
 
     public void convert(ViewHolder viewholder, final ZhihuTopStorie data, int position) {
-        ImageView iv_new_tab_icon =  viewholder.getView(R.id.iv_new_tab_icon);
+        ImageView iv_new_tab_icon =  viewholder.getView(R.id.iv_tab_icon);
         Glide.with(UIUtils.getContext())
                 .load(data.getImage())
                 .placeholder(R.drawable.lufei)
@@ -44,6 +44,6 @@ public class NewZhiHuTabAdapter
         });
     }
     public int getLayouId() {
-        return R.layout.item_news_tab;
+        return R.layout.item_branner_tab;
     }
 }

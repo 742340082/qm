@@ -84,7 +84,7 @@
         <!--存储拍照保存图片的provider-->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.quickmeals.image"
+            android:authorities="com.qm.image"
             android:enabled="true"
             android:exported="false"
             android:grantUriPermissions="true">

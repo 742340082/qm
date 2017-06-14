@@ -1,6 +1,8 @@
 package com.news.mvp.zhihu;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -51,7 +53,8 @@ public class ZhiHuFragment
     public ZhiHuPresenter mPresenter;
     private StatusLayoutManager mStatusLayoutManager;
     private List<ZhihuStorie> storieS;
-
+    private Handler mHandler;
+    private static long TOP_NEWS_CHANGE_TIME=3000;
 
     @Override
     public void click(View paramView, int paramInt) {
@@ -76,7 +79,7 @@ public class ZhiHuFragment
         this.srl_news_content.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mInstance=Calendar.getInstance();
+                mInstance = Calendar.getInstance();
                 mPresenter.loadingData(mInstance.getTimeInMillis());
             }
         });
@@ -116,7 +119,7 @@ public class ZhiHuFragment
                         mPresenter.selectreTimefreshData(mInstance.getTimeInMillis());
                     }
                 }).build();
-        this.new_fl_container.addView(mStatusLayoutManager.getRootLayout(),new_fl_container.getChildCount()-1);
+        this.new_fl_container.addView(mStatusLayoutManager.getRootLayout(), new_fl_container.getChildCount() - 1);
         this.rv_news_content.setOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt) {
                 super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
@@ -138,10 +141,10 @@ public class ZhiHuFragment
     public void onLoadMoreRequested() {
         srl_news_content.setRefreshing(false);
         int day = mInstance.get(Calendar.DAY_OF_MONTH);
-            mInstance.set(mInstance.get(Calendar.YEAR),
-                    mInstance.get(Calendar.MONTH),
-                    --day);
-            mPresenter.loadMore(mInstance.getTimeInMillis());
+        mInstance.set(mInstance.get(Calendar.YEAR),
+                mInstance.get(Calendar.MONTH),
+                --day);
+        mPresenter.loadMore(mInstance.getTimeInMillis());
 
     }
 
@@ -177,10 +180,9 @@ public class ZhiHuFragment
     @Override
     public void loading() {
 
-        if (storieS ==null) {
+        if (storieS == null) {
             mStatusLayoutManager.showLoading();
-        }else
-        {
+        } else {
             this.srl_news_content.setRefreshing(true);
         }
     }
@@ -204,8 +206,7 @@ public class ZhiHuFragment
         if (!isLoadMore) {
 
 
-
-            zhihuAdapter = new NewZhiHuContentAdapter(R.layout.item_news_content,stories);
+            zhihuAdapter = new NewZhiHuContentAdapter(R.layout.item_news_content, stories);
             zhihuAdapter.openLoadAnimation(NewZhiHuContentAdapter.SLIDEIN_LEFT);
             zhihuAdapter.setEnableLoadMore(true);
             zhihuAdapter.setOnLoadMoreListener(this, rv_news_content);
@@ -222,22 +223,44 @@ public class ZhiHuFragment
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
                 ZhihuStorie item = (ZhihuStorie) adapter.getItem(position);
-                Intent intent=new Intent();
-                intent.putExtra(ConfigNews.NEWS_SEND_ID,item.getStorie_id());
-                intent.putExtra(ConfigNews.NEWS_SEND_NEWS_TYPE,ConfigNews.NEWS_ZHIHU_TYPE);
+                Intent intent = new Intent();
+                intent.putExtra(ConfigNews.NEWS_SEND_ID, item.getStorie_id());
+                intent.putExtra(ConfigNews.NEWS_SEND_NEWS_TYPE, ConfigNews.NEWS_ZHIHU_TYPE);
                 intent.setClass(getContext(), NewsDetailActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    private void initTop(List<ZhihuTopStorie> topStories) {
+    private void initTop(final List<ZhihuTopStorie> topStories) {
 
-        ViewPager viewPager = new ViewPager(getContext());
+     final    ViewPager viewPager = new ViewPager(getContext());
         viewPager.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, UIUtils.dip2px(200)));
         NewZhiHuTabAdapter zhiHuTabAdapter = new NewZhiHuTabAdapter(getContext());
         zhiHuTabAdapter.addTabPage(topStories);
         viewPager.setAdapter(zhiHuTabAdapter);
-        zhihuAdapter.addHeaderView(viewPager,0, LinearLayout.VERTICAL);
+
+        if (mHandler == null) {
+
+            mHandler = new Handler() {
+
+                @Override
+                public void handleMessage(Message msg) {
+                    int item = viewPager.getCurrentItem();
+                    if (item < topStories.size() - 1) {
+                        item++;
+                    } else {// 判断是否到达最后一个
+                        item = 0;
+                    }
+                    // Log.d(TAG, "轮播条:" + item);
+                    viewPager.setCurrentItem(item);
+                    mHandler.sendMessageDelayed(Message.obtain(),
+                            TOP_NEWS_CHANGE_TIME);
+                }
+            };
+        }
+        mHandler.sendMessageDelayed(Message.obtain(), TOP_NEWS_CHANGE_TIME);// 延时4s发送消息
+
+        zhihuAdapter.addHeaderView(viewPager, 0, LinearLayout.VERTICAL);
     }
 }

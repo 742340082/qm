@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
-import com.baselibrary.basepager.ViewPagerFragmentAdapter;
+import com.baselibrary.baseAdapter.ViewPagerFragmentAdapter;
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.utils.UIUtils;
 
@@ -38,8 +38,8 @@ public class GameFragment extends BaseFragmnet {
         bundle = getBundle(UIUtils.getString(GameTab.TOP.getResName()));
         mAdapter.addTabPage(UIUtils.getString(GameTab.TOP.getResName()),GameTab.TOP.getFragmnet(),bundle);
 
-//        bundle = getBundle(UIUtils.getString(GameTab.CONSULTATION.getResName()));
-//        mAdapter.addTabPage(UIUtils.getString(GameTab.CONSULTATION.getResName()),GameTab.CONSULTATION.getFragmnet(),bundle);
+        bundle = getBundle(UIUtils.getString(GameTab.GAMENEWS.getResName()));
+        mAdapter.addTabPage(UIUtils.getString(GameTab.GAMENEWS.getResName()),GameTab.GAMENEWS.getFragmnet(),bundle);
 
         vp_game.setAdapter(mAdapter );
         vp_game.setOffscreenPageLimit(1);

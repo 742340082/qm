@@ -2,6 +2,7 @@ package com.game.api;
 
 
 import com.game.mvp.category.modle.Category;
+import com.game.mvp.gamenews.model.GameNews;
 import com.game.mvp.index.modle.Index;
 import com.game.mvp.top.modle.Total;
 
@@ -40,5 +41,5 @@ public interface GameApi {
 
     //4399新闻
     @GET("news-index-mareacode-999999-n-20-startKey-{pageNumber}.html")
-    Observable<Total> gameNEWS(@Path("pageNumber") int pageNumber);
+    Observable<GameNews> gameNEWS(@Path("pageNumber") int pageNumber);
 }

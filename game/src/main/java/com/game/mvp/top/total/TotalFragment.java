@@ -17,7 +17,7 @@ import com.baselibrary.utils.UIUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.RecommendAdapter;
+import com.game.adapter.IndexAdapter;
 import com.game.adapter.TopAdapter;
 import com.game.mvp.top.modle.TotalResult;
 import com.game.mvp.top.total.presenter.TotalPresenter;
@@ -121,7 +121,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, BaseQuickA
 
         if (data.getPage() == 1) {
             topAdapter = new TopAdapter(R.layout.item_top_total,totalResult.getData());
-            topAdapter.openLoadAnimation(RecommendAdapter.SLIDEIN_LEFT);
+            topAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
             topAdapter.loadMoreEnd(true);
             topAdapter.setOnLoadMoreListener(this, rv_game_top);
             rv_game_top.setLayoutManager(new LinearLayoutManager(getContext()));

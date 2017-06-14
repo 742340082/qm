@@ -8,11 +8,11 @@ import java.util.List;
  * Created by 74234 on 2017/5/18.
  */
 
-public class IndexResult {
+public class IndexResult  {
     private List<IndexSubjectList> adList;
     private List<IndexRecBlock> recBlock;
     private  List<Game> recGame;
-    private  List<IndexRecBlock> recPoster;
+    private  List<IndexRecPoster> recPoster;
     private List<SuggestWords> suggestWords;
 
     public List<IndexSubjectList> getAdList() {
@@ -39,11 +39,11 @@ public class IndexResult {
         this.recGame = recGame;
     }
 
-    public List<IndexRecBlock> getRecPoster() {
+    public List<IndexRecPoster> getRecPoster() {
         return recPoster;
     }
 
-    public void setRecPoster(List<IndexRecBlock> recPoster) {
+    public void setRecPoster(List<IndexRecPoster> recPoster) {
         this.recPoster = recPoster;
     }
 

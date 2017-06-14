@@ -1,4 +1,4 @@
-package com.baselibrary.basepager;
+package com.baselibrary.baseAdapter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,11 +32,11 @@ public class ViewPagerFragmentAdapter
         this.mTitleS.add(data);
         this.mFragmentInfoS.add(new FragmentInfo(fragment, null));
     }
-
+    @Override
     public int getCount() {
         return this.mFragmentInfoS.size();
     }
-
+    @Override
     public Fragment getItem(int postion) {
         Fragment fragment = mFragmentInfoS.get(postion).getFragment();
         if(mFragmentInfoS.get(postion).getBuild()!=null) {
@@ -44,7 +44,7 @@ public class ViewPagerFragmentAdapter
         }
         return fragment;
     }
-
+@Override
     public CharSequence getPageTitle(int position) {
         return (CharSequence) this.mTitleS.get(position);
     }

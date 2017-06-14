@@ -1,7 +1,7 @@
 package com.game.mvp.index.modle;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.game.adapter.RecommendAdapter;
+import com.game.adapter.IndexAdapter;
 import com.game.mvp.model.Game;
 
 import org.litepal.crud.DataSupport;
@@ -49,26 +49,26 @@ public class IndexSubjectGame extends DataSupport implements MultiItemEntity{
             {
                 case 1:
                 case 13:
-                    itemTypeID= RecommendAdapter.GAME_RECOMMEND_SUBJECT1;
+                    itemTypeID= IndexAdapter.GAME_RECOMMEND_SUBJECT1;
                     break;
                 case 15:
-                    itemTypeID= RecommendAdapter.GAME_RECOMMEND_SUBJECT2;
+                    itemTypeID= IndexAdapter.GAME_RECOMMEND_SUBJECT2;
                     break;
                 case 4:
                 case 6:
                 case 3:
                 case 7:
                     //活动
-                    itemTypeID= RecommendAdapter.GAME_RECOMMEND_SUBJECT3;
+                    itemTypeID= IndexAdapter.GAME_RECOMMEND_SUBJECT3;
                     break;
                 case 2:
-                    itemTypeID= RecommendAdapter.GAME_RECOMMEND_SUBJECT4;
+                    itemTypeID= IndexAdapter.GAME_RECOMMEND_SUBJECT4;
                     break;
             }
             return itemTypeID;
         }else
         {
-            return RecommendAdapter.GAME_RECOMMEND_NORMAL;
+            return IndexAdapter.GAME_RECOMMEND_NORMAL;
         }
     }
 }

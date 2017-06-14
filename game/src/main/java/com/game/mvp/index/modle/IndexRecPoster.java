@@ -6,7 +6,7 @@ import org.litepal.crud.DataSupport;
  * Created by 74234 on 2017/5/18.
  */
 
-public class IndexRecBlock extends DataSupport{
+public class IndexRecPoster extends DataSupport{
     private long dateline;
     private long id;
     private  String name;

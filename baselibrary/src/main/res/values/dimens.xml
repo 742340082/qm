@@ -55,4 +55,5 @@
 
     <dimen name="itemImageHeight">80dp</dimen>
     <dimen name="itemImageWeight">80dp</dimen>
+    <dimen name="qm150dp">150dp</dimen>
 </resources>

@@ -9,13 +9,23 @@ import java.util.List;
  */
 
 public class GameNewsResult extends DataSupport{
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private int count;
     private int more;
     private int page;
     private int pagecount;
     private int perpage;
     private int start;
-    private int startkey;
+    private int startKey;
     private List<GameNewsData> data;
     private List<GameNewsGallary> gallary;
     private List<GameNewsLink> links;
@@ -92,11 +102,11 @@ public class GameNewsResult extends DataSupport{
         this.start = start;
     }
 
-    public int getStartkey() {
-        return startkey;
+    public int getStartKey() {
+        return startKey;
     }
 
-    public void setStartkey(int startkey) {
-        this.startkey = startkey;
+    public void setStartKey(int startKey) {
+        this.startKey = startKey;
     }
 }

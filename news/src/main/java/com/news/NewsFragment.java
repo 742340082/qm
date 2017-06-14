@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 
 import com.baselibrary.base.activity.BaseActivity;
 import com.baselibrary.base.fragment.BaseFragmnet;
-import com.baselibrary.basepager.ViewPagerFragmentAdapter;
+import com.baselibrary.baseAdapter.ViewPagerFragmentAdapter;
 import com.baselibrary.utils.UIUtils;
 import com.news.mvp.doubian.DouBianFragment;
 import com.news.mvp.guoke.GuoKeFragment;

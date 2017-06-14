@@ -1,4 +1,4 @@
-package com.baselibrary.basepager;
+package com.baselibrary.baseAdapter;
 
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.widget.GridLayoutManager;
