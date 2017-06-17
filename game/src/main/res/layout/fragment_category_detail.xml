@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/ll_game_category_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/guideBarHeight"
+        android:background="@color/blue">
+
+        <android.support.design.widget.TabLayout
+            android:id="@id/tl_game_category_detail"
+            android:layout_width="@dimen/qm200dp"
+            android:layout_height="@dimen/guideBarHeight"
+            app:tabIndicatorColor="@color/yellow"
+            app:tabSelectedTextColor="@color/yellow"
+            app:tabTextColor="@color/white" />
+
+        <RelativeLayout
+            android:id="@id/rl_game_category_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/qm10dp">
+
+            <TextView
+                android:id="@id/tv_selcted_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="全部大小"
+                android:textColor="@color/white"
+                android:textSize="@dimen/titleSize" />
+
+            <ImageView
+                android:id="@id/iv_selcted_size_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/qm3dp"
+                android:layout_toRightOf="@id/tv_selcted_size"
+                android:src="@drawable/arrow_up" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@id/rl_game_category_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.ViewPager
+            android:id="@id/vp_game_category_detail_tag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.baselibrary.view.FlowLayout
+            android:id="@id/fl_game_category_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:visibility="gone"></com.baselibrary.view.FlowLayout>
+    </RelativeLayout>
+</LinearLayout>

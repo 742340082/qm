@@ -4,13 +4,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.config.ConfigStateCode;
@@ -19,20 +18,21 @@ import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.ToastUtils;
 import com.baselibrary.utils.UIUtils;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
 import com.game.adapter.GameNewsAdapter;
-import com.game.adapter.GameNewsTopAdapter;
+import com.game.adapter.GameNewsRlHeaderAdapter;
+import com.game.adapter.GameNewsVpHeaderAdapter;
 import com.game.adapter.IndexAdapter;
+import com.game.mvp.gamenews.model.GameNewsLink;
 import com.game.mvp.gamenews.model.GameNewsResult;
 import com.game.mvp.gamenews.presenter.GameNewsPresneter;
 import com.game.mvp.gamenews.view.GameNewsView;
 
+import java.util.List;
+
 import butterknife.BindView;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by 74234 on 2017/6/13.
@@ -51,7 +51,6 @@ public class GameNewsFragment extends BaseFragmnet implements GameNewsView, Base
     private GameNewsAdapter gameNewsAdapter;
     private Handler mHandler;
     private static long TOP_NEWS_CHANGE_TIME = 3000;
-    private int k;
 
     @Override
     public int getLayoutResId() {
@@ -141,9 +140,8 @@ public class GameNewsFragment extends BaseFragmnet implements GameNewsView, Base
         rv_game_gamenews.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rv_game_gamenews.setAdapter(gameNewsAdapter);
 
-        FrameLayout viewHeader = (FrameLayout) LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_gamenews_header, new FrameLayout(UIUtils.getContext()));
-        LinearLayout linearLayout = (LinearLayout) viewHeader.getChildAt(0);
-        final ViewPager viewPager = (ViewPager) linearLayout.getChildAt(0);
+        View viewHeader =  LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_gamenews_header, null);
+        final ViewPager viewPager = (ViewPager) viewHeader.findViewById(R.id.vp_game_gamenews);
         if (mHandler == null) {
 
             mHandler = new Handler() {
@@ -164,33 +162,15 @@ public class GameNewsFragment extends BaseFragmnet implements GameNewsView, Base
             };
         }
         mHandler.sendMessageDelayed(Message.obtain(), TOP_NEWS_CHANGE_TIME);// 延时4s发送消息
-        GameNewsTopAdapter gameNewsTopAdapter = new GameNewsTopAdapter(UIUtils.getContext());
+        GameNewsVpHeaderAdapter gameNewsTopAdapter = new GameNewsVpHeaderAdapter(UIUtils.getContext());
         gameNewsTopAdapter.addTabPage(gameNewsResult.getGallary());
         viewPager.setAdapter(gameNewsTopAdapter);
 
-
-        LinearLayout linearLayoutChildAt = (LinearLayout) linearLayout.getChildAt(1);
-        k=0;
-        for (int j=0;j<linearLayoutChildAt.getChildCount();j++) {
-            LinearLayout linearLayout1 = (LinearLayout) linearLayoutChildAt.getChildAt(j);
-            for (int i = 0; i < linearLayout1.getChildCount(); i++) {
-                View childAt = linearLayout1.getChildAt(i);
-                if (childAt instanceof CircleImageView) {
-                    CircleImageView circleImageView = (CircleImageView) childAt;
-                    Glide.with(UIUtils.getContext())
-                            .load(gameNewsResult.getLinks().get(k).getImg())
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .centerCrop()
-                            .into(circleImageView);
-                }
-                if (childAt instanceof TextView) {
-                    TextView textView = (TextView) childAt;
-                    textView.setText(gameNewsResult.getLinks().get(k).getName());
-                }
-            }
-            k++;
-
-        }
+        List<GameNewsLink> links = gameNewsResult.getLinks();
+        GameNewsRlHeaderAdapter gameNewsRlHeaderAdapter = new GameNewsRlHeaderAdapter(R.layout.item_category_header_top,links);
+        RecyclerView rl_gamenews_header = (RecyclerView) viewHeader.findViewById(R.id.rl_gamenews_header);
+        rl_gamenews_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(),4));
+        rl_gamenews_header.setAdapter(gameNewsRlHeaderAdapter);
         gameNewsAdapter.addHeaderView(viewHeader);
 
     }

@@ -34,6 +34,12 @@
         <mapping class="com.game.mvp.category.modle.CategoryData"></mapping>
         <mapping class="com.game.mvp.category.modle.CategoryLink"></mapping>
         <mapping class="com.game.mvp.category.modle.CategoryTag"></mapping>
+        <!--分类详细页-->
+        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailSubType"></mapping>
+        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailSizeOption"></mapping>
+        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailResult"></mapping>
+        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailSizeOption"></mapping>
+        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailTag"></mapping>
 
         <!--排行-->
         <mapping class="com.game.mvp.top.modle.TotalResult"></mapping>

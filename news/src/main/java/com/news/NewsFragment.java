@@ -5,8 +5,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.baselibrary.base.activity.BaseActivity;
+import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
 import com.baselibrary.base.fragment.BaseFragmnet;
-import com.baselibrary.baseAdapter.ViewPagerFragmentAdapter;
 import com.baselibrary.utils.UIUtils;
 import com.news.mvp.doubian.DouBianFragment;
 import com.news.mvp.guoke.GuoKeFragment;
@@ -42,8 +42,9 @@ public class NewsFragment
 
         new_viewpager.setAdapter(adapter);
         new_viewpager.setOffscreenPageLimit(1);
-        news_tab_layout.setupWithViewPager(new_viewpager);
+
         new_viewpager.setCurrentItem(0);
+        news_tab_layout.setupWithViewPager(new_viewpager);
 
     }
     public Bundle getBundle(String content)

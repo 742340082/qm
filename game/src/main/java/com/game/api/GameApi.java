@@ -1,6 +1,7 @@
 package com.game.api;
 
 
+import com.game.mvp.category.detail.modle.CategoryDetail;
 import com.game.mvp.category.modle.Category;
 import com.game.mvp.gamenews.model.GameNews;
 import com.game.mvp.index.modle.Index;
@@ -24,22 +25,25 @@ public interface GameApi {
     //4399分类API
     @GET("game-category-mareacode-999999-n-20-startKey-.html")
     Observable<Category> gameCategory();
+    //4399分类内容详情页API
+    @GET(" game-list-mareacode-999999-kid-{kid}-n-20-size-{startSize}%2C{endSize}-startKey-{pageNumber}-subtype-{subtype}-tagId-{tagId}.html")
+    Observable<CategoryDetail> gameCategoryDetail(@Path("kid") int kid,
+                                                  @Path("startSize") int startSize,
+                                                  @Path("endSize") int endSize,
+                                                  @Path("pageNumber") int pageNumber,
+                                                  @Path("subtype") String subtype,
+                                                  @Path("tagId") int tagId
+                                            );
 
-    //4399排行API新游戏
-    @GET("game-top-mareacode-999999-n-20-startKey-{pageNumber}-type-new.html")
-    Observable<Total> gameTopNEW(@Path("pageNumber") int pageNumber);
-    //4399排行API网络游戏
-    @GET("game-top-mareacode-999999-n-20-startKey-{pageNumber}-type-net.html")
-    Observable<Total> gameTopNET(@Path("pageNumber") int pageNumber);
-    //4399排行API单机游戏
-    @GET("game-top-mareacode-999999-n-20-startKey-{pageNumber}-type-single.html")
-    Observable<Total> gameTopSINGLE(@Path("pageNumber") int pageNumber);
-    //4399排行API火的游戏
-    @GET("game-top-mareacode-999999-n-20-startKey-{pageNumber}-type-hot.html")
-    Observable<Total> gameTopHOT(@Path("pageNumber") int pageNumber);
+    //4399排行API
+    @GET("game-top-mareacode-999999-n-20-startKey-{pageNumber}-type-{type}.html")
+    Observable<Total> gameTOP(@Path("pageNumber") int pageNumber,@Path("type")String type);
+
 
 
     //4399新闻
     @GET("news-index-mareacode-999999-n-20-startKey-{pageNumber}.html")
     Observable<GameNews> gameNEWS(@Path("pageNumber") int pageNumber);
+
+
 }

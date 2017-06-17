@@ -1,13 +1,13 @@
 package com.game.mvp.category;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.listener.OnRetryListener;
@@ -15,12 +15,14 @@ import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.ToastUtils;
 import com.baselibrary.utils.UIUtils;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
 import com.game.adapter.CategoryAdapter;
+import com.game.adapter.CategoryHeaderAdapter;
 import com.game.adapter.IndexAdapter;
+import com.game.config.ConfigGame;
+import com.game.mvp.category.detail.CategoryDetailActivity;
 import com.game.mvp.category.modle.CategoryLink;
 import com.game.mvp.category.modle.CategoryResult;
 import com.game.mvp.category.presenter.CategoryPresenter;
@@ -29,24 +31,25 @@ import com.game.mvp.category.view.CategoryView;
 import java.util.List;
 
 import butterknife.BindView;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by 74234 on 2017/6/11.
  */
 
-public class CategoryFragment extends BaseFragmnet implements CategoryView{
+public class CategoryFragment extends BaseFragmnet implements CategoryView {
     @BindView(R2.id.ll_game_category)
     LinearLayout ll_game_category;
     @BindView(R2.id.srl_game_category)
     SwipeRefreshLayout srl_game_category;
     @BindView(R2.id.rv_category)
     RecyclerView rv_category;
+
+
     private CategoryPresenter mPresenter;
     private StatusLayoutManager mStatusLayoutManager;
     private CategoryResult categoryResult;
     private CategoryAdapter categoryAdapter;
-    private int k;
+
     @Override
     public int getLayoutResId() {
         return R.layout.fragment_category;
@@ -88,16 +91,15 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView{
 
     @Override
     public void error(int error, String errorMessage) {
-        ToastUtils.makeShowToast(getContext(),errorMessage);
-        ConfigStateCodeUtil.error(error,mStatusLayoutManager);
+        ToastUtils.makeShowToast(getContext(), errorMessage);
+        ConfigStateCodeUtil.error(error, mStatusLayoutManager);
     }
 
     @Override
     public void loading() {
-        if (categoryResult==null) {
+        if (categoryResult == null) {
             mStatusLayoutManager.showLoading();
-        }else
-        {
+        } else {
             srl_game_category.setRefreshing(true);
         }
     }
@@ -112,40 +114,44 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView{
     }
 
     @Override
-    public void initHeader(List<CategoryLink> categoryLinks) {
+    public void initHeader( List<CategoryLink> categoryLinks) {
         categoryAdapter = new CategoryAdapter(R.layout.item_category_content);
         categoryAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
-        rv_category.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        rv_category.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rv_category.setAdapter(categoryAdapter);
 
-        FrameLayout headView = (FrameLayout) LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_category_header, new FrameLayout(UIUtils.getContext()));
-        LinearLayout linearLayout = (LinearLayout) headView.getChildAt(0);
-        k=0;
-        for (int i=0;i<linearLayout.getChildCount();i++)
-        {
-            LinearLayout linearLayout2 = (LinearLayout) linearLayout.getChildAt(i);
-            for (int j=0;j<linearLayout2.getChildCount();j++)
-            {
-                LinearLayout linearLayout3 = (LinearLayout) linearLayout2.getChildAt(j);
-                for (int t=0;t<linearLayout3.getChildCount();t++) {
-                    View childAt = linearLayout3.getChildAt(t);
-                    if (childAt instanceof CircleImageView) {
-                        CircleImageView circleImageView = (CircleImageView) childAt;
-                        Glide.with(UIUtils.getContext())
-                                .load(categoryLinks.get(k).getIcon())
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .centerCrop()
-                                .into(circleImageView);
-                    }
-                    if (childAt instanceof TextView) {
-                        TextView textView = (TextView) childAt;
-                        textView.setText(categoryLinks.get(k).getName());
-                    }
-                }
-                k++;
-            }
 
-        }
+        View headView = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_category_header, null);
+        RecyclerView rl_game_category_header = (RecyclerView) headView.findViewById(R.id.rl_game_category_header);
+        CategoryHeaderAdapter categoryHeaderAdapter = new CategoryHeaderAdapter(R.layout.item_category_header_top,categoryLinks);
+        rl_game_category_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(),4));
+        rl_game_category_header.setAdapter(categoryHeaderAdapter);
         categoryAdapter.addHeaderView(headView);
+
+        categoryHeaderAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                CategoryLink categoryLink = (CategoryLink) adapter.getItem(position);
+
+                Intent intent = new Intent(UIUtils.getContext(), CategoryDetailActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                switch (position)
+                {
+                    case 0:
+                    case 4:
+                        intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_DETAID_KID,categoryLink.getLink_id());
+                        break;
+                    case 1:
+                    case 2:
+                        intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_DETAID_TAGID,categoryLink.getLink_id());
+                        break;
+                }
+
+                intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TAG,"全部");
+                intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TYPE,categoryLink.getType());
+                UIUtils.getContext().startActivity(intent);
+            }
+        });
+
     }
 }

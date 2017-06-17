@@ -1,4 +1,4 @@
-package com.baselibrary.baseAdapter.ViewHolder;
+package com.baselibrary.base.adapter.ViewHolder;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

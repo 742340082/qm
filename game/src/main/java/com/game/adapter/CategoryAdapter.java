@@ -1,5 +1,6 @@
 package com.game.adapter;
 
+import android.content.Intent;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -14,6 +15,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.game.R;
+import com.game.config.ConfigGame;
+import com.game.mvp.category.detail.CategoryDetailActivity;
 import com.game.mvp.category.modle.CategoryData;
 import com.game.mvp.category.modle.CategoryTag;
 
@@ -39,7 +42,7 @@ public class CategoryAdapter extends BaseQuickAdapter<CategoryData,BaseViewHolde
     //记录LinearLayout数量
     private  int t;
     @Override
-    protected void convert(BaseViewHolder helper, CategoryData item) {
+    protected void convert(BaseViewHolder helper,final CategoryData item) {
         LinearLayout convertView = (LinearLayout) helper.getConvertView();
 
         RelativeLayout relativeLayout = (RelativeLayout) convertView.getChildAt(0);
@@ -76,8 +79,20 @@ public class CategoryAdapter extends BaseQuickAdapter<CategoryData,BaseViewHolde
                         View view =  linearLayout.getChildAt(j);
                         if (view instanceof TextView)
                         {
-                            TextView textView = (TextView) view;
+                           final TextView textView = (TextView) view;
                             textView.setText(tags.get(k).getName());
+
+                            textView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(UIUtils.getContext(), CategoryDetailActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_DETAID_KID,item.getData_id());
+                                    intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TAG,textView.getText().toString());
+                                    UIUtils.getContext().startActivity(intent);
+                                }
+                            });
+
                             k++;
                         }
 
@@ -87,5 +102,17 @@ public class CategoryAdapter extends BaseQuickAdapter<CategoryData,BaseViewHolde
                 k=0;
             }
         }
+
+        RelativeLayout relativeLayout1 = helper.getView(R.id.Rl_game_category);
+        relativeLayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UIUtils.getContext(), CategoryDetailActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_DETAID_KID,item.getData_id());
+                intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TAG,"全部");
+                UIUtils.getContext().startActivity(intent);
+            }
+        });
     }
 }

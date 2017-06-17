@@ -23,9 +23,9 @@
         android:id="@id/fab"
         android:layout_width="@dimen/qm50dp"
         android:layout_height="@dimen/qm50dp"
-        android:layout_gravity="end|bottom|center"
+        android:layout_gravity="end|bottom"
         android:layout_marginRight="@dimen/qm10dp"
         android:visibility="gone"
-        android:layout_marginBottom="@dimen/qm100dp"
+        android:layout_marginBottom="@dimen/qm10dp"
         android:src="@drawable/icon_placeholder"/>
 </FrameLayout>

@@ -5,7 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
-import com.baselibrary.baseAdapter.ViewPagerFragmentAdapter;
+import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
 import com.baselibrary.utils.UIUtils;
 import com.game.R;
 import com.game.R2;
@@ -31,16 +31,16 @@ public class TopFragment extends BaseFragmnet {
 
         ViewPagerFragmentAdapter mAdapter = new ViewPagerFragmentAdapter(getFragmentManager());
 
-        Bundle bundle = getBundle(UIUtils.getString(TOPTab.NEW.getResName()));
+        Bundle bundle = getBundle("new");
         mAdapter.addTabPage(UIUtils.getString(TOPTab.NEW.getResName()),TOPTab.NEW.getFragmnet(),bundle);
 
-        bundle = getBundle(UIUtils.getString(TOPTab.NET.getResName()));
+        bundle = getBundle("net");
         mAdapter.addTabPage(UIUtils.getString(TOPTab.NET.getResName()),TOPTab.NET.getFragmnet(),bundle);
 
-        bundle = getBundle(UIUtils.getString(TOPTab.SINGLE.getResName()));
+        bundle = getBundle("single");
         mAdapter.addTabPage(UIUtils.getString(TOPTab.SINGLE.getResName()),TOPTab.SINGLE.getFragmnet(),bundle);
 
-        bundle = getBundle(UIUtils.getString(TOPTab.HOT.getResName()));
+        bundle = getBundle("hot");
         mAdapter.addTabPage(UIUtils.getString(TOPTab.HOT.getResName()),TOPTab.HOT.getFragmnet(),bundle);
 
         vp_game_top.setAdapter(mAdapter );

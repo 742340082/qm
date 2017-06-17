@@ -5,6 +5,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/qm1dp"
+        android:background="@color/blue"
+        android:layout_height="@dimen/toolbarHeight">
+        <TextView
+            android:id="@id/tv_game_search"
+            android:layout_width="@dimen/qm200dp"
+            android:hint="搜索游戏"
+            android:paddingLeft="@dimen/qm10dp"
+            android:drawablePadding="@dimen/qm5dp"
+            android:drawableLeft="@drawable/icon_search"
+            android:gravity="center_vertical"
+            android:background="@drawable/shape_round_bg"
+            android:layout_height="@dimen/qm30dp" />
+    </android.support.v7.widget.Toolbar>
     <android.support.design.widget.TabLayout
         android:id="@id/tb_game"
         android:layout_width="match_parent"

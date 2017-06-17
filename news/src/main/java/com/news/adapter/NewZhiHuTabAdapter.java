@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.baselibrary.baseAdapter.CommonPagerAdapter;
-import com.baselibrary.baseAdapter.ViewHolder.ViewHolder;
+import com.baselibrary.base.adapter.CommonPagerAdapter;
+import com.baselibrary.base.adapter.ViewHolder.ViewHolder;
 import com.baselibrary.utils.UIUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;

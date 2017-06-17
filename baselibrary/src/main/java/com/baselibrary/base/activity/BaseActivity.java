@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
+import com.baselibrary.config.ConfigValues;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,6 +21,12 @@ public abstract class BaseActivity
     public static final   BaseActivity getForegroundActivity() {
         return sForegroundActivity;
     }
+    public Bundle getBundle(String title) {
+        Bundle localBundle = new Bundle();
+        localBundle.putString(ConfigValues.VALUE_SEND_TITLE, title);
+        return localBundle;
+    }
+
 
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

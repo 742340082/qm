@@ -11,4 +11,6 @@
     <string name="game_net">网游</string>
     <string name="game_single">单机</string>
     <string name="game_hot">热游</string>
+    <string name="game_hottest">最热</string>
+    <string name="game_upnew">最新</string>
 </resources>

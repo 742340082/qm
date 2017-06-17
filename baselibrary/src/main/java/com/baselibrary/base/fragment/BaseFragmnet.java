@@ -39,7 +39,6 @@ public abstract class BaseFragmnet
         lazyLoad();
     }
 
-
     public void onClick(View paramView) {
         paramView.getId();
         click(paramView, paramView.getId());
@@ -55,9 +54,10 @@ public abstract class BaseFragmnet
         return this.rootView;
     }
 
+
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         lazyLoad();
     }
 
@@ -65,12 +65,14 @@ public abstract class BaseFragmnet
         if (!isPrepared || !isVisible||isLoadData) {
             return;
         }
-        ButterKnife.bind(this, rootView);
-        initView();
-        isLoadData=true;
-        //填充各控件的数据
-        initData();
-        initListener();
+        if (isAdded()) {
+            ButterKnife.bind(this, rootView);
+            initView();
+            isLoadData = true;
+            //填充各控件的数据
+            initData();
+            initListener();
+        }
     }
 
 }

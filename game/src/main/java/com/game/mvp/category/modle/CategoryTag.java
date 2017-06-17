@@ -4,11 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.Serializable;
+
 /**
  * Created by 74234 on 2017/6/11.
  */
 
-public class CategoryTag extends DataSupport {
+public class CategoryTag extends DataSupport implements Serializable {
     private int icon_tag;
     @SerializedName("id")
     private int tag_id;

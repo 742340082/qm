@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 import com.baselibrary.animation.FixedSpeedScroller;
 import com.baselibrary.animation.TabletTransformer;
 import com.baselibrary.base.activity.BaseActivity;
-import com.baselibrary.baseAdapter.ViewPagerFragmentAdapter;
+import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
 import com.baselibrary.config.ConfigSdk;
 import com.baselibrary.config.ConfigValues;
 import com.baselibrary.view.NoScrollViewPager;

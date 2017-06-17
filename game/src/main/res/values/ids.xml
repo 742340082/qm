@@ -67,4 +67,26 @@
     <item name="srl_game_gamenews" type="id" />
     <item name="tv_gamenews_desc" type="id" />
     <item name="vp_game_gamenews" type="id" />
+    <item name="tv_selcted_size" type="id" />
+    <item name="iv_selcted_size_icon" type="id" />
+    <item name="tl_game_category_detail" type="id" />
+    <item name="vp_game_category_detail" type="id" />
+    <item name="ll_game_category_detail" type="id" />
+    <item name="tl_game_category_detail_tag" type="id" />
+    <item name="scv_game_category_detail" type="id" />
+    <item name="vp_game_category_detail_tag" type="id" />
+    <item name="fl_game_category_detail" type="id" />
+    <item name="rl_game_category_detail" type="id" />
+    <item name="Rl_game_category" type="id" />
+    <item name="rl_game_category_header" type="id" />
+    <item name="iv_game_category_header_icon" type="id" />
+    <item name="iv_game_category_header_title" type="id" />
+    <item name="rl_gamenews_header" type="id" />
+    <item name="rl_index_header" type="id" />
+    <item name="iv_index_category_icon" type="id" />
+    <item name="iv_index_category_title" type="id" />
+    <item name="toolbar" type="id" />
+    <item name="tv_game_search" type="id" />
+    <item name="menu_download" type="id" />
+    <item name="menu_search" type="id" />
 </resources>

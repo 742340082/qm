@@ -3,8 +3,8 @@ package com.game.adapter;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.baselibrary.baseAdapter.CommonPagerAdapter;
-import com.baselibrary.baseAdapter.ViewHolder.ViewHolder;
+import com.baselibrary.base.adapter.CommonPagerAdapter;
+import com.baselibrary.base.adapter.ViewHolder.ViewHolder;
 import com.baselibrary.utils.UIUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -15,8 +15,8 @@ import com.game.mvp.gamenews.model.GameNewsGallary;
  * Created by 74234 on 2017/6/14.
  */
 
-public class GameNewsTopAdapter extends CommonPagerAdapter<GameNewsGallary> {
-    public GameNewsTopAdapter(Context context) {
+public class GameNewsVpHeaderAdapter extends CommonPagerAdapter<GameNewsGallary> {
+    public GameNewsVpHeaderAdapter(Context context) {
         super(context);
     }
 

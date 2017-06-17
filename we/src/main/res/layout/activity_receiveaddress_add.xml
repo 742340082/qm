@@ -116,8 +116,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/add"
-                android:paddingRight="@dimen/qm5dp"
                 android:drawablePadding="@dimen/qm2dp"
+                android:paddingRight="@dimen/qm5dp"
                 android:text="@string/address_list"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/titleSize" />
@@ -258,18 +258,18 @@
                 android:text="@string/school"
                 android:textColor="@color/btn_boder_color" />
         </LinearLayout>
+
         <Button
             android:id="@id/btn_sure"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/qm10dp"
             android:layout_below="@id/cardView"
+            android:layout_marginTop="@dimen/qm10dp"
             android:background="@color/green"
             android:text="@string/sure"
             android:textColor="@color/white"
             android:textSize="@dimen/titleSize" />
     </LinearLayout>
-
 
 
 </LinearLayout>

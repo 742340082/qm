@@ -45,7 +45,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, BaseQuickA
 
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_top_total;
+        return R.layout.fragment_total;
     }
 
     @Override

@@ -8,6 +8,7 @@
     android:background="@color/white"
     android:orientation="vertical">
     <RelativeLayout
+        android:id="@id/Rl_game_category"
         android:layout_width="match_parent"
         android:foreground="?android:selectableItemBackground"
         app:cardBackgroundColor="@color/white"

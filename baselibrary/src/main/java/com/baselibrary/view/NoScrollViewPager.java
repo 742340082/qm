@@ -18,17 +18,17 @@ public class NoScrollViewPager
     {
         super(context, attributeSet);
     }
-
+@Override
     public boolean onInterceptTouchEvent(MotionEvent motionEvent)
     {
         return false;
     }
-
+    @Override
     public boolean onTouchEvent(MotionEvent motionEvent)
     {
         return true;
     }
-
+    @Override
     public void removeView(View view)
     {
         super.removeView(view);

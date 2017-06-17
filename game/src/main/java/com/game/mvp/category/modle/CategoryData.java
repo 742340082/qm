@@ -4,13 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by 74234 on 2017/6/11.
  */
 
-public class CategoryData extends DataSupport {
+public class CategoryData extends DataSupport  implements Serializable {
 
 
     private long count;

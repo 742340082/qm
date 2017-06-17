@@ -2,6 +2,7 @@ package com.game.mvp.category.modle;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by 74234 on 2017/6/11.
  */
 
-public class CategoryResult extends DataSupport {
+public class CategoryResult extends DataSupport implements Serializable{
     private List<CategoryData> data=new ArrayList<>();
     private List<CategoryLink> links=new ArrayList<>();
     private int id;

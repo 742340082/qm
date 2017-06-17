@@ -67,12 +67,10 @@ public class CategoryBizImpl implements CategoryBiz {
 
 
                             List<CategoryLink> links = result.getLinks();
-
                             List<CategoryData> datas = result.getData();
                             List<CategoryResult> categoryResults = DataSupport.where("1=1").find(CategoryResult.class);
                             if (categoryResults.size() !=1) {
                                 for (CategoryData data : datas) {
-
                                     List<CategoryTag> tags = data.getTags();
                                     DataSupport.saveAll(tags);
 

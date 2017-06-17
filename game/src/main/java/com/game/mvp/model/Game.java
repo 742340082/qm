@@ -1,5 +1,6 @@
 package com.game.mvp.model;
 
+import com.game.mvp.category.detail.modle.CategoryDetailResult;
 import com.game.mvp.index.modle.IndexExt;
 import com.game.mvp.top.modle.TotalResult;
 import com.google.gson.annotations.SerializedName;
@@ -25,13 +26,6 @@ public class Game extends DataSupport {
     @SerializedName("id")
     private String game_id;
 
-    public String getGame_id() {
-        return game_id;
-    }
-
-    public void setGame_id(String game_id) {
-        this.game_id = game_id;
-    }
 
     private String md5_file;
     private String need_gplay;
@@ -51,6 +45,28 @@ public class Game extends DataSupport {
     private String kind_id;
     private String kind_name;
     private TotalResult totalResult;
+
+    private String desc;
+    private String img;
+    private String title;
+    private int type;
+    private CategoryDetailResult categoryDetailResult;
+
+    public CategoryDetailResult getCategoryDetailResult() {
+        return categoryDetailResult;
+    }
+
+    public void setCategoryDetailResult(CategoryDetailResult categoryDetailResult) {
+        this.categoryDetailResult = categoryDetailResult;
+    }
+
+    public String getGame_id() {
+        return game_id;
+    }
+
+    public void setGame_id(String game_id) {
+        this.game_id = game_id;
+    }
 
     public TotalResult getTotalResult() {
         return totalResult;
@@ -75,11 +91,6 @@ public class Game extends DataSupport {
     public void setKind_name(String kind_name) {
         this.kind_name = kind_name;
     }
-
-    private String desc;
-    private String img;
-    private String title;
-    private int type;
 
     public String getDesc() {
         return desc;

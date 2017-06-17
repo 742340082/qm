@@ -3,8 +3,14 @@ package com.game;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
-import com.baselibrary.baseAdapter.ViewPagerFragmentAdapter;
+import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.utils.UIUtils;
 
@@ -20,6 +26,10 @@ public class GameFragment extends BaseFragmnet {
     TabLayout tb_game;
     @BindView(R2.id.vp_game)
     ViewPager vp_game;
+    @BindView(R2.id.tv_game_search)
+    TextView tv_game_search;
+    @BindView(R2.id.toolbar)
+    Toolbar toolbar;
     @Override
     public int getLayoutResId() {
         return R.layout.fragment_game;
@@ -48,4 +58,34 @@ public class GameFragment extends BaseFragmnet {
     }
 
 
+    @Override
+    public void initView() {
+        toolbar.inflateMenu(R.menu.menu_download);
+    }
+
+    @Override
+    public void initListener() {
+        tv_game_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_download,menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId==R.id.menu_download)
+        {
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

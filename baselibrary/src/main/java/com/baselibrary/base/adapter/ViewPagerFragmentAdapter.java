@@ -1,20 +1,36 @@
-package com.baselibrary.baseAdapter;
+package com.baselibrary.base.adapter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.view.ViewGroup;
+
+import com.baselibrary.utils.Logger;
 
 import java.util.ArrayList;
 
 public class ViewPagerFragmentAdapter
-        extends FragmentStatePagerAdapter {
+        extends FragmentPagerAdapter {
     private ArrayList<FragmentInfo> mFragmentInfoS = new ArrayList();
     private ArrayList<String> mTitleS = new ArrayList();
 
     public ViewPagerFragmentAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
     }
+//    @Override
+//    public Parcelable saveState() {
+//        return null;
+//    }
+    @Override
+    public void finishUpdate(ViewGroup container) {
+        try{
+            super.finishUpdate(container);
+        } catch (NullPointerException nullPointerException){
+            System.out.println("Catch the NullPointerException in FragmentPagerAdapter.finishUpdate");
+        }
+    }
+
 
     public void addFragement(Fragment fragment) {
         this.mFragmentInfoS.add(new FragmentInfo(fragment));
@@ -42,6 +58,7 @@ public class ViewPagerFragmentAdapter
         if(mFragmentInfoS.get(postion).getBuild()!=null) {
             fragment.setArguments(mFragmentInfoS.get(postion).getBuild());
         }
+        Logger.e("TAG",fragment.toString());
         return fragment;
     }
 @Override
