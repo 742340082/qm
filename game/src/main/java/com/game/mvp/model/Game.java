@@ -2,6 +2,9 @@ package com.game.mvp.model;
 
 import com.game.mvp.category.detail.modle.CategoryDetailResult;
 import com.game.mvp.index.modle.IndexExt;
+import com.game.mvp.index.modle.IndexResult;
+import com.game.mvp.search.model.GameSearchResult;
+import com.game.mvp.search.model.GameSmallSearchResult;
 import com.game.mvp.top.modle.TotalResult;
 import com.google.gson.annotations.SerializedName;
 
@@ -44,13 +47,51 @@ public class Game extends DataSupport {
 
     private String kind_id;
     private String kind_name;
-    private TotalResult totalResult;
+
 
     private String desc;
     private String img;
     private String title;
     private int type;
+
+    private  IndexExt indexExt;
+    private TotalResult totalResult;
     private CategoryDetailResult categoryDetailResult;
+     private IndexResult indexResult;
+    private GameSmallSearchResult gameSmallSearchResult;
+    private GameSearchResult gameSearchResult;
+
+    public GameSearchResult getGameSearchResult() {
+        return gameSearchResult;
+    }
+
+    public void setGameSearchResult(GameSearchResult gameSearchResult) {
+        this.gameSearchResult = gameSearchResult;
+    }
+
+    public GameSmallSearchResult getGameSmallSearchResult() {
+        return gameSmallSearchResult;
+    }
+
+    public void setGameSmallSearchResult(GameSmallSearchResult gameSmallSearchResult) {
+        this.gameSmallSearchResult = gameSmallSearchResult;
+    }
+
+    public IndexExt getIndexExt() {
+        return indexExt;
+    }
+
+    public void setIndexExt(IndexExt indexExt) {
+        this.indexExt = indexExt;
+    }
+
+    public IndexResult getIndexResult() {
+        return indexResult;
+    }
+
+    public void setIndexResult(IndexResult indexResult) {
+        this.indexResult = indexResult;
+    }
 
     public CategoryDetailResult getCategoryDetailResult() {
         return categoryDetailResult;

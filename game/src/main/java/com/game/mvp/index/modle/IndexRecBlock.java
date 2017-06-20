@@ -13,14 +13,14 @@ public class IndexRecBlock extends DataSupport{
     private  String poster;
     private  String type;
     private  String url;
-    private IndexPosterBlock indexPosterBlock;
+    private IndexResult indexResult;
 
-    public IndexPosterBlock getIndexPosterBlock() {
-        return indexPosterBlock;
+    public IndexResult getIndexResult() {
+        return indexResult;
     }
 
-    public void setIndexPosterBlock(IndexPosterBlock indexPosterBlock) {
-        this.indexPosterBlock = indexPosterBlock;
+    public void setIndexResult(IndexResult indexResult) {
+        this.indexResult = indexResult;
     }
 
     public long getDateline() {

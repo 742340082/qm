@@ -42,7 +42,7 @@
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm100dp"
-                        android:background="@drawable/selector_total_item_select_bg">
+                        android:background="@drawable/selector_item_selected_bg">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@id/civ_user_icon"
@@ -60,7 +60,7 @@
                         android:layout_height="@dimen/qm50dp"
 
 
-                        android:background="@drawable/selector_total_item_select_bg"
+                        android:background="@drawable/selector_item_selected_bg"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -90,7 +90,7 @@
                         android:layout_height="@dimen/qm50dp"
 
 
-                        android:background="@drawable/selector_total_item_select_bg"
+                        android:background="@drawable/selector_item_selected_bg"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -127,7 +127,7 @@
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@drawable/selector_total_item_select_bg"
+                        android:background="@drawable/selector_item_selected_bg"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -144,7 +144,7 @@
                         android:id="@id/rl_user_telephone"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@drawable/selector_total_item_select_bg"
+                        android:background="@drawable/selector_item_selected_bg"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -173,7 +173,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
 
-                        android:background="@drawable/selector_total_item_select_bg"
+                        android:background="@drawable/selector_item_selected_bg"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -201,7 +201,7 @@
                         android:id="@id/rl_user_qq"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@drawable/selector_total_item_select_bg"
+                        android:background="@drawable/selector_item_selected_bg"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -252,7 +252,7 @@
                         android:layout_height="@dimen/qm50dp"
 
 
-                        android:background="@drawable/selector_total_item_select_bg"
+                        android:background="@drawable/selector_item_selected_bg"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -280,7 +280,7 @@
                         android:id="@id/rl_user_min_money_pay"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@drawable/selector_total_item_select_bg"
+                        android:background="@drawable/selector_item_selected_bg"
                         android:gravity="center_vertical">
 
                         <TextView

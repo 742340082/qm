@@ -21,7 +21,7 @@
             android:layout_marginBottom="@dimen/qm10dp"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_marginTop="@dimen/qm10dp"
-            android:background="@drawable/shape_round_bg"
+            android:background="@drawable/shape_white_round_bg"
             android:src="@drawable/lufei" />
 
         <TextView

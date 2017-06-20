@@ -17,9 +17,11 @@
             android:hint="搜索游戏"
             android:paddingLeft="@dimen/qm10dp"
             android:drawablePadding="@dimen/qm5dp"
+            android:transitionName="共享搜索"
             android:drawableLeft="@drawable/icon_search"
             android:gravity="center_vertical"
-            android:background="@drawable/shape_round_bg"
+            android:textSize="@dimen/titleSize"
+            android:background="@drawable/shape_white_round_bg"
             android:layout_height="@dimen/qm30dp" />
     </android.support.v7.widget.Toolbar>
     <android.support.design.widget.TabLayout

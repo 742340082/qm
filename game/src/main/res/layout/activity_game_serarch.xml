@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/ll_game_search"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,21 +10,83 @@
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"
-        app:navigationIcon="@drawable/arrow_left"
-        android:layout_marginBottom="@dimen/qm1dp"
-        android:background="@color/blue">
+        android:background="@color/blue"
+        app:contentInsetStart="0dp">
+
+        <ImageView
+            android:id="@id/iv_game_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_left" />
 
         <com.baselibrary.view.ClearEditText
-            android:id="@id/tv_game_search"
+            android:id="@id/et_game_search"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qm30dp"
-            android:background="@drawable/shape_round_bg"
+            android:background="@drawable/shape_white_round_bg"
             android:drawablePadding="@dimen/qm5dp"
-            android:gravity="center_vertical"
             android:drawableRight="@drawable/icon_clear"
-            android:paddingRight="@dimen/qm10dp"
-            android:paddingLeft="@dimen/qm10dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
             android:hint="搜索游戏"
-             />
+            android:imeOptions="actionSearch"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/qm10dp"
+            android:paddingRight="@dimen/qm10dp"
+            android:textSize="@dimen/titleSize"
+            android:transitionName="共享搜索" />
     </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@id/rl_game_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.baselibrary.view.shake.StellarMap
+            android:id="@id/stm_search_tags"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qm400dp"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:layout_marginRight="@dimen/qm10dp"></com.baselibrary.view.shake.StellarMap>
+
+        <Button
+            android:id="@id/btn_switch_search"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/qm40dp"
+            android:layout_below="@+id/stm_search_tags"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="@dimen/qm20dp"
+            android:layout_marginRight="@dimen/qm20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/green"
+            android:text="@string/switch_game_tag"
+            android:textColor="@color/white"
+            android:textSize="@dimen/titleSize" />
+
+
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@id/srl_game_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/rv_game_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/rv_game_small_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
 </LinearLayout>

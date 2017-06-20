@@ -2,8 +2,8 @@ package com.baselibrary.view.shake;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.GestureDetector.OnGestureListener;
 import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -11,7 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.FrameLayout;
 
-public class StellarMap extends FrameLayout implements AnimationListener, OnTouchListener, OnGestureListener {
+public  class StellarMap extends FrameLayout implements AnimationListener, OnTouchListener, OnGestureListener {
 
 	private RandomLayout mHidenGroup;
 
@@ -52,8 +52,11 @@ public class StellarMap extends FrameLayout implements AnimationListener, OnTouc
 		init();
 	}
 
+
+
 	/** 初始化方法 */
 	private void init() {
+
 		mGroupCount = 0;
 		mHidenGroupIndex = -1;
 		mShownGroupIndex = -1;

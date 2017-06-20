@@ -8,6 +8,11 @@
             android:name=".mvp.category.detail.CategoryDetailActivity"
             android:launchMode="standard"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".mvp.search.GameSearchActivity"
+            android:launchMode="standard"
+            android:windowSoftInputMode="stateAlwaysVisible"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

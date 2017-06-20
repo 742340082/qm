@@ -1,11 +1,10 @@
 package com.game;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.utils.UIUtils;
+import com.game.mvp.search.GameSearchActivity;
 
 import butterknife.BindView;
 
@@ -39,8 +39,8 @@ public class GameFragment extends BaseFragmnet {
     public void initData() {
         ViewPagerFragmentAdapter mAdapter = new ViewPagerFragmentAdapter(getFragmentManager());
 
-        Bundle bundle = getBundle(UIUtils.getString(GameTab.RECOMMEND.getResName()));
-        mAdapter.addTabPage(UIUtils.getString(GameTab.RECOMMEND.getResName()),GameTab.RECOMMEND.getFragmnet(),bundle);
+        Bundle bundle = getBundle(UIUtils.getString(GameTab.INDEX.getResName()));
+        mAdapter.addTabPage(UIUtils.getString(GameTab.INDEX.getResName()),GameTab.INDEX.getFragmnet(),bundle);
 
         bundle = getBundle(UIUtils.getString(GameTab.CATEGORY.getResName()));
         mAdapter.addTabPage(UIUtils.getString(GameTab.CATEGORY.CATEGORY.getResName()),GameTab.CATEGORY.getFragmnet(),bundle);
@@ -68,16 +68,19 @@ public class GameFragment extends BaseFragmnet {
         tv_game_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (Build.VERSION.SDK_INT> Build.VERSION_CODES.LOLLIPOP)
+                {
+                    UIUtils.startActivityAndMaterAnimator(GameFragment.this.getContext()
+                            ,"共享搜索",v,GameSearchActivity.class);
+                }else
+                {
+                    UIUtils.startActivity(GameFragment.this.getContext(),GameSearchActivity.class);
+                }
 
             }
         });
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_download,menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

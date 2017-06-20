@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/qm10dp"
         android:layout_marginTop="@dimen/qm20dp"
-        android:background="@drawable/circle_bg_shape"
+        android:background="@drawable/shape_circle_bg"
         android:elevation="@dimen/qm3dp"
         android:translationZ="@dimen/qm3dp">
 
@@ -80,7 +80,7 @@
                 android:paddingLeft="@dimen/qm10dp"
                 android:enabled="false"
                 android:paddingRight="@dimen/qm10dp"
-                android:background="@drawable/bg_identifying_code"
+                android:background="@drawable/selector_identifying_code"
                 android:textColor="@color/white"
                 android:textSize="@dimen/titleSize"/>
         </LinearLayout>

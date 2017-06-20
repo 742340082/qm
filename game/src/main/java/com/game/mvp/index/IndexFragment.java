@@ -21,9 +21,9 @@ import com.game.R;
 import com.game.R2;
 import com.game.adapter.IndexAdapter;
 import com.game.adapter.IndexHeaderAdapter;
-import com.game.mvp.index.modle.IndexPosterBlock;
+import com.game.mvp.index.modle.PosterBlock;
 import com.game.mvp.index.modle.IndexRecBlock;
-import com.game.mvp.index.modle.IndexSubjectGame;
+import com.game.mvp.index.modle.AdListGame;
 import com.game.mvp.index.presenter.IndexPresenter;
 import com.game.mvp.index.view.IndexView;
 
@@ -44,7 +44,7 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
     SwipeRefreshLayout srl_game_recommend;
     private IndexPresenter presenter;
     private StatusLayoutManager mStatusLayoutManager;
-    private List<IndexSubjectGame> dataS;
+    private List<AdListGame> dataS;
     private IndexAdapter recommendAdapter;
     private int k;
 
@@ -104,7 +104,7 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
     }
 
     @Override
-    public void success(List<IndexSubjectGame> data) {
+    public void success(List<AdListGame> data) {
         dataS = data;
         mStatusLayoutManager.showContent();
         srl_game_recommend.setRefreshing(false);
@@ -114,7 +114,7 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
 
 
     @Override
-    public void initHeader(IndexPosterBlock posterBlock) {
+    public void initHeader(PosterBlock posterBlock) {
         recommendAdapter = new IndexAdapter(null);
         recommendAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
         rv_recommend.setLayoutManager(new LinearLayoutManager(getContext()));

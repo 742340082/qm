@@ -23,7 +23,7 @@
             android:layout_height="@dimen/qm16dp"
             android:layout_margin="@dimen/qm10dp"
             android:layout_marginRight="@dimen/qm6dp"
-            android:background="@drawable/subject_tag_active"
+            android:background="@drawable/shape_green_bg"
             android:gravity="center"
             android:text="@string/active"
             android:textColor="@color/white"

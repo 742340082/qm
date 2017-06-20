@@ -168,7 +168,7 @@ public class OperateUserActivity
 
     @Override
     public int getLayoutResId() {
-        return R.layout.user_code_regist;
+        return R.layout.activity_user_code_regist;
     }
 
     @Override

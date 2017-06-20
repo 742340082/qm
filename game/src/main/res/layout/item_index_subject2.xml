@@ -19,7 +19,7 @@
             android:id="@id/tv_tag"
             android:layout_width="@dimen/qm30dp"
             android:layout_height="@dimen/qm16dp"
-            android:background="@drawable/subject_tag_hot"
+            android:background="@drawable/shape_red_bg"
             android:gravity="center"
             android:textSize="@dimen/textSizeMin"
             android:layout_margin="@dimen/qm10dp"

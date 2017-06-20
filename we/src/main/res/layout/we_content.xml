@@ -16,7 +16,7 @@
             android:id="@id/ll_user_take_local"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_total_item_select_bg"
+            android:background="@drawable/selector_item_selected_bg"
             android:gravity="center_vertical">
 
             <ImageView
@@ -40,7 +40,7 @@
             android:id="@id/ll_collect"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_total_item_select_bg"
+            android:background="@drawable/selector_item_selected_bg"
             android:gravity="center_vertical">
 
             <ImageView
@@ -65,7 +65,7 @@
             android:id="@id/ll_fine_photo"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_total_item_select_bg"
+            android:background="@drawable/selector_item_selected_bg"
             android:gravity="center_vertical">
 
             <ImageView
@@ -94,7 +94,7 @@
         android:id="@id/ll_switch_theme"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
-        android:background="@drawable/selector_total_item_select_bg"
+        android:background="@drawable/selector_item_selected_bg"
         android:layout_marginTop="@dimen/qm5dp"
         android:gravity="center_vertical">
 
@@ -124,7 +124,7 @@
         android:id="@id/ll_setting"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
-        android:background="@drawable/selector_total_item_select_bg"
+        android:background="@drawable/selector_item_selected_bg"
         android:gravity="center_vertical">
 
         <ImageView

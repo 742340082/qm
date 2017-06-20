@@ -89,4 +89,18 @@
     <item name="tv_game_search" type="id" />
     <item name="menu_download" type="id" />
     <item name="menu_search" type="id" />
+    <item name="iv_search_tag_icon" type="id" />
+    <item name="tv_search_tag_title" type="id" />
+    <item name="btn_switch_search" type="id" />
+    <item name="stm_search_tags" type="id" />
+    <item name="et_game_search" type="id" />
+    <item name="ll_game_search" type="id" />
+    <item name="rv_game_small_search" type="id" />
+    <item name="tv_small_search_title" type="id" />
+    <item name="ll_small_search" type="id" />
+    <item name="rl_game_top" type="id" />
+    <item name="rv_game_search" type="id" />
+    <item name="rl_game_search" type="id" />
+    <item name="srl_game_search" type="id" />
+    <item name="iv_game_search" type="id" />
 </resources>

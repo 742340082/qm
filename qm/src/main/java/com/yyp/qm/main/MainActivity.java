@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.baselibrary.base.activity.BaseActivity;
 import com.baselibrary.config.ConfigValues;
+import com.baselibrary.utils.SaveConfigValueUtil;
 import com.baselibrary.utils.ToastUtils;
 import com.baselibrary.utils.UIUtils;
 import com.baselibrary.view.MyFragmentTabHost;
@@ -45,6 +46,13 @@ public class MainActivity
             hideToobarAnd(UIUtils.getColor(R.color.blue), UIUtils.getColor(R.color.blue), true, false);
         }
         initBottomMenu();
+    }
+
+    @Override
+    public void initData() {
+        if (!SaveConfigValueUtil.getBoolean(this, ConfigValues.VALUE_STATE_ENTER_HOME, false)) {
+            SaveConfigValueUtil.setBoolean(this, ConfigValues.VALUE_STATE_ENTER_HOME, true);
+        }
     }
 
     private View getIndicaor(int position) {

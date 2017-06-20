@@ -13,4 +13,5 @@
     <string name="game_hot">热游</string>
     <string name="game_hottest">最热</string>
     <string name="game_upnew">最新</string>
+    <string name="switch_game_tag">换一批</string>
 </resources>

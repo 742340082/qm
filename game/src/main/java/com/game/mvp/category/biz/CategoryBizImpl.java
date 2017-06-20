@@ -97,14 +97,10 @@ public class CategoryBizImpl implements CategoryBiz {
         } else
 
         {
-            CategoryResult first = DataSupport.findFirst(CategoryResult.class);
-            if (first == null) {
+            CategoryResult categoryResult = DataSupport.findFirst(CategoryResult.class);
+            if (categoryResult == null) {
                 categoryView.error(ConfigStateCode.STATE_NO_NETWORK, ConfigStateCode.STATE_NO_NETWORK_VALUE);
             } else {
-                CategoryResult categoryResult = DataSupport.where("1=1").findFirst(CategoryResult.class);
-                if (categoryResult == null) {
-                    categoryView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
-                } else {
                     List<CategoryData> datas = DataSupport.where("categoryresult_id=?", categoryResult.getId() + "").find(CategoryData.class);
                     for (int i = 0; i < datas.size(); i++) {
                         CategoryData data = datas.get(i);
@@ -119,6 +115,6 @@ public class CategoryBizImpl implements CategoryBiz {
                     categoryView.success(categoryResult);
                 }
             }
-        }
+
     }
 }

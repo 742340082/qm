@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_total_item_select_bg"
+        android:background="@drawable/selector_item_selected_bg"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -70,7 +70,7 @@
                         android:id="@id/tv_receiveaddress_type_flyme"
                         android:layout_width="@dimen/qm40dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/shape_receiveaddress_label_saffronyellow"
+                        android:background="@drawable/shape_yellow_bg"
                         android:gravity="center"
                         android:text="@string/flyme"
                         android:textColor="@color/white"
@@ -81,7 +81,7 @@
                         android:id="@id/tv_receiveaddress_type_school"
                         android:layout_width="@dimen/qm40dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/shape_receiveaddress_label_blue"
+                        android:background="@drawable/shape_blue_bg"
                         android:gravity="center"
                         android:text="@string/school"
                         android:textColor="@color/white"
@@ -92,7 +92,7 @@
                         android:id="@id/tv_receiveaddress_type_company"
                         android:layout_width="@dimen/qm40dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/shape_receiveaddress_label_green"
+                        android:background="@drawable/shape_green_bg"
                         android:gravity="center"
                         android:text="@string/company"
                         android:textColor="@color/white"

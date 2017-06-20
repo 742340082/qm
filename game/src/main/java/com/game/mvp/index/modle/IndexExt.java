@@ -17,15 +17,16 @@ public class IndexExt extends DataSupport{
     private String url;
     private List<Game> list=new ArrayList<>();
 
-    public IndexSubjectList getSubjectList() {
-        return subjectList;
+
+    private IndexAdList indexAdList;
+    public IndexAdList getIndexAdList() {
+        return indexAdList;
     }
 
-    public void setSubjectList(IndexSubjectList subjectList) {
-        this.subjectList = subjectList;
+    public void setIndexAdList(IndexAdList indexAdList) {
+        this.indexAdList = indexAdList;
     }
 
-    private IndexSubjectList subjectList;
 
     public long getId() {
         return id;

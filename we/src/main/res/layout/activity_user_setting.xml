@@ -30,7 +30,7 @@
             android:id="@id/rl_user_account_safe"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_total_item_select_bg"
+            android:background="@drawable/selector_item_selected_bg"
             android:gravity="center_vertical">
 
             <TextView
@@ -55,7 +55,7 @@
             android:id="@id/rl_common"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_total_item_select_bg"
+            android:background="@drawable/selector_item_selected_bg"
             android:gravity="center_vertical">
 
             <TextView
@@ -73,7 +73,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
         android:layout_marginTop="@dimen/qm10dp"
-        android:background="@drawable/selector_total_item_select_bg"
+        android:background="@drawable/selector_item_selected_bg"
         android:gravity="center_vertical">
 
         <TextView

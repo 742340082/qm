@@ -12,7 +12,7 @@ import com.game.mvp.top.TopFragment;
  */
 
 public enum GameTab {
-    RECOMMEND(0, R.string.game_tab_name_recommend,new IndexFragment()),
+    INDEX(0, R.string.game_tab_name_recommend,new IndexFragment()),
     CATEGORY(1, R.string.game_tab_name_category,new CategoryFragment()),
     TOP(2,R.string.game_tab_name_top,new TopFragment()),
     GAMENEWS(3,R.string.game_tab_name_gamenews,new GameNewsFragment());

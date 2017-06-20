@@ -36,7 +36,7 @@
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:id="@id/rl_add_user_receive_address"
-            android:background="@drawable/selector_total_item_select_bg">
+            android:background="@drawable/selector_item_selected_bg">
             <include layout="@layout/cut_horizontal_apart"/>
             <LinearLayout
                 android:layout_width="wrap_content"

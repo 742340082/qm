@@ -198,7 +198,7 @@ public class UpdatePasswordActivity extends BaseActivity implements UpdatePasswo
 
     @Override
     public int getLayoutResId() {
-        return R.layout.user_update_password;
+        return R.layout.activity_user_update_password;
     }
 
     @Override

@@ -20,12 +20,11 @@
     </list>
     <!--游戏-->
     <list>
-        <!--推荐-->
         <mapping class="com.game.mvp.model.Game"></mapping>
+        <!--推荐-->
         <mapping class="com.game.mvp.index.modle.IndexExt"></mapping>
-        <mapping class="com.game.mvp.index.modle.IndexSubjectList"></mapping>
-        <mapping class="com.game.mvp.index.modle.IndexSubjectGame"></mapping>
-        <mapping class="com.game.mvp.index.modle.IndexPosterBlock"></mapping>
+        <mapping class="com.game.mvp.index.modle.IndexAdList"></mapping>
+        <mapping class="com.game.mvp.index.modle.IndexResult"></mapping>
         <mapping class="com.game.mvp.index.modle.IndexRecPoster"></mapping>
         <mapping class="com.game.mvp.index.modle.IndexRecBlock"></mapping>
 
@@ -50,5 +49,12 @@
         <mapping class="com.game.mvp.gamenews.model.GameNewsGallary"></mapping>
         <mapping class="com.game.mvp.gamenews.model.GameNewsLink"></mapping>
         <mapping class="com.game.mvp.gamenews.model.GameNewsResult"></mapping>
+
+        <!--搜索-->
+        <mapping class="com.game.mvp.search.model.GameSearchResult"></mapping>
+        <mapping class="com.game.mvp.search.model.GameSearchHotWord"></mapping>
+        <mapping class="com.game.mvp.search.model.GameSearchSuggestWord"></mapping>
+        <mapping class="com.game.mvp.search.model.GameSearchFirstResult"></mapping>
+        <mapping class="com.game.mvp.search.model.GameSmallSearchResult"></mapping>
     </list>
 </litepal>

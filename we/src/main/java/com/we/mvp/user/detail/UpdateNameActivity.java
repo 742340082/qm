@@ -59,7 +59,7 @@ public class UpdateNameActivity extends BaseActivity implements UpdateNameView {
 
     @Override
     public int getLayoutResId() {
-        return R.layout.user_update_name;
+        return R.layout.activity_user_update_name;
     }
 
     @Override

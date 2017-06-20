@@ -1,5 +1,7 @@
 package com.game.mvp.index.biz;
 
+import android.support.annotation.NonNull;
+
 import com.baselibrary.api.QMApi;
 import com.baselibrary.config.ConfigStateCode;
 import com.baselibrary.config.ConfigValues;
@@ -9,12 +11,12 @@ import com.baselibrary.utils.UIUtils;
 import com.game.api.GameApi;
 import com.game.mvp.index.modle.Index;
 import com.game.mvp.index.modle.IndexExt;
-import com.game.mvp.index.modle.IndexPosterBlock;
+import com.game.mvp.index.modle.PosterBlock;
 import com.game.mvp.index.modle.IndexRecBlock;
 import com.game.mvp.index.modle.IndexRecPoster;
 import com.game.mvp.index.modle.IndexResult;
-import com.game.mvp.index.modle.IndexSubjectGame;
-import com.game.mvp.index.modle.IndexSubjectList;
+import com.game.mvp.index.modle.AdListGame;
+import com.game.mvp.index.modle.IndexAdList;
 import com.game.mvp.index.view.IndexView;
 import com.game.mvp.model.Game;
 
@@ -22,7 +24,6 @@ import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -74,66 +75,39 @@ public class IndexBizImpl implements IndexBiz {
                             final IndexResult result = value.getResult();
 
 
-                            final ArrayList<IndexSubjectGame> subjectGames = new ArrayList<>();
-                            final IndexPosterBlock posterBlock = new IndexPosterBlock();
-                            List<IndexRecPoster> recPoster = result.getRecPoster();
-                            List<IndexRecBlock> recBlock = result.getRecBlock();
-                            final List<IndexPosterBlock> indexPosterBlocks = DataSupport.where("1=1").find(IndexPosterBlock.class);
-
-                            posterBlock.setRecBlock(recBlock);
-                            posterBlock.setRecPoster(recPoster);
-                            if (indexPosterBlocks.size() == 0) {
-                                DataSupport.saveAll(recPoster);
-                                DataSupport.saveAll(recBlock);
-                                posterBlock.saveThrows();
-                            }
+                            final List<IndexRecPoster> recPoster = result.getRecPoster();
+                            final List<IndexRecBlock> recBlock = result.getRecBlock();
+                            final List<IndexAdList> adList = result.getAdList();
+                            final List<Game> games = result.getRecGame();
 
 
-                            final List<IndexSubjectList> adList = result.getAdList();
-                            final List<Game> game = result.getRecGame();
-                            IndexSubjectGame subjectGame = null;
-                            subjectNum = 0;
-                            gameNum = 0;
-                            if (game.size() != 0 && adList.size() != 0) {
-                                for (int i = 0; i < (game.size() + adList.size()); i++) {
-                                    subjectGame = new IndexSubjectGame();
-                                    if (subjectGames.size() % 5 == 0) {
-                                        if (i > 1) {
-                                            if (subjectNum < adList.size()) {
-
-                                                if (subjectNum != 1) {
-                                                    IndexSubjectList subjectList = adList.get(subjectNum);
-                                                    List<IndexSubjectGame> subjectGames1 = DataSupport.where("1=1").find(IndexSubjectGame.class);
-
-                                                    subjectGame.setSubjectList(subjectList);
-                                                    subjectGames.add(subjectGame);
-                                                    if (subjectGames1.size() != game.size() + adList.size()) {
-                                                        IndexExt ext = subjectList.getExt();
-                                                        DataSupport.saveAll(ext.getList());
-                                                        ext.saveThrows();
-                                                        subjectList.saveThrows();
-                                                        subjectGame.saveThrows();
-                                                    }
-
-                                                }
-                                                subjectNum++;
-                                                continue;
-                                            }
+                            List<IndexResult> indexResults = DataSupport.where("1=1").find(IndexResult.class);
+                            if (indexResults.size() == 0) {
+                                Executors.newCachedThreadPool().execute(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        DataSupport.saveAll(recPoster);
+                                        DataSupport.saveAll(recBlock);
+                                        for (IndexAdList indexSubjectList : adList) {
+                                            IndexExt ext = indexSubjectList.getExt();
+                                            List<Game> list = ext.getList();
+                                            DataSupport.saveAll(list);
+                                            ext.saveThrows();
+                                            indexSubjectList.saveThrows();
 
                                         }
+                                        DataSupport.saveAll(games);
+                                        result.saveThrows();
                                     }
-                                    List<IndexSubjectGame> subjectGames1 = DataSupport.where("1=1").find(IndexSubjectGame.class);
-                                    Game game1 = game.get(gameNum);
-                                    subjectGame.setGame(game1);
-                                    if (subjectGames1.size() != (game.size() + adList.size())) {
-                                        game1.saveThrows();
-                                        subjectGame.saveThrows();
-                                    }
-                                    gameNum++;
-                                    subjectGames.add(subjectGame);
-
-                                }
+                                });
                             }
+
+                            PosterBlock posterBlock = new PosterBlock();
+                            posterBlock.setRecBlock(recBlock);
+                            posterBlock.setRecPoster(recPoster);
+
+                            ArrayList<AdListGame> subjectGames = getIndexSubjectGames(adList, games);
+
                             mIndexView.initHeader(posterBlock);
                             mIndexView.success(subjectGames);
 
@@ -154,50 +128,68 @@ public class IndexBizImpl implements IndexBiz {
                     });
         } else {
 
-            IndexSubjectGame first = DataSupport.findFirst(IndexSubjectGame.class);
-            if (first == null) {
+            final IndexResult indexResult = DataSupport.findFirst(IndexResult.class);
+            if (indexResult == null) {
                 mIndexView.error(ConfigStateCode.STATE_NO_NETWORK, ConfigStateCode.STATE_NO_NETWORK_VALUE);
             } else {
-                final List<IndexSubjectGame> subjectGames = DataSupport.where("1=1").find(IndexSubjectGame.class);
-                List<IndexPosterBlock> indexPosterBlocks = DataSupport.where("1=1").find(IndexPosterBlock.class);
-                if (subjectGames.size() == 0 && indexPosterBlocks.size() == 0) {
-                    mIndexView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
-                } else {
-                    IndexPosterBlock indexPosterBlock = indexPosterBlocks.get(0);
-                    List<IndexRecPoster> indexRecPosters = DataSupport.where("indexposterblock_id=?", indexPosterBlock.getId() + "").find(IndexRecPoster.class);
-                    List<IndexRecBlock> indexRecBlocks = DataSupport.where("indexposterblock_id=?", indexPosterBlock.getId() + "").find(IndexRecBlock.class);
-                    indexPosterBlock.setRecBlock(indexRecBlocks);
-                    indexPosterBlock.setRecPoster(indexRecPosters);
-                    mIndexView.initHeader(indexPosterBlock);
-
-                    ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-                    cachedThreadPool.execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            for (int i = 0; i < subjectGames.size(); i++) {
-                                IndexSubjectGame subjectGame = subjectGames.get(i);
-                                IndexSubjectList subjectList = DataSupport.where(new String[]{"indexsubjectgame_id=?", subjectGame.getId() + ""}).findFirst(IndexSubjectList.class);
-                                if (subjectList != null) {
-                                    IndexExt ext = DataSupport.where(new String[]{"indexsubjectlist_id=?", subjectList.getId() + ""}).findFirst(IndexExt.class);
-                                    List<Game> games = DataSupport.where(new String[]{"indexext_id=?", ext.getId() + ""}).find(Game.class);
-                                    ext.setList(games);
-                                    subjectList.setExt(ext);
-                                }
-
-                                Game game = DataSupport.where(new String[]{"indexsubjectgame_id=?", subjectGame.getId() + ""}).findFirst(Game.class);
-
-
-                                subjectGame.setGame(game);
-                                subjectGame.setSubjectList(subjectList);
-                                subjectGames.set(i, subjectGame);
-                            }
-                        }
-                    });
-                    mIndexView.success(subjectGames);
-
+                List<IndexRecBlock> indexRecBlocks = DataSupport.where("indexresult_id=?", indexResult.getId() + "").find(IndexRecBlock.class);
+                List<IndexRecPoster> indexRecPosters = DataSupport.where("indexresult_id=?", indexResult.getId() + "").find(IndexRecPoster.class);
+                List<IndexAdList> adList = DataSupport.where("indexresult_id=?", indexResult.getId() + "").find(IndexAdList.class);
+                for (IndexAdList indexAdList : adList) {
+                    IndexExt indexExt = DataSupport.where("indexadlist_id=?", indexAdList.getId() + "").findFirst(IndexExt.class);
+                    List<Game> games = DataSupport.where("indexext_id=?", indexExt.getId() + "").find(Game.class);
+                    indexExt.setList(games);
+                    indexAdList.setExt(indexExt);
                 }
+                List<Game> games = DataSupport.where("indexresult_id=?", indexResult.getId() + "").find(Game.class);
+                indexResult.setRecPoster(indexRecPosters);
+                indexResult.setRecBlock(indexRecBlocks);
+                indexResult.setAdList(adList);
+                indexResult.setRecGame(games);
+
+
+                PosterBlock posterBlock = new PosterBlock();
+                posterBlock.setRecBlock(indexRecBlocks);
+                posterBlock.setRecPoster(indexRecPosters);
+
+                ArrayList<AdListGame> subjectGames = getIndexSubjectGames(adList, games);
+                mIndexView.initHeader(posterBlock);
+                mIndexView.success(subjectGames);
             }
         }
+    }
+
+    @NonNull
+    private ArrayList<AdListGame> getIndexSubjectGames(List<IndexAdList> adList, List<Game> games) {
+        ArrayList<AdListGame> subjectGames = new ArrayList<>();
+        subjectNum = 0;
+        gameNum = 0;
+        if (games.size() != 0 && adList.size() != 0) {
+            for (int i = 0; i < (games.size() + adList.size()); i++) {
+                final AdListGame subjectGame = new AdListGame();
+                if (subjectGames.size() % 5 == 0) {
+                    if (i > 1) {
+                        if (subjectNum < adList.size()) {
+
+                            if (subjectNum != 1) {
+                                IndexAdList subjectList = adList.get(subjectNum);
+                                subjectGame.setSubjectList(subjectList);
+                                subjectGames.add(subjectGame);
+                            }
+                            subjectNum++;
+                            continue;
+                        }
+
+                    }
+                }
+                Game game1 = games.get(gameNum);
+                subjectGame.setGame(game1);
+                gameNum++;
+                subjectGames.add(subjectGame);
+
+            }
+        }
+        return subjectGames;
     }
 
 

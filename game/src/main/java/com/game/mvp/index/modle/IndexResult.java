@@ -2,24 +2,35 @@ package com.game.mvp.index.modle;
 
 import com.game.mvp.model.Game;
 
+import org.litepal.crud.DataSupport;
+
 import java.util.List;
 
 /**
  * Created by 74234 on 2017/5/18.
  */
 
-public class IndexResult  {
-    private List<IndexSubjectList> adList;
+public class IndexResult extends DataSupport {
+    private int id;
+    private List<IndexAdList> adList;
     private List<IndexRecBlock> recBlock;
     private  List<Game> recGame;
     private  List<IndexRecPoster> recPoster;
     private List<SuggestWords> suggestWords;
 
-    public List<IndexSubjectList> getAdList() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<IndexAdList> getAdList() {
         return adList;
     }
 
-    public void setAdList(List<IndexSubjectList> adList) {
+    public void setAdList(List<IndexAdList> adList) {
         this.adList = adList;
     }
 
@@ -97,61 +108,5 @@ public class IndexResult  {
             this.position = position;
         }
     }
-    public class RecPoster
-    {
-        private String id;
-        private  String name;
-        private  String poster;
-        private  int type;
-        private  String url;
-        private String startFlag;
 
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getPoster() {
-            return poster;
-        }
-
-        public void setPoster(String poster) {
-            this.poster = poster;
-        }
-
-        public int getType() {
-            return type;
-        }
-
-        public void setType(int type) {
-            this.type = type;
-        }
-
-        public String getUrl() {
-            return url;
-        }
-
-        public void setUrl(String url) {
-            this.url = url;
-        }
-
-        public String getStartFlag() {
-            return startFlag;
-        }
-
-        public void setStartFlag(String startFlag) {
-            this.startFlag = startFlag;
-        }
-    }
 }

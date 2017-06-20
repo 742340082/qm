@@ -4,37 +4,40 @@
 
     <style name="AppTheme" parent="@style/Theme.AppCompat.DayNight.NoActionBar">
         <!--<item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>-->
+        <!--android5.0以下打开关闭activity的动画-->
         <item name="android:windowAnimationStyle">@style/slide</item>
-
-
-        <item name="android:windowContentTransitions">true</item>
+        <!--android5.0打开activity的动画-->
         <item name="android:windowEnterTransition">@android:transition/slide_right</item>
         <item name="android:windowExitTransition">@android:transition/slide_right</item>
-        <item name="android:windowSharedElementEnterTransition">@android:transition/move</item>
-        <item name="android:windowSharedElementExitTransition">@android:transition/move</item>
-
-
-
         <item name="android:windowReturnTransition">@android:transition/slide_right</item>
         <item name="android:windowReenterTransition">@android:transition/slide_right</item>
-        <item name="android:windowSharedElementReturnTransition">@android:transition/move</item>
-        <item name="android:windowSharedElementReenterTransition">@android:transition/move</item>
 
+
+        <!--android5.0共享元素打开activity的动画-->
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/qm_move</item>
+        <item name="android:windowSharedElementExitTransition">@transition/qm_move</item>
+        <item name="android:windowSharedElementReturnTransition">@transition/qm_move</item>
+        <item name="android:windowSharedElementReenterTransition">@transition/qm_move</item>
+
+        <!--默认menu的字体颜色-->
         <item name="actionMenuTextAppearance">@style/MenuTextStyle</item>
         <item name="actionMenuTextColor">@color/white</item>
 
+        <!--默认设置打开应用的水平方式-->
         <item name="android:screenOrientation">portrait</item>
 
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryDark">@color/blue</item>
         <item name="colorAccent">@color/yellow</item>
     </style>
+    <!--打开和关闭activity的动画-->
     <style name="slide" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
         <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
     </style>
+    <!--splash主题-->
     <style name="SplashTheme" parent="@style/AppTheme">
-        <item name="android:windowBackground">@drawable/splash</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
         <!--<item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>-->
@@ -164,7 +167,5 @@
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
-
-
 
 </resources>
