@@ -8,8 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -40,9 +40,9 @@ import butterknife.BindView;
 public class ZhiHuFragment
         extends BaseFragmnet
         implements ZhiHuView, BaseQuickAdapter.RequestLoadMoreListener {
-    @BindView(R2.id.fab)
+    @BindView(R2.id.fab_news)
     FloatingActionButton fab;
-    @BindView(R2.id.new_fl_container)
+    @BindView(R2.id.fl_news_container)
     FrameLayout new_fl_container;
     @BindView(R2.id.rv_news_content)
     RecyclerView rv_news_content;
@@ -54,7 +54,7 @@ public class ZhiHuFragment
     private StatusLayoutManager mStatusLayoutManager;
     private List<ZhihuStorie> storieS;
     private Handler mHandler;
-    private static long TOP_NEWS_CHANGE_TIME=3000;
+    private static long TOP_NEWS_CHANGE_TIME = 3000;
 
     @Override
     public void click(View paramView, int paramInt) {
@@ -62,7 +62,7 @@ public class ZhiHuFragment
 
     @Override
     public int getLayoutResId() {
-        return R.layout.news_content;
+        return R.layout.fragment_news_content;
     }
 
     @Override
@@ -234,26 +234,28 @@ public class ZhiHuFragment
 
     private void initTop(final List<ZhihuTopStorie> topStories) {
 
-     final    ViewPager viewPager = new ViewPager(getContext());
-        viewPager.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, UIUtils.dip2px(200)));
+
+        View headerView = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_news_content_header,
+                new FrameLayout(UIUtils.getContext()));
+        final ViewPager vp_news = (ViewPager) headerView.findViewById(R.id.vp_news);
+
         NewZhiHuTabAdapter zhiHuTabAdapter = new NewZhiHuTabAdapter(getContext());
         zhiHuTabAdapter.addTabPage(topStories);
-        viewPager.setAdapter(zhiHuTabAdapter);
-
+        vp_news.setAdapter(zhiHuTabAdapter);
         if (mHandler == null) {
 
             mHandler = new Handler() {
 
                 @Override
                 public void handleMessage(Message msg) {
-                    int item = viewPager.getCurrentItem();
+                    int item = vp_news.getCurrentItem();
                     if (item < topStories.size() - 1) {
                         item++;
                     } else {// 判断是否到达最后一个
                         item = 0;
                     }
                     // Log.d(TAG, "轮播条:" + item);
-                    viewPager.setCurrentItem(item);
+                    vp_news.setCurrentItem(item);
                     mHandler.sendMessageDelayed(Message.obtain(),
                             TOP_NEWS_CHANGE_TIME);
                 }
@@ -261,6 +263,6 @@ public class ZhiHuFragment
         }
         mHandler.sendMessageDelayed(Message.obtain(), TOP_NEWS_CHANGE_TIME);// 延时4s发送消息
 
-        zhihuAdapter.addHeaderView(viewPager, 0, LinearLayout.VERTICAL);
+        zhihuAdapter.addHeaderView(headerView, 0, LinearLayout.VERTICAL);
     }
 }

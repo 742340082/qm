@@ -15,8 +15,8 @@ public class ConfigSdk {
 
     public static final String SDK_SAVE_CUSTOM_MAP_CONFIG_PATH= File.separator + "data" + File.separator + "data" + File.separator + UIUtils.getContext().getPackageName() + File.separator+"mapcustomconfig.json";
     ///////////////////////////////////////////////////mob短信验证/////////////////////////////////////////////////////////////
-    public static final String SDK_SMSSDK_KEY="1cff7c6d43440";
-    public static final String SDK_SMSSDK_SECRET="d2fea462ef7e8194f8a4a60fb063e96f";
+    public static final String SDK_SMSSDK_KEY="1ee050647e52a";
+    public static final String SDK_SMSSDK_SECRET="d0e5a287018a11db6c76aeddc8dc1dc0";
 
     //////////////////////////////////////////////支付宝///////////////////////////////////////////////////////////
     //支付宝回到地址

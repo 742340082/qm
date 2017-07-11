@@ -59,6 +59,8 @@ public class ConfigStateCodeUtil {
             case ConfigStateCode.STATE_ABNORMAL_SERVER:
                 ToastUtils.makeShowToast(UIUtils.getContext(), "服务器异常");
                 break;
+            default:
+                ToastUtils.makeShowToast(UIUtils.getContext(), "未知错误");
         }
     }
 

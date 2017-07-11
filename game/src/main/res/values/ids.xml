@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="ll_game_recommend" type="id" />
-    <item name="srl_game_recommend" type="id" />
-    <item name="rv_recommend" type="id" />
+    <item name="ll_game_index" type="id" />
+    <item name="srl_game_index" type="id" />
+    <item name="rv_game_index" type="id" />
     <item name="srl_game_category" type="id" />
     <item name="vp_game" type="id" />
     <item name="iv_game_top_icon1" type="id" />
@@ -10,41 +10,37 @@
     <item name="iv_game_category_icon" type="id" />
     <item name="iv_game_category_title" type="id" />
     <item name="tv_game_desc" type="id" />
-    <item name="tv_download_count" type="id" />
-    <item name="tv_download_size" type="id" />
-    <item name="ll_subject" type="id" />
-    <item name="iv_subject_tag_icon3" type="id" />
-    <item name="iv_subject_tag_icon4" type="id" />
+    <item name="tv_game_download_count" type="id" />
+    <item name="tv_game_download_size" type="id" />
+    <item name="ll_game_subject_tags" type="id" />
+    <item name="iv_game_subject_tag_icon3" type="id" />
+    <item name="iv_game_subject_tag_icon4" type="id" />
     <item name="ll_game" type="id" />
-    <item name="tv_subject_title" type="id" />
-    <item name="ll_subject_game" type="id" />
-    <item name="iv_subject_tag_icon2" type="id" />
-    <item name="iv_subject_tag_title2" type="id" />
-    <item name="iv_subject_tag_title3" type="id" />
-    <item name="ll_subject_desc" type="id" />
-    <item name="tv_look_amny" type="id" />
-    <item name="iv_subject_icon" type="id" />
-    <item name="iv_subject_tag_game_icon1" type="id" />
+    <item name="tv_game_subject_title" type="id" />
+    <item name="iv_game_subject_tag_icon2" type="id" />
+    <item name="iv_game_subject_tag_title2" type="id" />
+    <item name="iv_game_subject_tag_title3" type="id" />
+    <item name="ll_game_subject_desc" type="id" />
+    <item name="tv_game_look_amny" type="id" />
+    <item name="iv_game_subject_icon" type="id" />
+    <item name="iv_game_subject_tag_game_icon1" type="id" />
     <item name="tv_game_category_title1" type="id" />
-    <item name="tv_download_title1" type="id" />
-    <item name="iv_subject_tag_game_icon2" type="id" />
+    <item name="tv_game_download_title1" type="id" />
+    <item name="iv_game_subject_tag_game_icon2" type="id" />
     <item name="tv_game_category_title2" type="id" />
-    <item name="tv_download_title2" type="id" />
-    <item name="iv_subject_tag_game_icon3" type="id" />
+    <item name="tv_game_download_title2" type="id" />
+    <item name="iv_game_subject_tag_game_icon3" type="id" />
     <item name="tv_game_category_title3" type="id" />
-    <item name="tv_download_title3" type="id" />
-    <item name="iv_subject_tag_game_icon4" type="id" />
+    <item name="tv_game_download_title3" type="id" />
     <item name="tv_game_category_title4" type="id" />
     <item name="ll_game_category" type="id" />
-    <item name="rv_category" type="id" />
-    <item name="tv_download_title4" type="id" />
-    <item name="tv_subject_desc" type="id" />
+    <item name="rv_game_category" type="id" />
+    <item name="tv_game_download_title4" type="id" />
+    <item name="tv_game_subject_desc" type="id" />
     <item name="tb_game" type="id" />
-    <item name="imageView" type="id" />
     <item name="iv_subject_tag_title4" type="id" />
     <item name="iv_game_icon" type="id" />
-    <item name="iv_category_icon" type="id" />
-    <item name="tv_tag" type="id" />
+    <item name="tv_game_tag" type="id" />
     <item name="vp_game_top" type="id" />
     <item name="tl_game_top" type="id" />
     <item name="ll_game_top" type="id" />
@@ -58,17 +54,17 @@
     <item name="tv_game_top_tag_size" type="id" />
     <item name="tv_game_top_type" type="id" />
     <item name="iv_game_top_icon" type="id" />
-    <item name="btn_download" type="id" />
+    <item name="btn_game_download" type="id" />
     <item name="rv_game_gamenews" type="id" />
     <item name="ll_game_gamenews" type="id" />
-    <item name="iv_gamenews_icon" type="id" />
-    <item name="tv_gamenews_title" type="id" />
-    <item name="tv_gamenews_publishtime" type="id" />
+    <item name="iv_game_gamenews_icon" type="id" />
+    <item name="tv_game_gamenews_title" type="id" />
+    <item name="tv_game_gamenews_publishtime" type="id" />
     <item name="srl_game_gamenews" type="id" />
-    <item name="tv_gamenews_desc" type="id" />
+    <item name="tv_game_gamenews_desc" type="id" />
     <item name="vp_game_gamenews" type="id" />
-    <item name="tv_selcted_size" type="id" />
-    <item name="iv_selcted_size_icon" type="id" />
+    <item name="tv_game_selcted_size" type="id" />
+    <item name="iv_game_selcted_size_icon" type="id" />
     <item name="tl_game_category_detail" type="id" />
     <item name="vp_game_category_detail" type="id" />
     <item name="ll_game_category_detail" type="id" />
@@ -81,26 +77,37 @@
     <item name="rl_game_category_header" type="id" />
     <item name="iv_game_category_header_icon" type="id" />
     <item name="iv_game_category_header_title" type="id" />
-    <item name="rl_gamenews_header" type="id" />
-    <item name="rl_index_header" type="id" />
-    <item name="iv_index_category_icon" type="id" />
-    <item name="iv_index_category_title" type="id" />
-    <item name="toolbar" type="id" />
+    <item name="rl_game_gamenews_header" type="id" />
+    <item name="rl_game_index_header" type="id" />
+    <item name="iv_game_index_category_icon" type="id" />
+    <item name="iv_game_index_category_title" type="id" />
     <item name="tv_game_search" type="id" />
-    <item name="menu_download" type="id" />
-    <item name="menu_search" type="id" />
-    <item name="iv_search_tag_icon" type="id" />
-    <item name="tv_search_tag_title" type="id" />
-    <item name="btn_switch_search" type="id" />
-    <item name="stm_search_tags" type="id" />
+    <item name="menu_game_download" type="id" />
+    <item name="menu_game_search" type="id" />
+    <item name="iv_game_search_tag_icon" type="id" />
+    <item name="tv_game_search_tag_title" type="id" />
+    <item name="btn_game_switch_search" type="id" />
+    <item name="stm_game_search_tags" type="id" />
     <item name="et_game_search" type="id" />
     <item name="ll_game_search" type="id" />
     <item name="rv_game_small_search" type="id" />
-    <item name="tv_small_search_title" type="id" />
-    <item name="ll_small_search" type="id" />
+    <item name="tv_game_small_search_title" type="id" />
+    <item name="ll_game_small_search" type="id" />
     <item name="rl_game_top" type="id" />
     <item name="rv_game_search" type="id" />
     <item name="rl_game_search" type="id" />
     <item name="srl_game_search" type="id" />
     <item name="iv_game_search" type="id" />
+    <item name="ll_game_download" type="id" />
+    <item name="pb_game_download" type="id" />
+    <item name="tv_game_download_state" type="id" />
+    <item name="pb_game_download_progress" type="id" />
+    <item name="tv_game_download_speed" type="id" />
+    <item name="ll_game_subject" type="id" />
+    <item name="tv_game_vedio" type="id" />
+    <item name="tv_game_version" type="id" />
+    <item name="tv_game_district" type="id" />
+    <item name="tv_game_language" type="id" />
+    <item name="ll_game_detail_pic" type="id" />
+    <item name="tv_game_detail_descinfo" type="id" />
 </resources>

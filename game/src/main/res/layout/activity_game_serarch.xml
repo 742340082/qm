@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"
         android:background="@color/blue"
-        app:contentInsetStart="0dp">
+        app:contentInsetStart="8dp">
 
         <ImageView
             android:id="@id/iv_game_search"
@@ -22,8 +22,9 @@
         <com.baselibrary.view.ClearEditText
             android:id="@id/et_game_search"
             android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/qm20dp"
             android:layout_height="@dimen/qm30dp"
-            android:background="@drawable/shape_white_round_bg"
+            android:background="@drawable/bg_round_white_shape"
             android:drawablePadding="@dimen/qm5dp"
             android:drawableRight="@drawable/icon_clear"
             android:focusable="true"
@@ -36,6 +37,7 @@
             android:paddingRight="@dimen/qm10dp"
             android:textSize="@dimen/titleSize"
             android:transitionName="共享搜索" />
+
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
@@ -44,26 +46,25 @@
         android:layout_height="match_parent">
 
         <com.baselibrary.view.shake.StellarMap
-            android:id="@id/stm_search_tags"
+            android:id="@id/stm_game_search_tags"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qm400dp"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_marginRight="@dimen/qm10dp"></com.baselibrary.view.shake.StellarMap>
 
         <Button
-            android:id="@id/btn_switch_search"
+            android:id="@id/btn_game_switch_search"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qm40dp"
-            android:layout_below="@+id/stm_search_tags"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="bottom"
+            android:layout_below="@+id/stm_game_search_tags"
+            android:layout_marginTop="@dimen/qm10dp"
+            android:background="@drawable/selector_bg_green_green"
+            android:text="@string/switch_game_tag"
             android:layout_marginLeft="@dimen/qm20dp"
             android:layout_marginRight="@dimen/qm20dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/green"
-            android:text="@string/switch_game_tag"
             android:textColor="@color/white"
-            android:textSize="@dimen/titleSize" />
+            android:textSize="@dimen/titleSize"
+            android:layout_centerHorizontal="true" />
 
 
 

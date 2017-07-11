@@ -18,10 +18,10 @@
             android:paddingLeft="@dimen/qm10dp"
             android:drawablePadding="@dimen/qm5dp"
             android:transitionName="共享搜索"
-            android:drawableLeft="@drawable/icon_search"
+            android:drawableLeft="@drawable/icon_gray_search"
             android:gravity="center_vertical"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/shape_white_round_bg"
+            android:background="@drawable/bg_round_white_shape"
             android:layout_height="@dimen/qm30dp" />
     </android.support.v7.widget.Toolbar>
     <android.support.design.widget.TabLayout

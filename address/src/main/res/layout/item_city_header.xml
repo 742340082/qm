@@ -3,10 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="@dimen/qm10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:foreground="?android:selectableItemBackground"
-    app:cardBackgroundColor="@color/white"
-    app:cardElevation="@dimen/qm2dp"
+    android:background="@drawable/selector_bg_gray_white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -14,7 +11,7 @@
         android:layout_height="@dimen/qm40dp">
 
         <TextView
-            android:id="@id/tv_city"
+            android:id="@id/tv_address_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -24,7 +21,7 @@
             android:textSize="@dimen/titleSize" />
 
         <LinearLayout
-            android:id="@id/ll_getaddress_reset_location"
+            android:id="@id/ll_address_reset_location"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
@@ -32,18 +29,18 @@
             android:gravity="center_vertical">
 
             <ProgressBar
-                android:id="@id/pb_getaddress_reset_location"
+                android:id="@id/pb_address_reset_location"
                 android:layout_width="@dimen/qm20dp"
                 android:layout_height="@dimen/qm20dp"
                 android:layout_marginRight="@dimen/qm5dp"
                 android:visibility="gone" />
 
             <ImageView
-                android:id="@id/iv_getaddress_reset_location"
+                android:id="@id/iv_address_reset_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/qm5dp"
-                android:src="@drawable/icon_resetlocation"
+                android:src="@drawable/icon_address_resetlocation"
                 android:visibility="visible" />
 
             <TextView

@@ -47,13 +47,16 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     LinearLayout rl_new_nsw_container;
     @BindView(R2.id.pb_news)
     ProgressBar pb_news;
-    @BindView(R2.id.ctbl_main)
-    CollapsingToolbarLayout ctbl_main;
+    @BindView(R2.id.ctl_news)
+    CollapsingToolbarLayout ctl_news;
     @BindView(R2.id.iv_news_item_icon)
     ImageView iv_news_item_icon;
 
     private NewsDetailPresenter mPresenter;
     private StatusLayoutManager mStatusLayoutManager;
+    private GuokeDetail mGuokeDetail;
+    private DoubanDetail mDoubanDetail;
+    private ZhiHuDetail mZhiHuDetail;
 
     @Override
     public int getLayoutResId() {
@@ -158,6 +161,15 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mZhiHuDetail!=null||mDoubanDetail!=null||mGuokeDetail!=null)
+        {
+            super.onBackPressed();
+        }
+
+    }
+
     private void refreshData() {
         Intent intent = getIntent();
         int newsType = intent.getIntExtra(ConfigNews.NEWS_SEND_NEWS_TYPE, -1);
@@ -169,11 +181,11 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
 
     // to change the title's font size of toolbar layout
     private void setCollapsingToolbarLayoutTitle(String title) {
-        ctbl_main.setTitle(title);
-        ctbl_main.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
-        ctbl_main.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
-        ctbl_main.setExpandedTitleTextAppearance(R.style.ExpandedAppBarPlus1);
-        ctbl_main.setCollapsedTitleTextAppearance(R.style.CollapsedAppBarPlus1);
+        ctl_news.setTitle(title);
+        ctl_news.setExpandedTitleTextAppearance(R.style.ExpandedAppBar);
+        ctl_news.setCollapsedTitleTextAppearance(R.style.CollapsedAppBar);
+        ctl_news.setExpandedTitleTextAppearance(R.style.ExpandedAppBarPlus1);
+        ctl_news.setCollapsedTitleTextAppearance(R.style.CollapsedAppBarPlus1);
     }
 
 
@@ -206,6 +218,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
 
     @Override
     public void success(GuokeDetail guokeDetail) {
+        mGuokeDetail = guokeDetail;
 
         Glide.with(this)
                 .load(guokeDetail.getImage())
@@ -219,35 +232,41 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
     }
 
     @Override
-    public void success(ZhiHuDetail data) {
-
-        Glide.with(this)
-                .load(data.getImage())
-                .asBitmap()
-                .placeholder(R.drawable.lufei)
-                .centerCrop()
-                .error(R.drawable.lufei)
-                .into(iv_news_item_icon);
-        setCollapsingToolbarLayoutTitle(data.getTitle());
-        if (data.getBody() == null) {
-            wv_news.loadUrl(data.getShare_url());
-        } else {
-            wv_news.loadDataWithBaseURL("x-data://base", mPresenter.convertZhihuContent(data.getBody()), "text/html", "utf-8", null);
-        }
-
+    public void success(ZhiHuDetail zhiHuDetail) {
+        mZhiHuDetail = zhiHuDetail;
+            setCollapsingToolbarLayoutTitle(zhiHuDetail.getTitle());
+            if (zhiHuDetail.getBody() == null) {
+                wv_news.loadUrl(zhiHuDetail.getShare_url());
+            } else {
+                wv_news.loadDataWithBaseURL("x-data://base", mPresenter.convertZhihuContent(zhiHuDetail.getBody()), "text/html", "utf-8", null);
+            }
+                Glide.with(this)
+                        .load(zhiHuDetail.getImage())
+                        .asBitmap()
+                        .placeholder(R.drawable.lufei)
+                        .centerCrop()
+                        .error(R.drawable.lufei)
+                        .into(iv_news_item_icon);
     }
 
     @Override
     public void success(DoubanDetail doubanDetail) {
-        Glide.with(this)
-                .load(doubanDetail.getLarge_url())
-                .asBitmap()
-                .placeholder(R.drawable.lufei)
-                .centerCrop()
-                .error(R.drawable.lufei)
-                .into(iv_news_item_icon);
-        setCollapsingToolbarLayoutTitle(doubanDetail.getTitle());
-        wv_news.loadDataWithBaseURL("x-data://base", mPresenter.convertDoubanContent(doubanDetail), "text/html", "utf-8", null);
+        mDoubanDetail = doubanDetail;
+        if (mDoubanDetail!=null) {
+            Glide.with(this)
+                    .load(doubanDetail.getLarge_url())
+                    .asBitmap()
+                    .placeholder(R.drawable.lufei)
+                    .centerCrop()
+                    .error(R.drawable.lufei)
+                    .into(iv_news_item_icon);
+            setCollapsingToolbarLayoutTitle(doubanDetail.getTitle());
+            wv_news.loadDataWithBaseURL("x-data://base", mPresenter.convertDoubanContent(doubanDetail), "text/html", "utf-8", null);
+        }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

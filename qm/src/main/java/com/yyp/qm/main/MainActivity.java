@@ -42,8 +42,10 @@ public class MainActivity
 
     @Override
     public void initView() {
+
+
         if (Build.VERSION.SDK_INT >= 21) {
-            hideToobarAnd(UIUtils.getColor(R.color.blue), UIUtils.getColor(R.color.blue), true, false);
+            hideToobarAnd(UIUtils.getColor(R.color.blue), UIUtils.getColor(R.color.transparent), true, false);
         }
         initBottomMenu();
     }

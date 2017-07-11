@@ -15,7 +15,7 @@
     <TextView
         android:id="@id/tv_tab_item"
         android:text="很好"
-        android:textColor="@color/btn_boder_color"
+        android:textColor="@color/selector_color_blue_black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

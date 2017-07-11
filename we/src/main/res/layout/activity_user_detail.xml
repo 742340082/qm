@@ -42,7 +42,7 @@
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm100dp"
-                        android:background="@drawable/selector_item_selected_bg">
+                        android:background="@drawable/selector_bg_gray_white">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@id/civ_user_icon"
@@ -60,14 +60,16 @@
                         android:layout_height="@dimen/qm50dp"
 
 
-                        android:background="@drawable/selector_item_selected_bg"
+                        android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
                         <TextView
                             style="@style/Tv14spBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignBaseline="@id/tv_user_account"
                             android:layout_alignBottom="@id/tv_user_account"
-                            android:layout_alignParentStart="true"
+                            android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:layout_marginStart="@dimen/qm10dp"
                             android:gravity="center_vertical"
@@ -76,6 +78,8 @@
                         <TextView
                             android:id="@id/tv_user_account"
                             style="@style/Tv14spGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="10.0dip"
                             android:gravity="center_vertical"
@@ -90,12 +94,15 @@
                         android:layout_height="@dimen/qm50dp"
 
 
-                        android:background="@drawable/selector_item_selected_bg"
+                        android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
                         <TextView
                             android:id="@id/textView3"
                             style="@style/Tv14spBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:gravity="center_vertical"
@@ -104,7 +111,9 @@
                         <TextView
                             android:id="@id/tv_user_name"
                             style="@style/Tv14spGray"
-                            android:layout_alignParentEnd="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
                             android:layout_alignTop="@id/textView3"
                             android:layout_marginEnd="@dimen/qm10dp"
                             android:layout_marginRight="@dimen/qm10dp"
@@ -127,7 +136,7 @@
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@drawable/selector_item_selected_bg"
+                        android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
                         <TextView
@@ -144,14 +153,16 @@
                         android:id="@id/rl_user_telephone"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@drawable/selector_item_selected_bg"
+                        android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
                         <TextView
                             style="@style/Tv14spBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
-                            android:drawableLeft="@drawable/icon_phone"
+                            android:drawableLeft="@drawable/icon_we_phone"
                             android:drawablePadding="@dimen/qm10dp"
                             android:gravity="center_vertical"
                             android:text="@string/user_detail_telephone" />
@@ -159,11 +170,13 @@
                         <TextView
                             android:id="@id/tv_user_telephone"
                             style="@style/Tv14spGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/qm10dp"
                             android:gravity="center_vertical"
                             android:text="@string/user_third_bind"
-                            android:textColor="@color/user_detail_bind_color" />
+                            android:textColor="@color/selector_color_blue_graydeep" />
                     </RelativeLayout>
 
                     <include layout="@layout/cut_horizontal_apart" />
@@ -173,11 +186,13 @@
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
 
-                        android:background="@drawable/selector_item_selected_bg"
+                        android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
                         <TextView
                             style="@style/Tv14spBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:drawableLeft="@drawable/icon_we_weibo"
@@ -188,11 +203,13 @@
                         <TextView
                             android:id="@id/tv_user_weibo"
                             style="@style/Tv14spGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/qm10dp"
                             android:gravity="center_vertical"
                             android:text="@string/user_third_bind"
-                            android:textColor="@color/user_detail_bind_color" />
+                            android:textColor="@color/selector_color_blue_graydeep" />
                     </RelativeLayout>
 
                     <include layout="@layout/cut_horizontal_apart" />
@@ -201,11 +218,13 @@
                         android:id="@id/rl_user_qq"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@drawable/selector_item_selected_bg"
+                        android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
                         <TextView
                             style="@style/Tv14spBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:drawableLeft="@drawable/icon_we_qq"
@@ -216,11 +235,13 @@
                         <TextView
                             android:id="@id/tv_user_qq"
                             style="@style/Tv14spGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/qm10dp"
                             android:gravity="center_vertical"
                             android:text="@string/user_third_bind"
-                            android:textColor="@color/user_detail_bind_color" />
+                            android:textColor="@color/selector_color_blue_graydeep" />
                     </RelativeLayout>
 
                 </LinearLayout>
@@ -252,11 +273,13 @@
                         android:layout_height="@dimen/qm50dp"
 
 
-                        android:background="@drawable/selector_item_selected_bg"
+                        android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
                         <TextView
                             style="@style/Tv14spBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:drawablePadding="@dimen/qm10dp"
@@ -266,6 +289,8 @@
                         <TextView
                             android:id="@id/tv_user_login_password"
                             style="@style/Tv14spGray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="@dimen/qm10dp"
                             android:gravity="center_vertical"
@@ -280,11 +305,13 @@
                         android:id="@id/rl_user_min_money_pay"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@drawable/selector_item_selected_bg"
+                        android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
                         <TextView
                             style="@style/Tv14spBlack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:layout_marginRight="@dimen/qm10dp"

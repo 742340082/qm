@@ -7,10 +7,9 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@id/toolbar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbarHeight"
         android:background="@color/blue"
-        android:minHeight="?actionBarSize"
         app:navigationIcon="@drawable/arrow_left"
         app:title="@string/user_receive_address"
         app:titleTextAppearance="@style/Toolbar.TitleText"
@@ -36,7 +35,7 @@
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:id="@id/rl_add_user_receive_address"
-            android:background="@drawable/selector_item_selected_bg">
+            android:background="@drawable/selector_bg_gray_white">
             <include layout="@layout/cut_horizontal_apart"/>
             <LinearLayout
                 android:layout_width="wrap_content"

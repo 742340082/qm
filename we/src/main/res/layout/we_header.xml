@@ -13,7 +13,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/header_bg">
+        android:fitsSystemWindows="true"
+        android:background="@color/blue">
 
         <TextView
             android:id="@id/tv_header"
@@ -22,7 +23,6 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@id/civ_user_icon"
-            style="@android:style/Theme.Material"
             android:layout_width="@dimen/qm70dp"
             android:layout_height="@dimen/qm70dp"
             android:layout_centerVertical="true"
@@ -36,11 +36,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/civ_user_icon">
+            android:layout_toRightOf="@id/civ_user_icon">
 
             <TextView
                 android:id="@id/tv_user_name"
                 style="@style/Tv14spWhite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/user_name"
                 android:ellipsize="end"
                 android:maxEms="7"
@@ -56,7 +58,7 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/titleSize"
                 android:maxLines="1"
-                android:drawableLeft="@drawable/icon_phone"
+                android:drawableLeft="@drawable/icon_we_phone"
                 android:gravity="center_vertical"
                 android:text="@string/user_telephone"/>
         </RelativeLayout>

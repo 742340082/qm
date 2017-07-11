@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/toolbarHeight"
+        android:background="@color/blue"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/arrow_left" />
+
+            <LinearLayout
+                android:id="@id/ll_address_city"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@id/tv_address_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/loading"
+                    android:ellipsize="end"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/titleSize" />
+
+                <ImageView
+                    android:id="@id/iv_address_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/qm3dp"
+                    android:src="@drawable/arrow_up" />
+            </LinearLayout>
+
+
+            <com.baselibrary.view.ClearEditText
+                android:id="@id/et_address_search"
+                android:layout_width="@dimen/qm0dp"
+                android:layout_height="@dimen/qm30dp"
+                android:layout_marginLeft="@dimen/qm10dp"
+                android:layout_marginRight="@dimen/qm10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_round_white_shape"
+                android:drawableLeft="@drawable/icon_gray_search"
+                android:drawablePadding="@dimen/qm5dp"
+                android:hint="@string/receiveaddress_address"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/qm10dp"
+                android:paddingRight="@dimen/qm5dp"
+                android:layout_marginTop="@dimen/qm10dp"
+                android:layout_marginBottom="@dimen/qm10dp"
+                android:ellipsize="end"
+                android:textColorHint="@color/graydeep"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textSize="@dimen/titleSize" />
+            <TextView
+                android:id="@id/tv_address_cancle_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/qm5dp"
+                android:layout_marginRight="@dimen/qm5dp"
+                android:text="@string/cancle"
+                android:textColor="@color/white"
+                android:textSize="@dimen/titleSize"
+                android:visibility="gone" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@id/rl_address"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qm200dp">
+
+                <com.amap.api.maps.MapView
+                    android:id="@id/mv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ImageButton
+                    android:id="@id/ib_address_location"
+                    android:layout_width="@dimen/qm30dp"
+                    android:layout_height="@dimen/qm30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="@dimen/qm10dp"
+                    android:layout_marginRight="@dimen/qm10dp"
+                    android:background="@drawable/border_blue_bg_white"
+                    android:src="@drawable/icon_address_location"
+                    android:text="Location" />
+            </RelativeLayout>
+
+            <android.support.design.widget.TabLayout
+                android:id="@id/tl_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/guideBarHeight"
+                android:background="@color/blue"
+                app:tabGravity="fill"
+                app:tabSelectedTextColor="@color/yellow"
+                app:tabIndicatorColor="@color/blue"
+                app:tabTextColor="@color/white" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@id/vp_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/ll_address_search_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@id/rv_address_search_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@id/ll_address_city_list"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@id/rl_address_city_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@id/rv_address_city_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <com.baselibrary.view.QuickIndexBar
+                    android:layout_width="@dimen/qm20dp"
+                    android:clickable="true"
+                    android:id="@id/qi_address"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/qm70dp"
+                    android:layout_marginBottom="@dimen/qm70dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_centerInParent="true"
+                    android:id="@id/tv_address_quickindex_title"
+                    android:layout_width="@dimen/qm80dp"
+                    android:layout_height="@dimen/qm80dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/guideViewSize"
+                    android:visibility="invisible"
+                    android:text="A"
+                    android:textColor="#fff"
+                    android:background="@drawable/bg_blue_shape"
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

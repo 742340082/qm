@@ -164,9 +164,9 @@ public class InnerBrowserActivity extends BaseActivity {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             onBackPressed();
-        } else if (id == R.id.action_open_in_browser) {
+        } else if (id == R.id.menu_news_open_browser) {
             startActivity(new Intent(Intent.ACTION_VIEW).setData(Uri.parse(wv_news.getUrl())));
-        } else if (id == R.id.action_refresh) {
+        } else if (id == R.id.menu_refresh) {
             wv_news.reload();
         }
         return super.onOptionsItemSelected(item);

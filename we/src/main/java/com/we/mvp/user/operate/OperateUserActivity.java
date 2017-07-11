@@ -24,7 +24,6 @@ import com.baselibrary.view.LoadingDialog;
 import com.we.R;
 import com.we.R2;
 import com.we.config.ConfigUser;
-import com.we.mvp.user.UserActivity;
 import com.we.mvp.user.login.modle.QQUserInfo;
 import com.we.mvp.user.login.modle.WeiboUserInfo;
 import com.we.mvp.user.modle.User;
@@ -88,9 +87,10 @@ public class OperateUserActivity
             }
         }).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Integer>() {
             Disposable mDisposable;
+
             public void onComplete() {
-              tv_obtain_code.setText("获取验证码");
-              setCodeEnabled(true);
+                tv_obtain_code.setText("获取验证码");
+                setCodeEnabled(true);
                 ll_voice_content.setVisibility(View.VISIBLE);
             }
 
@@ -99,17 +99,16 @@ public class OperateUserActivity
             }
 
             public void onNext(Integer paramAnonymousInteger) {
-                if (isBindTelephone)
-                {
-                    isBindTelephone=false;
+                if (isBindTelephone) {
+                    isBindTelephone = false;
                     mDisposable.dispose();
-                }else {
+                } else {
                     OperateUserActivity.this.tv_obtain_code.setText("剩余" + paramAnonymousInteger + "s");
                 }
             }
 
             public void onSubscribe(Disposable disposable) {
-                mDisposable=disposable;
+                mDisposable = disposable;
             }
         });
     }
@@ -202,11 +201,10 @@ public class OperateUserActivity
             mTelephone = String.valueOf(intent.getLongExtra(ConfigUser.USER_TELEPHONE, -1l));
             et_user_telephone.setText(mTelephone);
         }
-        mPreence.initMobSms(mLoginType,mRegistType,mUpdateType,mTelephone);
-        if(mUpdateType == -1&&mRegistType == -1&&mLoginType == -1)
-        {
+        mPreence.initMobSms(mLoginType, mRegistType, mUpdateType, mTelephone);
+        if (mUpdateType == -1 && mRegistType == -1 && mLoginType == -1) {
             confirmationJudge();
-            isBindTelephone=false;
+            isBindTelephone = false;
             return;
         }
     }
@@ -228,7 +226,7 @@ public class OperateUserActivity
 
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 String phone = OperateUserActivity.this.et_user_telephone.getText().toString().trim();
-                String telephone = phone.replace(" ","");
+                String telephone = phone.replace(" ", "");
                 if (!tv_obtain_code.getText().toString().contains("s")) {
                     if ((telephone.startsWith("1")) && (telephone.length() == 11)) {
                         tv_obtain_code.setEnabled(true);
@@ -241,7 +239,6 @@ public class OperateUserActivity
     }
 
 
-
     @Override
     public void initView() {
         setSupportActionBar(this.toolbar);
@@ -252,8 +249,7 @@ public class OperateUserActivity
 
     @Override
     public void onDestroy() {
-        if(mPreence!=null)
-        {
+        if (mPreence != null) {
             mPreence.destroyMobSms();
         }
         super.onDestroy();
@@ -267,21 +263,22 @@ public class OperateUserActivity
     @Override
     public void success(List<User> data) {
         mDialog.dismiss();
-        killActivity(UserActivity.class);
-        if (mUpdateType != -1) {
-
-        } else if (mLoginType != -1) {
-        } else if (mRegistType != -1) {
-        } else {
-            ToastUtils.makeShowToast(UIUtils.getContext(), "绑定成功");
+        if (mLoginType != -1) {
+            setResult(ConfigStateCode.RESULT_LOGIN_SUCCESS);
+            onBackPressed();
+        }else {
+            if (mUpdateType != -1) {
+            } else if (mRegistType != -1) {
+            } else {
+                ToastUtils.makeShowToast(UIUtils.getContext(), "绑定成功");
+            }
+            onBackPressed();
         }
-
-        onBackPressed();
     }
 
     @Override
     public void confirmationJudge() {
-        isBindTelephone=true;
+        isBindTelephone = true;
         mRegistType = -1;
         mLoginType = -1;
         mUpdateType = -1;
@@ -289,11 +286,11 @@ public class OperateUserActivity
         et_user_telephone.setText("");
         et_user_code.setText("");
 
-        if (mPreence!=null) {
+        if (mPreence != null) {
             mPreence.destroyMobSms();
         }
 
-        mPreence.initMobSms(mLoginType,mRegistType,mUpdateType,mTelephone);
+        mPreence.initMobSms(mLoginType, mRegistType, mUpdateType, mTelephone);
         et_user_code.setVisibility(View.VISIBLE);
         et_user_telephone.setHint("请输入新手机号码");
         tv_obtain_code.setText(UIUtils.getString(R.string.get_code));
@@ -359,9 +356,9 @@ public class OperateUserActivity
     }
 
     @Override
-    public void error(int errorCode,String message) {
+    public void error(int errorCode, String message) {
         mDialog.dismiss();
-        if (errorCode!= ConfigStateCode.STAT_OTHER) {
+        if (errorCode != ConfigStateCode.STAT_OTHER) {
             ToastUtils.makeShowToast(this, message);
         }
 

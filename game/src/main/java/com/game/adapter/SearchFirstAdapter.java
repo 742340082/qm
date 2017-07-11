@@ -28,8 +28,8 @@ public class SearchFirstAdapter extends CommonShakeAdapter<GameSearchHotWord> {
 
     @Override
     protected void convert(GameSearchHotWord gameSearchHotWord, View view) {
-        ImageView iv_search_tag_icon = (ImageView) view.findViewById(R.id.iv_search_tag_icon);
-        TextView tv_search_tag_title = (TextView) view.findViewById(R.id.tv_search_tag_title);
+        ImageView iv_search_tag_icon = (ImageView) view.findViewById(R.id.iv_game_search_tag_icon);
+        TextView tv_search_tag_title = (TextView) view.findViewById(R.id.tv_game_search_tag_title);
 
         // 设置随机文字大小
         Random random = new Random();

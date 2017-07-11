@@ -111,7 +111,6 @@ public class UserLoginImpl
 
             public void onComplete(Object obj) {
                 QQUserInfo qqUserInfo = mGson.fromJson(obj.toString(), QQUserInfo.class);
-                tencent.logout(UIUtils.getContext());
                 isThirdRegist(qqUserInfo, null, ConfigUser.USER_QQ_LOGIN, ConfigUser.USER_QQ_REGIST);
             }
 

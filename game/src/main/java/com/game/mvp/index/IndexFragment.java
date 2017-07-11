@@ -36,12 +36,12 @@ import butterknife.BindView;
  */
 
 public class IndexFragment extends BaseFragmnet implements IndexView {
-    @BindView(R2.id.rv_recommend)
-    RecyclerView rv_recommend;
-    @BindView(R2.id.ll_game_recommend)
-    LinearLayout ll_game_recommend;
-    @BindView(R2.id.srl_game_recommend)
-    SwipeRefreshLayout srl_game_recommend;
+    @BindView(R2.id.rv_game_index)
+    RecyclerView rv_game_index;
+    @BindView(R2.id.ll_game_index)
+    LinearLayout ll_game_index;
+    @BindView(R2.id.srl_game_index)
+    SwipeRefreshLayout srl_game_index;
     private IndexPresenter presenter;
     private StatusLayoutManager mStatusLayoutManager;
     private List<AdListGame> dataS;
@@ -50,7 +50,7 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
 
     @Override
     public int getLayoutResId() {
-        return R.layout.fragement_recomend;
+        return R.layout.fragment_game_index;
     }
 
     @Override
@@ -74,12 +74,12 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
                     }
                 })
                 .build();
-        ll_game_recommend.addView(mStatusLayoutManager.getRootLayout(), ll_game_recommend.getChildCount() - 1);
+        ll_game_index.addView(mStatusLayoutManager.getRootLayout(), ll_game_index.getChildCount() - 1);
     }
 
     @Override
     public void initListener() {
-        srl_game_recommend.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        srl_game_index.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 presenter.initRecommendGame();
@@ -99,7 +99,7 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
         if (dataS == null) {
             mStatusLayoutManager.showLoading();
         } else {
-            srl_game_recommend.setRefreshing(true);
+            srl_game_index.setRefreshing(true);
         }
     }
 
@@ -107,7 +107,7 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
     public void success(List<AdListGame> data) {
         dataS = data;
         mStatusLayoutManager.showContent();
-        srl_game_recommend.setRefreshing(false);
+        srl_game_index.setRefreshing(false);
         recommendAdapter.addData(data);
         recommendAdapter.notifyDataSetChanged();
     }
@@ -117,10 +117,10 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
     public void initHeader(PosterBlock posterBlock) {
         recommendAdapter = new IndexAdapter(null);
         recommendAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
-        rv_recommend.setLayoutManager(new LinearLayoutManager(getContext()));
-        rv_recommend.setAdapter(recommendAdapter);
+        rv_game_index.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv_game_index.setAdapter(recommendAdapter);
 
-        View headView =  View.inflate(UIUtils.getContext(), R.layout.item_index_header, new FrameLayout(UIUtils.getContext()));
+        View headView =  View.inflate(UIUtils.getContext(), R.layout.item_game_index_header, new FrameLayout(UIUtils.getContext()));
 
         ImageView iv_game_top_icon1 = (ImageView) headView.findViewById(R.id.iv_game_top_icon1);
         ImageView iv_game_top_icon2 = (ImageView) headView.findViewById(R.id.iv_game_top_icon2);
@@ -136,8 +136,8 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
                 .into(iv_game_top_icon2);
 
         List<IndexRecBlock> recBlock = posterBlock.getRecBlock();
-        IndexHeaderAdapter indexHeaderAdapter = new IndexHeaderAdapter(R.layout.item_index_header_top,recBlock);
-        RecyclerView rl_index_header = (RecyclerView) headView.findViewById(R.id.rl_index_header);
+        IndexHeaderAdapter indexHeaderAdapter = new IndexHeaderAdapter(R.layout.item_game_index_header_top,recBlock);
+        RecyclerView rl_index_header = (RecyclerView) headView.findViewById(R.id.rl_game_index_header);
         rl_index_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(),4));
         rl_index_header.setAdapter(indexHeaderAdapter);
         recommendAdapter.addHeaderView(headView);

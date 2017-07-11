@@ -22,6 +22,6 @@ public class SmallSearchAdapter extends BaseQuickAdapter<Game,BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, Game item) {
-        helper.setText(R.id.tv_small_search_title,item.getAppname());
+        helper.setText(R.id.tv_game_small_search_title,item.getAppname());
     }
 }

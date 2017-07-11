@@ -21,11 +21,11 @@ import com.baselibrary.utils.UIUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.getaddress.R;
 import com.getaddress.R2;
-import com.getaddress.adapter.GetAddressAdapter;
+import com.getaddress.adapter.AddressAdapter;
 import com.getaddress.fragment.presenter.TotalPresenter;
 import com.getaddress.fragment.view.TotalView;
-import com.getaddress.modle.GetAddressPositionAddress;
-import com.getaddress.modle.GetAddressReturnAddress;
+import com.getaddress.modle.AddressPositionAddress;
+import com.getaddress.modle.AddressReturnAddress;
 
 import butterknife.BindView;
 import io.reactivex.functions.Consumer;
@@ -35,13 +35,13 @@ import io.reactivex.functions.Consumer;
  */
 
 public class TotalFragment extends BaseFragmnet implements TotalView, OnRetryListener, BaseQuickAdapter.RequestLoadMoreListener {
-    @BindView(R2.id.rv_getaddress_tab)
-    RecyclerView rv_getaddress_tab;
-    @BindView(R2.id.ll_getaddress_tab)
-    LinearLayout ll_getaddress_tab;
+    @BindView(R2.id.rv_address_tab)
+    RecyclerView rv_address_tab;
+    @BindView(R2.id.ll_address_tab)
+    LinearLayout ll_address_tab;
     private StatusLayoutManager mStatusLayoutManager;
     private TotalPresenter presenter;
-    private GetAddressAdapter getAddressAdapter;
+    private AddressAdapter getAddressAdapter;
     private PoiResult poiResult;
     private int pageNum;
 
@@ -55,11 +55,11 @@ public class TotalFragment extends BaseFragmnet implements TotalView, OnRetryLis
 
 
     private void refreshData() {
-        RxBus.getDefault().toObservable(ConfigValues.VALUE_ADDRESS_RX_SEND_LOCATION, GetAddressPositionAddress.class)
-                .subscribe(new Consumer<GetAddressPositionAddress>() {
+        RxBus.getDefault().toObservable(ConfigValues.VALUE_ADDRESS_RX_SEND_LOCATION, AddressPositionAddress.class)
+                .subscribe(new Consumer<AddressPositionAddress>() {
 
                     @Override
-                    public void accept(GetAddressPositionAddress positionAddress) throws Exception {
+                    public void accept(AddressPositionAddress positionAddress) throws Exception {
                         pageNum=0;
                         if (positionAddress.getLatLng().latitude!=latLngIndex.latitude
                                 ||positionAddress.getLatLng().longitude!=latLngIndex.longitude) {
@@ -91,7 +91,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, OnRetryLis
                 .retryViewId(R.id.iv_content_error)
                 .onRetryListener(this)
                 .build();
-        ll_getaddress_tab.addView(mStatusLayoutManager.getRootLayout(), ll_getaddress_tab.getChildCount() - 1);
+        ll_address_tab.addView(mStatusLayoutManager.getRootLayout(), ll_address_tab.getChildCount() - 1);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, OnRetryLis
 
     @Override
     public int getLayoutResId() {
-        return R.layout.getaddress_tab;
+        return R.layout.fragment_address_total;
     }
 
     @Override
@@ -135,18 +135,18 @@ public class TotalFragment extends BaseFragmnet implements TotalView, OnRetryLis
         mStatusLayoutManager.showContent();
         this.poiResult = poiResult;
         if (!isloadmore) {
-            getAddressAdapter = new GetAddressAdapter(R.layout.item_address, poiResult.getPois());
-            getAddressAdapter.openLoadAnimation(GetAddressAdapter.ALPHAIN);
+            getAddressAdapter = new AddressAdapter(R.layout.item_address, poiResult.getPois());
+            getAddressAdapter.openLoadAnimation(AddressAdapter.ALPHAIN);
             getAddressAdapter.setEnableLoadMore(true);
-            getAddressAdapter.setOnLoadMoreListener(this, rv_getaddress_tab);
-            rv_getaddress_tab.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
-            rv_getaddress_tab.setAdapter(getAddressAdapter);
+            getAddressAdapter.setOnLoadMoreListener(this, rv_address_tab);
+            rv_address_tab.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
+            rv_address_tab.setAdapter(getAddressAdapter);
             getAddressAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
                     PoiItem item = (PoiItem) adapter.getItem(position);
-                    GetAddressReturnAddress returnAddress=new GetAddressReturnAddress();
+                    AddressReturnAddress returnAddress=new AddressReturnAddress();
                     returnAddress.setTitle(item.getTitle());
                     returnAddress.setLatLng(item.getLatLonPoint());
                     TextView tv_address_detail = (TextView) view.findViewById(R.id.tv_address_detail);

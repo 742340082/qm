@@ -89,6 +89,7 @@ public class CategoryAdapter extends BaseQuickAdapter<CategoryData,BaseViewHolde
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_DETAID_KID,item.getData_id());
                                     intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TAG,textView.getText().toString());
+                                    intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TITLE,item.getName());
                                     UIUtils.getContext().startActivity(intent);
                                 }
                             });
@@ -110,6 +111,7 @@ public class CategoryAdapter extends BaseQuickAdapter<CategoryData,BaseViewHolde
                 Intent intent = new Intent(UIUtils.getContext(), CategoryDetailActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_DETAID_KID,item.getData_id());
+                intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TITLE,item.getName());
                 intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TAG,"全部");
                 UIUtils.getContext().startActivity(intent);
             }

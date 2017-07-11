@@ -1,7 +1,6 @@
 package com.game.adapter;
 
 import android.graphics.Typeface;
-import android.text.TextPaint;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -78,13 +77,13 @@ public class TopAdapter extends BaseQuickAdapter<Game, BaseViewHolder> {
             DrawableTypeRequest<Integer> load = null;
             switch (layoutPosition) {
                 case 0:
-                    load = with(UIUtils.getContext()).load(R.drawable.top1);
+                    load = with(UIUtils.getContext()).load(R.drawable.icon_game_top_number1);
                     break;
                 case 1:
-                    load = with(UIUtils.getContext()).load(R.drawable.top2);
+                    load = with(UIUtils.getContext()).load(R.drawable.icon_game_top_number2);
                     break;
                 case 2:
-                    load = Glide.with(UIUtils.getContext()).load(R.drawable.top3);
+                    load = Glide.with(UIUtils.getContext()).load(R.drawable.icon_game_top_number3);
                     break;
             }
             load.diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -94,17 +93,13 @@ public class TopAdapter extends BaseQuickAdapter<Game, BaseViewHolder> {
             tv_game_top_tag.setVisibility(View.VISIBLE);
             iv_game_top_tag.setVisibility(View.GONE);
             if (layoutPosition >= 99) {
-                TextPaint paint = tv_game_top_tag.getPaint();
                 Typeface font = Typeface.create(Typeface.DEFAULT,Typeface.NORMAL);
-                paint.setTypeface(font);
-                tv_game_top_tag.setLayerPaint(paint);
+                tv_game_top_tag.setTypeface(font);
                 tv_game_top_tag.setTextSize(12);
                 tv_game_top_tag.setText(layoutPosition+1 + "");
             } else {
-                TextPaint paint = tv_game_top_tag.getPaint();
                 Typeface font = Typeface.create(Typeface.DEFAULT,Typeface.BOLD);
-                paint.setTypeface(font);
-                tv_game_top_tag.setLayerPaint(paint);
+                tv_game_top_tag.setTypeface(font);
                 tv_game_top_tag.setTextSize(14);
                 tv_game_top_tag.setText(layoutPosition+1 + "");
             }

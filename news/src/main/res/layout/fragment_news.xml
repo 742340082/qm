@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@id/coordinatorLayout"
+    android:id="@id/cl_news"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.design.widget.TabLayout
-        android:id="@id/news_tab_layout"
+        android:id="@id/tl_news"
         android:layout_width="match_parent"
         android:layout_height="@dimen/guideBarHeight"
         app:tabSelectedTextColor="@color/yellow"
@@ -16,7 +16,7 @@
 
 
     <android.support.v4.view.ViewPager
-        android:id="@id/new_viewpager"
+        android:id="@id/vp_news"
         android:layout_width="match_parent"
         android:layout_height="@dimen/qm0dp"
         android:layout_weight="1.0" />

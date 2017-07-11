@@ -60,7 +60,7 @@ public class GameFragment extends BaseFragmnet {
 
     @Override
     public void initView() {
-        toolbar.inflateMenu(R.menu.menu_download);
+        toolbar.inflateMenu(R.menu.game_menu_download);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class GameFragment extends BaseFragmnet {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId==R.id.menu_download)
+        if (itemId==R.id.menu_game_download)
         {
 
         }

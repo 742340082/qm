@@ -60,7 +60,6 @@ public abstract class BaseFragmnet
         super.onActivityCreated(savedInstanceState);
         lazyLoad();
     }
-
     protected void lazyLoad() {
         if (!isPrepared || !isVisible||isLoadData) {
             return;

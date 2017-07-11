@@ -34,10 +34,10 @@ public class DouBianFragment
         extends BaseFragmnet
         implements DouBianView, BaseQuickAdapter.RequestLoadMoreListener {
 
-    @BindView(R2.id.fab)
-    FloatingActionButton fab;
-    @BindView(R2.id.new_fl_container)
-    FrameLayout new_fl_container;
+    @BindView(R2.id.fab_news)
+    FloatingActionButton fab_news;
+    @BindView(R2.id.fl_news_container)
+    FrameLayout fl_news_container;
     @BindView(R2.id.rv_news_content)
     RecyclerView rv_news_content;
     @BindView(R2.id.srl_news_content)
@@ -53,7 +53,7 @@ public class DouBianFragment
 
     @Override
     public int getLayoutResId() {
-        return R.layout.news_content;
+        return R.layout.fragment_news_content;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class DouBianFragment
                 mPresenter.loadingData(mInstance.getTimeInMillis());
             }
         });
-        this.fab.setOnClickListener(new View.OnClickListener() {
+        this.fab_news.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Calendar instance = Calendar.getInstance();
                 instance.set(mInstance.get(Calendar.YEAR), mInstance.get(Calendar.MONTH), mInstance.get(Calendar.DAY_OF_MONTH));
@@ -98,7 +98,7 @@ public class DouBianFragment
 
     @Override
     public void initView() {
-        fab.show();
+        fab_news.show();
         mStatusLayoutManager = StatusLayoutManager.newBuilder(getContext())
                 .emptyDataView(R.layout.state_empty)
                 .errorView(R.layout.state_error)
@@ -110,7 +110,7 @@ public class DouBianFragment
                         refresh();
                     }
                 }).build();
-        this.new_fl_container.addView(mStatusLayoutManager.getRootLayout());
+        this.fl_news_container.addView(mStatusLayoutManager.getRootLayout());
         this.rv_news_content.setOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt) {
                 super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
@@ -119,10 +119,10 @@ public class DouBianFragment
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy > 0) {
-                    DouBianFragment.this.fab.hide();
+                    DouBianFragment.this.fab_news.hide();
                     return;
                 }
-                DouBianFragment.this.fab.show();
+                DouBianFragment.this.fab_news.show();
             }
         });
     }

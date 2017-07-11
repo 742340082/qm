@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import com.baselibrary.base.activity.BaseActivity;
 import com.baselibrary.config.ConfigSdk;
 import com.baselibrary.utils.FileUtil;
-import com.baselibrary.utils.NetworkState;
 import com.baselibrary.utils.UIUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -53,21 +52,7 @@ public class SplashActivity
             hideToobarAnd(Color.TRANSPARENT, Color.TRANSPARENT, true, false);
         }
 
-        if (NetworkState.networkConnected(UIUtils.getContext()))
-        {
-            Glide.with(UIUtils.getContext())
-                    .load("http://cn.bing.com/az/hprichbg/rb/AeoniumLeaf_ZH-CN7490448951_1920x1080.jpg")
-                    .placeholder(R.drawable.lufei)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .error(R.drawable.lufei).centerCrop()
-                    .into(new SimpleTarget<GlideDrawable>() {
-                        @Override
-                        public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                            mIv_splash.setBackground(resource);
-                        }
-                    });
-        }else
-        {
+
             Glide.with(UIUtils.getContext())
                     .load(R.drawable.splash_lufei)
                     .placeholder(R.drawable.lufei)
@@ -76,10 +61,10 @@ public class SplashActivity
                     .into(new SimpleTarget<GlideDrawable>() {
                         @Override
                         public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                            mIv_splash.setBackground(resource);
+                            mIv_splash.setBackgroundDrawable(resource);
                         }
                     });
-        }
+
     }
 
 

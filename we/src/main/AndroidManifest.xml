@@ -39,45 +39,50 @@
         <!--We-->
         <activity
             android:name="com.we.mvp.user.detail.UserDetailActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name="com.we.mvp.user.UserActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.we.mvp.user.setting.SettingActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
 
         <activity
             android:name="com.we.mvp.user.detail.UpdateNameActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.we.mvp.user.operate.OperateUserActivity"
-            android:launchMode="standard"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.we.mvp.user.detail.UpdatePasswordActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.we.mvp.receiveaddress.ReceiveAddressActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.we.mvp.receiveaddress.OperateReceiveAddressActivity"
-            android:launchMode="standard"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name="com.getaddress.GetAddressActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <!--采集头像的activity-->
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
 

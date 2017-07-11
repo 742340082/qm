@@ -9,11 +9,13 @@
 
         <activity
             android:name=".InnerBrowserActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.news.mvp.detail.NewsDetailActivity"
-            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
     </application>
 

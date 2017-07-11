@@ -1,5 +1,6 @@
 package com.we.mvp.user;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
@@ -7,11 +8,8 @@ import com.baselibrary.animation.FixedSpeedScroller;
 import com.baselibrary.animation.TabletTransformer;
 import com.baselibrary.base.activity.BaseActivity;
 import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
-import com.baselibrary.config.ConfigSdk;
 import com.baselibrary.config.ConfigValues;
 import com.baselibrary.view.NoScrollViewPager;
-import com.sina.weibo.sdk.WbSdk;
-import com.sina.weibo.sdk.auth.AuthInfo;
 import com.we.R;
 import com.we.R2;
 import com.we.mvp.user.login.LoginFragement;
@@ -27,6 +25,7 @@ public class UserActivity
     private ViewPagerFragmentAdapter mAdapter;
     @BindView(R2.id.vp_user)
     public NoScrollViewPager vp_user;
+    private LoginFragement loginFragement;
 
     private void ReflexUpdateViewPagerTouchSpeed()
     {
@@ -50,12 +49,10 @@ public class UserActivity
 
     public void initData()
     {
-        AuthInfo authInfo = new AuthInfo(this, ConfigSdk.WEIBO_APP_KEY, ConfigSdk.WEIBO_REDIRECT_URL, ConfigSdk.WEIBO_SCOPE);
-        WbSdk.install(this,authInfo);
-
         this.mAdapter = new ViewPagerFragmentAdapter(getSupportFragmentManager());
         Bundle bundle = getBundle("登录");
-        this.mAdapter.addFragement(new LoginFragement(),bundle);
+        loginFragement = new LoginFragement();
+        this.mAdapter.addFragement(loginFragement,bundle);
         bundle=getBundle("注册");
         this.mAdapter.addFragement(new RegistFragment(),bundle);
         this.vp_user.setPageTransformer(true, new TabletTransformer());
@@ -77,4 +74,9 @@ public class UserActivity
         ReflexUpdateViewPagerTouchSpeed();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        loginFragement.WeiboCallBack(requestCode,resultCode,data);
+    }
 }

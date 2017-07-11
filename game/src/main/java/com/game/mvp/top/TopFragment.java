@@ -23,7 +23,7 @@ public class TopFragment extends BaseFragmnet {
     ViewPager vp_game_top;
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_top;
+        return R.layout.fragment_game_top;
     }
 
     @Override

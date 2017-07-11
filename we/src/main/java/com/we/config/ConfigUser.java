@@ -12,6 +12,7 @@ import java.io.File;
 
 public class ConfigUser
 {
+
     //保存的用户
     public static final String USER_SAVE = "USER_SAVE";
     //保存是否是夜间模式

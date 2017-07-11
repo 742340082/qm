@@ -53,7 +53,7 @@ public class CateoryDetailTopFragment extends BaseFragmnet implements CategoryDe
 
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_total;
+        return R.layout.fragment_game_total;
     }
 
     @Override
@@ -140,7 +140,7 @@ public class CateoryDetailTopFragment extends BaseFragmnet implements CategoryDe
         srl_game_top.setRefreshing(false);
 
         if (data.getPage() == 1) {
-            categoryDetailTopAdapter = new CategoryDetailTopAdapter(R.layout.item_index_normal, categoryDetailResult.getData());
+            categoryDetailTopAdapter = new CategoryDetailTopAdapter(R.layout.item_game_index_normal, categoryDetailResult.getData());
             categoryDetailTopAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
             categoryDetailTopAdapter.loadMoreEnd(true);
             categoryDetailTopAdapter.setOnLoadMoreListener(this, rv_game_top);
@@ -155,10 +155,12 @@ public class CateoryDetailTopFragment extends BaseFragmnet implements CategoryDe
 
     @Override
     public void onLoadMoreRequested() {
-        if (categoryDetailTopAdapter.getItemCount() >= categoryDetailResult.getCount()) {
-            categoryDetailTopAdapter.loadMoreEnd();
-        } else {
-            mPresenter.initCategoryDetail(kId, 0, 0, categoryDetailResult.getStartKey(), top, tagId);
+        if (categoryDetailResult!=null) {
+            if (categoryDetailTopAdapter.getItemCount() >= categoryDetailResult.getCount()) {
+                categoryDetailTopAdapter.loadMoreEnd();
+            } else {
+                mPresenter.initCategoryDetail(kId, 0, 0, categoryDetailResult.getStartKey(), top, tagId);
+            }
         }
     }
 

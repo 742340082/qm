@@ -34,7 +34,7 @@
                 android:id="@id/et_user_telephone"
                 android:layout_width="@dimen/qm0dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawableLeft="@drawable/icon_we_regist_telephone"
@@ -46,7 +46,7 @@
                 android:maxLength="11"
                 android:paddingLeft="@dimen/qm10dp"
                 android:paddingRight="@dimen/qm10dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/graydeep"
                 android:textSize="@dimen/titleSize" />
 
             <TextView
@@ -54,7 +54,7 @@
                 android:layout_width="@dimen/qm100dp"
                 android:layout_height="@dimen/qm30dp"
                 android:layout_marginRight="@dimen/qm4dp"
-                android:background="@drawable/selector_identifying_code"
+                android:background="@drawable/selector_bg_blue_gray"
                 android:enabled="false"
 
                 android:gravity="center"
@@ -73,7 +73,7 @@
             android:id="@id/et_user_code"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qm50dp"
-            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:background="@null"
             android:clickable="true"
             android:drawableLeft="@drawable/icon_we_regist_code"
@@ -86,7 +86,7 @@
             android:maxLength="6"
             android:paddingLeft="@dimen/qm10dp"
             android:paddingRight="@dimen/qm10dp"
-            android:textColorHint="@color/gray"
+            android:textColorHint="@color/graydeep"
             android:textSize="@dimen/titleSize" />
     </LinearLayout>
 
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_user_telephone"
         android:layout_marginTop="@dimen/qm10dp"
-        android:background="@color/green"
+        android:background="@drawable/selector_bg_green_green"
         android:textColor="@color/white"
         android:textSize="@dimen/titleSize" />
 

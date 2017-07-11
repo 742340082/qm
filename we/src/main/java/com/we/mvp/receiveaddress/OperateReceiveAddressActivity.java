@@ -23,8 +23,8 @@ import com.baselibrary.utils.SaveConfigReceiveAddresUtil;
 import com.baselibrary.utils.ToastUtils;
 import com.baselibrary.utils.UIUtils;
 import com.baselibrary.view.LoadingDialog;
-import com.getaddress.GetAddressActivity;
-import com.getaddress.modle.GetAddressReturnAddress;
+import com.getaddress.AddressActivity;
+import com.getaddress.modle.AddressReturnAddress;
 import com.we.R;
 import com.we.R2;
 import com.we.config.ConfigReceiveAddress;
@@ -79,7 +79,7 @@ public class OperateReceiveAddressActivity extends BaseActivity implements Opera
 
     @BindView(R2.id.btn_sure)
     Button btn_sure;
-    private GetAddressReturnAddress mReturnAddress;
+    private AddressReturnAddress mReturnAddress;
     private LoadingDialog loadingDialog;
     private OperateReveiveAddressPresenter presenter;
     private int mType;
@@ -87,7 +87,7 @@ public class OperateReceiveAddressActivity extends BaseActivity implements Opera
 
     @OnClick(R2.id.tv_receiveaddress_address)
     void openGetAddressActivity() {
-        UIUtils.startActivity(this, GetAddressActivity.class);
+        UIUtils.startActivity(this, AddressActivity.class);
     }
 
     @OnClick(R2.id.btn_sure)
@@ -200,11 +200,11 @@ public class OperateReceiveAddressActivity extends BaseActivity implements Opera
     @Override
     public void initData() {
         presenter = new OperateReveiveAddressPresenter(this);
-        RxBus.getDefault().toObservable(ConfigValues.VALUE_ADDRESS_RX_SEND_RETURNADDRESS, GetAddressReturnAddress.class)
+        RxBus.getDefault().toObservable(ConfigValues.VALUE_ADDRESS_RX_SEND_RETURNADDRESS, AddressReturnAddress.class)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<GetAddressReturnAddress>() {
+                .subscribe(new Consumer<AddressReturnAddress>() {
                     @Override
-                    public void accept(GetAddressReturnAddress returnAddress) throws Exception {
+                    public void accept(AddressReturnAddress returnAddress) throws Exception {
                         mReturnAddress = returnAddress;
                         tv_receiveaddress_address.setText(returnAddress.getTitle());
                         et_detail_address.setText(returnAddress.getAddress());
@@ -326,9 +326,9 @@ public class OperateReceiveAddressActivity extends BaseActivity implements Opera
         return null;
     }
 
-    public GetAddressReturnAddress getmReturnAddress() {
+    public AddressReturnAddress getmReturnAddress() {
         if (mReturnAddress == null) {
-            mReturnAddress = new GetAddressReturnAddress();
+            mReturnAddress = new AddressReturnAddress();
             if (mReceiveAddress!=null) {
                 mReturnAddress.setCity(mReceiveAddress.getCity());
                 mReturnAddress.setProvince(mReceiveAddress.getProvince());

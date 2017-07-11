@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@id/ll_game_subject_tags"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/qm5dp"
+    android:layout_marginBottom="@dimen/qm5dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/selector_bg_gray_white"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@id/tv_game_tag"
+            android:layout_width="@dimen/qm30dp"
+            android:layout_height="@dimen/qm16dp"
+            android:background="@drawable/bg_red_shape"
+            android:gravity="center"
+            android:textSize="@dimen/textSizeMin"
+            android:layout_margin="@dimen/qm10dp"
+            android:text="@string/hot"
+            android:layout_marginRight="@dimen/qm6dp"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@id/tv_game_subject_title"
+            android:layout_toRightOf="@id/tv_game_tag"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/titleSize"
+            android:text="每日推荐"
+            android:layout_marginTop="@dimen/qm10dp"
+            android:layout_marginBottom="@dimen/qm10dp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@id/tv_game_look_amny"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/qm2dp"
+            android:layout_margin="@dimen/qm10dp"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/arrow_right"
+            android:text="点击查看更多"
+            android:textSize="@dimen/textSize" />
+    </RelativeLayout>
+    <include layout="@layout/cut_horizontal_apart"/>
+    <LinearLayout
+        android:id="@id/ll_game_subject_tags"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/qm0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                android:background="@drawable/selector_bg_gray_white"
+                android:layout_height="@dimen/qm60dp" />
+            <include layout="@layout/cut_vertical_apart"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                android:background="@drawable/selector_bg_gray_white"
+                android:layout_height="@dimen/qm60dp" />
+        </LinearLayout>
+        <include layout="@layout/cut_horizontal_apart"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@id/iv_game_subject_icon"
+                android:layout_width="@dimen/qm0dp"
+                android:layout_height="@dimen/qm60dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/selector_bg_gray_white"
+                android:scaleType="fitCenter"
+          />
+
+            <include layout="@layout/cut_vertical_apart"/>
+            <ImageView
+                android:layout_width="@dimen/qm0dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/selector_bg_gray_white"
+                android:layout_height="@dimen/qm60dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

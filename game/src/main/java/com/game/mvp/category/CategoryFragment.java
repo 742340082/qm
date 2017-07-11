@@ -41,7 +41,7 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView {
     LinearLayout ll_game_category;
     @BindView(R2.id.srl_game_category)
     SwipeRefreshLayout srl_game_category;
-    @BindView(R2.id.rv_category)
+    @BindView(R2.id.rv_game_category)
     RecyclerView rv_category;
 
 
@@ -52,7 +52,7 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView {
 
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_category;
+        return R.layout.fragment_game_category;
     }
 
     @Override
@@ -115,15 +115,15 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView {
 
     @Override
     public void initHeader( List<CategoryLink> categoryLinks) {
-        categoryAdapter = new CategoryAdapter(R.layout.item_category_content);
+        categoryAdapter = new CategoryAdapter(R.layout.item_game_category_content);
         categoryAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
         rv_category.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rv_category.setAdapter(categoryAdapter);
 
 
-        View headView = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_category_header, null);
+        View headView = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_game_category_header, null);
         RecyclerView rl_game_category_header = (RecyclerView) headView.findViewById(R.id.rl_game_category_header);
-        CategoryHeaderAdapter categoryHeaderAdapter = new CategoryHeaderAdapter(R.layout.item_category_header_top,categoryLinks);
+        CategoryHeaderAdapter categoryHeaderAdapter = new CategoryHeaderAdapter(R.layout.item_game_category_header_top,categoryLinks);
         rl_game_category_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(),4));
         rl_game_category_header.setAdapter(categoryHeaderAdapter);
         categoryAdapter.addHeaderView(headView);
@@ -148,6 +148,7 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView {
                 }
 
                 intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TAG,"全部");
+                intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TITLE,categoryLink.getName());
                 intent.putExtra(ConfigGame.GAME_SEND_CATEGORY_TYPE,categoryLink.getType());
                 UIUtils.getContext().startActivity(intent);
             }

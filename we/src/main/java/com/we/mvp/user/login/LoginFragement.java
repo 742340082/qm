@@ -50,6 +50,7 @@ import com.we.mvp.user.modle.User;
 import com.we.mvp.user.operate.OperateUserActivity;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -94,9 +95,7 @@ public class LoginFragement
         mDialog.show();
         iUiListener = new loginListener();
         mTencent = Tencent.createInstance(ConfigSdk.TENCENT_APP_KEY, UIUtils.getContext());
-        if (!this.mTencent.isSessionValid()) {
-            this.mTencent.login(this, "all", this.iUiListener);
-        }
+        this.mTencent.login(this, "all", this.iUiListener);
     }
 
     @OnClick(R2.id.ll_weibo_login)
@@ -111,7 +110,7 @@ public class LoginFragement
         Intent intent = new Intent();
         intent.putExtra(ConfigUser.USER_LOGIN_TYPE, ConfigUser.USER_TELEPHONE_LOGIN);
         intent.setClass(getActivity(), OperateUserActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, ConfigStateCode.RESULT_LOGIN_SUCCESS);
     }
 
     @Override
@@ -180,7 +179,7 @@ public class LoginFragement
     public void initView() {
         UserActivity localUserActivity = (UserActivity) getActivity();
         localUserActivity.setSupportActionBar(toolbar);
-        this.mDialog = new LoadingDialog(getContext());
+        mDialog = new LoadingDialog(getActivity());
         mDialog.setTitle(R.string.user_login_loading);
     }
 
@@ -225,13 +224,39 @@ public class LoginFragement
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Tencent.onActivityResultData(requestCode, resultCode, data, this.iUiListener);
-        if (mSsoHandler != null) {
-            mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
-        }
-
         super.onActivityResult(requestCode, resultCode, data);
 
+        if (resultCode == ConfigStateCode.RESULT_LOGIN_SUCCESS) {
+            Executors.newCachedThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    UIUtils.runOnUIThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            getActivity().onBackPressed();
+                        }
+                    });
+
+                }
+            });
+
+        } else {
+            Tencent.onActivityResultData(requestCode, resultCode, data, this.iUiListener);
+        }
+    }
+
+    public void WeiboCallBack(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 32973) {
+            if (mSsoHandler != null) {
+                mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
+            }
+        }
     }
 
     @Override

@@ -1,7 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
 android {
-
+    signingConfigs {
+        qm_debug {
+            keyAlias 'qm_debug'
+            keyPassword '542635'
+            storeFile file('C:/Users/74234/Desktop/qm/key/qm_debug.jks')
+            storePassword '542635'
+        }
+        qm_release {
+            keyAlias 'qm_release'
+            keyPassword '542635'
+            storeFile file('C:/Users/74234/Desktop/qm/key/qm_release.jks')
+            storePassword '542635'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -19,6 +32,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    productFlavors {
     }
 }
 repositories{

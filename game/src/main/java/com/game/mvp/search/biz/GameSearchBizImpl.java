@@ -10,8 +10,8 @@ import com.game.api.GameApi;
 import com.game.mvp.model.Game;
 import com.game.mvp.search.model.GameSearch;
 import com.game.mvp.search.model.GameSearchFirst;
-import com.game.mvp.search.model.GameSearchHotWord;
 import com.game.mvp.search.model.GameSearchFirstResult;
+import com.game.mvp.search.model.GameSearchHotWord;
 import com.game.mvp.search.model.GameSearchResult;
 import com.game.mvp.search.model.GameSearchSuggestWord;
 import com.game.mvp.search.model.GameSmallSearch;
@@ -105,7 +105,6 @@ public class GameSearchBizImpl implements GameSearchBiz {
         if (NetworkState.networkConnected(UIUtils.getContext())) {
             gameApi.gameSmallSearch(word)
                     .subscribeOn(Schedulers.io())
-                    .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<GameSmallSearch>() {
 
@@ -118,16 +117,22 @@ public class GameSearchBizImpl implements GameSearchBiz {
                             final GameSmallSearchResult result = value.getResult();
                             result.setWord(word);
                             final List<Game> data = result.getData();
-                            if (data != null && data.size() > 0) {
                                 if (DataSupport.where("word=?", result.getWord())
                                         .findFirst(GameSmallSearchResult.class) == null) {
                                     DataSupport.saveAll(data);
                                     result.saveThrows();
                                 }
-                                gameSearchView.initSamllSearchHeader(data.get(0));
-                                data.remove(0);
-                                gameSearchView.successSmallSearch(result);
-                            }
+                                if (data.size()==0)
+                                {
+                                    gameSearchView.initSamllSearchHeader(null);
+                                    gameSearchView.successSmallSearch(null);
+                                }else
+                                {
+                                    gameSearchView.initSamllSearchHeader(data.get(0));
+                                    data.remove(0);
+                                    gameSearchView.successSmallSearch(result);
+                                }
+
 
                         }
 

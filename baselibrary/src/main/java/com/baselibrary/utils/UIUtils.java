@@ -1,5 +1,6 @@
 package com.baselibrary.utils;
 
+import android.annotation.TargetApi;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
@@ -113,9 +114,10 @@ public class UIUtils
         localContext.startActivity(new Intent(localContext, paramClass));
     }
 
-    public static void startActivityAndMaterAnimator(Context paramContext, String paramString, View paramView, Class<?> paramClass)
+    @TargetApi(21)
+    public static void startActivityAndMaterAnimator(Context context, String content, View view, Class<?> aClass)
     {
-        paramContext.startActivity(new Intent(paramContext, paramClass), ActivityOptions.makeSceneTransitionAnimation((BaseActivity)paramContext, paramView, paramString).toBundle());
+        context.startActivity(new Intent(context, aClass), ActivityOptions.makeSceneTransitionAnimation((BaseActivity)context, view, content).toBundle());
     }
     /**
      * 判断当前是否运行在主线程

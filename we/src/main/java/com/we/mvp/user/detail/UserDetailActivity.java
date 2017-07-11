@@ -30,9 +30,7 @@ import com.baselibrary.view.LoadingDialog;
 import com.baselibrary.view.ProgressDialog;
 import com.baselibrary.view.SelectPictureDialog;
 import com.google.gson.Gson;
-import com.sina.weibo.sdk.WbSdk;
 import com.sina.weibo.sdk.auth.AccessTokenKeeper;
-import com.sina.weibo.sdk.auth.AuthInfo;
 import com.sina.weibo.sdk.auth.Oauth2AccessToken;
 import com.sina.weibo.sdk.auth.WbAuthListener;
 import com.sina.weibo.sdk.auth.WbConnectErrorMessage;
@@ -213,9 +211,7 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
             mDialog.show();
             iUiListener = new loginListener();
             mTencent = Tencent.createInstance(ConfigSdk.TENCENT_APP_KEY, UIUtils.getContext());
-            if (!this.mTencent.isSessionValid()) {
                 this.mTencent.login(this, "all", this.iUiListener);
-            }
         }
     }
     @OnClick(R2.id.rl_user_weibo)
@@ -253,9 +249,8 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
     @Override
     public void initData() {
         mGson = new Gson();
-        AuthInfo authInfo = new AuthInfo(this, ConfigSdk.WEIBO_APP_KEY, ConfigSdk.WEIBO_REDIRECT_URL, ConfigSdk.WEIBO_SCOPE);
-        WbSdk.install(this,authInfo);
         mSsoHandler = new SsoHandler(this);
+
         this.mPresence = new UserDetailPresence(this);
         if (this.mUser == null) {
             this.ll_user_account_and_safe.setEnabled(true);
@@ -457,6 +452,7 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
                 mStatusLayoutManager.showContent();
                 break;
             case ConfigStateCode.STATE_ERROE:
+                mStatusLayoutManager.showError();
                 mDialog.dismiss();
                 break;
             case ConfigStateCode.STATE_NO_NETWORK:

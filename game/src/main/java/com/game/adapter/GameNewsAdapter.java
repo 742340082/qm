@@ -45,14 +45,14 @@ public class GameNewsAdapter extends BaseQuickAdapter<GameNewsData,BaseViewHolde
             timeTag = DateFormatter.formatGapTime(gapTime);
         }
 
-        helper.setText(R.id.tv_gamenews_title,item.getTitle());
-        helper.setText(R.id.tv_gamenews_desc,item.getDesc());
-        helper.setText(R.id.tv_gamenews_publishtime,timeTag);
+        helper.setText(R.id.tv_game_gamenews_title,item.getTitle());
+        helper.setText(R.id.tv_game_gamenews_desc,item.getDesc());
+        helper.setText(R.id.tv_game_gamenews_publishtime,timeTag);
 
         with(UIUtils.getContext())
                 .load(item.getImg())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
-                .into((ImageView) helper.getView(R.id.iv_gamenews_icon));
+                .into((ImageView) helper.getView(R.id.iv_game_gamenews_icon));
     }
 }

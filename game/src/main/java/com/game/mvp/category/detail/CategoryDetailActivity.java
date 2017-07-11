@@ -3,6 +3,8 @@ package com.game.mvp.category.detail;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -37,6 +39,8 @@ public class CategoryDetailActivity extends BaseActivity implements CategoryDeta
     ViewPager vp_game_category_detail;
     @BindView(R2.id.ll_game_category)
     LinearLayout ll_game_category;
+    @BindView(R2.id.toolbar)
+    Toolbar toolbar;
 
     private int curretnTagIndex;
     private String categorytag;
@@ -45,15 +49,16 @@ public class CategoryDetailActivity extends BaseActivity implements CategoryDeta
     private CategoryDetailTopPresenter mPresenter;
     private StatusLayoutManager mStatusLayoutManager;
     private int category_type;
+    private String title;
 
     @Override
     public int getLayoutResId() {
-        return R.layout.activity_category_detail;
+        return R.layout.activity_game_category_detail;
     }
 
     @Override
     public void initData() {
-
+        title = getIntent().getStringExtra(ConfigGame.GAME_SEND_CATEGORY_TITLE);
         kId = getIntent().getIntExtra(ConfigGame.GAME_SEND_CATEGORY_DETAID_KID, 0);
         category_type = getIntent().getIntExtra(ConfigGame.GAME_SEND_CATEGORY_TYPE, -1);
         tagId = getIntent().getIntExtra(ConfigGame.GAME_SEND_CATEGORY_DETAID_TAGID, 0);
@@ -71,10 +76,29 @@ public class CategoryDetailActivity extends BaseActivity implements CategoryDeta
                 break;
 
         }
+
+        toolbar.setTitle(title);
     }
 
     @Override
     public void initView() {
+        toolbar.inflateMenu(R.menu.game_menu_download);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId()== R.id.menu_game_download)
+                {
+
+                }
+                return false;
+            }
+        });
         mStatusLayoutManager = StatusLayoutManager.newBuilder(this)
                 .emptyDataView(R.layout.state_empty)
                 .errorView(R.layout.state_error)
@@ -104,6 +128,7 @@ public class CategoryDetailActivity extends BaseActivity implements CategoryDeta
 
     @Override
     public void success(CategoryDetailResult data) {
+        tl_game_category_detail_tag.setVisibility(View.VISIBLE);
         mStatusLayoutManager.showContent();
         switch (category_type) {
             case -1:

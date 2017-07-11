@@ -45,7 +45,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, BaseQuickA
 
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_total;
+        return R.layout.fragment_game_total;
     }
 
     @Override
@@ -120,7 +120,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, BaseQuickA
         mStatusLayoutManager.showContent();
 
         if (data.getPage() == 1) {
-            topAdapter = new TopAdapter(R.layout.item_top_total,totalResult.getData());
+            topAdapter = new TopAdapter(R.layout.item_game_top_total,totalResult.getData());
             topAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
             topAdapter.loadMoreEnd(true);
             topAdapter.setOnLoadMoreListener(this, rv_game_top);

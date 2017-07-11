@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="iv_tab_icon" type="id" />
+    <item name="toolbar" type="id" />
+    <item name="iv_back" type="id" />
 </resources>

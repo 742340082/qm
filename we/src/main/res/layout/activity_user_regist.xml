@@ -24,16 +24,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/qm10dp"
         android:layout_marginTop="@dimen/qm20dp"
-        android:background="@drawable/shape_circle_bg"
+        android:background="@drawable/bg_green_circle_shape"
         android:elevation="@dimen/qm3dp"
         android:translationZ="@dimen/qm3dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@id/civ_user_icon"
-            style="@android:style/Theme.Material"
             android:layout_width="@dimen/qm80dp"
             android:layout_height="@dimen/qm80dp"
-            android:layout_alignEnd="@id/cardView2"
             android:src="@drawable/lufei"/>
     </LinearLayout>
 
@@ -43,9 +41,11 @@
         android:id="@id/ll_user_account"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_user_header"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_below="@+id/ll_user_header"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -58,8 +58,7 @@
                 android:drawablePadding="@dimen/qm10dp"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/titleSize"
-                android:textColorHint="@color/gray"
-                android:layout_alignParentEnd="true"
+                android:textColorHint="@color/graydeep"
                 android:hint="@string/user_account_telephone"
                 android:maxLength="11"
                 android:inputType="phone"
@@ -80,7 +79,7 @@
                 android:paddingLeft="@dimen/qm10dp"
                 android:enabled="false"
                 android:paddingRight="@dimen/qm10dp"
-                android:background="@drawable/selector_identifying_code"
+                android:background="@drawable/selector_bg_blue_gray"
                 android:textColor="@color/white"
                 android:textSize="@dimen/titleSize"/>
         </LinearLayout>
@@ -91,7 +90,6 @@
             android:id="@id/et_user_code"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qm50dp"
-            android:layout_alignParentEnd="true"
             android:background="@null"
             android:drawableLeft="@drawable/icon_we_regist_code"
             android:drawablePadding="@dimen/qm10dp"
@@ -101,7 +99,7 @@
             android:maxLength="6"
             android:paddingLeft="@dimen/qm10dp"
             android:paddingRight="@dimen/qm10dp"
-            android:textColorHint="@color/gray"
+            android:textColorHint="@color/graydeep"
             android:textSize="@dimen/titleSize" />
 
         <include layout="@layout/cut_horizontal_apart"/>
@@ -116,12 +114,11 @@
                 android:layout_width="@dimen/qm0dp"
                 android:textSize="@dimen/titleSize"
                 android:layout_height="@dimen/qm50dp"
-                android:layout_alignParentEnd="true"
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawableLeft="@drawable/icon_we_login_token"
                 android:drawablePadding="@dimen/qm10dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/graydeep"
                 android:drawableRight="@drawable/icon_clear"
                 android:hint="@string/user_password"
                 android:inputType="textPassword"
@@ -146,7 +143,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_user_account"
         android:layout_marginTop="@dimen/qm14dp"
-        android:background="@color/green"
+        android:background="@drawable/selector_bg_green_green"
         android:text="@string/user_regist"
         android:textColor="@color/white"
         android:textSize="@dimen/titleSize"/>

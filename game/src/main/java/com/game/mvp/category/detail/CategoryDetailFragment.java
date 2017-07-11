@@ -39,11 +39,11 @@ public class CategoryDetailFragment extends BaseFragmnet {
     ViewPager vp_game_category_detail_tag;
     @BindView(R2.id.tl_game_category_detail)
     TabLayout tl_game_category_detail;
-    @BindView(R2.id.tv_selcted_size)
-    TextView tv_selcted_size;
+    @BindView(R2.id.tv_game_selcted_size)
+    TextView tv_game_selcted_size;
 
-    @BindView(R2.id.iv_selcted_size_icon)
-    ImageView iv_selcted_size_icon;
+    @BindView(R2.id.iv_game_selcted_size_icon)
+    ImageView iv_game_selcted_size_icon;
     @BindView(R2.id.fl_game_category_detail)
     FlowLayout fl_game_category_detail;
     @BindView(R2.id.rl_game_category_detail)
@@ -54,7 +54,7 @@ public class CategoryDetailFragment extends BaseFragmnet {
     private String selectedSizeOption;
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_category_detail;
+        return R.layout.fragment_game_category_detail;
     }
 
     @Override
@@ -138,8 +138,8 @@ public class CategoryDetailFragment extends BaseFragmnet {
                 textView.setLayoutParams(params);
                 textView.setGravity(Gravity.CENTER);
 
-                textView.setBackground(UIUtils.getDrawable(R.drawable.selector_tag_bg_border));
-                textView.setTextColor(UIUtils.getColorStateList(R.color.btn_boder_color));
+                textView.setBackgroundResource(R.drawable.selector_border_blue_gray_bg_white_splash);
+                textView.setTextColor(UIUtils.getColorStateList(R.color.selector_color_blue_black));
                 textView.setText(categoryDetailSizeOption.getTitle());
                 textView.setOnClickListener(new View.OnClickListener() {
 
@@ -149,7 +149,7 @@ public class CategoryDetailFragment extends BaseFragmnet {
                     public void onClick(View v) {
                         TextView textView1= (TextView) v;
                         selectedSizeOption = textView1.getText().toString();
-                        tv_selcted_size.setText(selectedSizeOption);
+                        tv_game_selcted_size.setText(selectedSizeOption);
                         v.setSelected(true);
                         for (int j = 0; j < fl_game_category_detail.getChildCount(); j++) {
                             View childAt = fl_game_category_detail.getChildAt(j);
@@ -175,18 +175,20 @@ public class CategoryDetailFragment extends BaseFragmnet {
 
     @Override
     public void initListener() {
-        selectedSizeOption=tv_selcted_size.getText().toString();
+        selectedSizeOption= tv_game_selcted_size.getText().toString();
         rl_game_category_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (fl_game_category_detail.getVisibility() == View.VISIBLE) {
-                    iv_selcted_size_icon.setImageResource(R.drawable.arrow_up);
+                    iv_game_selcted_size_icon.setImageResource(R.drawable.arrow_up);
                     fl_game_category_detail.setVisibility(View.GONE);
-                    tv_selcted_size.setText(selectedSizeOption);
+                    tv_game_selcted_size.setText(selectedSizeOption);
+                    vp_game_category_detail_tag.setBackgroundColor(UIUtils.getColor(R.color.white));
                 } else {
-                    iv_selcted_size_icon.setImageResource(R.drawable.arrow_down);
+                    vp_game_category_detail_tag.setBackgroundColor(UIUtils.getColor(R.color.transparent));
+                    iv_game_selcted_size_icon.setImageResource(R.drawable.arrow_down);
                     fl_game_category_detail.setVisibility(View.VISIBLE);
-                    tv_selcted_size.setText("关闭");
+                    tv_game_selcted_size.setText("关闭");
                 }
             }
         });

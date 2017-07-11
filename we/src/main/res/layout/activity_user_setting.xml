@@ -30,11 +30,13 @@
             android:id="@id/rl_user_account_safe"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_item_selected_bg"
+            android:background="@drawable/selector_bg_gray_white"
             android:gravity="center_vertical">
 
             <TextView
                 style="@style/Tv14spBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="@dimen/qm10dp"
                 android:gravity="center_vertical"
@@ -43,6 +45,8 @@
             <TextView
                 android:id="@id/tv_user_account"
                 style="@style/Tv14spGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/qm10dp"
                 android:gravity="center_vertical"
@@ -55,11 +59,13 @@
             android:id="@id/rl_common"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_item_selected_bg"
+            android:background="@drawable/selector_bg_gray_white"
             android:gravity="center_vertical">
 
             <TextView
                 style="@style/Tv14spBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="@dimen/qm10dp"
                 android:gravity="center_vertical"
@@ -73,12 +79,14 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
         android:layout_marginTop="@dimen/qm10dp"
-        android:background="@drawable/selector_item_selected_bg"
+        android:background="@drawable/selector_bg_gray_white"
         android:gravity="center_vertical">
 
         <TextView
             style="@style/Tv14spBlack"
             android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/qm10dp"
             android:gravity="center_vertical"
             android:text="@string/abount"/>
@@ -90,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cardView"
         android:layout_marginTop="@dimen/qm10dp"
-        android:background="@color/green"
+        android:background="@drawable/selector_bg_green_green"
         android:text="@string/exit_login"
         android:textColor="@color/white"
         android:textSize="@dimen/titleSize" />

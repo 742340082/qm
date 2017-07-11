@@ -24,13 +24,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/qm10dp"
         android:layout_marginTop="@dimen/qm20dp"
-        android:background="@drawable/shape_circle_bg"
+        android:background="@drawable/bg_green_circle_shape"
         android:elevation="@dimen/qm3dp"
         android:translationZ="@dimen/qm3dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@id/civ_user_icon"
-            style="@android:style/Theme.Material"
             android:layout_width="@dimen/qm80dp"
             android:layout_height="@dimen/qm80dp"
             android:src="@drawable/lufei" />
@@ -49,7 +48,6 @@
             android:id="@id/et_username"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qm50dp"
-            android:layout_alignParentEnd="true"
             android:background="@null"
             android:drawableLeft="@drawable/icon_we_login_account"
             android:drawablePadding="@dimen/qm10dp"
@@ -58,7 +56,7 @@
             android:inputType="textPersonName"
             android:paddingLeft="@dimen/qm10dp"
             android:paddingRight="@dimen/qm10dp"
-            android:textColorHint="@color/gray"
+            android:textColorHint="@color/graydeep"
             android:textSize="@dimen/titleSize" />
 
         <include layout="@layout/cut_horizontal_apart" />
@@ -72,7 +70,6 @@
                 android:id="@id/et_password"
                 android:layout_width="@dimen/qm0dp"
                 android:layout_height="@dimen/qm50dp"
-                android:layout_alignParentEnd="true"
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawableLeft="@drawable/icon_we_login_token"
@@ -83,7 +80,7 @@
                 android:maxLength="16"
                 android:paddingLeft="@dimen/qm10dp"
                 android:paddingRight="@dimen/qm10dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/graydeep"
                 android:textSize="@dimen/titleSize" />
 
             <CheckBox
@@ -102,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_user_account"
         android:layout_marginTop="@dimen/qm14dp"
-        android:background="@color/green"
+        android:background="@drawable/selector_bg_green_green"
         android:text="@string/user_login"
         android:textColor="@color/white"
         android:textSize="@dimen/titleSize" />
@@ -127,8 +124,7 @@
             android:id="@id/tv_forget_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:text="忘记密码?" />
     </RelativeLayout>
 
@@ -137,7 +133,6 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm100dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
         android:orientation="vertical">
 
         <LinearLayout
@@ -150,7 +145,7 @@
                 android:layout_height="@dimen/qm1dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1.0"
-                android:background="@color/gray" />
+                android:background="@color/graydeep" />
 
             <TextView
                 android:layout_width="@dimen/qm0dp"
@@ -158,7 +153,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="第三方登录"
-                android:textColor="@color/gray"
+                android:textColor="@color/graydeep"
                 android:textSize="@dimen/titleSize" />
 
             <View
@@ -166,7 +161,7 @@
                 android:layout_height="@dimen/qm1dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1.0"
-                android:background="@color/gray" />
+                android:background="@color/graydeep" />
         </LinearLayout>
 
         <LinearLayout

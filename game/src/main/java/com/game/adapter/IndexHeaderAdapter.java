@@ -23,8 +23,8 @@ public class IndexHeaderAdapter extends BaseQuickAdapter<IndexRecBlock,BaseViewH
 
     @Override
     protected void convert(BaseViewHolder helper, IndexRecBlock item) {
-        helper.setText(R.id.iv_index_category_title,item.getName());
-        CircleImageView iv_index_category_icon =  helper.getView(R.id.iv_index_category_icon);
+        helper.setText(R.id.iv_game_index_category_title,item.getName());
+        CircleImageView iv_index_category_icon =  helper.getView(R.id.iv_game_index_category_icon);
         Glide.with(UIUtils.getContext())
                 .load(item.getPoster())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

@@ -1,5 +1,6 @@
 package com.news.mvp.detail.biz;
 
+import com.baselibrary.api.QMApi;
 import com.baselibrary.api.okhttp.ApiListenerManager;
 import com.baselibrary.api.okhttp.OkHttp;
 import com.baselibrary.config.ConfigStateCode;
@@ -30,44 +31,28 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by 74234 on 2017/5/12.
  */
 
 public class NewsDetailBizImpl implements NewsDetailBiz {
-    private final NewsApi mNewsApi;
+    private  NewsApi mNewsApi;
     private NewsDetailView NewsDetailView;
 
-    public NewsDetailBizImpl(NewsDetailView view,int newsType) {
+    public NewsDetailBizImpl(NewsDetailView view, int newsType) {
         this.NewsDetailView = view;
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(ConfigValues.VALUE_CONNECT_TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(ConfigValues.VALUE_READ_TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(ConfigValues.VALUE_WRITE_TIMEOUT, TimeUnit.SECONDS).build();
-        Retrofit.Builder builder=null;
         switch (newsType) {
             case ConfigNews.NEWS_DOUBIAN_TYPE:
-              builder = new Retrofit.Builder()
-                        .baseUrl(NewsApi.NEWS_DOUBIAN_ROOT_API);
+                mNewsApi = QMApi.getInstance(NewsApi.NEWS_DOUBIAN_ROOT_API).create(NewsApi.class);
                 break;
             case ConfigNews.NEWS_GUOKE_TYPE:
-                builder = new Retrofit.Builder()
-                        .baseUrl(NewsApi.NEWS_GUOKE_ROOT_API_V1);
+                mNewsApi = QMApi.getInstance(NewsApi.NEWS_GUOKE_ROOT_API_V1).create(NewsApi.class);
                 break;
             case ConfigNews.NEWS_ZHIHU_TYPE:
-                builder = new Retrofit.Builder()
-                        .baseUrl(NewsApi.NEWS_ZHIHU_ROOT_API);
+                mNewsApi = QMApi.getInstance(NewsApi.NEWS_ZHIHU_ROOT_API).create(NewsApi.class);
                 break;
         }
-        Retrofit retrofit = builder.client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
-        mNewsApi = retrofit.create(NewsApi.class);
     }
 
     @Override
@@ -113,7 +98,6 @@ public class NewsDetailBizImpl implements NewsDetailBiz {
                     break;
             }
         }
-
     }
 
     private void guokeDetail(final String id) {
@@ -138,11 +122,9 @@ public class NewsDetailBizImpl implements NewsDetailBiz {
                         .subscribe(new Consumer<String>() {
                             @Override
                             public void accept(String value) throws Exception {
-                                if(StringUtil.isEmpty(value))
-                                {
+                                if (StringUtil.isEmpty(value)) {
                                     NewsDetailView.error(ConfigStateCode.STATE_DATA_EMPTY, ConfigStateCode.STATE_DATA_EMPTY_VALUE);
-                                }else
-                                {
+                                } else {
                                     GuoKeResult guoKeResult = DataSupport.where(new String[]{"guokeresult_id=?", id}).findFirst(GuoKeResult.class);
                                     GuokeDetail guokeDetail = new GuokeDetail();
                                     guokeDetail.setGuokedetail_id(Long.parseLong(id));
@@ -227,7 +209,7 @@ public class NewsDetailBizImpl implements NewsDetailBiz {
                             doubanDetail.setDoubiandetail_id(doubanDetail.getId());
                             doubanDetail.setCacheTime(DateUtil.getCurrentTime() + ConfigNews.NEWS_SAVE_TIME);
                             DouBianPosts posts = DataSupport.where(new String[]{"posts_id=?", doubanDetail.getId() + ""}).findFirst(DouBianPosts.class);
-                            if (posts!=null) {
+                            if (posts != null) {
                                 doubanDetail.setLarge_url(posts.getLarge_url());
                                 doubanDetail.setMedium_url(posts.getMedium_url());
                                 doubanDetail.setSmall_url(posts.getSmall_url());
@@ -241,17 +223,14 @@ public class NewsDetailBizImpl implements NewsDetailBiz {
                                     DouBianPosts.large large = item.getLarge();
                                     DouBianPosts.small small = item.getSmall();
                                     DouBianPosts.medium medium = item.getMedium();
-                                    if (large!=null)
-                                    {
+                                    if (large != null) {
                                         item.setLarge_url(large.getUrl());
                                     }
 
-                                    if (medium!=null)
-                                    {
+                                    if (medium != null) {
                                         item.setMedium_url(medium.getUrl());
                                     }
-                                    if (small!=null)
-                                    {
+                                    if (small != null) {
                                         item.setSmall_url(small.getUrl());
                                     }
                                     item.setThumbs_id(doubanDetail.getDoubiandetail_id());

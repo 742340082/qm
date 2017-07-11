@@ -47,7 +47,7 @@
                 android:hint="@string/name"
                 android:inputType="text"
                 android:paddingRight="@dimen/qm5dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/graydeep"
                 android:textSize="@dimen/titleSize" />
         </LinearLayout>
 
@@ -68,20 +68,20 @@
                 android:id="@id/tv_mr"
                 android:layout_width="@dimen/qm60dp"
                 android:layout_height="@dimen/qm24dp"
-                android:background="@drawable/selector_tag_bg_border"
+                android:background="@drawable/selector_border_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/mister"
-                android:textColor="@color/btn_boder_color" />
+                android:textColor="@color/selector_color_blue_black" />
 
             <TextView
                 android:id="@id/tv_lady"
                 android:layout_width="@dimen/qm60dp"
                 android:layout_height="@dimen/qm24dp"
                 android:layout_marginLeft="@dimen/qm10dp"
-                android:background="@drawable/selector_tag_bg_border"
+                android:background="@drawable/selector_border_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/lady"
-                android:textColor="@color/btn_boder_color" />
+                android:textColor="@color/selector_color_blue_black" />
         </LinearLayout>
 
         <LinearLayout
@@ -108,7 +108,7 @@
                 android:inputType="phone"
                 android:maxLength="11"
                 android:paddingRight="@dimen/qm5dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/graydeep"
                 android:textSize="@dimen/titleSize" />
 
             <TextView
@@ -148,7 +148,7 @@
                 android:hint="@string/receiveaddress_address"
                 android:inputType="text"
                 android:paddingRight="@dimen/qm10dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/graydeep"
                 android:textSize="@dimen/titleSize" />
         </LinearLayout>
 
@@ -182,7 +182,7 @@
                     android:hint="@string/detail_address"
                     android:maxLines="2"
 
-                    android:textColorHint="@color/gray"
+                    android:textColorHint="@color/graydeep"
                     android:textSize="@dimen/titleSize" />
             </ScrollView>
         </LinearLayout>
@@ -211,7 +211,7 @@
                 android:hint="@string/receiveaddress_houser_number"
                 android:inputType="text"
                 android:paddingRight="@dimen/qm5dp"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/graydeep"
                 android:textSize="@dimen/titleSize" />
         </LinearLayout>
 
@@ -233,39 +233,38 @@
                 android:id="@id/tv_flyme"
                 android:layout_width="@dimen/qm60dp"
                 android:layout_height="@dimen/qm24dp"
-                android:background="@drawable/selector_tag_bg_border"
+                android:background="@drawable/selector_border_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/flyme"
-                android:textColor="@color/btn_boder_color" />
+                android:textColor="@color/selector_color_blue_black" />
 
             <TextView
                 android:id="@id/tv_company"
                 android:layout_width="@dimen/qm60dp"
                 android:layout_height="@dimen/qm24dp"
                 android:layout_marginLeft="@dimen/qm10dp"
-                android:background="@drawable/selector_tag_bg_border"
+                android:background="@drawable/selector_border_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/company"
-                android:textColor="@color/btn_boder_color" />
+                android:textColor="@color/selector_color_blue_black" />
 
             <TextView
                 android:id="@id/tv_school"
                 android:layout_width="@dimen/qm60dp"
                 android:layout_height="@dimen/qm24dp"
                 android:layout_marginLeft="@dimen/qm10dp"
-                android:background="@drawable/selector_tag_bg_border"
+                android:background="@drawable/selector_border_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/school"
-                android:textColor="@color/btn_boder_color" />
+                android:textColor="@color/selector_color_blue_black" />
         </LinearLayout>
 
         <Button
             android:id="@id/btn_sure"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/cardView"
             android:layout_marginTop="@dimen/qm10dp"
-            android:background="@color/green"
+            android:background="@drawable/selector_bg_green_green"
             android:text="@string/sure"
             android:textColor="@color/white"
             android:textSize="@dimen/titleSize" />

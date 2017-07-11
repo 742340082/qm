@@ -27,4 +27,18 @@ public class QMApi {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
         return retrofit;
     }
+    public static Retrofit getInstance(String rootPath,long connectTimeout,long readTime,long writeTime)
+    {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(connectTimeout, TimeUnit.SECONDS)
+                .readTimeout(readTime, TimeUnit.SECONDS)
+                .writeTimeout(writeTime, TimeUnit.SECONDS).build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(rootPath)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build();
+        return retrofit;
+    }
+
 }

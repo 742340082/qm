@@ -1,6 +1,7 @@
 package com.baselibrary.base.activity;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -9,13 +10,12 @@ import android.view.Window;
 import com.baselibrary.config.ConfigValues;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity
         extends AppBaseActivity {
-    public static BaseActivity sForegroundActivity;
+    protected static BaseActivity sForegroundActivity;
     public static final LinkedList<BaseActivity> mActivities = new LinkedList();
 
     public static final   BaseActivity getForegroundActivity() {
@@ -61,35 +61,38 @@ public abstract class BaseActivity
      * 结束所有没有销毁的 Activity, 结束当前进程
      */
     public void killAll() {
-        // 复制了一份mActivities 集合
-        List<BaseActivity> copy;
-        synchronized (mActivities) {
-            copy = new LinkedList<BaseActivity>(mActivities);
-        }
-        for (BaseActivity activity : copy) {
+        for (BaseActivity activity : mActivities) {
             // 结束当前 Activity, 也可以使用广播
-            activity.finish();
+            activity.onBackPressed();
         }
         // 杀死当前的进程
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
-    /**
-     * 结束所有没有销毁的 Activity, 结束当前进程
-     */
-    public void killActivity(Class clazz) {
-        // 复制了一份mActivities 集合
-        List<BaseActivity> copy;
-        synchronized (mActivities) {
-            copy = new LinkedList<BaseActivity>(mActivities);
+    //判斷當前的activity是否存活
+    public static boolean isActivityDestory(Class<? extends Activity> clazz)
+    {
+        boolean isActivityExist=false;
+        for (BaseActivity itemActivity : mActivities) {
+            if (clazz.getSimpleName().equals( itemActivity.getClass().getSimpleName())) {
+                isActivityExist =true;
+                break;
+            }
         }
-        for (BaseActivity itemActivity : copy) {
+        return isActivityExist;
+    }
+    /**
+     * 銷毀當前activity
+     */
+    public void killActivity(Class<? extends Activity> clazz) {
+        for (BaseActivity itemActivity : mActivities) {
             // 结束当前 Activity, 也可以使用广播
-            if (clazz.getSimpleName() == itemActivity.getClass().getSimpleName()) {
-                itemActivity.finish();
+            if (clazz.getSimpleName().equals( itemActivity.getClass().getSimpleName())) {
+                itemActivity.onBackPressed();
             }
         }
     }
+
 
     public void onClick(View view) {
         switch (view.getId()) {
@@ -98,6 +101,7 @@ public abstract class BaseActivity
                 break;
         }
     }
+
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -109,6 +113,7 @@ public abstract class BaseActivity
         initListener();
 
     }
+
 
     protected void onDestroy() {
         this.mActivities.remove(this);

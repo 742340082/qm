@@ -77,49 +77,52 @@ public class LogicOperateUser implements LogicOperateUserInterface {
         if (!NetworkState.networkConnected(UIUtils.getContext()))
         {
             baseView.error(ConfigStateCode.STATE_NO_NETWORK,ConfigStateCode.STATE_NO_NETWORK_VALUE);
-        }
-        mUserApi.getUserInfoByAccount(account)
-                .subscribeOn(Schedulers.io())
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        baseView.loading();
-                    }
-                })
-                .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Result<List<User>>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Result<List<User>> value) {
-                        switch (value.getCode())
-                        {
-                            case ConfigStateCode.RESULT_OBTION_USER_SUCCESS:
-                                Bitmap userIconBitmap = PresenceUtil.obtainBitmap(value.getResult().get(0).getAccount());
-                                RxBus.getDefault().post(ConfigUser.USER_RX_ICON,userIconBitmap);
-                                RxBus.getDefault().post(ConfigUser.USER_RX_SEND,value.getResult().get(0));
-                                baseView.success(value.getResult());
-                                break;
-                            default:
-                                baseView.error(value.getCode(),value.getMessage());
+        }else
+        {
+            mUserApi.getUserInfoByAccount(account)
+                    .subscribeOn(Schedulers.io())
+                    .doOnSubscribe(new Consumer<Disposable>() {
+                        @Override
+                        public void accept(Disposable disposable) throws Exception {
+                            baseView.loading();
                         }
-                    }
+                    })
+                    .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<Result<List<User>>>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
 
-                    @Override
-                    public void onError(Throwable throwable) {
-                        baseView.error(ConfigStateCode.STATE_ERROE,ConfigStateCode.STATE_ERROE_VALUE);
-                        ConfigStateCodeUtil.error(throwable);
-                    }
+                        }
 
-                    @Override
-                    public void onComplete() {
+                        @Override
+                        public void onNext(Result<List<User>> value) {
+                            switch (value.getCode())
+                            {
+                                case ConfigStateCode.RESULT_OBTION_USER_SUCCESS:
+                                    Bitmap userIconBitmap = PresenceUtil.obtainBitmap(value.getResult().get(0).getAccount());
+                                    RxBus.getDefault().post(ConfigUser.USER_RX_ICON,userIconBitmap);
+                                    RxBus.getDefault().post(ConfigUser.USER_RX_SEND,value.getResult().get(0));
+                                    baseView.success(value.getResult());
+                                    break;
+                                default:
+                                    baseView.error(value.getCode(),value.getMessage());
+                            }
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onError(Throwable throwable) {
+                            baseView.error(ConfigStateCode.STATE_ERROE,ConfigStateCode.STATE_ERROE_VALUE);
+                            ConfigStateCodeUtil.error(throwable);
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        }
+
 
     }
 
@@ -128,73 +131,75 @@ public class LogicOperateUser implements LogicOperateUserInterface {
         if (!NetworkState.networkConnected(UIUtils.getContext()))
         {
             baseView.error(ConfigStateCode.STATE_NO_NETWORK,ConfigStateCode.STATE_NO_NETWORK_VALUE);
-        }
-        mUserApi.login(account, password,telephone, loginType)
-                .subscribeOn(Schedulers.io())
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        baseView.loading();
-                    }
-                })
-                .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Result<List<User>>>() {
-            public void onComplete() {
-            }
-
-            public void onError(Throwable throwable) {
-                baseView.error(ConfigStateCode.STATE_ERROE,ConfigStateCode.STATE_ERROE_VALUE);
-                ConfigStateCodeUtil.error(throwable);
-            }
-
-            public void onNext(final Result<List<User>> result) {
-
-                switch (result.getCode()) {
-                    case ConfigStateCode.RESULT_LOGIN_SUCCESS:
-                        final User user = result.getResult().get(0);
-                        final File file = new File(ConfigUser.SAVE_USER_ICON_URI(user.getAccount(), ".jpg").getPath());
-                        downloadUserIcon(user);
-                        Observable.just(user)
-                                .observeOn(Schedulers.io())
-                                .map(new Function<User, Long>() {
-                                    @Override
-                                    public Long apply(User user) throws Exception {
-                                        return OkHttp.getInstance().obtainFileContentLengByUrl(user.getPicturepath());
-                                    }
-                                })
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new Consumer<Long>() {
-                                    @Override
-                                    public void accept(Long contentLeng) throws Exception {
-                                        while (true) {
-                                            if (file.length() == contentLeng) {
-
-                                                Bitmap userIconBitmap = PresenceUtil.obtainBitmap(user.getAccount());
-                                                RxBus.getDefault().post(ConfigUser.USER_RX_SEND, user);
-                                                RxBus.getDefault().post(ConfigUser.USER_RX_ICON, userIconBitmap);
-                                                String json = new Gson().toJson(user);
-                                                SaveConfigUserUtil.setString(UIUtils.getContext(), ConfigUser.USER_SAVE, json);
-                                                SaveConfigUserUtil.setInt(UIUtils.getContext(), ConfigUser.USER_LOGIN_TYPE, loginType);
-                                                SaveConfigUserUtil.setLong(UIUtils.getContext(), ConfigUser.USER_CACHE_TIME, DateUtil.SaveUserTime());
-                                                break;
-                                            }else
-                                            {continue;}
-                                        }
-                                        baseView.success(result.getResult());
-                                    }
-                                });
-
-                        break;
-                    default:
-                        baseView.error(result.getCode(),result.getMessage());
+        }else {
+            mUserApi.login(account, password, telephone, loginType)
+                    .subscribeOn(Schedulers.io())
+                    .doOnSubscribe(new Consumer<Disposable>() {
+                        @Override
+                        public void accept(Disposable disposable) throws Exception {
+                            baseView.loading();
+                        }
+                    })
+                    .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Result<List<User>>>() {
+                public void onComplete() {
                 }
 
-            }
+                public void onError(Throwable throwable) {
+                    baseView.error(ConfigStateCode.STATE_ERROE, ConfigStateCode.STATE_ERROE_VALUE);
+                    ConfigStateCodeUtil.error(throwable);
+                }
 
-            public void onSubscribe(Disposable disposable) {
-            }
-        });
+                public void onNext(final Result<List<User>> result) {
+
+                    switch (result.getCode()) {
+                        case ConfigStateCode.RESULT_LOGIN_SUCCESS:
+                            final User user = result.getResult().get(0);
+                            final File file = new File(ConfigUser.SAVE_USER_ICON_URI(user.getAccount(), ".jpg").getPath());
+                            downloadUserIcon(user);
+                            Observable.just(user)
+                                    .observeOn(Schedulers.io())
+                                    .map(new Function<User, Long>() {
+                                        @Override
+                                        public Long apply(User user) throws Exception {
+                                            return OkHttp.getInstance().obtainFileContentLengByUrl(user.getPicturepath());
+                                        }
+                                    })
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new Consumer<Long>() {
+                                        @Override
+                                        public void accept(Long contentLeng) throws Exception {
+                                            while (true) {
+                                                if (file.length() == contentLeng) {
+
+                                                    Bitmap userIconBitmap = PresenceUtil.obtainBitmap(user.getAccount());
+                                                    RxBus.getDefault().post(ConfigUser.USER_RX_SEND, user);
+                                                    RxBus.getDefault().post(ConfigUser.USER_RX_ICON, userIconBitmap);
+                                                    String json = new Gson().toJson(user);
+                                                    SaveConfigUserUtil.setString(UIUtils.getContext(), ConfigUser.USER_SAVE, json);
+                                                    SaveConfigUserUtil.setInt(UIUtils.getContext(), ConfigUser.USER_LOGIN_TYPE, loginType);
+                                                    SaveConfigUserUtil.setLong(UIUtils.getContext(), ConfigUser.USER_CACHE_TIME, DateUtil.SaveUserTime());
+                                                    break;
+                                                } else {
+                                                    continue;
+                                                }
+                                            }
+                                            baseView.success(result.getResult());
+                                        }
+                                    });
+
+                            break;
+                        default:
+                            baseView.error(result.getCode(), result.getMessage());
+                    }
+
+                }
+
+                public void onSubscribe(Disposable disposable) {
+                }
+            });
+        }
     }
 
     @Override
@@ -202,80 +207,81 @@ public class LogicOperateUser implements LogicOperateUserInterface {
         if (!NetworkState.networkConnected(UIUtils.getContext()))
         {
             baseView.error(ConfigStateCode.STATE_NO_NETWORK,ConfigStateCode.STATE_NO_NETWORK_VALUE);
-        }
-        HashMap<String, String> hashMap = new HashMap<>();
-        if (qqUserInfo!=null) {
-            hashMap.put(ConfigUser.USER_BIND_QQUSERINFO, mGson.toJson(qqUserInfo));
-        }
-        if (weiboUserInfo!=null) {
-            hashMap.put(ConfigUser.USER_BIND_WEIBOUSERINFO, mGson.toJson(weiboUserInfo));
-        }
-
-        mUserApi.regist(account, password, hashMap, registType)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        baseView.loading();
-                    }
-                })
-                .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Result<List<User>>>() {
-            public void onComplete() {
+        }else {
+            HashMap<String, String> hashMap = new HashMap<>();
+            if (qqUserInfo != null) {
+                hashMap.put(ConfigUser.USER_BIND_QQUSERINFO, mGson.toJson(qqUserInfo));
+            }
+            if (weiboUserInfo != null) {
+                hashMap.put(ConfigUser.USER_BIND_WEIBOUSERINFO, mGson.toJson(weiboUserInfo));
             }
 
-            public void onError(Throwable throwable) {
-                baseView.error(ConfigStateCode.STATE_ERROE,ConfigStateCode.STATE_ERROE_VALUE);
-                ConfigStateCodeUtil.error(throwable);
-            }
-
-            public void onNext(final Result<List<User>> result) {
-                switch (result.getCode()) {
-                    case ConfigStateCode.RESULT_REGIST_SUCCESS:
-                        final User user = result.getResult().get(0);
-                        final File file = new File(ConfigUser.SAVE_USER_ICON_URI(user.getAccount(), ".jpg").getPath());
-                        downloadUserIcon(user);
-                        Observable.just(user)
-                                .observeOn(Schedulers.io())
-                                .map(new Function<User, Long>() {
-                                    @Override
-                                    public Long apply(User user) throws Exception {
-
-                                        return OkHttp.getInstance().obtainFileContentLengByUrl(user.getPicturepath());
-                                    }
-                                })
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new Consumer<Long>() {
-                                    @Override
-                                    public void accept(Long contentLeng) throws Exception {
-                                        while (true) {
-                                            if (file.length() == contentLeng) {
-                                                String json = new Gson().toJson(user);
-                                                uploadUserIcon(user);
-                                                Bitmap userIconBitmap = PresenceUtil.obtainBitmap(user.getAccount());
-                                                RxBus.getDefault().post(ConfigUser.USER_RX_SEND, user);
-                                                RxBus.getDefault().post(ConfigUser.USER_RX_ICON, userIconBitmap);
-                                                SaveConfigUserUtil.setString(UIUtils.getContext(), ConfigUser.USER_SAVE, json);
-                                                SaveConfigUserUtil.setInt(UIUtils.getContext(), ConfigUser.USER_REGIST_TYPE, registType);
-                                                SaveConfigUserUtil.setLong(UIUtils.getContext(), ConfigUser.USER_CACHE_TIME, DateUtil.SaveUserTime());
-                                                break;
-                                            } else {
-                                                continue;
-                                            }
-                                        }
-                                        baseView.success(result.getResult());
-                                    }
-                                });
-                        break;
-                    default:
-                        baseView.error(result.getCode(),result.getMessage());
+            mUserApi.regist(account, password, hashMap, registType)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe(new Consumer<Disposable>() {
+                        @Override
+                        public void accept(Disposable disposable) throws Exception {
+                            baseView.loading();
+                        }
+                    })
+                    .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
+                    .observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Result<List<User>>>() {
+                public void onComplete() {
                 }
-            }
 
-            public void onSubscribe(Disposable paramAnonymousDisposable) {
-            }
-        });
+                public void onError(Throwable throwable) {
+                    baseView.error(ConfigStateCode.STATE_ERROE, ConfigStateCode.STATE_ERROE_VALUE);
+                    ConfigStateCodeUtil.error(throwable);
+                }
+
+                public void onNext(final Result<List<User>> result) {
+                    switch (result.getCode()) {
+                        case ConfigStateCode.RESULT_REGIST_SUCCESS:
+                            final User user = result.getResult().get(0);
+                            final File file = new File(ConfigUser.SAVE_USER_ICON_URI(user.getAccount(), ".jpg").getPath());
+                            downloadUserIcon(user);
+                            Observable.just(user)
+                                    .observeOn(Schedulers.io())
+                                    .map(new Function<User, Long>() {
+                                        @Override
+                                        public Long apply(User user) throws Exception {
+
+                                            return OkHttp.getInstance().obtainFileContentLengByUrl(user.getPicturepath());
+                                        }
+                                    })
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(new Consumer<Long>() {
+                                        @Override
+                                        public void accept(Long contentLeng) throws Exception {
+                                            while (true) {
+                                                if (file.length() == contentLeng) {
+                                                    String json = new Gson().toJson(user);
+                                                    uploadUserIcon(user);
+                                                    Bitmap userIconBitmap = PresenceUtil.obtainBitmap(user.getAccount());
+                                                    RxBus.getDefault().post(ConfigUser.USER_RX_SEND, user);
+                                                    RxBus.getDefault().post(ConfigUser.USER_RX_ICON, userIconBitmap);
+                                                    SaveConfigUserUtil.setString(UIUtils.getContext(), ConfigUser.USER_SAVE, json);
+                                                    SaveConfigUserUtil.setInt(UIUtils.getContext(), ConfigUser.USER_REGIST_TYPE, registType);
+                                                    SaveConfigUserUtil.setLong(UIUtils.getContext(), ConfigUser.USER_CACHE_TIME, DateUtil.SaveUserTime());
+                                                    break;
+                                                } else {
+                                                    continue;
+                                                }
+                                            }
+                                            baseView.success(result.getResult());
+                                        }
+                                    });
+                            break;
+                        default:
+                            baseView.error(result.getCode(), result.getMessage());
+                    }
+                }
+
+                public void onSubscribe(Disposable paramAnonymousDisposable) {
+                }
+            });
+        }
     }
 
     @Override
@@ -283,65 +289,66 @@ public class LogicOperateUser implements LogicOperateUserInterface {
         if (!NetworkState.networkConnected(UIUtils.getContext()))
         {
             baseView.error(ConfigStateCode.STATE_NO_NETWORK,ConfigStateCode.STATE_NO_NETWORK_VALUE);
-        }
-        HashMap<String, String> hashMap = new HashMap<>();
-        if (qqUserInfo!=null) {
-            hashMap.put(ConfigUser.USER_BIND_QQUSERINFO, mGson.toJson(qqUserInfo));
-        }
-        if (weiboUserInfo!=null) {
-            hashMap.put(ConfigUser.USER_BIND_WEIBOUSERINFO, mGson.toJson(weiboUserInfo));
-        }
-        mUserApi.update(account,
-                userName,
-                password,
-                newPassword,
-                telephone,
-                payPassword,
-                hashMap,
-                updateType)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        baseView.loading();
-                    }
-                })
-                .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Result<List<User>>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Result<List<User>> value) {
-                        Logger.e("TAG", "修改成功");
-                        switch (value.getCode()) {
-                            case ConfigStateCode.RESULT_UPDATE_SUCCESS:
-                                User user = value.getResult().get(0);
-                                RxBus.getDefault().post(ConfigUser.USER_RX_SEND, user);
-                                String json = new Gson().toJson(user);
-                                SaveConfigUserUtil.setString(UIUtils.getContext(), ConfigUser.USER_SAVE, json);
-                                baseView.success(value.getResult());
-                                break;
-                            default:
-                                baseView.error(value.getCode(),value.getMessage());
+        }else {
+            HashMap<String, String> hashMap = new HashMap<>();
+            if (qqUserInfo != null) {
+                hashMap.put(ConfigUser.USER_BIND_QQUSERINFO, mGson.toJson(qqUserInfo));
+            }
+            if (weiboUserInfo != null) {
+                hashMap.put(ConfigUser.USER_BIND_WEIBOUSERINFO, mGson.toJson(weiboUserInfo));
+            }
+            mUserApi.update(account,
+                    userName,
+                    password,
+                    newPassword,
+                    telephone,
+                    payPassword,
+                    hashMap,
+                    updateType)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe(new Consumer<Disposable>() {
+                        @Override
+                        public void accept(Disposable disposable) throws Exception {
+                            baseView.loading();
                         }
-                    }
+                    })
+                    .delay(ConfigValues.VALUE_DEFAULT_WAIT, TimeUnit.MILLISECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<Result<List<User>>>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
 
-                    @Override
-                    public void onError(Throwable throwable) {
-                        baseView.error(ConfigStateCode.STATE_ERROE,ConfigStateCode.STATE_ERROE_VALUE);
-                        ConfigStateCodeUtil.error(throwable);
-                    }
+                        }
 
-                    @Override
-                    public void onComplete() {
+                        @Override
+                        public void onNext(Result<List<User>> value) {
+                            Logger.e("TAG", "修改成功");
+                            switch (value.getCode()) {
+                                case ConfigStateCode.RESULT_UPDATE_SUCCESS:
+                                    User user = value.getResult().get(0);
+                                    RxBus.getDefault().post(ConfigUser.USER_RX_SEND, user);
+                                    String json = new Gson().toJson(user);
+                                    SaveConfigUserUtil.setString(UIUtils.getContext(), ConfigUser.USER_SAVE, json);
+                                    baseView.success(value.getResult());
+                                    break;
+                                default:
+                                    baseView.error(value.getCode(), value.getMessage());
+                            }
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onError(Throwable throwable) {
+                            baseView.error(ConfigStateCode.STATE_ERROE, ConfigStateCode.STATE_ERROE_VALUE);
+                            ConfigStateCodeUtil.error(throwable);
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        }
     }
 
     /**

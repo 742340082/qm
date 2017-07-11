@@ -11,15 +11,15 @@
         android:id="@id/fl_main_container"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm0dp"
+        android:fitsSystemWindows="true"
         android:layout_weight="1.0"
-        android:background="@color/layout_bg"/>
+      />
 
     <include layout="@layout/cut_horizontal_apart" />
 
     <com.baselibrary.view.MyFragmentTabHost
         android:id="@id/tabhost"
         android:layout_width="match_parent"
-        android:fitsSystemWindows="true"
         android:layout_height="@dimen/qm50dp"
         android:background="@color/white" />
 

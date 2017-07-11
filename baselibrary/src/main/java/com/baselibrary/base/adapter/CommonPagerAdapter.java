@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.baselibrary.base.adapter.ViewHolder.ViewHolder;
+import com.baselibrary.utils.StringUtil;
 
 import java.util.List;
 
@@ -39,11 +40,18 @@ public abstract class CommonPagerAdapter<T>
         paramViewGroup.removeView((View)paramObject);
     }
 
-//    @Override
-//    public CharSequence getPageTitle(int position) {
-//
-//        return titleS.get(position);
-//    }
+    @Override
+    public CharSequence getPageTitle(int position) {
+
+        if (!StringUtil.isEmpty(titleS.get(position)))
+        {
+            return titleS.get(position);
+        }else
+        {
+            return null;
+        }
+
+    }
 
     public int getCount()
     {

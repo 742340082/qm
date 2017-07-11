@@ -31,10 +31,10 @@ import butterknife.BindView;
 public class GuoKeFragment
         extends BaseFragmnet
         implements GuokeView {
-    @BindView(R2.id.fab)
-    FloatingActionButton fab;
-    @BindView(R2.id.new_fl_container)
-    FrameLayout new_fl_container;
+    @BindView(R2.id.fab_news)
+    FloatingActionButton fab_news;
+    @BindView(R2.id.fl_news_container)
+    FrameLayout fl_news_container;
     @BindView(R2.id.rv_news_content)
     RecyclerView rv_news_content;
     @BindView(R2.id.srl_news_content)
@@ -48,7 +48,7 @@ public class GuoKeFragment
 
     @Override
     public int getLayoutResId() {
-        return R.layout.news_content;
+        return R.layout.fragment_news_content;
     }
 
     @Override
@@ -82,7 +82,7 @@ public class GuoKeFragment
                         mPresenter.loadingData();
                     }
                 }).build();
-        this.new_fl_container.addView(mStatusLayoutManager.getRootLayout(),new_fl_container.getChildCount()-1);
+        this.fl_news_container.addView(mStatusLayoutManager.getRootLayout(), fl_news_container.getChildCount()-1);
     }
 
 

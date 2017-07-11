@@ -29,7 +29,7 @@
             android:textColor="@color/white"
             android:textSize="20.0sp"
             android:text="数据为空"
-            android:background="#ff04f554"
+            android:background="@drawable/selector_bg_green_green"
          />
     </LinearLayout>
 </RelativeLayout>

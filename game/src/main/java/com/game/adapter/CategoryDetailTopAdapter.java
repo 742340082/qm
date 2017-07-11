@@ -30,16 +30,16 @@ public class CategoryDetailTopAdapter extends BaseQuickAdapter<Game,BaseViewHold
     protected void convert(BaseViewHolder helper, Game game) {
         ImageView iv_game_icon = helper.getView(R.id.iv_game_icon);
         TextView tv_game_title = helper.getView(R.id.tv_game_title);
-        TextView tv_download_count = helper.getView(R.id.tv_download_count);
-        TextView tv_download_size = helper.getView(R.id.tv_download_size);
+        TextView tv_download_count = helper.getView(R.id.tv_game_download_count);
+        TextView tv_download_size = helper.getView(R.id.tv_game_download_size);
         TextView tv_game_desc = helper.getView(R.id.tv_game_desc);
-        TextView tv_vedio = helper.getView(R.id.tv_vedio);
-        Button btn_downlaod = helper.getView(R.id.btn_downlaod);
+        TextView tv_game_vedio = helper.getView(R.id.tv_game_vedio);
+        Button btn_downlaod = helper.getView(R.id.btn_game_downlaod);
 
 
 
         if (StringUtil.isEmpty(game.getVideo_url())) {
-            tv_vedio.setVisibility(View.GONE);
+            tv_game_vedio.setVisibility(View.GONE);
         }
         Glide.with(UIUtils.getContext())
                 .load(game.getIcopath())

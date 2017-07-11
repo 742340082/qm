@@ -2,20 +2,20 @@
 <resources>
     <item name="wv_news" type="id" />
     <item name="pb_news" type="id" />
-    <item name="toolbar" type="id" />
-    <item name="coordinatorLayout" type="id" />
-    <item name="news_tab_layout" type="id" />
+    <item name="cl_news" type="id" />
+    <item name="tl_news" type="id" />
     <item name="iv_new_tab_icon" type="id" />
     <item name="srl_news_content" type="id" />
     <item name="rv_news_content" type="id" />
-    <item name="fab" type="id" />
     <item name="tv_news_item_title" type="id" />
     <item name="vp_news_top" type="id" />
-    <item name="new_nsw_container" type="id" />
-    <item name="ctbl_main" type="id" />
-    <item name="action_refresh" type="id" />
-    <item name="new_viewpager" type="id" />
-    <item name="new_fl_container" type="id" />
-    <item name="action_open_in_browser" type="id" />
+    <item name="nsv_news" type="id" />
+    <item name="ctl_news" type="id" />
+    <item name="vp_news" type="id" />
+    <item name="fl_news_container" type="id" />
+    <item name="menu_news_open_browser" type="id" />
     <item name="iv_news_item_icon" type="id" />
+    <item name="fab_news" type="id" />
+    <item name="menu_refresh" type="id" />
+    <item name="pt_news" type="id" />
 </resources>

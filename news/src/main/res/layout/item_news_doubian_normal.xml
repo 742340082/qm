@@ -4,11 +4,9 @@
     style="@style/AppTheme"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:foreground="?android:selectableItemBackground"
-    app:cardBackgroundColor="@color/white"
-    android:background="@color/white"
+    android:background="@drawable/selector_bg_gray_white"
     android:orientation="vertical"
-    app:cardElevation="@dimen/qm2dp">
+    >
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -21,7 +19,7 @@
             android:layout_marginBottom="@dimen/qm10dp"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_marginTop="@dimen/qm10dp"
-            android:background="@drawable/shape_white_round_bg"
+            android:background="@drawable/bg_round_white_shape"
             android:src="@drawable/lufei" />
 
         <TextView

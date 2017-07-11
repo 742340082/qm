@@ -16,7 +16,7 @@
             android:id="@id/ll_user_take_local"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_item_selected_bg"
+            android:background="@drawable/selector_bg_gray_white"
             android:gravity="center_vertical">
 
             <ImageView
@@ -40,14 +40,14 @@
             android:id="@id/ll_collect"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_item_selected_bg"
+            android:background="@drawable/selector_bg_gray_white"
             android:gravity="center_vertical">
 
             <ImageView
                 android:layout_width="@dimen/qm20dp"
                 android:layout_height="@dimen/qm20dp"
                 android:layout_marginLeft="@dimen/qm10dp"
-                android:src="@drawable/icon_collect" />
+                android:src="@drawable/icon_we_collect" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -65,14 +65,14 @@
             android:id="@id/ll_fine_photo"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_item_selected_bg"
+            android:background="@drawable/selector_bg_gray_white"
             android:gravity="center_vertical">
 
             <ImageView
                 android:layout_width="@dimen/qm20dp"
                 android:layout_height="@dimen/qm20dp"
                 android:layout_marginLeft="@dimen/qm10dp"
-                android:src="@drawable/icon_fine_photo" />
+                android:src="@drawable/icon_we_fine_photo" />
 
             <TextView
                 android:id="@id/textView2"
@@ -86,15 +86,11 @@
     </LinearLayout>
 
 
-
-
-
-
     <LinearLayout
         android:id="@id/ll_switch_theme"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
-        android:background="@drawable/selector_item_selected_bg"
+        android:background="@drawable/selector_bg_gray_white"
         android:layout_marginTop="@dimen/qm5dp"
         android:gravity="center_vertical">
 
@@ -124,7 +120,7 @@
         android:id="@id/ll_setting"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
-        android:background="@drawable/selector_item_selected_bg"
+        android:background="@drawable/selector_bg_gray_white"
         android:gravity="center_vertical">
 
         <ImageView

@@ -4,15 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="@dimen/qm10dp"
-    android:foreground="?android:selectableItemBackground"
-    app:cardBackgroundColor="@color/white"
-    app:cardElevation="@dimen/qm2dp"
+    android:background="@drawable/selector_bg_gray_white"
     android:orientation="vertical">
 
 
 
     <TextView
-        android:id="@id/tv_city"
+        android:id="@id/tv_address_city"
         android:layout_width="match_parent"
         android:layout_height="@dimen/qm40dp"
         android:gravity="center_vertical"

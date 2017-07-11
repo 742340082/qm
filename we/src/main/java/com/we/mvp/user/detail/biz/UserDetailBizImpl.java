@@ -207,7 +207,6 @@ public class UserDetailBizImpl
 
                     @Override
                     public void onError(Throwable throwable) {
-                        mUserDetailView.error(ConfigStateCode.STATE_ERROE,ConfigStateCode.STATE_ERROE_VALUE);
                         ConfigStateCodeUtil.error(throwable);
                     }
 
@@ -271,7 +270,6 @@ public class UserDetailBizImpl
                 }
 
                 public void onError(Throwable throwable) {
-                    mUserDetailView.error(ConfigStateCode.STATE_ERROE,ConfigStateCode.STATE_ERROE_VALUE);
                     ConfigStateCodeUtil.error(throwable);
                     UserDetailBizImpl.this.deleteTempPhotoFile(localUri.getPath());
                 }

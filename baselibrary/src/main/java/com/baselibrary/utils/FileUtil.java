@@ -121,5 +121,61 @@ public class FileUtil {
             }
         }
     }
+    public static String downloadSpeed(int number,long speed)
+    {
+        Long b=speed;
+        Long k=b/1024;
+        Long m=k/1024;
+        Long g=m/1024;
+        Long t=g/1024;
+        if (k==0)
+        {
+            return b+"B/s";
+        }else
+        if (m==0)
+        {
+            if (number!=0) {
+                String bValue = String.valueOf(b);
+                String num = bValue.substring(1, number+1);
+                return k + "." + num + "K/s";
+            }else
+            {
+                return k+"K/s";
+            }
 
+        }else
+        if (g==0)
+        {
+            if (number!=0) {
+                String kValue = String.valueOf(k);
+                String num = kValue.substring(1, number+1);
+                return m + "." + num + "M/s";
+            }else
+            {
+                return m + "M/s";
+            }
+        }
+        if (t==0)
+        {
+            if (number!=0) {
+                String mValue = String.valueOf(m);
+                String num = mValue.substring(1, number+1);
+                return g + "." + num + "G/s";
+            }else
+            {
+                return g + "G/s";
+            }
+        }
+        else
+        {
+            if (number!=0) {
+                String gValue = String.valueOf(g);
+                String num = gValue.substring(1, number+1);
+                return t + "." + num + "T/s";
+            }else
+            {
+                return t + "T/s";
+            }
+        }
+    }
 }

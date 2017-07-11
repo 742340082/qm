@@ -17,10 +17,11 @@ import butterknife.BindView;
 public class NewsFragment
         extends BaseFragmnet
 {
-    @BindView(R2.id.new_viewpager)
-    ViewPager new_viewpager;
-    @BindView(R2.id.news_tab_layout)
-    TabLayout news_tab_layout;
+    @BindView(R2.id.vp_news)
+    ViewPager vp_news;
+    @BindView(R2.id.tl_news)
+    TabLayout tl_news;
+
 //    @BindView(R2.id.news_toolbar)
 //    Toolbar news_toolbar;
 
@@ -40,11 +41,11 @@ public class NewsFragment
         GuoKeFragment guoKeFragment = new GuoKeFragment();
         adapter.addTabPage(UIUtils.getString(R.string.new_guoke),guoKeFragment, bundle);
 
-        new_viewpager.setAdapter(adapter);
-        new_viewpager.setOffscreenPageLimit(1);
+        vp_news.setAdapter(adapter);
+        vp_news.setOffscreenPageLimit(1);
 
-        new_viewpager.setCurrentItem(0);
-        news_tab_layout.setupWithViewPager(new_viewpager);
+        vp_news.setCurrentItem(0);
+        tl_news.setupWithViewPager(vp_news);
 
     }
     public Bundle getBundle(String content)

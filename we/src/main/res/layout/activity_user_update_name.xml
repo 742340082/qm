@@ -20,13 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/qm50dp"
         android:layout_marginTop="@dimen/qm10dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:background="@color/white"
         android:drawableRight="@drawable/icon_clear"
         android:hint="@string/user_account_name"
         android:inputType="text"
         android:textSize="@dimen/titleSize"
-        android:textColorHint="@color/gray"
+        android:textColorHint="@color/graydeep"
         android:maxLength="10"
         android:paddingLeft="@dimen/qm10dp"
         android:paddingRight="@dimen/qm10dp" />
@@ -41,13 +41,13 @@
 
     <Button
         android:id="@id/btn_update_user_name"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:layout_below="@id/cardView"
         android:layout_marginTop="@dimen/qm10dp"
-        android:background="@drawable/selector_btn_click"
+        android:background="@drawable/selector_bg_green_gray"
         android:text="@string/sure_update"
         android:textColor="@color/white"
-        android:textSize="@dimen/titleSize"/>
+        android:textSize="@dimen/titleSize"
+        />
 </LinearLayout>
