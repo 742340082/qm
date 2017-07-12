@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.utils.RxBus;
+import com.baselibrary.utils.StringUtil;
 import com.baselibrary.utils.UIUtils;
 import com.we.config.ConfigUser;
 import com.we.mvp.receiveaddress.ReceiveAddressActivity;
@@ -152,7 +153,14 @@ public class WeFragment extends BaseFragmnet implements UserMenuView {
         } else {
             mUser=user;
             tv_user_name.setText(user.getName());
-            tv_user_telephone.setText(user.getPhone() + "");
+            if (StringUtil.isEmpty(user.getPhone()+""))
+            {
+                tv_user_telephone.setText("");
+            }else
+            {
+                tv_user_telephone.setText(user.getPhone() + "");
+            }
+
         }
     }
 

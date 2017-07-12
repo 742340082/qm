@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.config.ConfigStateCode;
+import com.baselibrary.config.ConfigValues;
 import com.baselibrary.listener.OnRetryListener;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ToastUtils;
@@ -37,6 +38,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
+import static com.baselibrary.config.ConfigValues.VALUE_NEWS_CHANGE_TIME;
+
 public class ZhiHuFragment
         extends BaseFragmnet
         implements ZhiHuView, BaseQuickAdapter.RequestLoadMoreListener {
@@ -54,7 +57,6 @@ public class ZhiHuFragment
     private StatusLayoutManager mStatusLayoutManager;
     private List<ZhihuStorie> storieS;
     private Handler mHandler;
-    private static long TOP_NEWS_CHANGE_TIME = 3000;
 
     @Override
     public void click(View paramView, int paramInt) {
@@ -257,11 +259,11 @@ public class ZhiHuFragment
                     // Log.d(TAG, "轮播条:" + item);
                     vp_news.setCurrentItem(item);
                     mHandler.sendMessageDelayed(Message.obtain(),
-                            TOP_NEWS_CHANGE_TIME);
+                            ConfigValues.VALUE_NEWS_CHANGE_TIME);
                 }
             };
         }
-        mHandler.sendMessageDelayed(Message.obtain(), TOP_NEWS_CHANGE_TIME);// 延时4s发送消息
+        mHandler.sendMessageDelayed(Message.obtain(), ConfigValues.VALUE_NEWS_CHANGE_TIME);// 延时4s发送消息
 
         zhihuAdapter.addHeaderView(headerView, 0, LinearLayout.VERTICAL);
     }

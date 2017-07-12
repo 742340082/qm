@@ -131,6 +131,10 @@ public class OperateUserActivity
                 mDialog.show();
                 mPreence.submitVerificationCode();
             }
+        }else
+        {
+            mDialog.show();
+            mPreence.submitVerificationCode();
         }
     }
 
@@ -198,6 +202,8 @@ public class OperateUserActivity
             toolbar.setTitle(UIUtils.getString(R.string.user_witchbind_telephone));
             btn_regist.setText(UIUtils.getString(R.string.user_switch_telephone));
             mDialog.setTitle(R.string.user_config_loading);
+            et_user_telephone.setFocusable(false);
+            et_user_telephone.setFocusableInTouchMode(false);
             mTelephone = String.valueOf(intent.getLongExtra(ConfigUser.USER_TELEPHONE, -1l));
             et_user_telephone.setText(mTelephone);
         }

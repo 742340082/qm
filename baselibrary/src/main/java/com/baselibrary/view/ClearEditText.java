@@ -28,6 +28,7 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
      */
     private boolean hasFoucs;
     private Drawable mLeftDrawable;
+    private boolean isCancleVisable=false;
 
     public ClearEditText(Context context) {
         this(context, null);
@@ -53,9 +54,10 @@ public class ClearEditText extends AppCompatEditText implements View.OnFocusChan
         }
         mLeftDrawable = getCompoundDrawables()[0];
         if(mLeftDrawable!=null) {
-            mLeftDrawable.setBounds(0, 0, UIUtils.dip2px(25), UIUtils.dip2px(25));
+                mLeftDrawable.setBounds(0, 0, UIUtils.dip2px(25), UIUtils.dip2px(25));
+                mClearDrawable.setBounds(0, 0, UIUtils.dip2px(20),UIUtils.dip2px(20));
         }
-        mClearDrawable.setBounds(0, 0, UIUtils.dip2px(20),UIUtils.dip2px(20));
+
         // 默认设置隐藏图标
         setClearIconVisible(false);
         // 设置焦点改变的监听

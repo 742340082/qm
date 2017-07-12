@@ -1,6 +1,6 @@
 package com.baselibrary.config;
 
-public abstract interface PermissionS
+public  interface PermissionS
 {
-    public static final int CAMERA = 272;
+    int CAMERA = 272;
 }
