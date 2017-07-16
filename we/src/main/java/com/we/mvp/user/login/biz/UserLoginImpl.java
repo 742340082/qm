@@ -169,8 +169,7 @@ public class UserLoginImpl
                                 logicOperateUser.loginUser(user.getAccount(),user.getPassword(),null,loginType);
                                 break;
                             case ConfigStateCode.RESULT_THIRD_INFO_UNEXIST:
-                                SaveConfigUserUtil.setInt(UIUtils.getContext(), ConfigUser.USER_REGIST_TYPE, registType);
-                                loginView.bindAccountActivity(qqUserInfo, weiboUserInfo);
+                                loginView.bindAccountActivity(qqUserInfo, weiboUserInfo,registType);
                                 break;
                             default:
                                 break;

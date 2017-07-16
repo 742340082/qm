@@ -131,10 +131,11 @@ public class OperateUserActivity
                 mDialog.show();
                 mPreence.submitVerificationCode();
             }
-        }else
-        {
-            mDialog.show();
-            mPreence.submitVerificationCode();
+        } else {
+            if (this.mPreence.confirmation(null, null)) {
+                mDialog.show();
+                mPreence.submitVerificationCode();
+            }
         }
     }
 
@@ -272,9 +273,11 @@ public class OperateUserActivity
         if (mLoginType != -1) {
             setResult(ConfigStateCode.RESULT_LOGIN_SUCCESS);
             onBackPressed();
-        }else {
+        } else {
             if (mUpdateType != -1) {
             } else if (mRegistType != -1) {
+                setResult(ConfigStateCode.RESULT_LOGIN_SUCCESS);
+                onBackPressed();
             } else {
                 ToastUtils.makeShowToast(UIUtils.getContext(), "绑定成功");
             }
@@ -295,6 +298,9 @@ public class OperateUserActivity
         if (mPreence != null) {
             mPreence.destroyMobSms();
         }
+
+        et_user_telephone.setFocusable(true);
+        et_user_telephone.setFocusableInTouchMode(true);
 
         mPreence.initMobSms(mLoginType, mRegistType, mUpdateType, mTelephone);
         et_user_code.setVisibility(View.VISIBLE);

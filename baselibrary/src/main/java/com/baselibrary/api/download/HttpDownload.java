@@ -115,7 +115,6 @@ public class HttpDownload {
     }
 
     private OkHttpClient httpClient;
-
     public static HttpDownload getInstance() {
         return new HttpDownload();
     }

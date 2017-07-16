@@ -18,6 +18,6 @@ public  interface IUserLoginView extends BaseView<List<User>>
 
     void  getWeiboToken(WeiboRrfreshToken weiboRrfreshToken);
 
-    void bindAccountActivity(QQUserInfo qqUserInfo, WeiboUserInfo weiboUserInfo);
+    void bindAccountActivity(QQUserInfo qqUserInfo, WeiboUserInfo weiboUserInfo,int registType);
 
 }

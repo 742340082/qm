@@ -201,14 +201,14 @@ public class LoginFragement
     }
 
     @Override
-    public void bindAccountActivity(QQUserInfo qqUserInfo, WeiboUserInfo weiboUserInfo) {
+    public void bindAccountActivity(QQUserInfo qqUserInfo, WeiboUserInfo weiboUserInfo,int registType) {
         mDialog.dismiss();
         Intent intent = new Intent();
         intent.putExtra(ConfigUser.USER_BIND_QQUSERINFO, qqUserInfo);
         intent.putExtra(ConfigUser.USER_BIND_WEIBOUSERINFO, weiboUserInfo);
-        intent.putExtra(ConfigUser.USER_REGIST_TYPE, ConfigUser.USER_TELEPHONE_REGIST);
+        intent.putExtra(ConfigUser.USER_REGIST_TYPE, registType);
         intent.setClass(getActivity(), OperateUserActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, ConfigStateCode.RESULT_LOGIN_SUCCESS);
     }
 
 

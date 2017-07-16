@@ -148,7 +148,7 @@ public class OperateUserBizImpl
             }
         } else if (registType != -1) {
 
-            if (mUser != null && qqUserInfo != null && mWeiboUserInfo != null) {
+            if (mUser != null && qqUserInfo != null || mWeiboUserInfo != null) {
                 logicOperateUser.registUser(mUser.getPhone().toString(),
                         mUser.getPassword(),
                         qqUserInfo,
