@@ -24,6 +24,7 @@
     <color name="bluedeep">#1ea2a2</color>
     <color name="blacktransparent">#66d3c5c5</color>
     <color name="graydeep">#99434040</color>
+    <color name="gray">#3f434040</color>
     <color name="grayshallow">#aaf0e7e7</color>
     <color name="red">#ffff0000</color>
     <color name="orangedeep">#fa6e3b</color>

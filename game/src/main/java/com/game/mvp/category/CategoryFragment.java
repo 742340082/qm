@@ -116,7 +116,7 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView {
     @Override
     public void initHeader( List<CategoryLink> categoryLinks) {
         categoryAdapter = new CategoryAdapter(R.layout.item_game_category_content);
-        categoryAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
+        categoryAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
         rv_category.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rv_category.setAdapter(categoryAdapter);
 

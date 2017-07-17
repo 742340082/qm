@@ -103,7 +103,7 @@ public class GuoKeFragment
         mStatusLayoutManager.showContent();
         srl_news_content.setRefreshing(false);
         mNewContentAdapter = new NewGuokeContentAdapter(R.layout.item_news_content, data);
-        mNewContentAdapter.openLoadAnimation(NewZhiHuContentAdapter.SLIDEIN_LEFT);
+        mNewContentAdapter.openLoadAnimation(NewZhiHuContentAdapter.ALPHAIN);
         rv_news_content.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
         rv_news_content.setAdapter(this.mNewContentAdapter);
         mNewContentAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {

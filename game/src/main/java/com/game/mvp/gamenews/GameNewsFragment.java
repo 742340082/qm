@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
@@ -134,13 +135,13 @@ public class GameNewsFragment extends BaseFragmnet implements GameNewsView, Base
     @Override
     public void initHeader(final GameNewsResult gameNewsResult) {
         gameNewsAdapter = new GameNewsAdapter(R.layout.item_game_gamenews);
-        gameNewsAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
+        gameNewsAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
         gameNewsAdapter.loadMoreEnd(true);
         gameNewsAdapter.setOnLoadMoreListener(this, rv_game_gamenews);
         rv_game_gamenews.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rv_game_gamenews.setAdapter(gameNewsAdapter);
 
-        View viewHeader =  LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_game_gamenews_header, null);
+        View viewHeader =  LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_game_gamenews_header, new FrameLayout(getContext()));
         final ViewPager viewPager = (ViewPager) viewHeader.findViewById(R.id.vp_game_gamenews);
         if (mHandler == null) {
 

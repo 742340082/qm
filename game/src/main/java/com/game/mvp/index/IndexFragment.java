@@ -116,7 +116,7 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
     @Override
     public void initHeader(PosterBlock posterBlock) {
         recommendAdapter = new IndexAdapter(null);
-        recommendAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
+        recommendAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
         rv_game_index.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_game_index.setAdapter(recommendAdapter);
 

@@ -103,7 +103,6 @@
         android:layout_marginRight="@dimen/qm10dp"
         android:background="@color/button_background"
         android:text="@string/download"
-
         android:textColor="@color/navigation_text_color"
         android:textSize="14sp" />
 

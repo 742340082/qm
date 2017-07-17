@@ -141,7 +141,7 @@ public class CateoryDetailTopFragment extends BaseFragmnet implements CategoryDe
 
         if (data.getPage() == 1) {
             categoryDetailTopAdapter = new CategoryDetailTopAdapter(R.layout.item_game_index_normal, categoryDetailResult.getData());
-            categoryDetailTopAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
+            categoryDetailTopAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
             categoryDetailTopAdapter.loadMoreEnd(true);
             categoryDetailTopAdapter.setOnLoadMoreListener(this, rv_game_top);
             rv_game_top.setLayoutManager(new LinearLayoutManager(getContext()));

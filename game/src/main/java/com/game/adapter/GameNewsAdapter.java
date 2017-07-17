@@ -1,6 +1,8 @@
 package com.game.adapter;
 
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.baselibrary.utils.DateFormatter;
 import com.baselibrary.utils.UIUtils;
@@ -31,6 +33,29 @@ public class GameNewsAdapter extends BaseQuickAdapter<GameNewsData,BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, GameNewsData item) {
+        int layoutPosition = helper.getLayoutPosition();
+        if(layoutPosition==0)
+        {
+            LinearLayout linearLayout = (LinearLayout) helper.getConvertView();
+            ViewGroup.LayoutParams layoutParams = linearLayout.getLayoutParams();
+            if (layoutParams instanceof ViewGroup.MarginLayoutParams)
+            {
+                ViewGroup.MarginLayoutParams params= (ViewGroup.MarginLayoutParams) layoutParams;
+                params.setMargins(0,UIUtils.dip2px(10),0,0);
+                linearLayout.setLayoutParams(params);
+            }
+        }else
+        {
+            LinearLayout linearLayout = (LinearLayout) helper.getConvertView();
+            ViewGroup.LayoutParams layoutParams = linearLayout.getLayoutParams();
+            if (layoutParams instanceof ViewGroup.MarginLayoutParams)
+            {
+                ViewGroup.MarginLayoutParams params= (ViewGroup.MarginLayoutParams) layoutParams;
+                params.setMargins(0,0,0,UIUtils.dip2px(1));
+                linearLayout.setLayoutParams(params);
+            }
+        }
+
         Calendar instance = Calendar.getInstance(Locale.CHINA);
         long currentTime = instance.getTimeInMillis();
         long publishTime = Long.parseLong(item.getDateline())*1000;

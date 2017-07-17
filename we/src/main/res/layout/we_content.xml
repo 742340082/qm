@@ -61,28 +61,7 @@
 
         <include layout="@layout/cut_horizontal_apart" />
 
-        <LinearLayout
-            android:id="@id/ll_fine_photo"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_bg_gray_white"
-            android:gravity="center_vertical">
 
-            <ImageView
-                android:layout_width="@dimen/qm20dp"
-                android:layout_height="@dimen/qm20dp"
-                android:layout_marginLeft="@dimen/qm10dp"
-                android:src="@drawable/icon_we_fine_photo" />
-
-            <TextView
-                android:id="@id/textView2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/qm30dp"
-                android:text="@string/user_fine_photo"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/titleSize" />
-        </LinearLayout>
     </LinearLayout>
 
 

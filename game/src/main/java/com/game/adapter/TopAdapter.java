@@ -49,27 +49,7 @@ public class TopAdapter extends BaseQuickAdapter<Game, BaseViewHolder> {
         ImageView iv_game_top_icon = helper.getView(R.id.iv_game_top_icon);
 
         int layoutPosition = helper.getLayoutPosition();
-        if(layoutPosition==0)
-        {
-            LinearLayout linearLayout = (LinearLayout) helper.getConvertView();
-            ViewGroup.LayoutParams layoutParams = linearLayout.getLayoutParams();
-            if (layoutParams instanceof ViewGroup.MarginLayoutParams)
-            {
-                ViewGroup.MarginLayoutParams params= (ViewGroup.MarginLayoutParams) layoutParams;
-                params.setMargins(0,UIUtils.dip2px(10),0,0);
-                linearLayout.setLayoutParams(params);
-            }
-        }else
-        {
-            LinearLayout linearLayout = (LinearLayout) helper.getConvertView();
-            ViewGroup.LayoutParams layoutParams = linearLayout.getLayoutParams();
-            if (layoutParams instanceof ViewGroup.MarginLayoutParams)
-            {
-                ViewGroup.MarginLayoutParams params= (ViewGroup.MarginLayoutParams) layoutParams;
-                params.setMargins(0,0,0,0);
-                linearLayout.setLayoutParams(params);
-            }
-        }
+        initCutOff(helper, layoutPosition);
 
         if (layoutPosition <= 2) {
             tv_game_top_tag.setVisibility(View.GONE);
@@ -110,5 +90,29 @@ public class TopAdapter extends BaseQuickAdapter<Game, BaseViewHolder> {
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .into(iv_game_top_icon);
+    }
+
+    private void initCutOff(BaseViewHolder helper, int layoutPosition) {
+        if(layoutPosition==0)
+        {
+            LinearLayout linearLayout = (LinearLayout) helper.getConvertView();
+            ViewGroup.LayoutParams layoutParams = linearLayout.getLayoutParams();
+            if (layoutParams instanceof ViewGroup.MarginLayoutParams)
+            {
+                ViewGroup.MarginLayoutParams params= (ViewGroup.MarginLayoutParams) layoutParams;
+                params.setMargins(0, UIUtils.dip2px(10),0,UIUtils.dip2px(1));
+                linearLayout.setLayoutParams(params);
+            }
+        }else
+        {
+            LinearLayout linearLayout = (LinearLayout) helper.getConvertView();
+            ViewGroup.LayoutParams layoutParams = linearLayout.getLayoutParams();
+            if (layoutParams instanceof ViewGroup.MarginLayoutParams)
+            {
+                ViewGroup.MarginLayoutParams params= (ViewGroup.MarginLayoutParams) layoutParams;
+                params.setMargins(0,0,0,UIUtils.dip2px(1));
+                linearLayout.setLayoutParams(params);
+            }
+        }
     }
 }

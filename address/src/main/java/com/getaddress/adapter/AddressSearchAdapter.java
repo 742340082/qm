@@ -3,8 +3,7 @@ package com.getaddress.adapter;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.baselibrary.utils.Logger;
@@ -30,11 +29,10 @@ public class AddressSearchAdapter extends BaseQuickAdapter<AddressTipMapLocation
         Logger.i("TAG",item.toString());
         TextView tv_address_title = helper.getView(R.id.tv_address_title);
         TextView tv_address_detail = helper.getView(R.id.tv_address_detail);
-        LinearLayout ll_address = helper.getView(R.id.ll_address);
+        RelativeLayout rl_address = helper.getView(R.id.rl_address);
         String name = item.getTip().getName();
         String searchText = item.getSearchText();
-        if (!item.getTip().getAddress().equals("")) {
-            ll_address.setVisibility(View.VISIBLE);
+
             if (name.contains(searchText)) {
                 int indexOf = name.indexOf(searchText);
                 SpannableStringBuilder builder = new SpannableStringBuilder(name);
@@ -46,10 +44,7 @@ public class AddressSearchAdapter extends BaseQuickAdapter<AddressTipMapLocation
             }
 
             tv_address_detail.setText(item.getTip().getDistrict() + item.getTip().getAddress());
-        }else
-        {
-            ll_address.setVisibility(View.GONE);
-        }
+
 
     }
 }

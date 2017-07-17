@@ -356,13 +356,12 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
         srl_game_search.setRefreshing(false);
         mStatusLayoutManager.showContent();
         rv_game_small_search.setVisibility(View.GONE);
-        rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.viewBackground));
         searchResult = gameSearchResult;
         if (searchResult.getPage() == 1) {
             searchAdapter = new SearchAdapter(R.layout.item_game_index_normal, searchResult.getData());
             searchAdapter.setEnableLoadMore(true);
             searchAdapter.setOnLoadMoreListener(this, rv_game_search);
-            searchAdapter.openLoadAnimation(SearchAdapter.SLIDEIN_LEFT);
+            searchAdapter.openLoadAnimation(SearchAdapter.ALPHAIN);
             rv_game_search.setLayoutManager(new LinearLayoutManager(this));
             rv_game_search.setAdapter(searchAdapter);
         } else {

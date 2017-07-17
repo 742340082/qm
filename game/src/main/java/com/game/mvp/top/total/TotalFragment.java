@@ -121,7 +121,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, BaseQuickA
 
         if (data.getPage() == 1) {
             topAdapter = new TopAdapter(R.layout.item_game_top_total,totalResult.getData());
-            topAdapter.openLoadAnimation(IndexAdapter.SLIDEIN_LEFT);
+            topAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
             topAdapter.loadMoreEnd(true);
             topAdapter.setOnLoadMoreListener(this, rv_game_top);
             rv_game_top.setLayoutManager(new LinearLayoutManager(getContext()));

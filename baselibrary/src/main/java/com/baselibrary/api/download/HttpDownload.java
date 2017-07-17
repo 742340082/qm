@@ -115,7 +115,13 @@ public class HttpDownload {
     }
 
     private OkHttpClient httpClient;
+    private  volatile static HttpDownload httpDownload;
     public static HttpDownload getInstance() {
+        synchronized (HttpDownload.class) {
+            if (httpDownload == null) {
+                httpDownload = new HttpDownload();
+            }
+        }
         return new HttpDownload();
     }
 

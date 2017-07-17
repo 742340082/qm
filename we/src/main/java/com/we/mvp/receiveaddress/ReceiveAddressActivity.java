@@ -185,7 +185,7 @@ public class ReceiveAddressActivity extends BaseActivity implements ReveiveAddre
     public void success(List<ReceiveAddress> addressList) {
         mStatusLayoutManager.showContent();
         adapter = new ReceiveAddressAdapter(R.layout.item_receiveaddress, addressList);
-        adapter.openLoadAnimation(ReceiveAddressAdapter.SLIDEIN_LEFT);
+        adapter.openLoadAnimation(ReceiveAddressAdapter.ALPHAIN);
         rv_user_receive_address.setLayoutManager(new LinearLayoutManager(ReceiveAddressActivity.this, 1, false));
         rv_user_receive_address.setAdapter(adapter);
         adapter.setOnCLickItemListener(new ReceiveAddressAdapter.onCLickItemListener() {

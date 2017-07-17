@@ -150,7 +150,7 @@ public class DouBianFragment
         if (!isLoadMore) {
             mNewContentAdapter = new NewDouBianContentAdapter(postses);
             mNewContentAdapter.setOnLoadMoreListener(this, this.rv_news_content);
-            mNewContentAdapter.openLoadAnimation(NewZhiHuContentAdapter.SLIDEIN_LEFT);
+            mNewContentAdapter.openLoadAnimation(NewZhiHuContentAdapter.ALPHAIN);
             rv_news_content.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
             rv_news_content.setAdapter(this.mNewContentAdapter);
             mNewContentAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {

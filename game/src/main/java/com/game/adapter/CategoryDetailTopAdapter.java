@@ -37,7 +37,6 @@ public class CategoryDetailTopAdapter extends BaseQuickAdapter<Game,BaseViewHold
         Button btn_downlaod = helper.getView(R.id.btn_game_downlaod);
 
 
-
         if (StringUtil.isEmpty(game.getVideo_url())) {
             tv_game_vedio.setVisibility(View.GONE);
         }
@@ -52,4 +51,5 @@ public class CategoryDetailTopAdapter extends BaseQuickAdapter<Game,BaseViewHold
         tv_download_size.setText(FileUtil.byteSwitch(2, game.getSize_byte()));
         tv_game_desc.setText(game.getReview());
     }
+
 }

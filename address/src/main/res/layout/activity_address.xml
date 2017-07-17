@@ -54,28 +54,32 @@
             </LinearLayout>
 
 
+
+
             <com.baselibrary.view.ClearEditText
                 android:id="@id/et_address_search"
-                android:layout_width="@dimen/qm0dp"
-                android:layout_height="@dimen/qm30dp"
-                android:layout_marginLeft="@dimen/qm10dp"
-                android:layout_marginRight="@dimen/qm10dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_round_white_shape"
-                android:drawableLeft="@drawable/icon_gray_search"
-                android:drawablePadding="@dimen/qm5dp"
-                android:hint="@string/receiveaddress_address"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/qm10dp"
-                android:paddingRight="@dimen/qm5dp"
                 android:layout_marginTop="@dimen/qm10dp"
                 android:layout_marginBottom="@dimen/qm10dp"
-                android:ellipsize="end"
+                android:layout_marginLeft="@dimen/qm10dp"
+                android:layout_marginRight="@dimen/qm10dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/qm30dp"
+                android:background="@drawable/bg_round_white_shape"
+                android:drawablePadding="@dimen/qm5dp"
+                android:drawableRight="@drawable/icon_clear"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:textColorHint="@color/graydeep"
-                android:focusable="false"
+                android:gravity="center_vertical"
+                android:hint="@string/receiveaddress_address"
                 android:textColor="@color/textColorPrimary"
-                android:focusableInTouchMode="false"
-                android:textSize="@dimen/titleSize" />
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/qm10dp"
+                android:paddingRight="@dimen/qm10dp"
+                android:textSize="@dimen/titleSize"
+                 />
             <TextView
                 android:id="@id/tv_address_cancle_search"
                 android:layout_width="wrap_content"
@@ -142,7 +146,7 @@
             android:id="@id/ll_address_search_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/viewBackground"
+            android:background="@color/windowBackground"
             android:visibility="gone"
             android:orientation="vertical">
 
@@ -155,9 +159,9 @@
         <LinearLayout
             android:id="@id/ll_address_city_list"
             android:layout_width="match_parent"
-            android:background="@color/viewBackground"
             android:visibility="gone"
             android:layout_height="match_parent"
+            android:background="@color/windowBackground"
             android:orientation="vertical">
             <RelativeLayout
                 android:id="@id/rl_address_city_list"

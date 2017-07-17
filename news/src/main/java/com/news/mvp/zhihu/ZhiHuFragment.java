@@ -207,7 +207,7 @@ public class ZhiHuFragment
 
 
             zhihuAdapter = new NewZhiHuContentAdapter(R.layout.item_news_content, stories);
-            zhihuAdapter.openLoadAnimation(NewZhiHuContentAdapter.SLIDEIN_LEFT);
+            zhihuAdapter.openLoadAnimation(NewZhiHuContentAdapter.ALPHAIN);
             zhihuAdapter.setEnableLoadMore(true);
             zhihuAdapter.setOnLoadMoreListener(this, rv_news_content);
             initTop(topStories);
