@@ -13,10 +13,10 @@
             android:id="@+id/tv_photo"
             android:layout_width="fill_parent"
             android:layout_height="40.0dip"
-            android:background="@color/white"
+            android:background="@color/viewBackground"
             android:gravity="center"
             android:text="@string/user_from_photo_select"
-            android:textColor="@color/blue" />
+            android:textColor="@color/colorPrimary" />
 
         <include layout="@layout/cut_horizontal_apart" />
 
@@ -24,10 +24,10 @@
             android:id="@+id/tv_take"
             android:layout_width="fill_parent"
             android:layout_height="40.0dip"
-            android:background="@color/white"
+            android:background="@color/viewBackground"
             android:gravity="center"
             android:text="@string/user_from_take_select"
-            android:textColor="@color/blue" />
+            android:textColor="@color/colorPrimary" />
 
         <include layout="@layout/cut_horizontal_apart" />
 
@@ -36,9 +36,9 @@
             android:id="@+id/tv_close"
             android:layout_width="fill_parent"
             android:layout_height="40.0dip"
-            android:background="@color/white"
+            android:background="@color/viewBackground"
             android:gravity="center"
             android:text="@string/cancle"
-            android:textColor="@color/blue" />
+            android:textColor="@color/colorPrimary" />
     </LinearLayout>
 </RelativeLayout>

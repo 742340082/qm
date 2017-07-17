@@ -330,6 +330,8 @@ public class AddressActivity extends AppCompatActivity implements GetAddressView
     }
 
     private void initView() {
+        et_address_search.setFocusable(true);
+        et_address_search.setFocusableInTouchMode(true);
         mLocationLayoutManager = StatusLayoutManager.newBuilder(this)
                 .emptyDataView(R.layout.state_empty)
                 .errorView(R.layout.state_error)
@@ -485,6 +487,7 @@ public class AddressActivity extends AppCompatActivity implements GetAddressView
 
     @Override
     public void locationSuccess(AMapLocation mapLocation) {
+
         this.mapLocation = mapLocation;
         mLocationLayoutManager.showContent();
         initAdapter();

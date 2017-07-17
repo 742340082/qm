@@ -9,14 +9,20 @@
 
         <!--默认menu的字体颜色-->
         <item name="actionMenuTextAppearance">@style/MenuTextStyle</item>
-        <item name="actionMenuTextColor">@color/white</item>
+        <item name="actionMenuTextColor">@color/navigation_text_color</item>
 
         <!--默认设置打开应用的水平方式-->
         <item name="android:screenOrientation">portrait</item>
 
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryDark">@color/blue</item>
-        <item name="colorAccent">@color/yellow</item>
+        <!--actionbar北背景颜色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--状态栏背景色-->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!--控件选中的颜色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--应用背景色-->
+        <item name="android:windowBackground">@color/windowBackground</item>
+
     </style>
     <!--打开和关闭activity的动画-->
     <style name="slide" parent="@android:style/Animation.Activity">
@@ -38,7 +44,7 @@
     <!--toolbar默认标题的字体大小和颜色-->
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/viewBackground</item>
     </style>
     <!--自定义dialog的主题-->
     <style name="CustomDialog" parent="ThemeOverlay.AppCompat.Dialog">
@@ -54,7 +60,7 @@
 
     <style name="Tv16spBlack">
         <item name="android:textSize">16.0sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
     <style name="Tv16spGray">
         <item name="android:textSize">16.0sp</item>
@@ -66,15 +72,15 @@
     </style>
     <style name="Tv16spWhite">
         <item name="android:textSize">14.0sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/viewBackground</item>
     </style>
     <style name="Tv14spWhite">
         <item name="android:textSize">14.0sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/viewBackground</item>
     </style>
     <style name="Tv14spBlack">
         <item name="android:textSize">14.0sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
     <style name="Tv14spGray">
         <item name="android:textSize">14.0sp</item>
@@ -87,7 +93,7 @@
 
     <style name="Tv12spBlack">
         <item name="android:textSize">12.0sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
     </style>
 
 
@@ -134,9 +140,11 @@
         <item name="android:windowNoTitle">true</item>
     </style>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    <style name="WindowAnimationFadeInOut">
-        <item name="android:windowEnterAnimation">@anim/fade_in</item>
-        <item name="android:windowExitAnimation">@anim/fade_out</item>
-    </style>
 
+
+    <!--用于解决夜间模式闪屏-->
+    <style name="WindowAnimationFadeInOut">
+        <item name="@android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="@android:windowExitAnimation">@anim/fade_out</item>
+    </style>
 </resources>

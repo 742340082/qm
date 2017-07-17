@@ -14,11 +14,12 @@
         android:id="@id/toolbar"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/toolbarHeight"
+        android:layout_marginBottom="@dimen/qm1dp"
         app:titleTextAppearance="@style/Toolbar.TitleText"
-        android:background="@color/blue"
+        android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left"
         app:title="@string/user_setting"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/navigation_text_color"/>
 
 
     <LinearLayout
@@ -100,7 +101,7 @@
         android:layout_marginTop="@dimen/qm10dp"
         android:background="@drawable/selector_bg_green_green"
         android:text="@string/exit_login"
-        android:textColor="@color/white"
+        android:textColor="@color/navigation_text_color"
         android:textSize="@dimen/titleSize" />
 
 </LinearLayout>

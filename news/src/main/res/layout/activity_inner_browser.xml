@@ -12,9 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"
         android:fitsSystemWindows="true"
-        app:titleTextColor="@color/white"
+        app:titleTextColor="@color/viewBackground"
         app:title=" "
-        android:background="@color/blue"
+        android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left" />
 
 

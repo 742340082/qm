@@ -10,11 +10,11 @@
         android:id="@id/toolbar"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/toolbarHeight"
-        android:background="@color/blue"
+        android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left"
         app:title="@string/AccountandSecurity"
         app:titleTextAppearance="@style/Toolbar.TitleText"
-        app:titleTextColor="@color/white" />
+        app:titleTextColor="@color/navigation_text_color" />
 
     <LinearLayout
         android:id="@id/ll_user_detail"
@@ -59,7 +59,6 @@
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
 
-
                         android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
@@ -67,13 +66,13 @@
                             style="@style/Tv14spBlack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignBaseline="@id/tv_user_account"
-                            android:layout_alignBottom="@id/tv_user_account"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginLeft="@dimen/qm10dp"
-                            android:layout_marginStart="@dimen/qm10dp"
                             android:gravity="center_vertical"
-                            android:text="@string/user_derail_name" />
+                            android:text="@string/user_derail_name"
+                            android:layout_marginLeft="@dimen/qm10dp"
+                            android:textColor="@color/textColorPrimary"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
 
                         <TextView
                             android:id="@id/tv_user_account"
@@ -81,6 +80,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
+                            android:textColor="@color/textColorPrimary"
                             android:layout_marginRight="10.0dip"
                             android:gravity="center_vertical"
                             android:text="@string/user_derail_name" />
@@ -102,8 +102,8 @@
                             style="@style/Tv14spBlack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
                             android:layout_alignParentLeft="true"
+                            android:textColor="@color/textColorPrimary"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:gravity="center_vertical"
                             android:text="@string/user_account" />
@@ -118,6 +118,7 @@
                             android:layout_marginEnd="@dimen/qm10dp"
                             android:layout_marginRight="@dimen/qm10dp"
                             android:ellipsize="end"
+                            android:textColor="@color/textColorPrimary"
                             android:gravity="center_vertical"
                             android:maxEms="7"
                             android:maxLines="1"
@@ -144,6 +145,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:layout_marginRight="@dimen/qm10dp"
+                            android:textColor="@color/textColorPrimary"
                             android:text="@string/account_bind" />
                     </RelativeLayout>
 
@@ -165,18 +167,23 @@
                             android:drawableLeft="@drawable/icon_we_phone"
                             android:drawablePadding="@dimen/qm10dp"
                             android:gravity="center_vertical"
-                            android:text="@string/user_detail_telephone" />
+                            android:textColor="@color/textColorPrimary"
+                            android:text="@string/user_detail_telephone"
+                            android:id="@+id/textView4" />
 
                         <TextView
                             android:id="@id/tv_user_telephone"
                             style="@style/Tv14spGray"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="@dimen/qm10dp"
+                            android:layout_marginRight="11dp"
                             android:gravity="center_vertical"
+                            android:textColor="@color/selector_color_blue_graydeep"
                             android:text="@string/user_third_bind"
-                            android:textColor="@color/selector_color_blue_graydeep" />
+                            android:layout_alignTop="@+id/textView4"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="11dp" />
                     </RelativeLayout>
 
                     <include layout="@layout/cut_horizontal_apart" />
@@ -195,6 +202,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
+                            android:textColor="@color/textColorPrimary"
                             android:drawableLeft="@drawable/icon_we_weibo"
                             android:drawablePadding="@dimen/qm10dp"
                             android:gravity="center_vertical"
@@ -230,6 +238,7 @@
                             android:drawableLeft="@drawable/icon_we_qq"
                             android:drawablePadding="@dimen/qm10dp"
                             android:gravity="center_vertical"
+                            android:textColor="@color/textColorPrimary"
                             android:text="@string/user_detail_qq" />
 
                         <TextView
@@ -249,18 +258,20 @@
 
                 <LinearLayout
                     android:layout_width="fill_parent"
+                    android:layout_marginTop="@dimen/qm10dp"
                     android:layout_height="fill_parent"
-
                     android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
+                        android:background="@color/viewBackground"
                         android:gravity="center_vertical">
 
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/textColorPrimary"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:text="@string/user_safe_setting" />
                     </RelativeLayout>
@@ -271,8 +282,6 @@
                         android:id="@id/rl_user_login_password"
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-
-
                         android:background="@drawable/selector_bg_gray_white"
                         android:gravity="center_vertical">
 
@@ -283,6 +292,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:drawablePadding="@dimen/qm10dp"
+                            android:textColor="@color/textColorPrimary"
                             android:gravity="center_vertical"
                             android:text="@string/user_detail_login_password" />
 
@@ -295,7 +305,7 @@
                             android:layout_marginRight="@dimen/qm10dp"
                             android:gravity="center_vertical"
                             android:text="@string/user_safe_default_setting"
-                            android:textColor="@color/blue" />
+                            android:textColor="@color/textColorPrimary" />
                     </RelativeLayout>
 
                     <include layout="@layout/cut_horizontal_apart" />
@@ -315,6 +325,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_marginLeft="@dimen/qm10dp"
                             android:layout_marginRight="@dimen/qm10dp"
+                            android:textColor="@color/textColorPrimary"
                             android:drawablePadding="@dimen/qm10dp"
                             android:gravity="center_vertical"
                             android:text="@string/user_detail_min_money_pay" />

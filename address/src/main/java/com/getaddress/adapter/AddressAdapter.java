@@ -1,7 +1,7 @@
 package com.getaddress.adapter;
 
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.amap.api.services.core.PoiItem;
@@ -23,11 +23,9 @@ public class AddressAdapter extends BaseQuickAdapter<PoiItem,BaseViewHolder> {
     @Override
     protected void convert(BaseViewHolder helper, PoiItem item) {
         TextView tv_current = helper.getView(R.id.tv_address_current);
-        LinearLayout ll_address = helper.getView(R.id.ll_address);
+        RelativeLayout rl_address = helper.getView(R.id.rl_address);
         TextView tv_address_title = helper.getView(R.id.tv_address_title);
         TextView tv_address_detail = helper.getView(R.id.tv_address_detail);
-        if (!item.getSnippet().equals("")) {
-            ll_address.setVisibility(View.VISIBLE);
             if (helper.getAdapterPosition() == 0) {
                 tv_current.setVisibility(View.VISIBLE);
             } else {
@@ -66,10 +64,6 @@ public class AddressAdapter extends BaseQuickAdapter<PoiItem,BaseViewHolder> {
                     }
 
                 }
-            }
-        }else
-        {
-            ll_address.setVisibility(View.GONE);
         }
     }
 }

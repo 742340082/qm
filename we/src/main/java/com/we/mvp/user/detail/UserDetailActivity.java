@@ -390,9 +390,9 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
         options.setHideBottomControls(true);
         options.setAllowedGestures(1, 2, 3);
         options.setCircleDimmedLayer(true);
-        options.setToolbarColor(UIUtils.getColor(R.color.blue));
+        options.setToolbarColor(UIUtils.getColor(R.color.colorPrimary));
         options.setToolbarTitle("裁剪头像");
-        options.setStatusBarColor(UIUtils.getColor(R.color.blue));
+        options.setStatusBarColor(UIUtils.getColor(R.color.colorPrimary));
         options.setShowCropFrame(false);
         options.setCompressionQuality(100);
         options.setShowCropGrid(false);

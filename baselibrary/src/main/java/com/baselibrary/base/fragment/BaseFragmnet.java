@@ -16,8 +16,7 @@ public abstract class BaseFragmnet
         implements UiOperate {
     public View rootView;
     // 标志位，标志已经初始化完成。
-    private boolean isPrepared;
-    protected boolean isVisible;
+    protected boolean isVisible=true;
     private boolean isLoadData;
     public Bundle getBundle(String title) {
         Bundle localBundle = new Bundle();
@@ -29,19 +28,16 @@ public abstract class BaseFragmnet
         super.setUserVisibleHint(isVisibleToUser);
         if (getUserVisibleHint()) {
             isVisible = true;
-            onVisible();
+            lazyLoad();
         } else {
             isVisible = false;
         }
     }
 
-    protected void onVisible() {
-        lazyLoad();
-    }
 
-    public void onClick(View paramView) {
-        paramView.getId();
-        click(paramView, paramView.getId());
+    public void onClick(View view) {
+        view.getId();
+        click(view, view.getId());
     }
 
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup paramViewGroup, Bundle paramBundle) {
@@ -49,7 +45,6 @@ public abstract class BaseFragmnet
         if (rootView == null) {
             setHasOptionsMenu(true);
             this.rootView = layoutInflater.inflate(getLayoutResId(), null);
-            isPrepared = true;
         }
         return this.rootView;
     }
@@ -61,9 +56,10 @@ public abstract class BaseFragmnet
         lazyLoad();
     }
     protected void lazyLoad() {
-        if (!isPrepared || !isVisible||isLoadData) {
+        if (isLoadData||!isVisible) {
             return;
         }
+
         if (isAdded()) {
             ButterKnife.bind(this, rootView);
             initView();
@@ -74,4 +70,19 @@ public abstract class BaseFragmnet
         }
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        isLoadData=false;
+        if (savedInstanceState!=null)
+        {
+            isVisible=savedInstanceState.getBoolean(ConfigValues.VALUE_SAVE_FRAGMENT_VISABLE_STATE);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(ConfigValues.VALUE_SAVE_FRAGMENT_VISABLE_STATE,isVisible);
+    }
 }

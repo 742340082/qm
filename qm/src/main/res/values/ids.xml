@@ -8,4 +8,6 @@
     <item name="tv_tab_item" type="id" />
     <item name="tabhost" type="id" />
     <item name="btn_guide_enter" type="id" />
+    <item name="tl_main" type="id" />
+    <item name="vp_main" type="id" />
 </resources>

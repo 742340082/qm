@@ -88,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:numStars="5"
                         android:rating="3.5"
-                        android:progressTint="@color/yellow"
+                        android:progressTint="@color/colorAccent"
                         android:isIndicator="false"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_height="wrap_content" />
@@ -96,7 +96,7 @@
                         android:layout_width="wrap_content"
                         android:text="9.5分"
                         android:layout_marginLeft="@dimen/qm5dp"
-                        android:textColor="@color/yellow"
+                        android:textColor="@color/colorAccent"
                         android:textSize="@dimen/textSize"
                         android:layout_height="wrap_content" />
                     <TextView

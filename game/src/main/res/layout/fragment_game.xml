@@ -9,7 +9,7 @@
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_marginBottom="@dimen/qm1dp"
-        android:background="@color/blue"
+        android:background="@color/colorPrimary"
         android:layout_height="@dimen/toolbarHeight">
         <TextView
             android:id="@id/tv_game_search"
@@ -24,13 +24,15 @@
             android:background="@drawable/bg_round_white_shape"
             android:layout_height="@dimen/qm30dp" />
     </android.support.v7.widget.Toolbar>
+
     <android.support.design.widget.TabLayout
         android:id="@id/tb_game"
         android:layout_width="match_parent"
         android:layout_height="@dimen/guideBarHeight"
-        android:background="@color/blue"
-        app:tabSelectedTextColor="@color/yellow"
-        app:tabTextColor="@color/white" />
+        android:background="@color/colorPrimary"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@color/navigation_text_color" />
+
     <include layout="@layout/cut_horizontal_apart"/>
     <android.support.v4.view.ViewPager
         android:id="@id/vp_game"

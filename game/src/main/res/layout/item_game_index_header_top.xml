@@ -22,6 +22,6 @@
         android:ellipsize="end"
         android:maxLength="5"
         android:text="新游"
-        android:textColor="@color/black"
+        android:textColor="@color/textColorPrimary"
         android:textSize="12sp" />
 </LinearLayout>

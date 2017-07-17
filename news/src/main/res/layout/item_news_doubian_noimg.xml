@@ -4,6 +4,7 @@
     style="@style/AppTheme"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/qm1dp"
     android:background="@drawable/selector_bg_gray_white"
     android:orientation="vertical"
     >
@@ -34,7 +35,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="我说的话费卡萨海口市答复客户"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
     </RelativeLayout>
 

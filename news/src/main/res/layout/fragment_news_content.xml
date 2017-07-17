@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
              android:id="@id/fl_news_container"
              style="@style/AppTheme"
              android:layout_width="match_parent"
@@ -23,6 +24,7 @@
         android:id="@id/fab_news"
         android:layout_width="@dimen/qm50dp"
         android:layout_height="@dimen/qm50dp"
+        android:background="@color/blue"
         android:layout_gravity="end|bottom"
         android:layout_marginRight="@dimen/qm10dp"
         android:visibility="gone"

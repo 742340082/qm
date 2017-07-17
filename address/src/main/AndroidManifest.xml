@@ -17,7 +17,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            />
     </application>
 
 </manifest>

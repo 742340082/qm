@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/selector_bg_gray_white"
+    android:layout_marginBottom="@dimen/qm1dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -24,10 +25,9 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/qm5dp"
             android:text="天天酷跑"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
     </LinearLayout>
 
 
-    <include layout="@layout/cut_horizontal_apart" />
 </LinearLayout>

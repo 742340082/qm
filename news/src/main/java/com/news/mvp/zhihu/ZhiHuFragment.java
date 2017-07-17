@@ -38,8 +38,6 @@ import java.util.List;
 
 import butterknife.BindView;
 
-import static com.baselibrary.config.ConfigValues.VALUE_NEWS_CHANGE_TIME;
-
 public class ZhiHuFragment
         extends BaseFragmnet
         implements ZhiHuView, BaseQuickAdapter.RequestLoadMoreListener {

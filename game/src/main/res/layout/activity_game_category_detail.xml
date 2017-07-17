@@ -8,8 +8,8 @@
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_marginBottom="@dimen/qm1dp"
-        android:background="@color/blue"
-        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/navigation_text_color"
         app:navigationIcon="@drawable/arrow_left"
         android:layout_height="@dimen/toolbarHeight"/>
 
@@ -21,12 +21,11 @@
         <android.support.design.widget.TabLayout
             android:id="@id/tl_game_category_detail_tag"
             android:layout_width="match_parent"
-            app:tabIndicatorColor="@color/yellow"
-            android:background="@color/blue"
             android:visibility="gone"
-            app:tabSelectedTextColor="@color/yellow"
+            app:tabSelectedTextColor="@color/colorAccent"
+            android:background="@color/colorPrimary"
             app:tabMode="scrollable"
-            app:tabTextColor="@color/white"
+            app:tabTextColor="@color/navigation_text_color"
             android:layout_height="@dimen/guideBarHeight" />
 
         <include layout="@layout/cut_horizontal_apart" />

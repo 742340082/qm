@@ -2,14 +2,17 @@ package com.we;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.utils.RxBus;
+import com.baselibrary.utils.SaveConfigUserUtil;
 import com.baselibrary.utils.StringUtil;
 import com.baselibrary.utils.UIUtils;
 import com.we.config.ConfigUser;
@@ -52,7 +55,7 @@ public class WeFragment extends BaseFragmnet implements UserMenuView {
     @BindView(R2.id.ll_setting)
     LinearLayout ll_setting;
     @BindView(R2.id.switch_night)
-    Switch switch_night;
+    SwitchCompat switch_night;
 
     private WePresenter presenter;
     private User mUser;
@@ -101,7 +104,40 @@ public class WeFragment extends BaseFragmnet implements UserMenuView {
             }
         });
 
+
+
+        setCheckedState(switch_night);
+        setCheckedEvent(switch_night);
+
     }
+    private void setCheckedState(SwitchCompat dayNightSwitch) {
+        boolean isNight = SaveConfigUserUtil.getBoolean(UIUtils.getContext(),ConfigUser.USER_NIGHT_SAVE, false);
+        if (isNight) {
+            dayNightSwitch.setChecked(true);
+        } else {
+            dayNightSwitch.setChecked(false);
+        }
+    }
+
+    private void setCheckedEvent(SwitchCompat dayNightSwitch) {
+        dayNightSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                {
+                    SaveConfigUserUtil.setBoolean(UIUtils.getContext(), ConfigUser.USER_NIGHT_SAVE,true);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }else
+                {
+                    SaveConfigUserUtil.setBoolean(UIUtils.getContext(), ConfigUser.USER_NIGHT_SAVE,false);
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+                getActivity().getWindow().setWindowAnimations(R.style.WindowAnimationFadeInOut);
+                getActivity().recreate();
+            }
+        });
+    }
+
     public void enterActivity() {
         if (this.mUser != null) {
                 UIUtils.startActivity(getContext(), UserDetailActivity.class);
@@ -163,6 +199,7 @@ public class WeFragment extends BaseFragmnet implements UserMenuView {
 
         }
     }
+
 
     @Override
     public void error(int error, String errorMessage) {

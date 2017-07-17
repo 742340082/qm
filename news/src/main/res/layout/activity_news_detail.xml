@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/blue"
+            app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed|enterAlways"
             app:title=" ">
 
@@ -37,7 +37,7 @@
                 android:id="@id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/toolbarHeight"
-                app:background="@color/blue"
+                app:background="@color/colorPrimary"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/arrow_left"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />

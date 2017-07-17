@@ -1,81 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/rl_address"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="@dimen/qm1dp"
     android:background="@drawable/selector_bg_gray_white"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@id/iv_address_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/qm10dp"
+        android:src="@drawable/icon_address_tab_image" />
 
     <LinearLayout
-        android:id="@id/ll_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/qm5dp"
+        android:layout_marginLeft="@dimen/qm20dp"
+        android:layout_marginTop="@dimen/qm5dp"
+        android:layout_toRightOf="@id/iv_address_location"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:background="@drawable/selector_bg_gray_white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@id/iv_address_location"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@id/tv_address_current"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/qm10dp"
-                android:src="@drawable/icon_address_tab_image" />
+                android:text="@string/current"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/titleSize"
+                android:visibility="gone" />
 
-            <LinearLayout
+            <TextView
+                android:id="@id/tv_address_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/qm5dp"
-                android:layout_marginLeft="@dimen/qm20dp"
-                android:layout_marginTop="@dimen/qm5dp"
-                android:layout_toRightOf="@id/iv_address_location"
-                android:orientation="vertical">
+                android:layout_marginRight="@dimen/qm20dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/address"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/titleSize" />
+        </LinearLayout>
 
+        <TextView
+            android:id="@id/tv_address_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/qm20dp"
+            android:layout_marginTop="@dimen/qm5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/address"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/titleSize" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@id/tv_address_current"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/current"
-                        android:textColor="@color/blue"
-                        android:textSize="@dimen/titleSize"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@id/tv_address_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/qm20dp"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="@string/address"
-                        android:textSize="@dimen/titleSize" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@id/tv_address_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/qm20dp"
-                    android:layout_marginTop="@dimen/qm5dp"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@string/address"
-                    android:textSize="@dimen/titleSize" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <include layout="@layout/cut_horizontal_apart" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
+

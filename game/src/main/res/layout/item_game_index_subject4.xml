@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/qm5dp"
     android:layout_marginBottom="@dimen/qm5dp"
+    android:background="@color/viewBackground"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -19,7 +20,7 @@
             android:layout_width="wrap_content"
             android:textSize="@dimen/titleSize"
             android:text="每日推荐"
-            android:textColor="@color/white"
+            android:textColor="@color/viewBackground"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -30,7 +31,7 @@
             android:layout_alignParentRight="true"
             android:drawableRight="@drawable/arrow_right"
             android:text="点击查看更多"
-            android:textColor="@color/white"
+            android:textColor="@color/viewBackground"
             android:textSize="@dimen/textSize" />
     </RelativeLayout>
     <LinearLayout
@@ -58,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:text="新游"
                 android:id="@id/tv_game_category_title1"
-                android:textColor="@color/white"
+                android:textColor="@color/viewBackground"
                 android:layout_marginTop="@dimen/qm5dp"
                 android:maxLength="5"
                 android:textSize="@dimen/textSize"
@@ -78,7 +79,7 @@
                         android:id="@id/tv_game_download_title2"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/textSizeMin"
-                        android:textColor="@color/white"
+                        android:textColor="@color/viewBackground"
                         android:text="10M"
                         android:layout_height="wrap_content" />
 
@@ -102,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:text="新游"
                 android:id="@id/tv_game_category_title2"
-                android:textColor="@color/white"
+                android:textColor="@color/viewBackground"
                 android:layout_marginTop="@dimen/qm5dp"
                 android:maxLength="5"
                 android:textSize="@dimen/textSize"
@@ -122,7 +123,7 @@
                         android:id="@id/tv_game_download_title2"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/textSizeMin"
-                        android:textColor="@color/white"
+                        android:textColor="@color/viewBackground"
                         android:text="10M"
                         android:layout_height="wrap_content" />
 
@@ -146,7 +147,7 @@
                 android:layout_width="wrap_content"
                 android:text="新游"
                 android:id="@id/tv_game_category_title3"
-                android:textColor="@color/white"
+                android:textColor="@color/viewBackground"
                 android:layout_marginTop="@dimen/qm5dp"
                 android:maxLength="5"
                 android:textSize="@dimen/textSize"
@@ -166,7 +167,7 @@
                         android:id="@id/tv_game_download_title3"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/textSizeMin"
-                        android:textColor="@color/white"
+                        android:textColor="@color/viewBackground"
                         android:text="10M"
                         android:layout_height="wrap_content" />
 
@@ -190,7 +191,7 @@
                 android:layout_width="wrap_content"
                 android:text="新游"
                 android:id="@id/tv_game_category_title4"
-                android:textColor="@color/white"
+                android:textColor="@color/viewBackground"
                 android:layout_marginTop="@dimen/qm5dp"
                 android:maxLength="5"
                 android:textSize="@dimen/textSize"
@@ -210,7 +211,7 @@
                         android:id="@id/tv_game_download_title4"
                         android:layout_width="wrap_content"
                         android:textSize="@dimen/textSizeMin"
-                        android:textColor="@color/white"
+                        android:textColor="@color/viewBackground"
                         android:text="10M"
                         android:layout_height="wrap_content" />
                 </RelativeLayout>

@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/qm5dp"
     android:layout_marginBottom="@dimen/qm5dp"
+    android:background="@color/viewBackground"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -22,7 +23,7 @@
             android:layout_margin="@dimen/qm10dp"
             android:text="@string/hot"
             android:layout_marginRight="@dimen/qm6dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/viewBackground" />
         <TextView
             android:id="@id/tv_game_subject_title"
             android:layout_toRightOf="@id/tv_game_tag"
@@ -31,7 +32,7 @@
             android:text="每日推荐"
             android:layout_marginTop="@dimen/qm10dp"
             android:layout_marginBottom="@dimen/qm10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -75,6 +76,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/qm5dp"
             android:layout_height="wrap_content">
 
             <ImageView

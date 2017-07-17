@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/qm5dp"
     android:layout_marginTop="@dimen/qm5dp"
+    android:background="@color/viewBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -23,7 +24,7 @@
             android:background="@drawable/bg_green_shape"
             android:gravity="center"
             android:text="@string/active"
-            android:textColor="@color/white"
+            android:textColor="@color/viewBackground"
             android:textSize="@dimen/textSizeMin" />
 
         <TextView
@@ -34,7 +35,7 @@
             android:layout_marginBottom="@dimen/qm10dp"
             android:layout_toRightOf="@id/tv_game_tag"
             android:text="每日推荐"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
     </LinearLayout>
 

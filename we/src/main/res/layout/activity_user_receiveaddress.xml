@@ -9,11 +9,12 @@
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"
-        android:background="@color/blue"
+        android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left"
         app:title="@string/user_receive_address"
+        android:layout_marginBottom="@dimen/qm1dp"
         app:titleTextAppearance="@style/Toolbar.TitleText"
-        app:titleTextColor="@color/white" />
+        app:titleTextColor="@color/navigation_text_color" />
 
     <RelativeLayout
         android:id="@id/rl_user_receive_address"
@@ -33,31 +34,21 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="@dimen/qm1dp"
             android:layout_alignParentBottom="true"
             android:id="@id/rl_add_user_receive_address"
-            android:background="@drawable/selector_bg_gray_white">
-            <include layout="@layout/cut_horizontal_apart"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_centerInParent="true">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/add" />
+            android:background="@drawable/selector_bg_green_green"
+            >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="@string/add_receice_address"
-                    android:textColor="@color/blue"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/navigation_text_color"
                     android:textSize="16sp" />
-            </LinearLayout>
+
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

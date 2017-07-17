@@ -9,6 +9,8 @@ public abstract interface ConfigValues {
     int VALUE_ADDRESS_RX_SEND_RETURNADDRESS = 3003;
 
     //--------------------------------------普通的配置数据------------------------
+    String VALUE_SELECT_TAB_TITLE="VALUE_SELECT_TAB_TITLE";
+    String VALUE_SAVE_FRAGMENT_VISABLE_STATE="VALUE_SAVE_FRAGMENT_VISABLE_STATE";
     //默认连接超时时间单位毫秒
     //轮播条切换时间
     long VALUE_NEWS_CHANGE_TIME = 3000;

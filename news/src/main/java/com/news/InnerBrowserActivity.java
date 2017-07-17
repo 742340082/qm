@@ -67,7 +67,7 @@ public class InnerBrowserActivity extends BaseActivity {
     @Override
     public void initView() {
         if (Build.VERSION.SDK_INT >= 21) {
-            hideToobarAnd(UIUtils.getColor(R.color.blue), UIUtils.getColor(R.color.blue), true, true);
+            hideToobarAnd(UIUtils.getColor(R.color.colorPrimary), UIUtils.getColor(R.color.colorPrimary), true, true);
         }
         setSupportActionBar(toolbar);
         //能够和js交互

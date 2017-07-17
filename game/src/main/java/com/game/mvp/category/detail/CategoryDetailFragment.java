@@ -183,7 +183,7 @@ public class CategoryDetailFragment extends BaseFragmnet {
                     iv_game_selcted_size_icon.setImageResource(R.drawable.arrow_up);
                     fl_game_category_detail.setVisibility(View.GONE);
                     tv_game_selcted_size.setText(selectedSizeOption);
-                    vp_game_category_detail_tag.setBackgroundColor(UIUtils.getColor(R.color.white));
+                    vp_game_category_detail_tag.setBackgroundColor(UIUtils.getColor(R.color.viewBackground));
                 } else {
                     vp_game_category_detail_tag.setBackgroundColor(UIUtils.getColor(R.color.transparent));
                     iv_game_selcted_size_icon.setImageResource(R.drawable.arrow_down);

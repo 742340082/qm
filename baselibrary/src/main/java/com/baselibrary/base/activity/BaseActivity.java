@@ -17,7 +17,7 @@ public abstract class BaseActivity
         extends AppBaseActivity {
     protected static BaseActivity sForegroundActivity;
     public static final LinkedList<BaseActivity> mActivities = new LinkedList();
-
+    protected Bundle mBundle;
     public static final   BaseActivity getForegroundActivity() {
         return sForegroundActivity;
     }
@@ -105,6 +105,7 @@ public abstract class BaseActivity
 
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        this.mBundle =bundle;
         mActivities.add(this);
         setContentView(getLayoutResId());
         ButterKnife.bind(this);

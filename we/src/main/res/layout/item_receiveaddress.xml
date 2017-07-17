@@ -2,13 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_marginBottom="@dimen/qm1dp"
+    android:background="@color/viewBackground"
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/selector_bg_gray_white"
-        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="@dimen/qm0dp"
@@ -29,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/qm10dp"
                     android:text="杨裕潘"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="@dimen/titleSize" />
 
                 <TextView
@@ -38,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/qm5dp"
                     android:text="先生"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="@dimen/titleSize"
                     android:visibility="gone" />
 
@@ -47,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="17309730436"
-                    android:textColor="@color/black"
+                    android:textColor="@color/textColorPrimary"
                     android:textSize="@dimen/titleSize" />
             </LinearLayout>
 
@@ -73,7 +70,7 @@
                         android:background="@drawable/bg_yellow_shape"
                         android:gravity="center"
                         android:text="@string/flyme"
-                        android:textColor="@color/white"
+                        android:textColor="@color/viewBackground"
                         android:textSize="@dimen/textSize"
                         android:visibility="gone" />
 
@@ -84,7 +81,7 @@
                         android:background="@drawable/bg_blue_shape"
                         android:gravity="center"
                         android:text="@string/school"
-                        android:textColor="@color/white"
+                        android:textColor="@color/navigation_text_color"
                         android:textSize="@dimen/textSize"
                         android:visibility="gone" />
 
@@ -95,7 +92,7 @@
                         android:background="@drawable/bg_green_shape"
                         android:gravity="center"
                         android:text="@string/company"
-                        android:textColor="@color/white"
+                        android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/textSize"
                         android:visibility="gone" />
 
@@ -108,6 +105,7 @@
                     android:layout_marginLeft="@dimen/qm5dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
+                    android:textColor="@color/textColorPrimary"
                     android:maxLines="2"
                     android:text="你说舒服多了塑料袋水电费会计手工雕刻机速度恢复健康数据库 盛开的回复即可随时打开恢复数据库"
                     android:textSize="@dimen/titleSize" />
@@ -121,7 +119,5 @@
             android:layout_gravity="center_vertical"
             android:layout_marginRight="@dimen/qm10dp"
             android:src="@drawable/icon_address_update" />
-    </LinearLayout>
 
-    <include layout="@layout/cut_horizontal_apart"/>
 </LinearLayout>

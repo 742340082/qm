@@ -8,16 +8,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/qm1dp"
         android:layout_height="@dimen/guideBarHeight"
-        android:background="@color/blue">
+        android:background="@color/colorPrimary">
 
         <android.support.design.widget.TabLayout
             android:id="@id/tl_game_category_detail"
             android:layout_width="@dimen/qm200dp"
             android:layout_height="@dimen/guideBarHeight"
-            app:tabIndicatorColor="@color/yellow"
-            app:tabSelectedTextColor="@color/yellow"
-            app:tabTextColor="@color/white" />
+            android:background="@color/colorPrimary"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@color/navigation_text_color" />
 
         <RelativeLayout
             android:id="@id/rl_game_category_detail"
@@ -35,7 +36,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="全部大小"
-                android:textColor="@color/white"
+                android:textColor="@color/navigation_text_color"
                 android:textSize="@dimen/titleSize" />
 
             <ImageView
@@ -70,7 +71,8 @@
                 android:id="@id/fl_game_category_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:layout_marginBottom="@dimen/qm1dp"
+                android:background="@color/viewBackground"
                 android:visibility="gone" />
             <include layout="@layout/cut_horizontal_apart"/>
         </LinearLayout>

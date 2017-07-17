@@ -119,7 +119,7 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
         rl_game_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.white));
+                rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.viewBackground));
                 if (rv_game_small_search.getVisibility() == View.VISIBLE) {
                     rv_game_small_search.setVisibility(View.GONE);
                 }
@@ -207,7 +207,7 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
                 {
                     currentSearchText=null;
                     rv_game_small_search.setVisibility(View.GONE);
-                    rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.white));
+                    rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.viewBackground));
                 }
 
 
@@ -340,7 +340,7 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
         }else
         {
             rv_game_small_search.setVisibility(View.GONE);
-            rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.white));
+            rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.viewBackground));
         }
     }
 
@@ -356,7 +356,7 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
         srl_game_search.setRefreshing(false);
         mStatusLayoutManager.showContent();
         rv_game_small_search.setVisibility(View.GONE);
-        rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.white));
+        rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.viewBackground));
         searchResult = gameSearchResult;
         if (searchResult.getPage() == 1) {
             searchAdapter = new SearchAdapter(R.layout.item_game_index_normal, searchResult.getData());

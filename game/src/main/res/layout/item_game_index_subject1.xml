@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/qm5dp"
     android:layout_marginTop="@dimen/qm5dp"
+    android:background="@color/viewBackground"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -19,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="每日推荐"
-            android:textColor="@color/white"
+            android:textColor="@color/viewBackground"
             android:textSize="@dimen/titleSize" />
 
 
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/qm10dp"
         android:text="最新最好玩游戏大会"
-        android:textColor="@color/white"
+        android:textColor="@color/viewBackground"
         android:textSize="@dimen/textSize" />
 
     <LinearLayout
@@ -60,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:text="新游"
                 android:id="@+id/iv_subject_tag_title1"
-                android:textColor="@color/white"
+                android:textColor="@color/viewBackground"
                 android:layout_marginTop="@dimen/qm5dp"
                 android:maxLength="5"
                 android:textSize="@dimen/textSize"
@@ -88,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:text="新游"
                 android:id="@id/iv_game_subject_tag_title2"
-                android:textColor="@color/white"
+                android:textColor="@color/viewBackground"
                 android:layout_marginTop="@dimen/qm5dp"
                 android:maxLength="5"
                 android:textSize="@dimen/textSize"
@@ -116,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:text="新游"
                 android:id="@id/iv_game_subject_tag_title3"
-                android:textColor="@color/white"
+                android:textColor="@color/viewBackground"
                 android:layout_marginTop="5dp"
                 android:maxLength="5"
                 android:textSize="@dimen/textSize"
@@ -144,7 +145,7 @@
                 android:layout_width="wrap_content"
                 android:text="新游"
                 android:id="@id/iv_subject_tag_title4"
-                android:textColor="@color/white"
+                android:textColor="@color/viewBackground"
                 android:layout_marginTop="@dimen/qm5dp"
                 android:maxLength="5"
                 android:textSize="@dimen/textSize"

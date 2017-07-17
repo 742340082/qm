@@ -24,7 +24,7 @@
             android:layout_centerVertical="true"
             android:textSize="@dimen/titleSize"
             android:text="标题"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_height="wrap_content" />
         <TextView
@@ -48,7 +48,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:background="@drawable/selector_bg_gray_white"
             android:text="游戏" />
@@ -58,7 +58,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:background="@drawable/selector_bg_gray_white"
             android:text="游戏" />
@@ -68,7 +68,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:background="@drawable/selector_bg_gray_white"
             android:text="游戏" />
@@ -78,7 +78,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:background="@drawable/selector_bg_gray_white"
             android:text="游戏" />
@@ -94,7 +94,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:background="@drawable/selector_bg_gray_white"
             android:text="游戏" />
@@ -104,7 +104,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:background="@drawable/selector_bg_gray_white"
             android:text="游戏" />
@@ -114,7 +114,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:background="@drawable/selector_bg_gray_white"
             android:text="游戏" />
@@ -124,7 +124,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:background="@drawable/selector_bg_gray_white"
             android:text="游戏" />

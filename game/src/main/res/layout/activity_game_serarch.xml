@@ -10,7 +10,8 @@
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"
-        android:background="@color/blue"
+        android:layout_marginBottom="@dimen/qm1dp"
+        android:background="@color/colorPrimary"
         app:contentInsetStart="8dp">
 
         <ImageView
@@ -31,6 +32,7 @@
             android:focusableInTouchMode="true"
             android:gravity="center_vertical"
             android:hint="搜索游戏"
+            android:textColor="@color/textColorPrimary"
             android:imeOptions="actionSearch"
             android:maxLines="1"
             android:paddingLeft="@dimen/qm10dp"
@@ -49,6 +51,7 @@
             android:id="@id/stm_game_search_tags"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qm400dp"
+            android:background="@color/viewBackground"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_marginRight="@dimen/qm10dp"></com.baselibrary.view.shake.StellarMap>
 
@@ -62,7 +65,7 @@
             android:text="@string/switch_game_tag"
             android:layout_marginLeft="@dimen/qm20dp"
             android:layout_marginRight="@dimen/qm20dp"
-            android:textColor="@color/white"
+            android:textColor="@color/navigation_text_color"
             android:textSize="@dimen/titleSize"
             android:layout_centerHorizontal="true" />
 

@@ -19,14 +19,23 @@
 
         <!--默认menu的字体颜色-->
         <item name="actionMenuTextAppearance">@style/MenuTextStyle</item>
-        <item name="actionMenuTextColor">@color/white</item>
+        <item name="actionMenuTextColor">@color/navigation_text_color</item>
 
         <!--默认设置打开应用的水平方式-->
         <item name="android:screenOrientation">portrait</item>
 
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryDark">@color/blue</item>
-        <item name="colorAccent">@color/yellow</item>
+        <!--actionbar北背景颜色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--状态栏背景色-->
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!--控件选中的颜色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--应用背景色-->
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <!--状态栏颜色-->
+        <!--<item name="android:statusBarColor">@color/transparent</item>-->
+        <!--底部导航栏颜色-->
+        <!--<item name="android:navigationBarColor">@color/transparent</item>-->
     </style>
     <!--打开和关闭activity的动画-->
     <style name="slide" parent="@android:style/Animation.Activity">
@@ -48,7 +57,7 @@
     <!--toolbar默认标题的字体大小和颜色-->
     <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/viewBackground</item>
     </style>
 
 

@@ -14,7 +14,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:fitsSystemWindows="true"
-        android:background="@color/blue">
+        android:background="@color/colorPrimary">
 
         <TextView
             android:id="@id/tv_header"
@@ -40,9 +40,9 @@
 
             <TextView
                 android:id="@id/tv_user_name"
-                style="@style/Tv14spWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/we_header_text_color"
                 android:text="@string/user_name"
                 android:ellipsize="end"
                 android:maxEms="7"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_user_name"
                 android:layout_marginTop="@dimen/qm10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/we_header_text_color"
                 android:textSize="@dimen/titleSize"
                 android:maxLines="1"
                 android:drawableLeft="@drawable/icon_we_phone"

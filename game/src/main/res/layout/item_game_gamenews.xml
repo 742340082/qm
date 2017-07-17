@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/selector_bg_gray_white"
+    android:layout_marginBottom="@dimen/qm1dp"
     android:orientation="vertical">
 
     <TextView
@@ -13,7 +14,7 @@
         android:layout_marginLeft="@dimen/qm10dp"
         android:layout_marginTop="@dimen/qm10dp"
         android:text="我是title"
-        android:textColor="@color/black"
+        android:textColor="@color/textColorPrimary"
         android:textSize="@dimen/titleSize" />
 
     <RelativeLayout
@@ -40,6 +41,7 @@
             android:layout_toRightOf="@id/iv_game_gamenews_icon"
             android:ellipsize="end"
             android:maxLines="2"
+            android:textColor="@color/textColorPrimary"
             android:text="我说的话费卡萨海口市答复客户似的发射点发顺丰到付士大夫士大夫是士大夫士大夫似的发射点发生士大夫士大夫"
             android:textSize="@dimen/textSize" />
         <TextView
@@ -48,11 +50,11 @@
             android:layout_marginTop="@dimen/qm10dp"
             android:layout_alignLeft="@id/tv_game_gamenews_desc"
             android:layout_width="wrap_content"
+            android:textColor="@color/textColorPrimary"
             android:text="1小时前"
             android:layout_marginBottom="@dimen/qm4dp"
             android:textSize="@dimen/textSize"
             android:layout_height="wrap_content" />
     </RelativeLayout>
 
-    <include layout="@layout/cut_horizontal_apart" />
 </LinearLayout>

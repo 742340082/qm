@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:paddingLeft="@dimen/qm10dp"
     android:background="@drawable/selector_bg_gray_white"
+    android:layout_marginBottom="@dimen/qm1dp"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -17,7 +18,7 @@
             android:layout_centerVertical="true"
             android:visibility="visible"
             android:text="@string/loading"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
 
         <LinearLayout
@@ -48,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/qm10dp"
                 android:text="@string/resetlocation"
-                android:textColor="@color/blue"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/titleSize" />
         </LinearLayout>
     </RelativeLayout>

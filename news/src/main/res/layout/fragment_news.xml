@@ -10,9 +10,10 @@
         android:id="@id/tl_news"
         android:layout_width="match_parent"
         android:layout_height="@dimen/guideBarHeight"
-        app:tabSelectedTextColor="@color/yellow"
-        app:tabTextColor="@color/white"
-        android:background="@color/blue" />
+        app:tabSelectedTextColor="@color/colorAccent"
+        android:layout_marginBottom="@dimen/qm1dp"
+        app:tabTextColor="@color/navigation_text_color"
+        android:background="@color/colorPrimary" />
 
 
     <android.support.v4.view.ViewPager

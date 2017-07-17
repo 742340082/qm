@@ -3,7 +3,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 style="@style/AppTheme"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/viewBackground"
     android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -28,7 +28,7 @@
             android:layout_height="40.0dip"
             android:layout_below="@+id/iv_network_error"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
+            android:textColor="@color/viewBackground"
             android:textSize="20.0sp"
             android:text="网络异常"
             android:background="@drawable/selector_bg_green_green"

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#212a2f</color>
+    <color name="colorPrimaryDark">#212a2f</color>
+    <color name="colorAccent">#919191</color>
+
+    <color name="textColorPrimary">#616161</color>
+    <color name="viewBackground">#212a2f</color>
+    <color name="navigation_text_color">#ad919191</color>
+    <color name="we_header_text_color">#919191</color>
+    <color name="bottom_navigation_background_color">#212a2f</color>
+
+    <color name="button_background">#212a2f</color>
+    <color name="button_background_deep">#ae0a0716</color>
+
+    <color name="windowBackground">#87000000</color>
+</resources>

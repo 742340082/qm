@@ -55,7 +55,7 @@ public class QuickIndexBar extends View {
     private void init() {
         paint = new Paint();
         paint.setAntiAlias(true);
-        paint.setColor(UIUtils.getColor(R.color.blue));
+        paint.setColor(UIUtils.getColor(R.color.textColorPrimary));
         paint.setTextSize(25);
         paint.setTextAlign(Align.CENTER);
     }

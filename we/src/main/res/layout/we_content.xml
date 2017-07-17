@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/qm30dp"
                 android:text="@string/user_take_local"
-                android:textColor="@color/black"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/titleSize" />
         </LinearLayout>
 
@@ -55,7 +55,7 @@
                 android:layout_marginLeft="@dimen/qm30dp"
                 android:gravity="center_vertical"
                 android:text="@string/user_collect"
-                android:textColor="@color/black"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/titleSize" />
         </LinearLayout>
 
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/qm30dp"
                 android:text="@string/user_fine_photo"
-                android:textColor="@color/black"
+                android:textColor="@color/textColorPrimary"
                 android:textSize="@dimen/titleSize" />
         </LinearLayout>
     </LinearLayout>
@@ -107,9 +107,9 @@
             android:layout_marginLeft="@dimen/qm30dp"
             android:gravity="center_vertical"
             android:text="@string/switch_theme"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
-        <Switch
+        <android.support.v7.widget.SwitchCompat
             android:id="@id/switch_night"
             android:layout_width="wrap_content"
             android:layout_marginRight="@dimen/qm5dp"
@@ -135,7 +135,7 @@
             android:layout_marginLeft="@dimen/qm30dp"
             android:gravity="center_vertical"
             android:text="@string/setting"
-            android:textColor="@color/black"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
     </LinearLayout>
 </LinearLayout>

@@ -13,6 +13,9 @@ import java.io.File;
 public class ConfigUser
 {
 
+
+    //夜间模式的状态
+    public static final String USER_NIGHT_STATE = "USER_NIGHT_STATE";
     //保存的用户
     public static final String USER_SAVE = "USER_SAVE";
     //保存是否是夜间模式

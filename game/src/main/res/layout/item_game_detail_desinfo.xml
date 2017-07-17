@@ -24,7 +24,7 @@
             android:textSize="@dimen/titleSize"
             android:layout_toLeftOf="@+id/iv_arrow"
             android:layout_marginRight="@dimen/qm5dp"
-            android:textColor="@color/blue"
+            android:textColor="@color/colorPrimary"
             android:layout_centerVertical="true"
             android:layout_height="wrap_content" />
         <ImageView

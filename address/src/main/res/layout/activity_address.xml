@@ -10,7 +10,8 @@
         android:id="@id/toolbar"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/toolbarHeight"
-        android:background="@color/blue"
+        android:layout_marginBottom="@dimen/qm1dp"
+        android:background="@color/colorPrimary"
         >
 
         <LinearLayout
@@ -40,7 +41,7 @@
                     android:ellipsize="end"
                     android:maxLength="5"
                     android:maxLines="1"
-                    android:textColor="@color/white"
+                    android:textColor="@color/navigation_text_color"
                     android:textSize="@dimen/titleSize" />
 
                 <ImageView
@@ -72,6 +73,7 @@
                 android:ellipsize="end"
                 android:textColorHint="@color/graydeep"
                 android:focusable="false"
+                android:textColor="@color/textColorPrimary"
                 android:focusableInTouchMode="false"
                 android:textSize="@dimen/titleSize" />
             <TextView
@@ -82,7 +84,7 @@
                 android:layout_marginLeft="@dimen/qm5dp"
                 android:layout_marginRight="@dimen/qm5dp"
                 android:text="@string/cancle"
-                android:textColor="@color/white"
+                android:textColor="@color/navigation_text_color"
                 android:textSize="@dimen/titleSize"
                 android:visibility="gone" />
         </LinearLayout>
@@ -124,11 +126,11 @@
                 android:id="@id/tl_address"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/guideBarHeight"
-                android:background="@color/blue"
+                android:background="@color/colorPrimary"
                 app:tabGravity="fill"
-                app:tabSelectedTextColor="@color/yellow"
-                app:tabIndicatorColor="@color/blue"
-                app:tabTextColor="@color/white" />
+                android:layout_marginBottom="@dimen/qm1dp"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@color/navigation_text_color" />
 
             <android.support.v4.view.ViewPager
                 android:id="@id/vp_address"
@@ -140,7 +142,7 @@
             android:id="@id/ll_address_search_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/viewBackground"
             android:visibility="gone"
             android:orientation="vertical">
 
@@ -153,7 +155,7 @@
         <LinearLayout
             android:id="@id/ll_address_city_list"
             android:layout_width="match_parent"
-            android:background="@color/white"
+            android:background="@color/viewBackground"
             android:visibility="gone"
             android:layout_height="match_parent"
             android:orientation="vertical">
