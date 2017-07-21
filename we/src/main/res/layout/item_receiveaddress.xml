@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/qm1dp"
-    android:background="@color/viewBackground"
+    android:background="@drawable/selector_bg_gray_white"
     android:orientation="horizontal">
 
 
@@ -70,7 +70,7 @@
                         android:background="@drawable/bg_yellow_shape"
                         android:gravity="center"
                         android:text="@string/flyme"
-                        android:textColor="@color/viewBackground"
+                        android:textColor="@color/navigation_text_color"
                         android:textSize="@dimen/textSize"
                         android:visibility="gone" />
 
@@ -92,7 +92,7 @@
                         android:background="@drawable/bg_green_shape"
                         android:gravity="center"
                         android:text="@string/company"
-                        android:textColor="@color/textColorPrimary"
+                        android:textColor="@color/navigation_text_color"
                         android:textSize="@dimen/textSize"
                         android:visibility="gone" />
 

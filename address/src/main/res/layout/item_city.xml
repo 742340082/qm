@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="@dimen/qm10dp"
-    android:layout_marginBottom="@dimen/qm1dp"
     android:background="@drawable/selector_bg_gray_white"
     android:orientation="vertical">
 
@@ -18,5 +17,6 @@
         android:text="@string/city"
         android:textColor="@color/textColorPrimary"
         android:textSize="@dimen/titleSize" />
+    <include layout="@layout/cut_horizontal_apart"/>
 
 </LinearLayout>

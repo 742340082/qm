@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.utils.UIUtils;
+import com.game.mvp.download.DownLoadActivity;
 import com.game.mvp.search.GameSearchActivity;
 
 import butterknife.BindView;
@@ -77,6 +78,16 @@ public class GameFragment extends BaseFragmnet {
                     UIUtils.startActivity(GameFragment.this.getContext(),GameSearchActivity.class);
                 }
 
+            }
+        });
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId()==R.id.menu_game_download)
+                {
+                    UIUtils.startActivity(getContext(), DownLoadActivity.class);
+                }
+                return false;
             }
         });
     }

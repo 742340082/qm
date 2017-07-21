@@ -226,6 +226,7 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
     public void onBackPressed() {
         if (rv_game_search.getVisibility() == View.VISIBLE || rv_game_small_search.getVisibility() == View.VISIBLE) {
             searchResult = null;
+            mStatusLayoutManager.showContent();
             srl_game_search.setVisibility(View.GONE);
             rv_game_search.setVisibility(View.GONE);
             rv_game_small_search.setVisibility(View.GONE);
@@ -253,7 +254,7 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
     @Override
     public void success(GameSearchFirstResult data) {
         // 设置数据源
-        SearchFirstAdapter searchFirstAdapter = new SearchFirstAdapter(R.layout.item_game_search_tag, data.getHotWords());
+        SearchFirstAdapter searchFirstAdapter = new SearchFirstAdapter(R.layout.item_game_search_first_tag, data.getHotWords());
         // 设置内部文字距边缘边距为10dip
         int dip2px = UIUtils.dip2px(10);
         stm_game_search_tags.setInnerPadding(dip2px, dip2px, dip2px, dip2px);

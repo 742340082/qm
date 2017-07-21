@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/rl_address"
     android:layout_width="match_parent"
-    android:layout_marginBottom="@dimen/qm1dp"
     android:background="@drawable/selector_bg_gray_white"
     android:layout_height="wrap_content">
 
@@ -65,6 +64,14 @@
             android:textSize="@dimen/titleSize" />
 
     </LinearLayout>
+    <LinearLayout
 
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <include
+
+            layout="@layout/cut_horizontal_apart"/>
+    </LinearLayout>
 </RelativeLayout>
 

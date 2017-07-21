@@ -110,4 +110,6 @@
     <item name="tv_game_language" type="id" />
     <item name="ll_game_detail_pic" type="id" />
     <item name="tv_game_detail_descinfo" type="id" />
+    <item name="ll_game_download_info" type="id" />
+    <item name="rv_game_download" type="id" />
 </resources>

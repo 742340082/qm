@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"
         android:fitsSystemWindows="true"
-        app:titleTextColor="@color/viewBackground"
         app:title=" "
+        app:titleTextColor="@color/navigation_text_color"
         android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left" />
 

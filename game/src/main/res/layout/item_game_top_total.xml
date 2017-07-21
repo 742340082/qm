@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/qm60dp"
-    android:layout_marginBottom="@dimen/qm1dp"
     android:background="@drawable/selector_bg_gray_white"
+    android:layout_marginBottom="@dimen/qm1dp"
     android:orientation="horizontal">
 
 
@@ -59,39 +59,82 @@
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/qm25dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="visible">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@id/ll_game_download_info"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/qm25dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
 
-            <TextView
-                android:id="@id/tv_game_top_download_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="100万+下载"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/textSize" />
+                <TextView
+                    android:id="@id/tv_game_top_download_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100万+下载"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/textSize" />
 
-            <TextView
-                android:id="@id/tv_game_top_tag_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/qm10dp"
-                android:textColor="@color/textColorPrimary"
-                android:text="85M"
-                android:textSize="@dimen/textSize" />
+                <TextView
+                    android:id="@id/tv_game_top_tag_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qm10dp"
+                    android:textColor="@color/textColorPrimary"
+                    android:text="85M"
+                    android:textSize="@dimen/textSize" />
 
-            <TextView
-                android:id="@id/tv_game_top_type"
-                android:layout_width="wrap_content"
-                android:textColor="@color/textColorPrimary"
+                <TextView
+                    android:id="@id/tv_game_top_type"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/textColorPrimary"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/qm10dp"
+                    android:text="射击"
+                    android:textSize="@dimen/textSize" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@id/ll_game_download"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/qm10dp"
-                android:text="射击"
-                android:textSize="@dimen/textSize" />
-        </LinearLayout>
+                android:layout_below="@id/ll_game"
+                android:layout_marginRight="@dimen/qm5dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:id="@id/pb_game_download_progress"
+                    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/qm5dp"
+                    android:max="100" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@id/tv_game_download_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0M/0M"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@id/tv_game_download_speed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="已暂停"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/textSize" />
+                </RelativeLayout>
+            </LinearLayout>
+        </FrameLayout>
+
     </LinearLayout>
 
     <Button

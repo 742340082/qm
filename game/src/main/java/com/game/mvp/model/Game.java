@@ -61,6 +61,7 @@ public class Game extends DataSupport {
     private GameSmallSearchResult gameSmallSearchResult;
     private GameSearchResult gameSearchResult;
 
+
     public GameSearchResult getGameSearchResult() {
         return gameSearchResult;
     }

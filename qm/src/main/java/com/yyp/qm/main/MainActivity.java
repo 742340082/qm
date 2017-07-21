@@ -1,5 +1,7 @@
 package com.yyp.qm.main;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.KeyEvent;
@@ -47,7 +49,10 @@ public class MainActivity
         mMainTabs=MainTab.values();
 
         initBottomNavigationBar();
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.arrow_down);
+
     }
+
 
     private void initBottomNavigationBar() {
         ViewPagerFragmentAdapter viewPagerFragmentAdapter=new ViewPagerFragmentAdapter(getSupportFragmentManager());

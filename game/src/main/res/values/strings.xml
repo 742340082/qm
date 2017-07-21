@@ -14,4 +14,5 @@
     <string name="game_hottest">最热</string>
     <string name="game_upnew">最新</string>
     <string name="switch_game_tag">换一批</string>
+    <string name="game_downloadmanager">下载管理</string>
 </resources>

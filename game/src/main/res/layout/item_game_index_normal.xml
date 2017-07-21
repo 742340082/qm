@@ -70,16 +70,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/qm6dp"
-                            android:textColor="@color/textColorPrimary"
                             android:text="134554次下载"
+                            android:textColor="@color/textColorPrimary"
                             android:textSize="@dimen/textSize" />
 
                         <TextView
                             android:id="@id/tv_game_download_size"
                             android:layout_width="wrap_content"
-                            android:textColor="@color/textColorPrimary"
                             android:layout_height="wrap_content"
                             android:text="29.41M"
+                            android:textColor="@color/textColorPrimary"
                             android:textSize="@dimen/textSize" />
                     </LinearLayout>
 
@@ -107,7 +107,7 @@
                                 android:id="@id/tv_game_download_state"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="12.58M/67.58M"
+                                android:text="0M/0M"
                                 android:textSize="@dimen/textSize" />
 
                             <TextView
@@ -116,7 +116,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:text="已暂停"
-                                android:textColor="@color/selector_color_red_grayshallow"
+                                android:textColor="@color/blue"
                                 android:textSize="@dimen/textSize" />
                         </RelativeLayout>
                     </LinearLayout>
@@ -145,8 +145,8 @@
             android:layout_marginTop="@dimen/qm3dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@color/textColorPrimary"
             android:text="四大会计师法规和会计的高富帅的开好房间睡说过的话是个机会"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/textSize" />
     </LinearLayout>
 

@@ -63,6 +63,7 @@
             android:layout_marginTop="@dimen/qm10dp"
             android:background="@drawable/selector_bg_green_green"
             android:text="@string/switch_game_tag"
+            android:stateListAnimator="@null"
             android:layout_marginLeft="@dimen/qm20dp"
             android:layout_marginRight="@dimen/qm20dp"
             android:textColor="@color/navigation_text_color"

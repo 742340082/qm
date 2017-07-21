@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.baselibrary.api.download.DownloadInfo;
 import com.baselibrary.api.download.HttpDownload;
 import com.baselibrary.utils.FileUtil;
 import com.baselibrary.utils.StringUtil;
@@ -26,7 +27,10 @@ import com.game.mvp.index.modle.IndexAdList;
 import com.game.mvp.index.modle.IndexExt;
 import com.game.mvp.model.Game;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,7 +47,7 @@ public class IndexAdapter extends BaseMultiItemQuickAdapter<AdListGame, BaseView
     public final static int GAME_RECOMMEND_SUBJECT3 = 4;
     public final static int GAME_RECOMMEND_SUBJECT4 = 5;
     private static int k;
-    private int downloadState;
+    private Map<String, Integer> mPositionMap = new HashMap<>();
 
 
     public IndexAdapter(List<AdListGame> data) {
@@ -238,15 +242,6 @@ public class IndexAdapter extends BaseMultiItemQuickAdapter<AdListGame, BaseView
     private void initNormal(final BaseViewHolder helper, final AdListGame item) {
         final Game game = item.getGame();
         View convertView = helper.getConvertView();
-//        convertView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent();
-//                intent.setClass(UIUtils.getContext(), GameDetailActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                UIUtils.getContext().startActivity(intent);
-//            }
-//        });
 
         ImageView iv_game_icon = helper.getView(R.id.iv_game_icon);
         TextView tv_game_title = helper.getView(R.id.tv_game_title);
@@ -277,87 +272,120 @@ public class IndexAdapter extends BaseMultiItemQuickAdapter<AdListGame, BaseView
         tv_download_size.setText(FileUtil.byteSwitch(2, game.getSize_byte()));
         tv_game_desc.setText(game.getReview());
 
-        final HttpDownload instance = HttpDownload.getInstance();
+        initGameDownloadInfo(game, btn_game_downlaod, ll_game, ll_download, pb_download_progress, tv_download_state, tv_download_speed);
 
-        final HttpDownload.DownLoadInfo downLoadInfo = new HttpDownload.DownLoadInfo(game.getGame_id(), game.getDownurl());
-        HttpDownload.DownloadObserver downloadObserver = new HttpDownload.DownloadObserver() {
 
-            @Override
-            public void onDownloadStateChanged(HttpDownload.DownLoadInfo info) {
-                downloadState = info.getDownloadState();
-                switch (downloadState) {
-                    case HttpDownload.STATE_DOWNLOAD:
-                        btn_game_downlaod.setText("下载中");
-                        break;
-                    case HttpDownload.STATE_NONE:
-                        btn_game_downlaod.setText("空闲");
-                        break;
-                    case HttpDownload.STATE_CANCLE:
-                        ll_game.setVisibility(View.VISIBLE);
-                        ll_download.setVisibility(View.GONE);
-                        instance.cancle(downLoadInfo);
-                        break;
-                    case HttpDownload.STATE_SUCCESS:
-                        btn_game_downlaod.setText("安装");
-                        ll_game.setVisibility(View.VISIBLE);
-                        ll_download.setVisibility(View.GONE);
-                        instance.install(UIUtils.getContext(), downLoadInfo);
-                        break;
-                    case HttpDownload.STATE_ERROR:
-                        ToastUtils.makeShowToast(UIUtils.getContext(), "下载失败");
-                        btn_game_downlaod.setText("下载");
-                        instance.cancle(downLoadInfo);
-                        instance.unregisterObserver(this);
-                        break;
-                    case HttpDownload.STATE_PAUSE:
-                        btn_game_downlaod.setText("继续");
-                        break;
-                    case HttpDownload.STATE_WAITING:
-                        btn_game_downlaod.setText("等待");
-                        break;
-                }
-            }
+    }
 
-            @Override
-            public void onDownloadProgressChanged(HttpDownload.DownLoadInfo info) {
-                int progress = info.getProgress();
-                pb_download_progress.setProgress(progress);
-                String contentLength = FileUtil.byteSwitch(2, info.getContentLength() + "");
-                String currentPosition = FileUtil.byteSwitch(2, info.getCurrentPosition() + "");
-                tv_download_state.setText(currentPosition + "/" + contentLength);
-                String downloadSpeed = FileUtil.downloadSpeed(2, info.getDownLoadSpeed());
-                tv_download_speed.setText(downloadSpeed);
-            }
-        };
-        instance.registerObserver(downloadObserver);
+    private void initGameDownloadInfo(final Game game, final Button btn_game_downlaod, final LinearLayout ll_game, final LinearLayout ll_download, final ProgressBar pb_download_progress, final TextView tv_download_state, final TextView tv_download_speed) {
+        File downloadFile = HttpDownload.getDownloadFile(UIUtils.getContext(), Integer.parseInt(game.getGame_id()));
+        if (downloadFile != null) {
+            ll_download.setVisibility(View.VISIBLE);
+            ll_game.setVisibility(View.GONE);
+            String contentLength = FileUtil.byteSwitch(2, game.getSize_byte() + "");
+            String currentPosition = FileUtil.byteSwitch(2, downloadFile.length() + "");
+            tv_download_state.setText(currentPosition + "/" + contentLength);
+            int precentNumber = (int) (downloadFile.length() * 100 / Long.parseLong(game.getSize_byte()));
+            pb_download_progress.setProgress(precentNumber);
+            tv_download_speed.setText(precentNumber + "/%");
+            btn_game_downlaod.setText("继续");
+        }
+
 
         btn_game_downlaod.setOnClickListener(new View.OnClickListener() {
+            private HttpDownload instance;
+            private int downloadState;
+            private DownloadInfo<Game> downLoadInfo;
 
             @Override
             public void onClick(View v) {
                 String string = btn_game_downlaod.getText().toString();
                 // 根据当前状态来决定相关操作
-                if (string.equals("空闲")
-                        || string.equals("继续")
-                        || string.equals("等待")
-                        || string.equals("下载")) {
-                    // 开始下载
-                    ll_download.setVisibility(View.VISIBLE);
-                    ll_game.setVisibility(View.GONE);
+                if (downloadState == HttpDownload.STATE_NONE) {
+                    instance = HttpDownload.getInstance();
+                    downLoadInfo = new DownloadInfo(game.getGame_id(), game.getDownurl(), game.getAppname());
+                    downLoadInfo.setDownloadInfo(game);
+                    downLoadInfo.saveThrows();
+                    HttpDownload.DownloadObserver downloadObserver = new HttpDownload.DownloadObserver() {
 
+                        @Override
+                        public void onDownloadStateChanged(DownloadInfo info) {
+                            downloadState = info.getDownloadState();
+
+                            switch (downloadState) {
+                                case HttpDownload.STATE_DOWNLOAD:
+                                    ll_download.setVisibility(View.VISIBLE);
+                                    ll_game.setVisibility(View.GONE);
+                                    btn_game_downlaod.setText("下载中");
+
+                                    break;
+                                case HttpDownload.STATE_NONE:
+                                    btn_game_downlaod.setText("空闲");
+                                    break;
+                                case HttpDownload.STATE_CANCLE:
+                                    ll_game.setVisibility(View.VISIBLE);
+                                    ll_download.setVisibility(View.GONE);
+                                    instance.cancle(downLoadInfo);
+                                    break;
+                                case HttpDownload.STATE_SUCCESS:
+                                    btn_game_downlaod.setText("安装");
+                                    ll_game.setVisibility(View.VISIBLE);
+                                    ll_download.setVisibility(View.GONE);
+                                    instance.install(UIUtils.getContext(), downLoadInfo);
+                                    break;
+                                case HttpDownload.STATE_ERROR:
+                                    ToastUtils.makeShowToast(UIUtils.getContext(), "下载失败");
+                                    btn_game_downlaod.setText("下载");
+                                    instance.cancle(downLoadInfo);
+                                    instance.unregisterObserver(game.getGame_id());
+                                    break;
+                                case HttpDownload.STATE_PAUSE:
+                                    btn_game_downlaod.setText("继续");
+                                    break;
+                                case HttpDownload.STATE_WAITING:
+                                    btn_game_downlaod.setText("等待");
+                                    break;
+                            }
+
+                        }
+
+                        @Override
+                        public void onDownloadProgressChanged(DownloadInfo info) {
+                            int progress = info.getPrecentNumber();
+                            pb_download_progress.setProgress(progress);
+                            String contentLength = FileUtil.byteSwitch(2, info.getContentLength() + "");
+                            String currentPosition = FileUtil.byteSwitch(2, info.getCurrentPosition() + "");
+                            tv_download_state.setText(currentPosition + "/" + contentLength);
+                            tv_download_speed.setText(info.getPrecentNumber() + "/%");
+                        }
+                    };
+                    instance.registerObserver(game.getGame_id(), downloadObserver);
                     instance.download(downLoadInfo);
-                } else if (string.equals("等待")
-                        || string.equals("下载中")) {
+                } else if (downloadState == HttpDownload.STATE_ERROR
+                        || downloadState == HttpDownload.STATE_CANCLE || downloadState == HttpDownload.STATE_PAUSE
+                        ) {
+                    // 开始下载
+                    if (downLoadInfo != null && instance != null) {
+                        instance.download(downLoadInfo);
+                    }
+
+                } else if (downloadState == HttpDownload.STATE_WAITING
+                        || downloadState == HttpDownload.STATE_DOWNLOAD) {
                     // 暂停下载
-                    instance.pause(downLoadInfo);
-                } else if (string.equals("安装")) {
+                    if (downLoadInfo != null && instance != null) {
+                        instance.pause(downLoadInfo);
+                    }
+
+                } else if (downloadState == HttpDownload.STATE_SUCCESS) {
                     // 开始安装
-                    instance.install(UIUtils.getContext(), downLoadInfo);
+                    if (downLoadInfo != null && instance != null) {
+                        instance.install(UIUtils.getContext(), downLoadInfo);
+                    }
+
                 }
             }
 
         });
-
     }
 
 

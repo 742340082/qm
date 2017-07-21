@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/selector_bg_gray_white"
-    android:layout_marginBottom="@dimen/qm1dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -28,6 +27,6 @@
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
     </LinearLayout>
-
+    <include layout="@layout/cut_horizontal_apart"/>
 
 </LinearLayout>

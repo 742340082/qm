@@ -21,6 +21,11 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="stateAlwaysVisible"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".mvp.download.DownLoadActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

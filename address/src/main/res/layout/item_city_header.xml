@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:paddingLeft="@dimen/qm10dp"
     android:background="@drawable/selector_bg_gray_white"
-    android:layout_marginBottom="@dimen/qm1dp"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -53,4 +52,5 @@
                 android:textSize="@dimen/titleSize" />
         </LinearLayout>
     </RelativeLayout>
+    <include layout="@layout/cut_horizontal_apart"/>
 </LinearLayout>

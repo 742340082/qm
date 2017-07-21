@@ -3,9 +3,10 @@ package com.baselibrary.api.download;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Environment;
 import android.view.View;
 
+import com.baselibrary.utils.SaveConfigGameUtil;
+import com.baselibrary.utils.StringUtil;
 import com.baselibrary.utils.UIUtils;
 
 import java.io.File;
@@ -13,6 +14,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import okhttp3.OkHttpClient;
@@ -35,37 +39,54 @@ public class HttpDownload {
     public static final int STATE_CANCLE = 6;// 取消下载
 
     // 下载对象的集合, ConcurrentHashMap是线程安全的HashMap
-    private ConcurrentHashMap<String, DownLoadInfo> mDownloadInfoMap = new ConcurrentHashMap<String, DownLoadInfo>();
+    private ConcurrentHashMap<String, DownloadInfo> mDownloadInfoMap = new ConcurrentHashMap<>();
     // 所有观察者的集合
-    private ArrayList<DownloadObserver> mObservers = new ArrayList<DownloadObserver>();
+    private ConcurrentHashMap<String,List<DownloadObserver>> mObservers=new ConcurrentHashMap<>() ;
+    //每个id对应的观察者集合
+    private List<DownloadObserver> mDownloadObserverS;
     // 下载任务集合, ConcurrentHashMap是线程安全的HashMap
-    private ConcurrentHashMap<String, DownloadTask> mDownloadTaskMap = new ConcurrentHashMap<String, DownloadTask>();
-
+    private ConcurrentHashMap<String, DownloadTask> mDownloadTaskMap = new ConcurrentHashMap<>();
+    private final ThreadManager.ThreadPool mThreadPool;
 
     private HttpDownload() {
+        mThreadPool = ThreadManager.getThreadPool();
     }
 
     // 2. 注册观察者
-    public synchronized void registerObserver(DownloadObserver observer) {
-        if (observer != null && !mObservers.contains(observer)) {
-            mObservers.add(observer);
+    public synchronized void registerObserver(String id,DownloadObserver observer) {
+        Set<String> keySet = mObservers.keySet();
+        if (!keySet.contains(id))
+        {
+            mDownloadObserverS = new ArrayList<>();
+            mDownloadObserverS.add(observer);
+            mObservers.put(id,mDownloadObserverS);
+        }else
+        {
+            List<DownloadObserver> downloadObservers = mObservers.get(id);
+            downloadObservers.add(observer);
         }
+
     }
 
     // 3. 注销观察者
-    public synchronized void unregisterObserver(DownloadObserver observer) {
-        if (observer != null && mObservers.contains(observer)) {
-            mObservers.remove(observer);
-        }
+    public synchronized void unregisterObserver(String id) {
+            mObservers.remove(id);
     }
 
     // 4. 通知下载状态变化
-    private synchronized void notifyDownloadStateChanged(final DownLoadInfo info) {
+    private synchronized void notifyDownloadStateChanged(final DownloadInfo info) {
         UIUtils.runOnUIThread(new Runnable() {
             @Override
             public void run() {
-                for (DownloadObserver observer : mObservers) {
-                    observer.onDownloadStateChanged(info);
+                for (Map.Entry<String,List<DownloadObserver>> observer : mObservers.entrySet()) {
+                    if (info.getGameID().equals(observer.getKey()))
+                    {
+                        List<DownloadObserver> value = observer.getValue();
+                        for (DownloadObserver donDownloadObserver:
+                                value) {
+                            donDownloadObserver.onDownloadStateChanged(info);
+                        }
+                    }
                 }
             }
         });
@@ -73,12 +94,19 @@ public class HttpDownload {
     }
 
     // 5. 通知下载进度变化
-    private synchronized void notifyDownloadProgressChanged(final DownLoadInfo info) {
+    private synchronized void notifyDownloadProgressChanged(final DownloadInfo info) {
         UIUtils.runOnUIThread(new Runnable() {
             @Override
             public void run() {
-                for (DownloadObserver observer : mObservers) {
-                    observer.onDownloadProgressChanged(info);
+                for (Map.Entry<String,List<DownloadObserver>> observer : mObservers.entrySet()) {
+                    if (info.getGameID().equals(observer.getKey()))
+                    {
+                        List<DownloadObserver> value = observer.getValue();
+                        for (DownloadObserver donDownloadObserver:
+                                value) {
+                            donDownloadObserver.onDownloadProgressChanged(info);
+                        }
+                    }
                 }
             }
         });
@@ -87,9 +115,9 @@ public class HttpDownload {
     /**
      * 开始下载
      */
-    public synchronized void download(DownLoadInfo info) {
+    public synchronized void download(DownloadInfo info) {
         if (info != null) {
-            DownLoadInfo downLoadInfo = mDownloadInfoMap.get(info.getId());
+            DownloadInfo downLoadInfo = mDownloadInfoMap.get(info.getGameID());
             // 如果downloadInfo不为空,表示之前下载过, 就无需创建新的对象, 要接着原来的下载位置继续下载,也就是断点续传
             if (downLoadInfo != null) {
                 info = downLoadInfo;
@@ -101,15 +129,14 @@ public class HttpDownload {
             // 通知状态发生变化,各观察者根据此通知更新主界面
             notifyDownloadStateChanged(info);
             // 将下载对象保存在集合中
-            mDownloadInfoMap.put(info.getId(), info);
+            mDownloadInfoMap.put(info.getGameID(), info);
 
             // 初始化下载任务
             DownloadTask downloadTask = new DownloadTask(info);
             // 启动下载任务
-            ThreadManager.ThreadPool threadPool = ThreadManager.getThreadPool();
-            threadPool.execute(downloadTask);
+            mThreadPool.execute(downloadTask);
             // 将下载任务对象维护在集合当中
-            mDownloadTaskMap.put(info.getId(), downloadTask);
+            mDownloadTaskMap.put(info.getGameID(), downloadTask);
 
         }
     }
@@ -122,13 +149,13 @@ public class HttpDownload {
                 httpDownload = new HttpDownload();
             }
         }
-        return new HttpDownload();
+        return httpDownload;
     }
 
     class DownloadTask implements Runnable {
-        private DownLoadInfo downloadInfo;
+        private DownloadInfo downloadInfo;
 
-        public DownloadTask(DownLoadInfo downloadInfo) {
+        public DownloadTask(DownloadInfo downloadInfo) {
             this.downloadInfo = downloadInfo;
             httpClient = new OkHttpClient();
         }
@@ -174,6 +201,8 @@ public class HttpDownload {
                         total += len;
                         downloadInfo.setCurrentPosition(total);
                         notifyDownloadProgressChanged(downloadInfo);
+
+
                     }
                     // 下载结束, 判断文件是否完整
                     if (randomAccessFile.length() == downloadInfo.getContentLength()) {
@@ -220,22 +249,22 @@ public class HttpDownload {
                 }
             }
             // 不管下载成功,失败还是暂停, 下载任务已经结束,都需要从当前任务集合中移除
-            mDownloadTaskMap.remove(downloadInfo.getId());
+            mDownloadTaskMap.remove(downloadInfo.getGameID());
         }
     }
 
-    public synchronized void pause(DownLoadInfo appInfo) {
+    public synchronized void pause(DownloadInfo appInfo) {
         if (appInfo != null) {
-            DownLoadInfo downloadInfo = mDownloadInfoMap.get(appInfo.getId());
+            DownloadInfo downloadInfo = mDownloadInfoMap.get(appInfo.getGameID());
             if (downloadInfo != null) {
                 int state = downloadInfo.getDownloadState();
                 // 如果当前状态是等待下载或者正在下载, 需要暂停当前任务
                 if (state == STATE_WAITING || state == STATE_DOWNLOAD) {
                     // 停止当前的下载任务
                     DownloadTask downloadTask = mDownloadTaskMap
-                            .get(appInfo.getId());
+                            .get(appInfo.getGameID());
                     if (downloadTask != null) {
-                        ThreadManager.getThreadPool().cancel(downloadTask);
+                        mThreadPool.cancel(downloadTask);
                     }
 
                     // 更新下载状态为暂停
@@ -246,18 +275,18 @@ public class HttpDownload {
         }
     }
 
-    public synchronized void cancle(DownLoadInfo appInfo) {
+    public synchronized void cancle(DownloadInfo appInfo) {
         if (appInfo != null) {
-            DownLoadInfo downloadInfo = mDownloadInfoMap.get(appInfo.getId());
+            DownloadInfo downloadInfo = mDownloadInfoMap.get(appInfo.getGameID());
             if (downloadInfo != null) {
                 int state = downloadInfo.getDownloadState();
                 // 如果当前状态是等待下载或者正在下载, 需要暂停当前任务
                 if (state == STATE_WAITING || state == STATE_DOWNLOAD || state == STATE_PAUSE || state == STATE_SUCCESS) {
                     // 停止当前的下载任务
                     DownloadTask downloadTask = mDownloadTaskMap
-                            .get(appInfo.getId());
+                            .get(appInfo.getGameID());
                     if (downloadTask != null) {
-                        ThreadManager.getThreadPool().cancel(downloadTask);
+                        mThreadPool.cancel(downloadTask);
                     }
                     File downloadFile = appInfo.getDownloadFile();
                     if (downloadFile.exists()) {
@@ -272,8 +301,14 @@ public class HttpDownload {
         }
     }
 
-    public synchronized void install(Context context, DownLoadInfo appInfo) {
-        DownLoadInfo downloadInfo = mDownloadInfoMap.get(appInfo.getId());
+    public ConcurrentHashMap<String, DownloadInfo> getDownloadInfoMap() {
+        return mDownloadInfoMap;
+    }
+
+
+
+    public synchronized void install(Context context, DownloadInfo appInfo) {
+        DownloadInfo downloadInfo = mDownloadInfoMap.get(appInfo.getGameID());
         if (downloadInfo != null) {
             // 跳到系统的安装页面进行安装
             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -309,114 +344,30 @@ public class HttpDownload {
         return 0;
     }
 
+    public static File getDownloadFile(Context context, int id)
+    {
+        String filePath = SaveConfigGameUtil.getString(context, id + "", "");
+        if (!StringUtil.isEmpty(filePath))
+        {
+            File file = new File(filePath);
+            if (file.exists())
+            {
+                return file;
+            }
+        }
+        return null;
+    }
+
     public interface DownloadObserver {
         // 下载状态发生变化
-        public void onDownloadStateChanged(DownLoadInfo info);
+        public void onDownloadStateChanged(DownloadInfo info);
 
         // 下载进度发生变化
-        public void onDownloadProgressChanged(DownLoadInfo info);
+        public void onDownloadProgressChanged(DownloadInfo info);
     }
 
 
 
-    public static class DownLoadInfo {
-        private String id;
-        private long currentPosition;
-        private String DonwloadUrl;
-        private long downLoadSpeed;
-        private long lastDownloadPosition;
-
-        public DownLoadInfo() {
-        }
-
-        public DownLoadInfo(String id, String donwloadUrl) {
-            this.id = id;
-            DonwloadUrl = donwloadUrl;
-        }
-
-        public void setDonwloadUrl(String donwloadUrl) {
-            DonwloadUrl = donwloadUrl;
-        }
-
-        public long getCurrentPosition() {
-            return currentPosition;
-        }
-
-        private void setCurrentPosition(long currentPosition) {
-            long progresss = 0;
-            if (getContentLength() > 0) {
-                progresss = currentPosition * 100 / getContentLength();
-            }
-            progress = (int) progresss;
-            this.currentPosition = currentPosition;
-            ThreadManager.getThreadPool().execute(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        downLoadSpeed = DownLoadInfo.this.currentPosition - lastDownloadPosition;
-                        Thread.sleep(1000);
-                        lastDownloadPosition = DownLoadInfo.this.currentPosition;
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            });
-        }
-
-        public long getDownLoadSpeed() {
-            return downLoadSpeed;
-        }
-
-        private int downloadState = HttpDownload.STATE_NONE;
-
-        public int getDownloadState() {
-            return downloadState;
-        }
-
-        private void setDownloadState(int downloadState) {
-            this.downloadState = downloadState;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
 
 
-        public String getDonwloadUrl() {
-            return DonwloadUrl;
-        }
-
-        private long contentLength;
-        private int progress;
-        private String fileName;
-        private File downloadFile;
-
-        public long getContentLength() {
-            return contentLength;
-        }
-
-        private void setContentLength(long contentLength) {
-            this.contentLength = contentLength;
-        }
-
-        public File getDownloadFile() {
-            File downFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-            return new File(downFile, getFileName());
-        }
-
-
-        public String getFileName() {
-            String fileName = DonwloadUrl.substring(DonwloadUrl.lastIndexOf("/"));
-            return fileName;
-        }
-
-        public int getProgress() {
-            return progress;
-        }
-    }
 }

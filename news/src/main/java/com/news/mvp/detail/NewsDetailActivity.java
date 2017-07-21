@@ -191,6 +191,9 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
 
     @Override
     public void error(int error, String errorMessage) {
+        mZhiHuDetail=new ZhiHuDetail();
+        mDoubanDetail=new DoubanDetail();
+        mGuokeDetail=new GuokeDetail();
         ToastUtils.makeShowToast(this, errorMessage);
         switch (error) {
             case ConfigStateCode.STATE_NO_NETWORK:

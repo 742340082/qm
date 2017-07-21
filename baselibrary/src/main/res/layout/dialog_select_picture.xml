@@ -16,7 +16,7 @@
             android:background="@color/viewBackground"
             android:gravity="center"
             android:text="@string/user_from_photo_select"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/textColorPrimary" />
 
         <include layout="@layout/cut_horizontal_apart" />
 
@@ -27,7 +27,7 @@
             android:background="@color/viewBackground"
             android:gravity="center"
             android:text="@string/user_from_take_select"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/textColorPrimary" />
 
         <include layout="@layout/cut_horizontal_apart" />
 
@@ -39,6 +39,6 @@
             android:background="@color/viewBackground"
             android:gravity="center"
             android:text="@string/cancle"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/textColorPrimary" />
     </LinearLayout>
 </RelativeLayout>

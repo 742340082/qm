@@ -56,5 +56,8 @@
         <mapping class="com.game.mvp.search.model.GameSearchSuggestWord"></mapping>
         <mapping class="com.game.mvp.search.model.GameSearchFirstResult"></mapping>
         <mapping class="com.game.mvp.search.model.GameSmallSearchResult"></mapping>
+
+        <!--下载游戏-->
+        <mapping class="com.baselibrary.api.download.DownloadInfo"></mapping>
     </list>
 </litepal>
