@@ -1,12 +1,12 @@
 package com.game.adapter;
 
+import com.baselibrary.model.game.gamenews.GameNewsLink;
 import com.baselibrary.utils.UIUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.game.R;
-import com.game.mvp.gamenews.model.GameNewsLink;
 
 import java.util.List;
 

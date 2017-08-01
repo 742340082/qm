@@ -112,4 +112,47 @@
     <item name="tv_game_detail_descinfo" type="id" />
     <item name="ll_game_download_info" type="id" />
     <item name="rv_game_download" type="id" />
+    <item name="rb_score" type="id" />
+    <item name="tv_game_score" type="id" />
+    <item name="rb_game_score" type="id" />
+    <item name="pba_gamedownload" type="id" />
+    <item name="pbh_gamedonwload" type="id" />
+    <item name="ll_game_detail" type="id" />
+    <item name="tl_game_detail" type="id" />
+    <item name="vp_game_detail" type="id" />
+    <item name="vp_game_detail_comment" type="id" />
+    <item name="vp_game_detail_top" type="id" />
+    <item name="cl_game_detail" type="id" />
+    <item name="tb_game_detail" type="id" />
+    <item name="ll_game_nsw_container" type="id" />
+    <item name="rv_game_detail_recommend" type="id" />
+    <item name="ll_game_detail_gametag" type="id" />
+    <item name="rv_game_detail_gamenews" type="id" />
+    <item name="abl_game_detail" type="id" />
+    <item name="ctl_game_detail" type="id" />
+    <item name="nsv_game_detail_summary" type="id" />
+    <item name="fl_game_detail_gametag" type="id" />
+    <item name="ll_game_detail_summary" type="id" />
+    <item name="tv_game_detail_summary_gametag" type="id" />
+    <item name="tv_game_detail_gamenews_title" type="id" />
+    <item name="tv_game_detail_gamenews_content" type="id" />
+    <item name="btn_game_detail_download" type="id" />
+    <item name="iv_game_detail_recommend_game_icon" type="id" />
+    <item name="tv_game_detail_recommend_game_title" type="id" />
+    <item name="btn_game_detail_recommend_download" type="id" />
+    <item name="rl_game_detail_summary" type="id" />
+    <item name="fl_game_detail_summary" type="id" />
+    <item name="ll_game_detail_desinfo" type="id" />
+    <item name="ll_game_detail_gameinfo" type="id" />
+    <item name="ll_game_detail_gamenews" type="id" />
+    <item name="ll_game_detail_recommend" type="id" />
+    <item name="tl_game_download" type="id" />
+    <item name="vp_game_download" type="id" />
+    <item name="rv_game_index_subject" type="id" />
+    <item name="tv_game_index_subject_download_title" type="id" />
+    <item name="tv_game_category_title" type="id" />
+    <item name="iv_game_index_subject_icon" type="id" />
+    <item name="tv_game_index_subject_title" type="id" />
+    <item name="ll_game_top_tag" type="id" />
+    <item name="tv_game_category_detail_selector_size_title" type="id" />
 </resources>

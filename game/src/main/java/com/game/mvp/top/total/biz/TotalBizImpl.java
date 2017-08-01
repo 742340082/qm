@@ -3,14 +3,14 @@ package com.game.mvp.top.total.biz;
 import com.baselibrary.api.QMApi;
 import com.baselibrary.config.ConfigStateCode;
 import com.baselibrary.config.ConfigValues;
+import com.baselibrary.model.game.Game;
+import com.baselibrary.model.game.top.Total;
+import com.baselibrary.model.game.top.TotalResult;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.Logger;
 import com.baselibrary.utils.NetworkState;
 import com.baselibrary.utils.UIUtils;
 import com.game.api.GameApi;
-import com.game.mvp.model.Game;
-import com.game.mvp.top.modle.Total;
-import com.game.mvp.top.modle.TotalResult;
 import com.game.mvp.top.total.view.TotalView;
 
 import org.litepal.crud.DataSupport;

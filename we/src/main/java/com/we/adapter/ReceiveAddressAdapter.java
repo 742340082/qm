@@ -5,6 +5,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.baselibrary.utils.ViewUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.we.R;
@@ -23,6 +24,7 @@ public class ReceiveAddressAdapter extends BaseQuickAdapter<ReceiveAddress,BaseV
 
     @Override
     protected void convert(final BaseViewHolder holder,final ReceiveAddress item) {
+        ViewUtil.initCutOff(holder,holder.getLayoutPosition());
         TextView tv_receiveaddress_name = holder.getView(R.id.tv_receiveaddress_name);
         TextView tv_receiveaddress_role_type = holder.getView(R.id.tv_receiveaddress_role_type);
         TextView tv_receiveaddress_telephone = holder.getView(R.id.tv_receiveaddress_telephone);

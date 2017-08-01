@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.baselibrary.utils.Logger;
 import com.baselibrary.utils.UIUtils;
+import com.baselibrary.utils.ViewUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.getaddress.R;
@@ -27,6 +28,7 @@ public class AddressSearchAdapter extends BaseQuickAdapter<AddressTipMapLocation
     @Override
     protected void convert(BaseViewHolder helper, AddressTipMapLocation item) {
         Logger.i("TAG",item.toString());
+        ViewUtil.initCutOff(helper,helper.getLayoutPosition());
         TextView tv_address_title = helper.getView(R.id.tv_address_title);
         TextView tv_address_detail = helper.getView(R.id.tv_address_detail);
         RelativeLayout rl_address = helper.getView(R.id.rl_address);

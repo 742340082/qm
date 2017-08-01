@@ -1,10 +1,11 @@
 package com.game.mvp.search.view;
 
+
 import com.baselibrary.BaseView;
-import com.game.mvp.model.Game;
-import com.game.mvp.search.model.GameSearchFirstResult;
-import com.game.mvp.search.model.GameSearchResult;
-import com.game.mvp.search.model.GameSmallSearchResult;
+import com.baselibrary.model.game.Game;
+import com.baselibrary.model.game.search.GameSearchFirstResult;
+import com.baselibrary.model.game.search.GameSearchResult;
+import com.baselibrary.model.game.search.GameSmallSearchResult;
 
 /**
  * Created by 74234 on 2017/6/17.

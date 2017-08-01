@@ -3,17 +3,18 @@ package com.baselibrary.api.download;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.RemoteException;
 import android.view.View;
 
-import com.baselibrary.utils.SaveConfigGameUtil;
 import com.baselibrary.utils.StringUtil;
 import com.baselibrary.utils.UIUtils;
+
+import org.litepal.crud.DataSupport;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -41,9 +42,9 @@ public class HttpDownload {
     // 下载对象的集合, ConcurrentHashMap是线程安全的HashMap
     private ConcurrentHashMap<String, DownloadInfo> mDownloadInfoMap = new ConcurrentHashMap<>();
     // 所有观察者的集合
-    private ConcurrentHashMap<String,List<DownloadObserver>> mObservers=new ConcurrentHashMap<>() ;
-    //每个id对应的观察者集合
-    private List<DownloadObserver> mDownloadObserverS;
+    private ConcurrentHashMap<String, ConcurrentHashMap<String,DownloadObserver>> mObservers = new ConcurrentHashMap<>();
+    //每个id对应一组的观察者集合
+    private ConcurrentHashMap<String,DownloadObserver> mDownloadObserverS;
     // 下载任务集合, ConcurrentHashMap是线程安全的HashMap
     private ConcurrentHashMap<String, DownloadTask> mDownloadTaskMap = new ConcurrentHashMap<>();
     private final ThreadManager.ThreadPool mThreadPool;
@@ -53,77 +54,117 @@ public class HttpDownload {
     }
 
     // 2. 注册观察者
-    public synchronized void registerObserver(String id,DownloadObserver observer) {
+
+    /**
+     * 注册观察者
+     *
+     * @param id       唯一标识每个
+     * @param observer
+     */
+    public synchronized void registerObserver(String id,String tagId, DownloadObserver observer) {
         Set<String> keySet = mObservers.keySet();
-        if (!keySet.contains(id))
-        {
-            mDownloadObserverS = new ArrayList<>();
-            mDownloadObserverS.add(observer);
-            mObservers.put(id,mDownloadObserverS);
-        }else
-        {
-            List<DownloadObserver> downloadObservers = mObservers.get(id);
-            downloadObservers.add(observer);
+        if (!keySet.contains(tagId)) {
+            mDownloadObserverS=new ConcurrentHashMap();
+
+            mDownloadObserverS.put(id,observer);
+            mObservers.put(tagId, mDownloadObserverS);
+        } else {
+            ConcurrentHashMap<String, DownloadObserver> observerConcurrentHashMap = mObservers.get(tagId);
+            observerConcurrentHashMap.put(id,observer);
         }
 
     }
 
+    public ConcurrentHashMap<String, DownloadInfo> getmDownloadInfoMap()
+    {
+        return mDownloadInfoMap;
+    }
+
+    // 3. 注销一组观察者
+    public synchronized void unregisterObserverSet(String tagId) {
+        mObservers.remove(tagId);
+    }
     // 3. 注销观察者
-    public synchronized void unregisterObserver(String id) {
-            mObservers.remove(id);
+    public synchronized void unregisterObserver(String id,String tagId) {
+        ConcurrentHashMap<String, DownloadObserver> concurrentHashMap = mObservers.get(tagId);
+        concurrentHashMap.remove(id);
     }
 
     // 4. 通知下载状态变化
     private synchronized void notifyDownloadStateChanged(final DownloadInfo info) {
-        UIUtils.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                for (Map.Entry<String,List<DownloadObserver>> observer : mObservers.entrySet()) {
-                    if (info.getGameID().equals(observer.getKey()))
-                    {
-                        List<DownloadObserver> value = observer.getValue();
-                        for (DownloadObserver donDownloadObserver:
-                                value) {
-                            donDownloadObserver.onDownloadStateChanged(info);
+        info.saveOrUpdate(new String[]{"gameId=?", info.getGameID()});
+        //找到下载这个游戏的一组观察者
+        ConcurrentHashMap<String, DownloadObserver> concurrentHashMap = mObservers.get(info.getGameID());
+
+        if (concurrentHashMap!=null&&concurrentHashMap.size()>0) {
+            for (Map.Entry<String, DownloadObserver> observer : concurrentHashMap.entrySet()) {
+                //注册观察者id和一组观察中相同就通知
+                final DownloadObserver value = observer.getValue();
+
+                UIUtils.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            value.onDownloadStateChanged(info);
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
                         }
                     }
-                }
+                });
             }
-        });
-
+        }
     }
+
 
     // 5. 通知下载进度变化
+
     private synchronized void notifyDownloadProgressChanged(final DownloadInfo info) {
-        UIUtils.runOnUIThread(new Runnable() {
-            @Override
-            public void run() {
-                for (Map.Entry<String,List<DownloadObserver>> observer : mObservers.entrySet()) {
-                    if (info.getGameID().equals(observer.getKey()))
-                    {
-                        List<DownloadObserver> value = observer.getValue();
-                        for (DownloadObserver donDownloadObserver:
-                                value) {
-                            donDownloadObserver.onDownloadProgressChanged(info);
+
+        //找到下载这个游戏的一组观察者
+        ConcurrentHashMap<String, DownloadObserver> concurrentHashMap = mObservers.get(info.getGameID());
+        if (concurrentHashMap!=null&&concurrentHashMap.size()>0) {
+            for (Map.Entry<String, DownloadObserver> observer : concurrentHashMap.entrySet()) {
+                //注册观察者id和一组观察中相同就通知
+                final DownloadObserver value = observer.getValue();
+
+                UIUtils.runOnUIThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            value.onDownloadProgressChanged(info);
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
                         }
                     }
-                }
+                });
             }
-        });
+        }
     }
 
+    public void  addCacheDownloadInfo(List<DownloadInfo> downloadInfos)
+    {
+        for (DownloadInfo downloadInfo:downloadInfos)
+        {
+            mDownloadInfoMap.put(downloadInfo.getGameID(),downloadInfo);
+        }
+
+    }
     /**
      * 开始下载
      */
+
     public synchronized void download(DownloadInfo info) {
         if (info != null) {
             DownloadInfo downLoadInfo = mDownloadInfoMap.get(info.getGameID());
             // 如果downloadInfo不为空,表示之前下载过, 就无需创建新的对象, 要接着原来的下载位置继续下载,也就是断点续传
             if (downLoadInfo != null) {
                 info = downLoadInfo;
+
             }
 
-
+            if (DataSupport.where(new String[]{"gameId=?", info.getGameID()}).findFirst(DownloadInfo.class) == null) {
+                info.save();
+            }
             // 下载状态更为正在等待
             info.setDownloadState(STATE_WAITING);
             // 通知状态发生变化,各观察者根据此通知更新主界面
@@ -142,7 +183,8 @@ public class HttpDownload {
     }
 
     private OkHttpClient httpClient;
-    private  volatile static HttpDownload httpDownload;
+    private volatile static HttpDownload httpDownload;
+
     public static HttpDownload getInstance() {
         synchronized (HttpDownload.class) {
             if (httpDownload == null) {
@@ -168,7 +210,7 @@ public class HttpDownload {
             notifyDownloadStateChanged(downloadInfo);
 
             File downloadFile = downloadInfo.getDownloadFile();
-            if (downloadFile.exists()) {
+            if (downloadFile != null && downloadFile.exists()) {
                 downloadInfo.setCurrentPosition(downloadFile.length());
                 total = downloadFile.length();
             }
@@ -181,76 +223,89 @@ public class HttpDownload {
             if (downloadInfo.getCurrentPosition() == contentLength) {
                 downloadInfo.setDownloadState(STATE_SUCCESS);
                 notifyDownloadStateChanged(downloadInfo);
-            }
-            InputStream in = null;
-            RandomAccessFile randomAccessFile = null;
-            Request request = new Request.Builder().addHeader("RANGE", "bytes=" + downloadInfo.getCurrentPosition() + "-").url(downloadInfo.getDonwloadUrl()).build();
-            try {
-                Response response = httpClient.newCall(request).execute();
-                randomAccessFile = new RandomAccessFile(downloadFile, "rw");
-                randomAccessFile.seek(downloadInfo.getCurrentPosition());
-                if (response != null && response.isSuccessful()) {
+            }else
+            {
+                InputStream in = null;
+                RandomAccessFile randomAccessFile = null;
+                Request request = new Request.Builder().addHeader("RANGE", "bytes=" + downloadInfo.getCurrentPosition() + "-")
+                        .url(downloadInfo.getDonwloadUrl()).build();
+                try {
+                    Response response = httpClient.newCall(request).execute();
+                    randomAccessFile = new RandomAccessFile(downloadFile, "rw");
+                    randomAccessFile.seek(downloadInfo.getCurrentPosition());
+                    if (response != null && response.isSuccessful()) {
 
-                    int len = 0;
-                    byte[] buffer = new byte[1024];
-                    in = response.body().byteStream();
-                    while ((len = in.read(buffer)) != -1
-                            && downloadInfo.getDownloadState() == STATE_DOWNLOAD) {// 只有在下载的状态才读取文件,如果状态变化,就立即停止读写文件
-                        randomAccessFile.write(buffer, 0, len);
-                        out.flush();
-                        total += len;
-                        downloadInfo.setCurrentPosition(total);
-                        notifyDownloadProgressChanged(downloadInfo);
+                        int len = 0;
+                        byte[] buffer = new byte[1024];
+                        in = response.body().byteStream();
+                        while ((len = in.read(buffer)) != -1
+                                && downloadInfo.getDownloadState() == STATE_DOWNLOAD) {// 只有在下载的状态才读取文件,如果状态变化,就立即停止读写文件
+                            randomAccessFile.write(buffer, 0, len);
+                            out.flush();
+                            total += len;
+                            downloadInfo.setCurrentPosition(total);
+                            notifyDownloadProgressChanged(downloadInfo);
 
 
-                    }
-                    // 下载结束, 判断文件是否完整
-                    if (randomAccessFile.length() == downloadInfo.getContentLength()) {
-                        // 下载完毕
-                        downloadInfo.setDownloadState(STATE_SUCCESS);
-                        notifyDownloadStateChanged(downloadInfo);
-                    } else if (downloadInfo.getDownloadState() == STATE_CANCLE) {
-                        //取消下载
-                        notifyDownloadStateChanged(downloadInfo);
-                    } else if (downloadInfo.getDownloadState() == STATE_PAUSE) {
-                        // 中途暂停
-                        notifyDownloadStateChanged(downloadInfo);
+                        }
+                        // 下载结束, 判断文件是否完整
+                        if (randomAccessFile.length() == downloadInfo.getContentLength()) {
+                            // 下载完毕
+                            downloadInfo.setDownloadState(STATE_SUCCESS);
+                            notifyDownloadStateChanged(downloadInfo);
+                        } else if (downloadInfo.getDownloadState() == STATE_CANCLE) {
+                            //取消下载
+                            notifyDownloadStateChanged(downloadInfo);
+                        } else if (downloadInfo.getDownloadState() == STATE_PAUSE) {
+                            // 中途暂停
+                            notifyDownloadStateChanged(downloadInfo);
+                        } else {
+                            // 下载失败
+                            downloadInfo.setDownloadState(STATE_ERROR);
+                            downloadInfo.setCurrentPosition(0);
+                            notifyDownloadStateChanged(downloadInfo);
+                            // 删除无效文件
+                            File file = downloadInfo.getDownloadFile();
+                            if (file!=null&&file.exists()) {
+                                file.delete();
+                            }
+                        }
                     } else {
-                        // 下载失败
-                        downloadInfo.setCurrentPosition(STATE_ERROR);
+                        downloadInfo.setDownloadState(STATE_ERROR);
                         downloadInfo.setCurrentPosition(0);
                         notifyDownloadStateChanged(downloadInfo);
                         // 删除无效文件
-
+                        File file = downloadInfo.getDownloadFile();
+                        if (file!=null&&file.exists()) {
+                            file.delete();
+                        }
                     }
-                } else {
-                    downloadInfo.setCurrentPosition(STATE_ERROR);
-                    downloadInfo.setCurrentPosition(0);
-                    notifyDownloadStateChanged(downloadInfo);
-                    // 删除无效文件
-                }
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (randomAccessFile != null) {
-                    try {
-                        randomAccessFile.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    cancle(downloadInfo);
+                } finally {
+                    if (randomAccessFile != null) {
+                        try {
+                            randomAccessFile.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-                if (in != null) {
-                    try {
-                        in.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (in != null) {
+                        try {
+                            in.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
+
             // 不管下载成功,失败还是暂停, 下载任务已经结束,都需要从当前任务集合中移除
             mDownloadTaskMap.remove(downloadInfo.getGameID());
         }
+
     }
 
     public synchronized void pause(DownloadInfo appInfo) {
@@ -275,27 +330,32 @@ public class HttpDownload {
         }
     }
 
-    public synchronized void cancle(DownloadInfo appInfo) {
-        if (appInfo != null) {
-            DownloadInfo downloadInfo = mDownloadInfoMap.get(appInfo.getGameID());
+    public synchronized void cancle(DownloadInfo info) {
+        if (info != null) {
+            DownloadInfo downloadInfo = mDownloadInfoMap.get(info.getGameID());
             if (downloadInfo != null) {
                 int state = downloadInfo.getDownloadState();
                 // 如果当前状态是等待下载或者正在下载, 需要暂停当前任务
-                if (state == STATE_WAITING || state == STATE_DOWNLOAD || state == STATE_PAUSE || state == STATE_SUCCESS) {
+                if (state == STATE_WAITING || state == STATE_DOWNLOAD ||
+                        state == STATE_PAUSE || state == STATE_SUCCESS || state == STATE_ERROR) {
                     // 停止当前的下载任务
                     DownloadTask downloadTask = mDownloadTaskMap
-                            .get(appInfo.getGameID());
+                            .get(downloadInfo.getGameID());
                     if (downloadTask != null) {
                         mThreadPool.cancel(downloadTask);
                     }
-                    File downloadFile = appInfo.getDownloadFile();
-                    if (downloadFile.exists()) {
+                    File downloadFile = downloadInfo.getDownloadFile();
+                    if (downloadFile!=null&&downloadFile.exists()) {
                         downloadFile.delete();
                     }
-                    appInfo.setCurrentPosition(0);
-                    // 更新下载状态为暂停
+                    downloadInfo.setCurrentPosition(0);
+
+                    // 更新下载状态为取消
                     downloadInfo.setDownloadState(STATE_CANCLE);
                     notifyDownloadStateChanged(downloadInfo);
+
+                    downloadInfo.setDownloadInfo(null);
+                    downloadInfo.delete();
                 }
             }
         }
@@ -306,20 +366,16 @@ public class HttpDownload {
     }
 
 
-
     public synchronized void install(Context context, DownloadInfo appInfo) {
-        DownloadInfo downloadInfo = mDownloadInfoMap.get(appInfo.getGameID());
-        if (downloadInfo != null) {
-            // 跳到系统的安装页面进行安装
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            Uri uri = Uri.fromFile(appInfo.getDownloadFile());
-            intent.setDataAndType(uri, "application/vnd.android.package-archive");
-            context.startActivity(intent);
-        }
+        // 跳到系统的安装页面进行安装
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Uri uri = Uri.fromFile(appInfo.getDownloadFile());
+        intent.setDataAndType(uri, "application/vnd.android.package-archive");
+        context.startActivity(intent);
     }
-    public void setOnClickView(View view)
-    {
+
+    public void setOnClickView(View view) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -344,30 +400,19 @@ public class HttpDownload {
         return 0;
     }
 
-    public static File getDownloadFile(Context context, int id)
-    {
-        String filePath = SaveConfigGameUtil.getString(context, id + "", "");
-        if (!StringUtil.isEmpty(filePath))
-        {
-            File file = new File(filePath);
-            if (file.exists())
-            {
+    public static File getDownloadFile(Context context, int id) {
+
+        DownloadInfo downloadInfo = DataSupport.where("gameId=?", id + "").findFirst(DownloadInfo.class);
+        if (!StringUtil.isEmpty(downloadInfo.getDownloadPath())) {
+            File file = new File(downloadInfo.getDownloadPath());
+            if (file.exists()) {
                 return file;
             }
         }
+
         return null;
+
     }
-
-    public interface DownloadObserver {
-        // 下载状态发生变化
-        public void onDownloadStateChanged(DownloadInfo info);
-
-        // 下载进度发生变化
-        public void onDownloadProgressChanged(DownloadInfo info);
-    }
-
-
-
 
 
 }

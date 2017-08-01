@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.view.View;
 import android.view.Window;
 
@@ -69,6 +70,7 @@ public abstract class BaseActivity
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
+
     //判斷當前的activity是否存活
     public static boolean isActivityDestory(Class<? extends Activity> clazz)
     {
@@ -103,6 +105,7 @@ public abstract class BaseActivity
     }
 
 
+
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         this.mBundle =bundle;
@@ -110,7 +113,11 @@ public abstract class BaseActivity
         setContentView(getLayoutResId());
         ButterKnife.bind(this);
         initView();
-        initData();
+        try {
+            initData();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         initListener();
 
     }
@@ -132,4 +139,5 @@ public abstract class BaseActivity
         sForegroundActivity = this;
         super.onResume();
     }
+
 }

@@ -4,7 +4,11 @@
     android:id="@id/ll_game_small_search"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/qm4dp"
+    android:layout_marginBottom="@dimen/qm4dp"
+    android:layout_marginRight="@dimen/qm4dp"
     android:background="@drawable/selector_bg_gray_white"
+    android:elevation="@dimen/qm4dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -27,6 +31,5 @@
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
     </LinearLayout>
-    <include layout="@layout/cut_horizontal_apart"/>
 
 </LinearLayout>

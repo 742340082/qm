@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+    <TextView
+        android:id="@id/tv_game_category_detail_selector_size_title"
+        android:layout_width="wrap_content"
+        android:paddingLeft="@dimen/qm10dp"
+        android:paddingRight="@dimen/qm10dp"
+        android:layout_height="@dimen/qm24dp"
+        android:layout_marginBottom="@dimen/qm10dp"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:layout_marginLeft="@dimen/qm10dp"
+        android:gravity="center"
+        android:text="格斗"
+        android:background="@drawable/selector_border_round_blue_gray_bg_white_splash"
+        android:layout_margin="@dimen/qm10dp"
+        android:textColor="@color/selector_color_blue_black"
+        android:textSize="14sp" />
+</FrameLayout>

@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+<RelativeLayout
     android:id="@id/rl_address"
     android:layout_width="match_parent"
+    android:layout_marginBottom="@dimen/qm4dp"
+    android:layout_marginRight="@dimen/qm4dp"
+    android:layout_marginLeft="@dimen/qm4dp"
+    android:elevation="@dimen/qm4dp"
     android:background="@drawable/selector_bg_gray_white"
     android:layout_height="wrap_content">
 
@@ -64,14 +71,6 @@
             android:textSize="@dimen/titleSize" />
 
     </LinearLayout>
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-        <include
-
-            layout="@layout/cut_horizontal_apart"/>
-    </LinearLayout>
 </RelativeLayout>
+</FrameLayout>
 

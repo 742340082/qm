@@ -4,19 +4,19 @@ package com.game.mvp.category.detail.top.biz;
 import com.baselibrary.api.QMApi;
 import com.baselibrary.config.ConfigStateCode;
 import com.baselibrary.config.ConfigValues;
+import com.baselibrary.model.game.Game;
+import com.baselibrary.model.game.category.detail.CategoryDetail;
+import com.baselibrary.model.game.category.detail.CategoryDetailResult;
+import com.baselibrary.model.game.category.detail.CategoryDetailSizeOption;
+import com.baselibrary.model.game.category.detail.CategoryDetailSubType;
+import com.baselibrary.model.game.category.detail.CategoryDetailTag;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.NetworkState;
 import com.baselibrary.utils.RxBus;
 import com.baselibrary.utils.UIUtils;
 import com.game.api.GameApi;
 import com.game.config.ConfigGame;
-import com.game.mvp.category.detail.modle.CategoryDetail;
-import com.game.mvp.category.detail.modle.CategoryDetailResult;
-import com.game.mvp.category.detail.modle.CategoryDetailSizeOption;
-import com.game.mvp.category.detail.modle.CategoryDetailSubType;
-import com.game.mvp.category.detail.modle.CategoryDetailTag;
 import com.game.mvp.category.detail.top.view.CategoryDetailTopView;
-import com.game.mvp.model.Game;
 
 import org.litepal.crud.DataSupport;
 

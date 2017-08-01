@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baselibrary.utils.UIUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,17 +75,45 @@ public class FlowLayout extends ViewGroup
 		for (int i = 0; i < cCount; i++)
 		{
 			View child = getChildAt(i);
-			// 测量每一个child的宽和高
-			measureChild(child, widthMeasureSpec, heightMeasureSpec);
+
 			// 得到child的lp
 			MarginLayoutParams lp = (MarginLayoutParams) child
 					.getLayoutParams();
+			// 测量每一个child的宽和高
+
+			int chideWidthSize=child.getPaddingLeft()+child.getPaddingRight();
+			int chideHeightSize=child.getPaddingTop()+child.getPaddingBottom();
+			if (modeWidth == MeasureSpec.EXACTLY) {// 如果是精确的
+				chideWidthSize += sizeWidth;
+			} else {// 采用图片的大小
+				if (modeWidth == MeasureSpec.AT_MOST) {
+					chideWidthSize += Math.min(width, UIUtils.dip2px(120));
+				}
+			}
+
+			if (modeHeight == MeasureSpec.EXACTLY) {// 如果是精确的
+				chideHeightSize += sizeHeight;
+			} else {// 采用图片的大小
+				if (modeHeight == MeasureSpec.AT_MOST) {
+					chideHeightSize += Math.min(height, UIUtils.dip2px(120));
+				}
+			}
+
+			measureChild(child, chideWidthSize, chideHeightSize);
+
+
 			// 当前子空间实际占据的宽度
 			int childWidth = child.getMeasuredWidth() + lp.leftMargin
 					+ lp.rightMargin;
 			// 当前子空间实际占据的高度
 			int childHeight = child.getMeasuredHeight() + lp.topMargin
 					+ lp.bottomMargin;
+			if (child.getVisibility()== View.GONE)
+			{
+				childWidth-= child.getMeasuredWidth()+ lp.leftMargin
+                        + lp.rightMargin;
+			}
+
 			/**
 			 * 如果加入当前child，则超出最大宽度，则的到目前最大宽度给width，类加height 然后开启新行
 			 */
@@ -177,8 +207,6 @@ public class FlowLayout extends ViewGroup
 			// 当前行的最大高度
 			lineHeight = mLineHeight.get(i);
 
-			Log.e(TAG, "第" + i + "行 ：" + lineViews.size() + " , " + lineViews);
-			Log.e(TAG, "第" + i + "行， ：" + lineHeight);
 
 			// 遍历当前行所有的View
 			for (int j = 0; j < lineViews.size(); j++)
@@ -191,19 +219,21 @@ public class FlowLayout extends ViewGroup
 				MarginLayoutParams lp = (MarginLayoutParams) child
 						.getLayoutParams();
 
+
+
 				//计算childView的left,top,right,bottom
 				int lc = left + lp.leftMargin;
 				int tc = top + lp.topMargin;
-				int rc =lc + child.getMeasuredWidth();
-				int bc = tc + child.getMeasuredHeight();
+				int rc =lc + child.getMeasuredWidth()+lp.rightMargin;
+				int bc = tc + child.getMeasuredHeight()+lp.bottomMargin;
 
 				Log.e(TAG, child + " , l = " + lc + " , t = " + t + " , r ="
 						+ rc + " , b = " + bc);
 
 				child.layout(lc, tc, rc, bc);
 
-				left += child.getMeasuredWidth() + lp.rightMargin
-						+ lp.leftMargin;
+				left += child.getMeasuredWidth()
+						+ lp.leftMargin+child.getPaddingLeft();
 			}
 			left = 0;
 			top += lineHeight;

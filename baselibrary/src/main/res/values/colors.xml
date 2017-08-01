@@ -14,23 +14,30 @@
 
     <color name="button_background_deep">#ff09e3f6</color>
     <color name="button_background">#1ae1e1</color>
-    <color name="windowBackground">#e8ffffff</color>
+    <color name="AppBackground">#e5eef5</color>
+
 
     <color name="black">#000000</color>
-    <color name="green">#38e216</color>
-    <color name="greendeep">#30bc14</color>
     <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="red">#ffff0000</color>
+    <color name="orange">#ff6100</color>
+    <color name="yellow">#fad904</color>
+    <color name="green">#38e216</color>
     <color name="blue">#1ae1e1</color>
+    <color name="purple">#8d4bbb</color>
+    <color name="pink">#F08080</color>
+
+
+    <color name="greendeep">#30bc14</color>
     <color name="bluedeep">#1ea2a2</color>
     <color name="blacktransparent">#66d3c5c5</color>
     <color name="graydeep">#99434040</color>
     <color name="gray">#3f434040</color>
     <color name="grayshallow">#aaf0e7e7</color>
-    <color name="red">#ffff0000</color>
-    <color name="orangedeep">#fa6e3b</color>
-    <color name="transparent">#00000000</color>
     <color name="transparentGray">#66999999</color>
-
+    <color name="orangedeep">#fa6e3b</color>
 
 
 </resources>

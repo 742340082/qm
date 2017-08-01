@@ -2,10 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/qm200dp"
+    android:layout_marginLeft="@dimen/qm4dp"
+    android:layout_marginRight="@dimen/qm4dp"
+    android:layout_marginBottom="@dimen/qm10dp"
+    android:layout_marginTop="@dimen/qm5dp"
+    android:background="@drawable/selector_bg_gray_white"
+    android:elevation="@dimen/qm4dp"
     android:orientation="vertical">
 
     <android.support.v4.view.ViewPager
         android:id="@id/vp_news"
+        android:layout_margin="@dimen/qm2dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

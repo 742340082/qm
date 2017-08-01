@@ -3,9 +3,8 @@ package com.game.mvp.category.detail;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -13,6 +12,8 @@ import android.widget.TextView;
 
 import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
 import com.baselibrary.base.fragment.BaseFragmnet;
+import com.baselibrary.model.game.category.detail.CategoryDetailResult;
+import com.baselibrary.model.game.category.detail.CategoryDetailSizeOption;
 import com.baselibrary.utils.Logger;
 import com.baselibrary.utils.RxBus;
 import com.baselibrary.utils.UIUtils;
@@ -20,8 +21,6 @@ import com.baselibrary.view.FlowLayout;
 import com.game.R;
 import com.game.R2;
 import com.game.config.ConfigGame;
-import com.game.mvp.category.detail.modle.CategoryDetailResult;
-import com.game.mvp.category.detail.modle.CategoryDetailSizeOption;
 import com.game.mvp.category.detail.top.CateoryDetailTopFragment;
 
 import java.util.List;
@@ -128,46 +127,41 @@ public class CategoryDetailFragment extends BaseFragmnet {
       final   List<CategoryDetailSizeOption> sizeOptions = result.getSizeOptions();
         if (fl_game_category_detail.getChildCount() == 0) {
             for (int i = 0; i < sizeOptions.size(); i++) {
-                CategoryDetailSizeOption categoryDetailSizeOption = sizeOptions.get(i);
 
+               final View view = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_game_category_detail_selector_size, null);
 
-                final TextView textView = new TextView(UIUtils.getContext());
-                ViewGroup.MarginLayoutParams params = new ViewGroup.MarginLayoutParams(UIUtils.dip2px(80), UIUtils.dip2px(30));
-                int dip2px = UIUtils.dip2px(10);
-                params.setMargins(dip2px, dip2px, dip2px, dip2px);
-                textView.setLayoutParams(params);
-                textView.setGravity(Gravity.CENTER);
+                final TextView tv_game_category_detail_selector_size_title = (TextView) view.findViewById(R.id.tv_game_category_detail_selector_size_title);
+              final   CategoryDetailSizeOption categoryDetailSizeOption = sizeOptions.get(i);
 
-                textView.setBackgroundResource(R.drawable.selector_border_blue_gray_bg_white_splash);
-                textView.setTextColor(UIUtils.getColorStateList(R.color.selector_color_blue_black));
-                textView.setText(categoryDetailSizeOption.getTitle());
-                textView.setOnClickListener(new View.OnClickListener() {
+                tv_game_category_detail_selector_size_title.setText(categoryDetailSizeOption.getTitle());
+                tv_game_category_detail_selector_size_title.setOnClickListener(new View.OnClickListener() {
 
 
 
                     @Override
                     public void onClick(View v) {
-                        TextView textView1= (TextView) v;
-                        selectedSizeOption = textView1.getText().toString();
+                        selectedSizeOption = tv_game_category_detail_selector_size_title.getText().toString();
                         tv_game_selcted_size.setText(selectedSizeOption);
-                        v.setSelected(true);
+                        tv_game_category_detail_selector_size_title.setSelected(true);
                         for (int j = 0; j < fl_game_category_detail.getChildCount(); j++) {
                             View childAt = fl_game_category_detail.getChildAt(j);
-                            if (childAt != v) {
-                                childAt.setSelected(false);
-                            } else {
-                                CategoryDetailFragment.this.categoryDetailSizeOption = sizeOptions.get(j);
-                                RxBus.getDefault().post(ConfigGame.GAME_SEND_RX_CATEGORY_DETAIL_SIZEOPTION,    CategoryDetailFragment.this.categoryDetailSizeOption);
+                             TextView textView = (TextView) childAt.findViewById(R.id.tv_game_category_detail_selector_size_title);
+                            if (textView!=tv_game_category_detail_selector_size_title) {
+                                textView.setSelected(false);
                             }
                         }
+                        CategoryDetailFragment.this.categoryDetailSizeOption = categoryDetailSizeOption;
+                        RxBus.getDefault().post(ConfigGame.GAME_SEND_RX_CATEGORY_DETAIL_SIZEOPTION,
+                                CategoryDetailFragment.this.categoryDetailSizeOption);
+
                         fl_game_category_detail.setVisibility(View.GONE);
                     }
                 });
                 if (i==0)
                 {
-                    textView.setSelected(true);
+                    tv_game_category_detail_selector_size_title.setSelected(true);
                 }
-                fl_game_category_detail.addView(textView);
+                fl_game_category_detail.addView(view);
             }
         }
     }

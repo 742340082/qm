@@ -1,16 +1,15 @@
 package com.game.adapter;
 
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
+import com.baselibrary.model.game.gamenews.GameNewsData;
 import com.baselibrary.utils.DateFormatter;
 import com.baselibrary.utils.UIUtils;
+import com.baselibrary.utils.ViewUtil;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.game.R;
-import com.game.mvp.gamenews.model.GameNewsData;
 
 import java.util.Calendar;
 import java.util.List;
@@ -33,28 +32,7 @@ public class GameNewsAdapter extends BaseQuickAdapter<GameNewsData,BaseViewHolde
 
     @Override
     protected void convert(BaseViewHolder helper, GameNewsData item) {
-        int layoutPosition = helper.getLayoutPosition();
-        if(layoutPosition==0)
-        {
-            LinearLayout linearLayout = (LinearLayout) helper.getConvertView();
-            ViewGroup.LayoutParams layoutParams = linearLayout.getLayoutParams();
-            if (layoutParams instanceof ViewGroup.MarginLayoutParams)
-            {
-                ViewGroup.MarginLayoutParams params= (ViewGroup.MarginLayoutParams) layoutParams;
-                params.setMargins(0,UIUtils.dip2px(10),0,0);
-                linearLayout.setLayoutParams(params);
-            }
-        }else
-        {
-            LinearLayout linearLayout = (LinearLayout) helper.getConvertView();
-            ViewGroup.LayoutParams layoutParams = linearLayout.getLayoutParams();
-            if (layoutParams instanceof ViewGroup.MarginLayoutParams)
-            {
-                ViewGroup.MarginLayoutParams params= (ViewGroup.MarginLayoutParams) layoutParams;
-                params.setMargins(0,0,0,UIUtils.dip2px(1));
-                linearLayout.setLayoutParams(params);
-            }
-        }
+        ViewUtil.initCutOff(helper,helper.getLayoutPosition());
 
         Calendar instance = Calendar.getInstance(Locale.CHINA);
         long currentTime = instance.getTimeInMillis();

@@ -7,10 +7,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.listener.OnRetryListener;
+import com.baselibrary.model.game.category.CategoryLink;
+import com.baselibrary.model.game.category.CategoryResult;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.ToastUtils;
@@ -18,13 +21,11 @@ import com.baselibrary.utils.UIUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.CategoryAdapter;
-import com.game.adapter.CategoryHeaderAdapter;
-import com.game.adapter.IndexAdapter;
+import com.game.adapter.GameCategoryAdapter;
+import com.game.adapter.GameCategoryHeaderAdapter;
+import com.game.adapter.index.IndexAdapter;
 import com.game.config.ConfigGame;
 import com.game.mvp.category.detail.CategoryDetailActivity;
-import com.game.mvp.category.modle.CategoryLink;
-import com.game.mvp.category.modle.CategoryResult;
 import com.game.mvp.category.presenter.CategoryPresenter;
 import com.game.mvp.category.view.CategoryView;
 
@@ -48,7 +49,7 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView {
     private CategoryPresenter mPresenter;
     private StatusLayoutManager mStatusLayoutManager;
     private CategoryResult categoryResult;
-    private CategoryAdapter categoryAdapter;
+    private GameCategoryAdapter categoryAdapter;
 
     @Override
     public int getLayoutResId() {
@@ -115,15 +116,15 @@ public class CategoryFragment extends BaseFragmnet implements CategoryView {
 
     @Override
     public void initHeader( List<CategoryLink> categoryLinks) {
-        categoryAdapter = new CategoryAdapter(R.layout.item_game_category_content);
+        categoryAdapter = new GameCategoryAdapter(R.layout.item_game_category_content);
         categoryAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
         rv_category.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rv_category.setAdapter(categoryAdapter);
 
 
-        View headView = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_game_category_header, null);
+        View headView = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_game_category_header, new FrameLayout(getContext()));
         RecyclerView rl_game_category_header = (RecyclerView) headView.findViewById(R.id.rl_game_category_header);
-        CategoryHeaderAdapter categoryHeaderAdapter = new CategoryHeaderAdapter(R.layout.item_game_category_header_top,categoryLinks);
+        GameCategoryHeaderAdapter categoryHeaderAdapter = new GameCategoryHeaderAdapter(R.layout.item_game_category_header_tag,categoryLinks);
         rl_game_category_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(),4));
         rl_game_category_header.setAdapter(categoryHeaderAdapter);
         categoryAdapter.addHeaderView(headView);

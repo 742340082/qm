@@ -37,6 +37,7 @@
                 android:id="@id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/toolbarHeight"
+                android:elevation="@dimen/qm4dp"
                 app:background="@color/colorPrimary"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@drawable/arrow_left"

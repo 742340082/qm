@@ -13,6 +13,7 @@
         android:layout_height="@dimen/toolbarHeight"
         android:fitsSystemWindows="true"
         app:title=" "
+        android:elevation="@dimen/qm4dp"
         app:titleTextColor="@color/navigation_text_color"
         android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left" />

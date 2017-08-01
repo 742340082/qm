@@ -5,6 +5,10 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/qm5dp"
     android:layout_marginBottom="@dimen/qm5dp"
+    android:background="@drawable/selector_bg_gray_white"
+    android:elevation="@dimen/qm4dp"
+    android:layout_marginLeft="@dimen/qm4dp"
+    android:layout_marginRight="@dimen/qm4dp"
     android:orientation="vertical">
     <RelativeLayout
         android:id="@id/Rl_game_category"

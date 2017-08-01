@@ -6,62 +6,57 @@
 
 
     <LinearLayout
+        android:id="@id/ll_user_take_local"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/qm5dp"
-        android:layout_marginTop="@dimen/qm5dp"
-        android:orientation="vertical">
+        android:layout_height="@dimen/qm50dp"
+        android:layout_marginBottom="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white"
+        android:elevation="@dimen/qm4dp"
+        android:gravity="center_vertical">
 
-        <LinearLayout
-            android:id="@id/ll_user_take_local"
+        <ImageView
+            android:layout_width="@dimen/qm20dp"
+            android:layout_height="@dimen/qm20dp"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:src="@drawable/icon_we_takelocal" />
+
+        <TextView
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_bg_gray_white"
-            android:gravity="center_vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qm30dp"
+            android:text="@string/user_take_local"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/titleSize" />
+    </LinearLayout>
 
-            <ImageView
-                android:layout_width="@dimen/qm20dp"
-                android:layout_height="@dimen/qm20dp"
-                android:layout_marginLeft="@dimen/qm10dp"
-                android:src="@drawable/icon_we_takelocal" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/qm30dp"
-                android:text="@string/user_take_local"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/titleSize" />
-        </LinearLayout>
+    <LinearLayout
+        android:id="@id/ll_collect"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/qm50dp"
+        android:layout_marginBottom="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white"
+        android:elevation="@dimen/qm4dp"
+        android:gravity="center_vertical">
 
-        <include layout="@layout/cut_horizontal_apart" />
+        <ImageView
+            android:layout_width="@dimen/qm20dp"
+            android:layout_height="@dimen/qm20dp"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:src="@drawable/icon_we_collect" />
 
-        <LinearLayout
-            android:id="@id/ll_collect"
+        <TextView
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_bg_gray_white"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="@dimen/qm20dp"
-                android:layout_height="@dimen/qm20dp"
-                android:layout_marginLeft="@dimen/qm10dp"
-                android:src="@drawable/icon_we_collect" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/qm30dp"
-                android:gravity="center_vertical"
-                android:text="@string/user_collect"
-                android:textColor="@color/textColorPrimary"
-                android:textSize="@dimen/titleSize" />
-        </LinearLayout>
-
-        <include layout="@layout/cut_horizontal_apart" />
-
-
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/qm30dp"
+            android:gravity="center_vertical"
+            android:text="@string/user_collect"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/titleSize" />
     </LinearLayout>
 
 
@@ -69,8 +64,11 @@
         android:id="@id/ll_switch_theme"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
+        android:layout_marginBottom="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
         android:background="@drawable/selector_bg_gray_white"
-        android:layout_marginTop="@dimen/qm5dp"
+        android:elevation="@dimen/qm4dp"
         android:gravity="center_vertical">
 
         <ImageView
@@ -81,25 +79,30 @@
 
         <TextView
             android:layout_width="@dimen/qm0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/qm30dp"
+            android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="@string/switch_theme"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize" />
+
         <android.support.v7.widget.SwitchCompat
             android:id="@id/switch_night"
             android:layout_width="wrap_content"
-            android:layout_marginRight="@dimen/qm5dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/qm5dp" />
     </LinearLayout>
-    <include layout="@layout/cut_horizontal_apart"/>
+
     <LinearLayout
         android:id="@id/ll_setting"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
+        android:layout_marginBottom="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
         android:background="@drawable/selector_bg_gray_white"
+        android:elevation="@dimen/qm4dp"
         android:gravity="center_vertical">
 
         <ImageView

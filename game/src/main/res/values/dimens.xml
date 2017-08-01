@@ -4,4 +4,5 @@
     <dimen name="qm120dp">120dp</dimen>
     <dimen name="qm150dp">150dp</dimen>
     <dimen name="qm400dp">400dp</dimen>
+    <dimen name="qm240dp">240dp</dimen>
 </resources>

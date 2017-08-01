@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@id/ll_game_detail_pic"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/qm200dp"
-    android:orientation="vertical"></LinearLayout>

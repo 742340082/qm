@@ -1,5 +1,6 @@
 package com.game.mvp.index;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,19 +12,23 @@ import android.widget.LinearLayout;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.listener.OnRetryListener;
+import com.baselibrary.model.game.Game;
+import com.baselibrary.model.game.index.AdListGame;
+import com.baselibrary.model.game.index.IndexRecBlock;
+import com.baselibrary.model.game.index.PosterBlock;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.ToastUtils;
 import com.baselibrary.utils.UIUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.IndexAdapter;
-import com.game.adapter.IndexHeaderAdapter;
-import com.game.mvp.index.modle.PosterBlock;
-import com.game.mvp.index.modle.IndexRecBlock;
-import com.game.mvp.index.modle.AdListGame;
+import com.game.adapter.index.IndexAdapter;
+import com.game.adapter.index.IndexHeaderAdapter;
+import com.game.config.ConfigGame;
+import com.game.mvp.detail.GameDetailActivity;
 import com.game.mvp.index.presenter.IndexPresenter;
 import com.game.mvp.index.view.IndexView;
 
@@ -136,10 +141,24 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
                 .into(iv_game_top_icon2);
 
         List<IndexRecBlock> recBlock = posterBlock.getRecBlock();
-        IndexHeaderAdapter indexHeaderAdapter = new IndexHeaderAdapter(R.layout.item_game_index_header_top,recBlock);
+        IndexHeaderAdapter indexHeaderAdapter = new IndexHeaderAdapter(R.layout.item_game_index_header_tag,recBlock);
         RecyclerView rl_index_header = (RecyclerView) headView.findViewById(R.id.rl_game_index_header);
         rl_index_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(),4));
         rl_index_header.setAdapter(indexHeaderAdapter);
         recommendAdapter.addHeaderView(headView);
+        recommendAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                AdListGame adListGame = (AdListGame) adapter.getItem(position);
+                Game game = adListGame.getGame();
+                if (game!=null) {
+                    Intent intent = new Intent(getContext(), GameDetailActivity.class);
+                    intent.putExtra(ConfigGame.GAME_SEND_GAMEDETAIL_ID,game.getGame_id() );
+                    intent.putExtra(ConfigGame.GAME_SEND_GAMEDETAIL_APPNAME,game.getAppname() );
+                    intent.putExtra(ConfigGame.GAME_SEND_GAMEDETAIL_PACKAGE, game.getPackag());
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }

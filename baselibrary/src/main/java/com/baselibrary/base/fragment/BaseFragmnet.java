@@ -2,6 +2,7 @@ package com.baselibrary.base.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,15 @@ import android.view.ViewGroup;
 import com.baselibrary.UiOperate;
 import com.baselibrary.config.ConfigValues;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 
 public abstract class BaseFragmnet
         extends AppBaseFragment
         implements UiOperate {
+    private static List<Fragment> fragments=new ArrayList<>();
     public View rootView;
     // 标志位，标志已经初始化完成。
     protected boolean isVisible=true;
@@ -22,6 +27,10 @@ public abstract class BaseFragmnet
         Bundle localBundle = new Bundle();
         localBundle.putString(ConfigValues.VALUE_SEND_TITLE, title);
         return localBundle;
+    }
+    public List<Fragment> getActiveFragmentS()
+    {
+        return fragments;
     }
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -78,11 +87,19 @@ public abstract class BaseFragmnet
         {
             isVisible=savedInstanceState.getBoolean(ConfigValues.VALUE_SAVE_FRAGMENT_VISABLE_STATE);
         }
+        fragments.add(this);
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(ConfigValues.VALUE_SAVE_FRAGMENT_VISABLE_STATE,isVisible);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        rootView=null;
+        fragments.remove(this);
     }
 }

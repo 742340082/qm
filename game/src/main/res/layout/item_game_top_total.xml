@@ -1,152 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/qm60dp"
-    android:background="@drawable/selector_bg_gray_white"
-    android:layout_marginBottom="@dimen/qm1dp"
-    android:orientation="horizontal">
-
-
-    <RelativeLayout
-        android:id="@id/rl_game_top"
-        android:layout_width="@dimen/qm30dp"
-        android:layout_height="@dimen/qm30dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/qm10dp"
-        android:visibility="visible">
-
-        <ImageView
-            android:id="@id/iv_game_top_tag"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/lufei"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@id/tv_game_top_tag"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="6"
-            android:textSize="@dimen/topTagSize"
-            android:textStyle="bold"
-            android:visibility="gone" />
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@id/iv_game_top_icon"
-        android:layout_width="@dimen/qm50dp"
-        android:layout_height="@dimen/qm50dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/qm10dp"
-        android:src="@drawable/lufei" />
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_width="@dimen/qm0dp"
-        android:layout_height="@dimen/qm50dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/qm10dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:id="@id/ll_game_top_tag"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qm60dp"
+        android:layout_marginBottom="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white"
+        android:elevation="@dimen/qm4dp"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@id/tv_game_top_title"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/qm25dp"
-            android:gravity="center_vertical"
-            android:text="游戏标题"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/titleSize" />
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:id="@id/ll_game_download_info"
+        <RelativeLayout
+            android:id="@id/rl_game_top"
+            android:layout_width="@dimen/qm30dp"
+            android:layout_height="@dimen/qm30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@id/iv_game_top_tag"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lufei"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@id/tv_game_top_tag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="6"
+                android:textSize="@dimen/topTagSize"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@id/iv_game_top_icon"
+            android:layout_width="@dimen/qm50dp"
+            android:layout_height="@dimen/qm50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:src="@drawable/lufei" />
+
+        <LinearLayout
+            android:layout_width="@dimen/qm0dp"
+            android:layout_height="@dimen/qm50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/qm10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@id/tv_game_top_title"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/qm25dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:text="游戏标题"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/titleSize" />
 
-                <TextView
-                    android:id="@id/tv_game_top_download_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="100万+下载"
-                    android:textColor="@color/textColorPrimary"
-                    android:textSize="@dimen/textSize" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@id/tv_game_top_tag_size"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/qm10dp"
-                    android:textColor="@color/textColorPrimary"
-                    android:text="85M"
-                    android:textSize="@dimen/textSize" />
-
-                <TextView
-                    android:id="@id/tv_game_top_type"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/textColorPrimary"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/qm10dp"
-                    android:text="射击"
-                    android:textSize="@dimen/textSize" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@id/ll_game_download"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ll_game"
-                android:layout_marginRight="@dimen/qm5dp"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <ProgressBar
-                    android:id="@id/pb_game_download_progress"
-                    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                <LinearLayout
+                    android:id="@id/ll_game_download_info"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/qm5dp"
-                    android:max="100" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/qm25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
 
                     <TextView
-                        android:id="@id/tv_game_download_state"
+                        android:id="@id/tv_game_top_download_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0M/0M"
+                        android:text="100万+下载"
+                        android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/textSize" />
 
                     <TextView
-                        android:id="@id/tv_game_download_speed"
+                        android:id="@id/tv_game_top_tag_size"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="已暂停"
-                        android:textColor="@color/blue"
+                        android:layout_marginLeft="@dimen/qm10dp"
+                        android:text="85M"
+                        android:textColor="@color/textColorPrimary"
                         android:textSize="@dimen/textSize" />
-                </RelativeLayout>
-            </LinearLayout>
-        </FrameLayout>
+
+                    <TextView
+                        android:id="@id/tv_game_top_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/qm10dp"
+                        android:text="射击"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@id/ll_game_download"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ll_game"
+                    android:layout_marginRight="@dimen/qm5dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:id="@id/pb_game_download_progress"
+                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/qm5dp"
+                        android:max="100" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@id/tv_game_download_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0M/0M"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/textSize" />
+
+                        <TextView
+                            android:id="@id/tv_game_download_speed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="下载中"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/textSize" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@id/btn_game_download"
+            android:layout_width="@dimen/qm60dp"
+            android:layout_height="@dimen/qm20dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/qm10dp"
+            android:background="@color/button_background"
+            android:text="@string/download"
+            android:textColor="@color/navigation_text_color"
+            android:textSize="14sp" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@id/btn_game_download"
-        android:layout_width="@dimen/qm60dp"
-        android:layout_height="@dimen/qm20dp"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginRight="@dimen/qm10dp"
-        android:background="@color/button_background"
-        android:text="@string/download"
-        android:textColor="@color/navigation_text_color"
-        android:textSize="14sp" />
-
-</LinearLayout>
+</FrameLayout>

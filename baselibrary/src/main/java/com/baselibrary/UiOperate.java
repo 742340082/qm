@@ -1,5 +1,6 @@
 package com.baselibrary;
 
+import android.os.RemoteException;
 import android.view.View;
 
 public abstract interface UiOperate
@@ -9,7 +10,7 @@ public abstract interface UiOperate
 
     public abstract int getLayoutResId();
 
-    public abstract void initData();
+    public abstract void initData() throws RemoteException;
 
     public abstract void initListener();
 

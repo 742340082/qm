@@ -1,8 +1,9 @@
 package com.game.mvp.category.view;
 
+
 import com.baselibrary.BaseView;
-import com.game.mvp.category.modle.CategoryLink;
-import com.game.mvp.category.modle.CategoryResult;
+import com.baselibrary.model.game.category.CategoryLink;
+import com.baselibrary.model.game.category.CategoryResult;
 
 import java.util.List;
 

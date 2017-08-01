@@ -12,6 +12,7 @@
         android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left"
         app:title="@string/user_receive_address"
+        android:elevation="@dimen/qm4dp"
         android:layout_marginBottom="@dimen/qm1dp"
         app:titleTextAppearance="@style/Toolbar.TitleText"
         app:titleTextColor="@color/navigation_text_color" />
@@ -36,6 +37,11 @@
             android:layout_height="50dp"
             android:layout_marginTop="@dimen/qm1dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/qm4dp"
+            android:layout_marginLeft="@dimen/qm4dp"
+            android:layout_marginBottom="@dimen/qm4dp"
+            android:elevation="@dimen/qm4dp"
+
             android:id="@id/rl_add_user_receive_address"
             android:background="@drawable/selector_bg_green_green"
             >

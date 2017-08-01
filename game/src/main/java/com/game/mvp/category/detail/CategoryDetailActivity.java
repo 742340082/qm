@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 import com.baselibrary.base.activity.BaseActivity;
 import com.baselibrary.base.adapter.ViewPagerFragmentAdapter;
 import com.baselibrary.listener.OnRetryListener;
+import com.baselibrary.model.game.category.detail.CategoryDetailResult;
+import com.baselibrary.model.game.category.detail.CategoryDetailTag;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.Logger;
@@ -19,8 +21,6 @@ import com.baselibrary.utils.UIUtils;
 import com.game.R;
 import com.game.R2;
 import com.game.config.ConfigGame;
-import com.game.mvp.category.detail.modle.CategoryDetailResult;
-import com.game.mvp.category.detail.modle.CategoryDetailTag;
 import com.game.mvp.category.detail.top.presenter.CategoryDetailTopPresenter;
 import com.game.mvp.category.detail.top.view.CategoryDetailTopView;
 

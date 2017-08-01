@@ -20,42 +20,42 @@
     </list>
     <!--游戏-->
     <list>
-        <mapping class="com.game.mvp.model.Game"></mapping>
+        <mapping class="com.baselibrary.model.game.Game"></mapping>
         <!--推荐-->
-        <mapping class="com.game.mvp.index.modle.IndexExt"></mapping>
-        <mapping class="com.game.mvp.index.modle.IndexAdList"></mapping>
-        <mapping class="com.game.mvp.index.modle.IndexResult"></mapping>
-        <mapping class="com.game.mvp.index.modle.IndexRecPoster"></mapping>
-        <mapping class="com.game.mvp.index.modle.IndexRecBlock"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexExt"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexAdList"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexResult"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexRecPoster"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexRecBlock"></mapping>
 
         <!--分类-->
-        <mapping class="com.game.mvp.category.modle.CategoryResult"></mapping>
-        <mapping class="com.game.mvp.category.modle.CategoryData"></mapping>
-        <mapping class="com.game.mvp.category.modle.CategoryLink"></mapping>
-        <mapping class="com.game.mvp.category.modle.CategoryTag"></mapping>
+        <mapping class="com.baselibrary.model.game.category.CategoryResult"></mapping>
+        <mapping class="com.baselibrary.model.game.category.CategoryData"></mapping>
+        <mapping class="com.baselibrary.model.game.category.CategoryLink"></mapping>
+        <mapping class="com.baselibrary.model.game.category.CategoryTag"></mapping>
         <!--分类详细页-->
-        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailSubType"></mapping>
-        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailSizeOption"></mapping>
-        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailResult"></mapping>
-        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailSizeOption"></mapping>
-        <mapping class="com.game.mvp.category.detail.modle.CategoryDetailTag"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailSubType"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailSizeOption"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailResult"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailSizeOption"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailTag"></mapping>
 
         <!--排行-->
-        <mapping class="com.game.mvp.top.modle.TotalResult"></mapping>
+        <mapping class="com.baselibrary.model.game.top.TotalResult"></mapping>
 
         <!--咨询-->
-        <mapping class="com.game.mvp.gamenews.model.GameNewsData"></mapping>
-        <mapping class="com.game.mvp.gamenews.model.GameNewsExt"></mapping>
-        <mapping class="com.game.mvp.gamenews.model.GameNewsGallary"></mapping>
-        <mapping class="com.game.mvp.gamenews.model.GameNewsLink"></mapping>
-        <mapping class="com.game.mvp.gamenews.model.GameNewsResult"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsData"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsExt"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsGallary"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsLink"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsResult"></mapping>
 
         <!--搜索-->
-        <mapping class="com.game.mvp.search.model.GameSearchResult"></mapping>
-        <mapping class="com.game.mvp.search.model.GameSearchHotWord"></mapping>
-        <mapping class="com.game.mvp.search.model.GameSearchSuggestWord"></mapping>
-        <mapping class="com.game.mvp.search.model.GameSearchFirstResult"></mapping>
-        <mapping class="com.game.mvp.search.model.GameSmallSearchResult"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSearchResult"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSearchHotWord"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSearchSuggestWord"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSearchFirstResult"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSmallSearchResult"></mapping>
 
         <!--下载游戏-->
         <mapping class="com.baselibrary.api.download.DownloadInfo"></mapping>

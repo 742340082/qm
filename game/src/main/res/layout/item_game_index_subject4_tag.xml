@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_bg_gray_splash"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@id/iv_game_index_subject_icon"
+        android:layout_width="@dimen/qm60dp"
+        android:layout_height="@dimen/qm60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/selector_bg_gray_splash"
+        android:src="@drawable/lufei" />
+
+    <TextView
+        android:id="@id/tv_game_index_subject_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/qm5dp"
+        android:ellipsize="end"
+        android:maxLength="5"
+        android:text="新游"
+        android:textColor="@color/viewBackground"
+        android:textSize="@dimen/textSize" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:background="@drawable/border_big_round_white_bg_splash"
+        android:paddingLeft="@dimen/qm20dp"
+        android:paddingRight="@dimen/qm20dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@id/tv_game_index_subject_download_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/qm3dp"
+            android:gravity="center"
+            android:text="10M"
+            android:textColor="@color/viewBackground"
+            android:textSize="@dimen/textSizeMin" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -8,6 +8,8 @@ import android.widget.LinearLayout;
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.config.ConfigStateCode;
 import com.baselibrary.listener.OnRetryListener;
+import com.baselibrary.model.game.category.detail.CategoryDetailResult;
+import com.baselibrary.model.game.category.detail.CategoryDetailSizeOption;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.RxBus;
@@ -16,11 +18,9 @@ import com.baselibrary.utils.UIUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.CategoryDetailTopAdapter;
-import com.game.adapter.IndexAdapter;
+import com.game.adapter.GameCategoryDetailAdapter;
+import com.game.adapter.index.IndexAdapter;
 import com.game.config.ConfigGame;
-import com.game.mvp.category.detail.modle.CategoryDetailResult;
-import com.game.mvp.category.detail.modle.CategoryDetailSizeOption;
 import com.game.mvp.category.detail.top.presenter.CategoryDetailTopPresenter;
 import com.game.mvp.category.detail.top.view.CategoryDetailTopView;
 
@@ -48,7 +48,7 @@ public class CateoryDetailTopFragment extends BaseFragmnet implements CategoryDe
     private String top;
     private int startSize;
     private int endSize;
-    private CategoryDetailTopAdapter categoryDetailTopAdapter;
+    private GameCategoryDetailAdapter categoryDetailTopAdapter;
 
 
     @Override
@@ -140,7 +140,7 @@ public class CateoryDetailTopFragment extends BaseFragmnet implements CategoryDe
         srl_game_top.setRefreshing(false);
 
         if (data.getPage() == 1) {
-            categoryDetailTopAdapter = new CategoryDetailTopAdapter(R.layout.item_game_index_normal, categoryDetailResult.getData());
+            categoryDetailTopAdapter = new GameCategoryDetailAdapter(R.layout.item_game_index_normal, categoryDetailResult.getData());
             categoryDetailTopAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
             categoryDetailTopAdapter.loadMoreEnd(true);
             categoryDetailTopAdapter.setOnLoadMoreListener(this, rv_game_top);

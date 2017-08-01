@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/ll_user_account_and_safe"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -13,6 +13,7 @@
         android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left"
         app:title="@string/AccountandSecurity"
+        android:elevation="@dimen/qm4dp"
         app:titleTextAppearance="@style/Toolbar.TitleText"
         app:titleTextColor="@color/navigation_text_color" />
 
@@ -37,6 +38,11 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginTop="@dimen/qm10dp"
+                    android:layout_marginRight="@dimen/qm4dp"
+                    android:layout_marginLeft="@dimen/qm4dp"
+                    android:background="@drawable/selector_bg_gray_white"
+                    android:elevation="@dimen/qm4dp"
+
                     android:orientation="vertical">
 
                     <RelativeLayout
@@ -131,6 +137,10 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginTop="@dimen/qm10dp"
+                    android:layout_marginRight="@dimen/qm4dp"
+                    android:layout_marginLeft="@dimen/qm4dp"
+                    android:background="@drawable/selector_bg_gray_white"
+                    android:elevation="@dimen/qm4dp"
                     android:orientation="vertical"
                     android:visibility="visible">
 
@@ -260,12 +270,16 @@
                     android:layout_width="fill_parent"
                     android:layout_marginTop="@dimen/qm10dp"
                     android:layout_height="fill_parent"
+                    android:layout_marginRight="@dimen/qm4dp"
+                    android:layout_marginLeft="@dimen/qm4dp"
+                    android:background="@drawable/selector_bg_gray_white"
+                    android:elevation="@dimen/qm4dp"
+                    android:layout_marginBottom="@dimen/qm10dp"
                     android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="@dimen/qm50dp"
-                        android:background="@color/viewBackground"
                         android:gravity="center_vertical">
 
                         <TextView

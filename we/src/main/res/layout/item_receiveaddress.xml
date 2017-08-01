@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/qm1dp"
+    android:layout_marginBottom="@dimen/qm4dp"
+    android:layout_marginRight="@dimen/qm4dp"
+    android:layout_marginLeft="@dimen/qm4dp"
     android:background="@drawable/selector_bg_gray_white"
+    android:elevation="@dimen/qm4dp"
     android:orientation="horizontal">
 
 
@@ -67,7 +74,7 @@
                         android:id="@id/tv_receiveaddress_type_flyme"
                         android:layout_width="@dimen/qm40dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/bg_yellow_shape"
+                        android:background="@drawable/bg_round_yellow_shape"
                         android:gravity="center"
                         android:text="@string/flyme"
                         android:textColor="@color/navigation_text_color"
@@ -78,7 +85,7 @@
                         android:id="@id/tv_receiveaddress_type_school"
                         android:layout_width="@dimen/qm40dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/bg_blue_shape"
+                        android:background="@drawable/bg_round_blue_shape"
                         android:gravity="center"
                         android:text="@string/school"
                         android:textColor="@color/navigation_text_color"
@@ -89,7 +96,7 @@
                         android:id="@id/tv_receiveaddress_type_company"
                         android:layout_width="@dimen/qm40dp"
                         android:layout_height="match_parent"
-                        android:background="@drawable/bg_green_shape"
+                        android:background="@drawable/bg_round_green_shape"
                         android:gravity="center"
                         android:text="@string/company"
                         android:textColor="@color/navigation_text_color"
@@ -121,3 +128,4 @@
             android:src="@drawable/icon_address_update" />
 
 </LinearLayout>
+</FrameLayout>

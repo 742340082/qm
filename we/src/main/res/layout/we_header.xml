@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@id/rl_user_header"
     style="@style/AppTheme"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     android:layout_height="wrap_content">
 
@@ -14,7 +14,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:fitsSystemWindows="true"
-        android:background="@color/colorPrimary">
+        android:elevation="@dimen/qm8dp"
+        android:translationZ="@dimen/qm0dp"
+        android:layout_margin="@dimen/qm4dp"
+        android:layout_marginBottom="@dimen/qm1dp"
+        android:background="@drawable/bg_round_blue_shape">
 
         <TextView
             android:id="@id/tv_header"

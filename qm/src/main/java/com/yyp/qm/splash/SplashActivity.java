@@ -2,12 +2,13 @@ package com.yyp.qm.splash;
 
 import android.graphics.Color;
 import android.os.Build;
+import android.view.KeyEvent;
 import android.widget.ImageView;
 
 import com.baselibrary.base.activity.BaseActivity;
 import com.baselibrary.config.ConfigSdk;
 import com.baselibrary.config.ConfigValues;
-import com.baselibrary.utils.FileUtil;
+import com.baselibrary.utils.GameUtil;
 import com.baselibrary.utils.UIUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -63,7 +64,7 @@ public class SplashActivity
     public void initData() {
         try {
             InputStream open = getAssets().open("style_json.json");
-            FileUtil.saveFile(ConfigSdk.SDK_SAVE_CUSTOM_MAP_CONFIG_PATH, open);
+            GameUtil.saveFile(ConfigSdk.SDK_SAVE_CUSTOM_MAP_CONFIG_PATH, open);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,4 +90,14 @@ public class SplashActivity
                 });
 
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK)
+        {
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

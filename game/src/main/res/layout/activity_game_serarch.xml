@@ -10,7 +10,7 @@
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"
-        android:layout_marginBottom="@dimen/qm1dp"
+        android:elevation="@dimen/qm4dp"
         android:background="@color/colorPrimary"
         app:contentInsetStart="8dp">
 
@@ -51,7 +51,9 @@
             android:id="@id/stm_game_search_tags"
             android:layout_width="match_parent"
             android:layout_height="@dimen/qm400dp"
-            android:background="@color/viewBackground"
+            android:layout_marginTop="@dimen/qm10dp"
+            android:elevation="@dimen/qm4dp"
+            android:background="@drawable/selector_bg_gray_white"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_marginRight="@dimen/qm10dp"></com.baselibrary.view.shake.StellarMap>
 
@@ -64,6 +66,7 @@
             android:background="@drawable/selector_bg_green_green"
             android:text="@string/switch_game_tag"
             android:stateListAnimator="@null"
+            android:elevation="@dimen/qm4dp"
             android:layout_marginLeft="@dimen/qm20dp"
             android:layout_marginRight="@dimen/qm20dp"
             android:textColor="@color/navigation_text_color"
@@ -81,6 +84,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@id/rv_game_search"
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/qm4dp"
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
@@ -89,6 +93,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@id/rv_game_small_search"
             android:layout_width="match_parent"
+            android:elevation="@dimen/qm6dp"
+            android:background="@color/AppBackground"
             android:layout_height="wrap_content"
             android:visibility="gone" />
     </RelativeLayout>

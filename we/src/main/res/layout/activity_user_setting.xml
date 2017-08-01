@@ -5,15 +5,12 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@id/tv_header"
-        android:layout_width="@dimen/qm0dp"
-        android:layout_height="@dimen/qm0dp"/>
 
     <android.support.v7.widget.Toolbar
         android:id="@id/toolbar"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/toolbarHeight"
+        android:elevation="@dimen/qm4dp"
         android:layout_marginBottom="@dimen/qm1dp"
         app:titleTextAppearance="@style/Toolbar.TitleText"
         android:background="@color/colorPrimary"
@@ -25,6 +22,11 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginTop="@dimen/qm5dp"
+        android:background="@drawable/selector_bg_gray_white"
+        android:elevation="@dimen/qm4dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -80,7 +82,10 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
         android:layout_marginTop="@dimen/qm10dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
         android:background="@drawable/selector_bg_gray_white"
+        android:elevation="@dimen/qm4dp"
         android:gravity="center_vertical">
 
         <TextView
@@ -101,6 +106,9 @@
         android:layout_marginTop="@dimen/qm10dp"
         android:background="@drawable/selector_bg_green_green"
         android:text="@string/exit_login"
+        android:elevation="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
         android:textColor="@color/navigation_text_color"
         android:textSize="@dimen/titleSize" />
 

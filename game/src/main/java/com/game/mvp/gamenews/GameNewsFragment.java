@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.config.ConfigStateCode;
 import com.baselibrary.listener.OnRetryListener;
+import com.baselibrary.model.game.gamenews.GameNewsLink;
+import com.baselibrary.model.game.gamenews.GameNewsResult;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.ToastUtils;
@@ -25,9 +27,7 @@ import com.game.R2;
 import com.game.adapter.GameNewsAdapter;
 import com.game.adapter.GameNewsRlHeaderAdapter;
 import com.game.adapter.GameNewsVpHeaderAdapter;
-import com.game.adapter.IndexAdapter;
-import com.game.mvp.gamenews.model.GameNewsLink;
-import com.game.mvp.gamenews.model.GameNewsResult;
+import com.game.adapter.index.IndexAdapter;
 import com.game.mvp.gamenews.presenter.GameNewsPresneter;
 import com.game.mvp.gamenews.view.GameNewsView;
 
@@ -134,7 +134,7 @@ public class GameNewsFragment extends BaseFragmnet implements GameNewsView, Base
 
     @Override
     public void initHeader(final GameNewsResult gameNewsResult) {
-        gameNewsAdapter = new GameNewsAdapter(R.layout.item_game_gamenews);
+        gameNewsAdapter = new GameNewsAdapter(R.layout.item_game_gamenews_tag);
         gameNewsAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
         gameNewsAdapter.loadMoreEnd(true);
         gameNewsAdapter.setOnLoadMoreListener(this, rv_game_gamenews);
@@ -168,7 +168,7 @@ public class GameNewsFragment extends BaseFragmnet implements GameNewsView, Base
         viewPager.setAdapter(gameNewsTopAdapter);
 
         List<GameNewsLink> links = gameNewsResult.getLinks();
-        GameNewsRlHeaderAdapter gameNewsRlHeaderAdapter = new GameNewsRlHeaderAdapter(R.layout.item_game_category_header_top,links);
+        GameNewsRlHeaderAdapter gameNewsRlHeaderAdapter = new GameNewsRlHeaderAdapter(R.layout.item_game_category_header_tag,links);
         RecyclerView rl_gamenews_header = (RecyclerView) viewHeader.findViewById(R.id.rl_game_gamenews_header);
         rl_gamenews_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(),4));
         rl_gamenews_header.setAdapter(gameNewsRlHeaderAdapter);

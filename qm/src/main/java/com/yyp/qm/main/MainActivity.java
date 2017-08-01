@@ -32,7 +32,7 @@ public class MainActivity
     TabLayout tl_main;
     @BindView(R2.id.vp_main)
     NoScrollViewPager vp_main;
-    private MainTab[] mMainTabs;
+    private  MainTab[] mMainTabs;
     private long mSecondClickTime;
     private long mFirstClickTime;
 

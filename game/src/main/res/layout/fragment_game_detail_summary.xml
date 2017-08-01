@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/nsv_game_detail_summary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/qm10dp"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:id="@id/fl_game_detail_summary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@id/ll_game_detail_summary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <include layout="@layout/item_game_detail_gameinfo" />
+
+                <include layout="@layout/item_game_detail_desinfo" />
+
+                <include layout="@layout/item_game_detail_gamenews" />
+
+                <include layout="@layout/item_game_detail_gametag" />
+
+                <include layout="@layout/item_game_detail_recommend" />
+
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -14,13 +14,17 @@
         android:layout_weight="1"
         android:layout_height="0dp"/>
 
-    <include layout="@layout/cut_horizontal_apart" />
 
     <android.support.design.widget.TabLayout
         android:id="@id/tl_main"
         android:layout_width="match_parent"
         android:layout_height="@dimen/qm50dp"
-        android:background="@color/bottom_navigation_background_color"
+        android:layout_marginBottom="@dimen/qm2dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:layout_marginTop="@dimen/qm2dp"
+        android:elevation="@dimen/qm8dp"
+        android:background="@drawable/selector_bg_gray_white"
         app:tabIndicatorHeight="0dp"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/textColorPrimary"

@@ -5,20 +5,20 @@ import android.support.annotation.NonNull;
 import com.baselibrary.api.QMApi;
 import com.baselibrary.config.ConfigStateCode;
 import com.baselibrary.config.ConfigValues;
+import com.baselibrary.model.game.Game;
+import com.baselibrary.model.game.index.AdListGame;
+import com.baselibrary.model.game.index.Index;
+import com.baselibrary.model.game.index.IndexAdList;
+import com.baselibrary.model.game.index.IndexExt;
+import com.baselibrary.model.game.index.IndexRecBlock;
+import com.baselibrary.model.game.index.IndexRecPoster;
+import com.baselibrary.model.game.index.IndexResult;
+import com.baselibrary.model.game.index.PosterBlock;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.NetworkState;
 import com.baselibrary.utils.UIUtils;
 import com.game.api.GameApi;
-import com.game.mvp.index.modle.Index;
-import com.game.mvp.index.modle.IndexExt;
-import com.game.mvp.index.modle.PosterBlock;
-import com.game.mvp.index.modle.IndexRecBlock;
-import com.game.mvp.index.modle.IndexRecPoster;
-import com.game.mvp.index.modle.IndexResult;
-import com.game.mvp.index.modle.AdListGame;
-import com.game.mvp.index.modle.IndexAdList;
 import com.game.mvp.index.view.IndexView;
-import com.game.mvp.model.Game;
 
 import org.litepal.crud.DataSupport;
 
@@ -86,6 +86,7 @@ public class IndexBizImpl implements IndexBiz {
                                 Executors.newCachedThreadPool().execute(new Runnable() {
                                     @Override
                                     public void run() {
+                                        DataSupport.saveAll(games);
                                         DataSupport.saveAll(recPoster);
                                         DataSupport.saveAll(recBlock);
                                         for (IndexAdList indexSubjectList : adList) {
@@ -96,7 +97,6 @@ public class IndexBizImpl implements IndexBiz {
                                             indexSubjectList.saveThrows();
 
                                         }
-                                        DataSupport.saveAll(games);
                                         result.saveThrows();
                                     }
                                 });

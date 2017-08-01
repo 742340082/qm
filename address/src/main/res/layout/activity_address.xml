@@ -10,6 +10,7 @@
         android:id="@id/toolbar"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/toolbarHeight"
+        android:elevation="@dimen/qm4dp"
         android:layout_marginBottom="@dimen/qm1dp"
         android:background="@color/colorPrimary"
         >
@@ -121,7 +122,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="@dimen/qm10dp"
                     android:layout_marginRight="@dimen/qm10dp"
-                    android:background="@drawable/border_blue_bg_white"
+                    android:background="@drawable/border_round_blue_bg_white"
                     android:src="@drawable/icon_address_location"
                     android:text="Location" />
             </RelativeLayout>
@@ -132,6 +133,7 @@
                 android:layout_height="@dimen/guideBarHeight"
                 android:background="@color/colorPrimary"
                 app:tabGravity="fill"
+                android:elevation="@dimen/qm4dp"
                 android:layout_marginBottom="@dimen/qm1dp"
                 app:tabSelectedTextColor="@color/colorAccent"
                 app:tabTextColor="@color/navigation_text_color" />
@@ -146,8 +148,8 @@
             android:id="@id/ll_address_search_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/windowBackground"
             android:visibility="gone"
+            android:background="@color/AppBackground"
             android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
@@ -161,7 +163,7 @@
             android:layout_width="match_parent"
             android:visibility="gone"
             android:layout_height="match_parent"
-            android:background="@color/windowBackground"
+            android:background="@color/AppBackground"
             android:orientation="vertical">
             <RelativeLayout
                 android:id="@id/rl_address_city_list"
@@ -190,7 +192,7 @@
                     android:visibility="invisible"
                     android:text="A"
                     android:textColor="#fff"
-                    android:background="@drawable/bg_blue_shape"
+                    android:background="@drawable/bg_round_blue_shape"
                     />
             </RelativeLayout>
 

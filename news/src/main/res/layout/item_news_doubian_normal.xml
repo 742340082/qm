@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/AppTheme"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/qm1dp"
-    android:background="@drawable/selector_bg_gray_white"
-    android:orientation="vertical"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <RelativeLayout
+    <LinearLayout
+        style="@style/AppTheme"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white"
+        android:elevation="@dimen/qm4dp"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@id/iv_news_item_icon"
-            android:layout_width="@dimen/qm100dp"
-            android:layout_height="@dimen/qm80dp"
-            android:layout_marginBottom="@dimen/qm10dp"
-            android:layout_marginLeft="@dimen/qm10dp"
-            android:layout_marginTop="@dimen/qm10dp"
-            android:background="@drawable/bg_round_white_shape"
-            android:src="@drawable/lufei" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@id/tv_news_item_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/iv_news_item_icon"
-            android:layout_marginLeft="@dimen/qm10dp"
-            android:layout_marginRight="@dimen/qm10dp"
-            android:layout_marginTop="@dimen/qm20dp"
-            android:layout_toRightOf="@id/iv_news_item_icon"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="我说的话费卡萨海口市答复客户"
-            android:textColor="@color/textColorPrimary"
-            android:textSize="@dimen/titleSize" />
-    </RelativeLayout>
+            <ImageView
+                android:id="@id/iv_news_item_icon"
+                android:layout_width="@dimen/qm100dp"
+                android:layout_height="@dimen/qm80dp"
+                android:layout_marginBottom="@dimen/qm10dp"
+                android:layout_marginLeft="@dimen/qm10dp"
+                android:layout_marginTop="@dimen/qm10dp"
+                android:background="@drawable/bg_round_white_shape"
+                android:src="@drawable/lufei" />
 
-    <include layout="@layout/cut_horizontal_apart"/>
-</LinearLayout>
+            <TextView
+                android:id="@id/tv_news_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/iv_news_item_icon"
+                android:layout_marginLeft="@dimen/qm10dp"
+                android:layout_marginRight="@dimen/qm10dp"
+                android:layout_marginTop="@dimen/qm20dp"
+                android:layout_toRightOf="@id/iv_news_item_icon"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="我说的话费卡萨海口市答复客户"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="@dimen/titleSize" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</FrameLayout>

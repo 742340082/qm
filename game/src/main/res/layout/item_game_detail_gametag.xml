@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_bg_gray_white"
+    android:id="@id/ll_game_detail_gametag"
+    android:layout_marginTop="@dimen/qm5dp"
+    android:layout_marginLeft="@dimen/qm4dp"
+    android:layout_marginRight="@dimen/qm4dp"
+    android:elevation="@dimen/qm4dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/qm10dp"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:text="游戏标签"
+        android:textColor="@color/textColorPrimary" />
+
+    <com.baselibrary.view.FlowLayout
+        android:id="@id/fl_game_detail_gametag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+    </com.baselibrary.view.FlowLayout>
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/selector_bg_gray_white"
+    android:layout_marginTop="@dimen/qm5dp"
+    android:id="@id/ll_game_detail_recommend"
+    android:layout_marginRight="@dimen/qm4dp"
+    android:layout_marginLeft="@dimen/qm4dp"
+    android:elevation="@dimen/qm4dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/qm10dp"
+        android:layout_marginTop="@dimen/qm10dp"
+        android:text="相关推荐"
+        android:textColor="@color/textColorPrimary" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@id/rv_game_detail_recommend"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/qm10dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

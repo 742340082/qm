@@ -13,6 +13,7 @@
         android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/arrow_left"
         app:title="@string/user_bind_telephone"
+        android:elevation="@dimen/qm4dp"
         app:titleTextAppearance="@style/Toolbar.TitleText"
         app:titleTextColor="@color/navigation_text_color" />
 
@@ -22,7 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_user_header"
         android:layout_marginTop="@dimen/qm10dp"
-        android:background="@color/viewBackground"
+        android:elevation="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white"
         android:orientation="vertical">
 
         <LinearLayout
@@ -96,6 +100,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_user_telephone"
         android:layout_marginTop="@dimen/qm10dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:elevation="@dimen/qm4dp"
         android:background="@drawable/selector_bg_green_green"
         android:textColor="@color/navigation_text_color"
         android:textSize="@dimen/titleSize" />

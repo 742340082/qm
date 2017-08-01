@@ -22,9 +22,14 @@ import android.widget.TextView;
 import com.baselibrary.base.activity.BaseActivity;
 import com.baselibrary.base.adapter.CommonShakeAdapter;
 import com.baselibrary.listener.OnRetryListener;
+import com.baselibrary.model.game.Game;
+import com.baselibrary.model.game.search.GameSearchFirstResult;
+import com.baselibrary.model.game.search.GameSearchHotWord;
+import com.baselibrary.model.game.search.GameSearchResult;
+import com.baselibrary.model.game.search.GameSmallSearchResult;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
-import com.baselibrary.utils.FileUtil;
+import com.baselibrary.utils.GameUtil;
 import com.baselibrary.utils.StringUtil;
 import com.baselibrary.utils.ToastUtils;
 import com.baselibrary.utils.UIUtils;
@@ -35,14 +40,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.SearchAdapter;
-import com.game.adapter.SearchFirstAdapter;
-import com.game.adapter.SmallSearchAdapter;
-import com.game.mvp.model.Game;
-import com.game.mvp.search.model.GameSearchFirstResult;
-import com.game.mvp.search.model.GameSearchHotWord;
-import com.game.mvp.search.model.GameSearchResult;
-import com.game.mvp.search.model.GameSmallSearchResult;
+import com.game.adapter.GameSearchAdapter;
+import com.game.adapter.GameSearchFirstAdapter;
+import com.game.adapter.GameSmallSearchAdapter;
 import com.game.mvp.search.presenter.GameSearchPresenter;
 import com.game.mvp.search.view.GameSearchView;
 
@@ -81,10 +81,10 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
     ImageView iv_game_search;
 
     private GameSearchPresenter mPresenter;
-    private SmallSearchAdapter smallSearchAdapter;
+    private GameSmallSearchAdapter smallSearchAdapter;
     private GameSearchResult searchResult;
     private StatusLayoutManager mStatusLayoutManager;
-    private SearchAdapter searchAdapter;
+    private GameSearchAdapter searchAdapter;
     //当前聪明搜索的游戏名称
     private String currentSearchText;
 
@@ -254,7 +254,7 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
     @Override
     public void success(GameSearchFirstResult data) {
         // 设置数据源
-        SearchFirstAdapter searchFirstAdapter = new SearchFirstAdapter(R.layout.item_game_search_first_tag, data.getHotWords());
+        GameSearchFirstAdapter searchFirstAdapter = new GameSearchFirstAdapter(R.layout.item_game_search_first_tag, data.getHotWords());
         // 设置内部文字距边缘边距为10dip
         int dip2px = UIUtils.dip2px(10);
         stm_game_search_tags.setInnerPadding(dip2px, dip2px, dip2px, dip2px);
@@ -299,7 +299,19 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
             rv_game_small_search.setVisibility(View.VISIBLE);
             rl_game_search.setBackgroundColor(UIUtils.getColor(R.color.transparentGray));
 
+            int margin = UIUtils.dip2px(4);
+
             View viewHeander = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_game_top_total, new FrameLayout(UIUtils.getContext()));
+            LinearLayout ll_game_top_tag = (LinearLayout) viewHeander.findViewById(R.id.ll_game_top_tag);
+            FrameLayout.MarginLayoutParams layoutParams = (FrameLayout.MarginLayoutParams) ll_game_top_tag.getLayoutParams();
+            layoutParams.leftMargin=margin;
+            layoutParams.rightMargin=margin;
+            layoutParams.topMargin=margin;
+            layoutParams.bottomMargin=margin;
+            ll_game_top_tag.setLayoutParams(layoutParams);
+
+
+
             RelativeLayout rl_game_top = (RelativeLayout) viewHeander.findViewById(R.id.rl_game_top);
             ImageView iv_game_top_icon = (ImageView) viewHeander.findViewById(R.id.iv_game_top_icon);
             TextView tv_game_top_title = (TextView) viewHeander.findViewById(R.id.tv_game_top_title);
@@ -315,14 +327,14 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
                     .centerCrop()
                     .into(iv_game_top_icon);
             tv_game_top_title.setText(game.getAppname());
-            String size = FileUtil.byteSwitch(2, game.getSize_byte());
+            String size = GameUtil.byteSwitch(2, game.getSize_byte());
             tv_game_top_tag_size.setText(size);
-            String downloadNum = FileUtil.downloadCountSwitch(0, game.getNum_download());
+            String downloadNum = GameUtil.downloadCountSwitch(0, game.getNum_download());
             tv_game_top_download_number.setText(downloadNum);
             tv_game_top_type.setVisibility(View.GONE);
 
-            smallSearchAdapter = new SmallSearchAdapter(R.layout.item_game_smallsearch);
-            smallSearchAdapter.openLoadAnimation(SmallSearchAdapter.ALPHAIN);
+            smallSearchAdapter = new GameSmallSearchAdapter(R.layout.item_game_smallsearch);
+            smallSearchAdapter.openLoadAnimation(GameSmallSearchAdapter.ALPHAIN);
             rv_game_small_search.setLayoutManager(new LinearLayoutManager(UIUtils.getContext()));
             rv_game_small_search.setAdapter(smallSearchAdapter);
             smallSearchAdapter.addHeaderView(viewHeander);
@@ -359,10 +371,10 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
         rv_game_small_search.setVisibility(View.GONE);
         searchResult = gameSearchResult;
         if (searchResult.getPage() == 1) {
-            searchAdapter = new SearchAdapter(R.layout.item_game_index_normal, searchResult.getData());
+            searchAdapter = new GameSearchAdapter(R.layout.item_game_index_normal, searchResult.getData());
             searchAdapter.setEnableLoadMore(true);
             searchAdapter.setOnLoadMoreListener(this, rv_game_search);
-            searchAdapter.openLoadAnimation(SearchAdapter.ALPHAIN);
+            searchAdapter.openLoadAnimation(GameSearchAdapter.ALPHAIN);
             rv_game_search.setLayoutManager(new LinearLayoutManager(this));
             rv_game_search.setAdapter(searchAdapter);
         } else {

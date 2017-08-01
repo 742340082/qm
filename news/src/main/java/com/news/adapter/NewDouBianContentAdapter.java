@@ -4,6 +4,7 @@ import android.widget.ImageView;
 
 import com.baselibrary.utils.Logger;
 import com.baselibrary.utils.UIUtils;
+import com.baselibrary.utils.ViewUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
@@ -26,6 +27,7 @@ public class NewDouBianContentAdapter
 
 
     protected void convert(BaseViewHolder viewHolder, DouBianPosts douBianBean) {
+        ViewUtil.initCutOff(viewHolder,viewHolder.getLayoutPosition());
         Logger.i("TAG","哈哈哈哈");
         switch (douBianBean.getItemType()) {
             case NEWS_DOUBIAN_NOIMG:

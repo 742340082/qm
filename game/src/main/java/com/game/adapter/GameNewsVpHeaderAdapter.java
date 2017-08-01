@@ -5,11 +5,12 @@ import android.widget.ImageView;
 
 import com.baselibrary.base.adapter.CommonPagerAdapter;
 import com.baselibrary.base.adapter.ViewHolder.ViewHolder;
+import com.baselibrary.model.game.gamenews.GameNewsGallary;
 import com.baselibrary.utils.UIUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.game.R;
-import com.game.mvp.gamenews.model.GameNewsGallary;
+
 
 /**
  * Created by 74234 on 2017/6/14.

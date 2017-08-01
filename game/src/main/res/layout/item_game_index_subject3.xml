@@ -5,14 +5,17 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/qm5dp"
     android:layout_marginTop="@dimen/qm5dp"
-    android:background="@color/viewBackground"
+    android:layout_marginLeft="@dimen/qm4dp"
+    android:layout_marginRight="@dimen/qm4dp"
+    android:background="@drawable/selector_bg_gray_white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="@dimen/qm4dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_bg_gray_transparent"
+        android:background="@drawable/selector_bg_gray_splash"
         android:orientation="horizontal">
 
         <TextView
@@ -21,7 +24,7 @@
             android:layout_height="@dimen/qm16dp"
             android:layout_margin="@dimen/qm10dp"
             android:layout_marginRight="@dimen/qm6dp"
-            android:background="@drawable/bg_green_shape"
+            android:background="@drawable/bg_round_green_shape"
             android:gravity="center"
             android:text="@string/active"
             android:textColor="@color/viewBackground"

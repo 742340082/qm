@@ -25,7 +25,7 @@
         <item name="android:screenOrientation">portrait</item>
 
         <!--应用背景色-->
-        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:windowBackground">@color/AppBackground</item>
         <!--actionbar北背景颜色-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--状态栏背景色-->

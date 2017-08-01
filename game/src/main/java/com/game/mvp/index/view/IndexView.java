@@ -1,8 +1,9 @@
 package com.game.mvp.index.view;
 
+
 import com.baselibrary.BaseView;
-import com.game.mvp.index.modle.PosterBlock;
-import com.game.mvp.index.modle.AdListGame;
+import com.baselibrary.model.game.index.AdListGame;
+import com.baselibrary.model.game.index.PosterBlock;
 
 import java.util.List;
 

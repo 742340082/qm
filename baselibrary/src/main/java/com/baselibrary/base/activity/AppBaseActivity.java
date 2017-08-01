@@ -1,5 +1,6 @@
 package com.baselibrary.base.activity;
 
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -16,7 +17,7 @@ public class AppBaseActivity
         return 0;
     }
 
-    public void initData() {}
+    public void initData() throws RemoteException {}
 
     public void initListener() {}
 

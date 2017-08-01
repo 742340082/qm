@@ -1,315 +1,258 @@
 package com.baselibrary.view;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
-import android.graphics.drawable.NinePatchDrawable;
 import android.os.Process;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.RemoteViews.RemoteView;
 
+import com.baselibrary.R;
 import com.baselibrary.utils.StringUtil;
 import com.baselibrary.utils.UIUtils;
 
 @RemoteView
 public class ProgressHorizontal extends View {
-	private static final int MAX_SMOOTH_ANIM_DURATION = 2000;
-	private long mThreadId;
-	private int mResBackground;
-	private Drawable mDrbBackground;
-	private int mResProgress;
-	private Drawable mDrbProgress;
-	private int mProgressDrbMinWidth;
+    //最大的进度
+    private int DOWNLOAD_PROGRESS_MAX = 100;
+    private long mThreadId;
+    //进度条背景
+    private Drawable mDrbBackground;
+    //进度背景
+    private Drawable mDrbProgress;
+    //进度条文字大小
+    private float mProgressTextSize;
+    //进度文字的颜色
+    private int mProgressTextColor;
+    //字体的风格
+    private Typeface mTypeface = Typeface.DEFAULT;
+    private Paint mTextPaint;
+    //是否显示文字
+    private boolean mProgressTextVisible = true;
+    //进度
+    private float mProgress;
 
-	private int mProgressTextSize;
+    //进度可以显示的大小
+    private Rect mRawProgressBounds;
+    private StringBuilder mSb = new StringBuilder(4);
+    //进度条显示的文字
+    private String ProgressText;
 
-	private ColorStateList mProgressTextColorStateList;
 
-	private int mProgressTextColor;
+    public ProgressHorizontal(Context context) {
+        this(context, null);
 
-	private Typeface mTypeface = Typeface.DEFAULT;
+    }
 
-	private Paint mTextPaint;
+    public ProgressHorizontal(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 0);
+    }
 
-	private boolean mProgressTextVisible = true;
+    public ProgressHorizontal(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initAttrs(context, attrs);
+        mRawProgressBounds = new Rect();
+        mTextPaint = new Paint();
+    }
 
-	private int mMaxProgress = 100;
+    private void initAttrs(Context context, AttributeSet attrs) {
+        float defaultTextSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14, getResources().getDisplayMetrics());
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ProgressHorizontal);
+        for (int i = 0; i < typedArray.getIndexCount(); i++) {
+            int resourceId = typedArray.getIndex(i);
+            if (resourceId == R.styleable.ProgressHorizontal_max) {
+                DOWNLOAD_PROGRESS_MAX = typedArray.getInt(resourceId, 100);
+            } else if (resourceId == R.styleable.ProgressHorizontal_progress) {
+                mProgress = typedArray.getInt(resourceId, 0);
+            } else if (resourceId == R.styleable.ProgressHorizontal_ProgressBackground) {
+                mDrbProgress = typedArray.getDrawable(resourceId);
+            } else if (resourceId == R.styleable.ProgressHorizontal_ProgressTextColor) {
+                mProgressTextColor = typedArray.getColor(resourceId, Color.BLUE);
+            } else if (resourceId == R.styleable.ProgressHorizontal_ProgressHorizontalBackground) {
+                mDrbBackground = typedArray.getDrawable(resourceId);
+            } else if (resourceId == R.styleable.ProgressHorizontal_ProgressTextSize) {
+                mProgressTextSize = typedArray.getDimension(resourceId, defaultTextSize);
+            }
+        }
+        typedArray.recycle();
+    }
 
-	private float mProgress;
 
-	private float mSmoothProgress = 0;
+    public void setProgressBackgroundResource(int resId) {
+        try {
+            mDrbBackground = UIUtils.getDrawable(resId);
+            if (null != mDrbBackground) {
+                mDrbBackground.setBounds(getPaddingLeft(), getPaddingTop(), getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
+            }
+        } catch (Exception e) {
+            mDrbBackground = null;
+        }
+        invalidate();
+    }
 
-	private float mStartProgress = 0;
+    public void setProgressDrawble(Drawable drawable) {
+        if (mDrbProgress == drawable) {
+            return;
+        }
+        mDrbProgress = drawable;
+        invalidate();
+    }
 
-	private long mProgressSetTime;
 
-	private int mSmoothAnimDuration;
+    public void setMax(int max) {
+        if (max <= 0) {
+            return;
+        }
+        DOWNLOAD_PROGRESS_MAX = max;
+    }
 
-	private Rect mRawProgressBounds = new Rect();
+    public void setProgress(int progress) {
+        setProgress(progress, false);
+    }
 
-	private StringBuilder mSb = new StringBuilder(4);
+    public synchronized void setProgress(float progress, boolean smooth) {
+        if (progress < 0) {
+            progress = 0;
+        }
+        if (progress > 100) {
+            progress = 100;
+        }
+        mProgress = progress;
+        invalidateSafe();
+    }
 
-	private String mText;
+    public void setProgressTextSize(int px) {
+        mProgressTextSize = px;
+    }
 
-	private OnProgressChangeListener mOnProgressChangeListener;
+    public void setProgressTextColor(int color) {
+        mProgressTextColor = color;
+    }
 
-	public ProgressHorizontal(Context context) {
-		super(context);
-		this.setFocusable(false);
-		this.setClickable(false);
-		this.setFocusableInTouchMode(false);
-		mThreadId = Process.myTid();
-		mTextPaint = new Paint();
-	}
+    public void setProgressTextVisible(boolean visible) {
+        mProgressTextVisible = visible;
+    }
 
-	public synchronized float getProgress() {
-		return mProgress;
-	}
+    public void setCenterText(String text) {
+        ProgressText = text;
+        invalidate();
+    }
 
-	public void setProgressBackgroundResource(int resId) {
-		if (mResBackground == resId) {
-			return;
-		}
-		mResBackground = resId;
-		try {
-			mDrbBackground = UIUtils.getDrawable(resId);
-			if (null != mDrbBackground) {
-				mDrbBackground.setBounds(0, 0, getWidth(), getHeight());
-			}
-		} catch (Exception e) {
-			mDrbBackground = null;
-			mResBackground = -1;
-		}
-		invalidate();
-	}
 
-	public void setProgressDrawble(Drawable drawable) {
-		if (mDrbProgress == drawable) {
-			return;
-		}
-		mDrbProgress = drawable;
-		invalidate();
-	}
+    private void invalidateSafe() {
+        if (mThreadId == Process.myTid()) {
+            invalidate();
+        } else {
+            postInvalidate();
+        }
+    }
 
-	public void setProgressResource(int resId) {
-		if (mResProgress == resId) {
-			return;
-		}
-		mDrbProgress = UIUtils.getDrawable(resId);
-		invalidate();
-	}
 
-	public void setMinProgressWidth(int minWidth) {
-		mProgressDrbMinWidth = minWidth;
-		invalidateSafe();
-	}
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int width = 0;
+        int height = 0;
 
-	public void setMax(int max) {
-		if (max > 0) {
-			mMaxProgress = max;
-		}
-	}
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 
-	public void setProgress(int progress) {
-		setProgress(progress, false);
-	}
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthSize;
+        } else {
+            width = mDrbBackground == null ? 0 : mDrbBackground.getIntrinsicWidth();
+            if (widthMode == MeasureSpec.AT_MOST) {
+                width = Math.min(width, widthSize);
+            }
+        }
 
-	public void setProgress(int progress, boolean smooth) {
-		setProgress(progress / (float) mMaxProgress, smooth);
-	}
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightSize;
+        } else {
+            height = mDrbBackground == null ? 0 : mDrbBackground.getIntrinsicHeight();
+            if (heightMode == MeasureSpec.AT_MOST) {
+                height = Math.min(height, heightSize);
+            }
+        }
+        mRawProgressBounds.set(getPaddingLeft(), getPaddingTop(), width - getPaddingRight(), height
+                - getPaddingBottom());
 
-	public void setProgress(float progress) {
-		setProgress(progress, false);
-	}
+        mDrbBackground.setBounds(mRawProgressBounds);
+        setMeasuredDimension(width, height);
+    }
 
-	public synchronized void setProgress(float progress, boolean smooth) {
-		if (progress < 0) {
-			progress = 0;
-		}
-		if (progress > 1) {
-			progress = 1;
-		}
-		mProgress = progress;
-		mProgressSetTime = System.currentTimeMillis();
-		if (smooth) {
-			mSmoothAnimDuration = (int) (MAX_SMOOTH_ANIM_DURATION * (1 - mProgress));
-		} else {
-			mSmoothAnimDuration = 0;
-			mSmoothProgress = mProgress;
-		}
-		mStartProgress = mSmoothProgress;
-		invalidateSafe();
-	}
+    @Override
+    protected void onDraw(Canvas canvas) {
 
-	public void setProgressTextSize(int px) {
-		mProgressTextSize = px;
-	}
 
-	public void setProgressTextColor(ColorStateList color) {
-		mProgressTextColorStateList = color;
-		mProgressTextColor = mProgressTextColorStateList.getColorForState(getDrawableState(), mProgressTextColor);
-	}
+        // Draw background
+        if (null != mDrbBackground) {
+            mDrbBackground.draw(canvas);
+        }
 
-	public void setProgressTextColor(int color) {
-		mProgressTextColorStateList = null;
-		mProgressTextColor = color;
-	}
+        // Draw progress
+        if (null != mDrbProgress) {
 
-	public void setProgressTextVisible(boolean visible) {
-		mProgressTextVisible = visible;
-	}
+            if (mProgress == 0) {
+                mDrbProgress.setBounds(0, 0, 0, 0);
+            } else {
+                int pencentSize = mRawProgressBounds.width() / DOWNLOAD_PROGRESS_MAX;
 
-	public void setCenterText(String text) {
-		mText = text;
-		invalidate();
-	}
+                mDrbProgress.setBounds(mRawProgressBounds.left,
+                        mRawProgressBounds.top,
+                        (int) (mRawProgressBounds.left + pencentSize
+                                * mProgress)
+                        , mRawProgressBounds.bottom);
+            }
+            mDrbProgress.draw(canvas);
+        }
 
-	public void setOnProgressChangeListener(OnProgressChangeListener l) {
-		mOnProgressChangeListener = l;
-	}
+        // Draw progress text
+        if (mProgressTextVisible) {
+            mSb.delete(0, mSb.length());
+            if (StringUtil.isEmpty(ProgressText)) {
+                mSb.append(mProgress);
+                mSb.append('%');
+            } else {
+                mSb.append(ProgressText);
+            }
+            String text = mSb.toString();
 
-	private void invalidateSafe() {
-		if (mThreadId == Process.myTid()) {
-			invalidate();
-		} else {
-			postInvalidate();
-		}
-	}
+            mTextPaint.setAntiAlias(true);
+            mTextPaint.setColor(mProgressTextColor);
+            mTextPaint.setTextSize(mProgressTextSize);
+            mTextPaint.setTypeface(mTypeface);
+            mTextPaint.setTextAlign(Align.CENTER);
+            FontMetrics fm = mTextPaint.getFontMetrics();
+            int fontH = (int) (Math.abs(fm.descent - fm.ascent));
+            canvas.drawText(text, getWidth() >> 1, ((getHeight() - getPaddingTop() - getPaddingBottom()) >> 1) + (fontH >> 1), mTextPaint);
 
-	private void notifyProgressChange(float smoothProgress, float targetProgress) {
-		if (null != mOnProgressChangeListener) {
-			mOnProgressChangeListener.onProgressChange(smoothProgress, targetProgress);
-		}
-	}
+        }
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		int width = 0;
-		int height = 0;
+    }
 
-		int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-		int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-		int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-		int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+    @Override
+    protected void drawableStateChanged() {
+        int[] drawableState = getDrawableState();
+        if (mDrbBackground != null && mDrbBackground.isStateful()) {
+            mDrbBackground.setState(drawableState);
+        }
+        if (mDrbProgress != null && mDrbProgress.isStateful()) {
+            mDrbProgress.setState(drawableState);
+        }
+        invalidate();
+    }
 
-		if (widthMode == MeasureSpec.EXACTLY) {
-			width = widthSize;
-		} else {
-			width = mDrbBackground == null ? 0 : mDrbBackground.getIntrinsicWidth();
-			if (widthMode == MeasureSpec.AT_MOST) {
-				width = Math.min(width, widthSize);
-			}
-		}
-
-		if (heightMode == MeasureSpec.EXACTLY) {
-			height = heightSize;
-		} else {
-			height = mDrbBackground == null ? 0 : mDrbBackground.getIntrinsicHeight();
-			if (heightMode == MeasureSpec.AT_MOST) {
-				height = Math.min(height, heightSize);
-			}
-		}
-
-		if (null != mDrbBackground) {
-			mDrbBackground.setBounds(0, 0, width, height);
-		}
-		mRawProgressBounds.set(getPaddingLeft(), getPaddingTop(), width - getPaddingRight(), height
-				- getPaddingBottom());
-		setMeasuredDimension(width, height);
-	}
-
-	@Override
-	protected void onDraw(Canvas canvas) {
-		float factor;
-		if (mProgress == 0 || mProgress == 1) {
-			factor = 1;
-		} else {
-			long elapsed = System.currentTimeMillis() - mProgressSetTime;
-			if (elapsed < 0) {
-				factor = 0;
-			} else if (elapsed > mSmoothAnimDuration) {
-				factor = 1;
-			} else {
-				factor = elapsed / (float) mSmoothAnimDuration;
-			}
-		}
-		mSmoothProgress = mStartProgress + factor * (mProgress - mStartProgress);
-
-		// Draw background
-		if (null != mDrbBackground) {
-			mDrbBackground.draw(canvas);
-		}
-
-		// Draw progress
-		if (null != mDrbProgress) {
-			if (mDrbProgress instanceof NinePatchDrawable
-					|| (mDrbProgress instanceof DrawableContainer && ((DrawableContainer) mDrbProgress).getCurrent() instanceof NinePatchDrawable)) {
-				if (mSmoothProgress == 0) {
-					mDrbProgress.setBounds(0, 0, 0, 0);
-				} else {
-					mDrbProgress.setBounds(0, mRawProgressBounds.top,
-							(int) (mRawProgressBounds.left + (mRawProgressBounds.width() - mProgressDrbMinWidth)
-									* mSmoothProgress)
-									+ mProgressDrbMinWidth, mRawProgressBounds.bottom);
-				}
-			}
-			mDrbProgress.draw(canvas);
-		}
-
-		// Draw progress text
-		if (mProgressTextVisible) {
-			mSb.delete(0, mSb.length());
-			if (StringUtil.isEmpty(mText)) {
-				mSb.append((int) (mSmoothProgress * 100));
-				mSb.append('%');
-			} else {
-				mSb.append(mText);
-			}
-			String text = mSb.toString();
-
-			mTextPaint.setAntiAlias(true);
-			mTextPaint.setColor(mProgressTextColor);
-			mTextPaint.setTextSize(mProgressTextSize);
-			mTextPaint.setTypeface(mTypeface);
-			mTextPaint.setTextAlign(Align.CENTER);
-			FontMetrics fm = mTextPaint.getFontMetrics();
-			int fontH = (int) (Math.abs(fm.descent - fm.ascent));
-			canvas.drawText(text, getWidth() >> 1, ((getHeight() - getPaddingTop() - getPaddingBottom()) >> 1) + (fontH >> 1), mTextPaint);
-			
-		}
-
-		if (factor != 1) {
-			invalidate();
-		}
-		notifyProgressChange(mSmoothProgress, mProgress);
-	}
-
-	@Override
-	protected void drawableStateChanged() {
-		int[] drawableState = getDrawableState();
-		if (mDrbBackground != null && mDrbBackground.isStateful()) {
-			mDrbBackground.setState(drawableState);
-		}
-		if (mDrbProgress != null && mDrbProgress.isStateful()) {
-			mDrbProgress.setState(drawableState);
-		}
-		if (mProgressTextColorStateList != null) {
-			mProgressTextColor = mProgressTextColorStateList.getColorForState(drawableState, mProgressTextColor);
-		}
-		invalidate();
-	}
-
-	public static interface OnProgressChangeListener {
-
-		public void onProgressChange(float smoothProgress, float targetProgress);
-
-	}
 
 }

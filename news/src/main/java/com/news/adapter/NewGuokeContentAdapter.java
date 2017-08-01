@@ -4,6 +4,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baselibrary.utils.UIUtils;
+import com.baselibrary.utils.ViewUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -21,6 +22,7 @@ public class NewGuokeContentAdapter
     }
 
     protected void convert(BaseViewHolder viewHolder, GuoKeResult guoKeResult) {
+        ViewUtil.initCutOff(viewHolder,viewHolder.getLayoutPosition());
         Glide.with(UIUtils.getContext())
                 .load(guoKeResult.getHeadline_img())
                 .placeholder(R.drawable.lufei)

@@ -7,7 +7,6 @@
     <android.support.v7.widget.Toolbar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/qm1dp"
         android:background="@color/colorPrimary"
         app:titleTextColor="@color/navigation_text_color"
         app:navigationIcon="@drawable/arrow_left"
@@ -25,6 +24,7 @@
             app:tabSelectedTextColor="@color/colorAccent"
             android:background="@color/colorPrimary"
             app:tabMode="scrollable"
+            android:elevation="@dimen/qm4dp"
             app:tabTextColor="@color/navigation_text_color"
             android:layout_height="@dimen/guideBarHeight" />
 

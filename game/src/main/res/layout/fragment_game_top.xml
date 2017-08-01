@@ -10,7 +10,7 @@
         app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextColor="@color/navigation_text_color"
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/qm1dp"
+        android:elevation="@dimen/qm4dp"
         android:layout_height="@dimen/guideBarHeight"
         android:background="@color/colorPrimary" />
 

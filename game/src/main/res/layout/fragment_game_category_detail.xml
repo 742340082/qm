@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="@dimen/qm1dp"
         android:layout_height="@dimen/guideBarHeight"
+        android:elevation="@dimen/qm4dp"
         android:background="@color/colorPrimary">
 
         <android.support.design.widget.TabLayout
@@ -71,10 +72,10 @@
                 android:id="@id/fl_game_category_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/qm1dp"
-                android:background="@color/viewBackground"
+                android:elevation="@dimen/qm6dp"
+                android:layout_margin="@dimen/qm4dp"
+                android:background="@drawable/selector_bg_gray_white"
                 android:visibility="gone" />
-            <include layout="@layout/cut_horizontal_apart"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

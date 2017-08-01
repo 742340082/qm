@@ -10,6 +10,7 @@
         android:id="@id/tl_news"
         android:layout_width="match_parent"
         android:layout_height="@dimen/guideBarHeight"
+        android:elevation="@dimen/qm4dp"
         app:tabSelectedTextColor="@color/colorAccent"
         android:layout_marginBottom="@dimen/qm1dp"
         app:tabTextColor="@color/navigation_text_color"

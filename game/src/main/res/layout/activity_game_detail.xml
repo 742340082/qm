@@ -1,22 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/cl_game_detail"
+    style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-        <include layout="@layout/item_game_detail_header"/>
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="0dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-                <include layout="@layout/item_game_detail_pic"/>
-                <include layout="@layout/item_game_detail_desinfo"/>
-            </LinearLayout>
-        </ScrollView>
+    android:fitsSystemWindows="true">
 
-    <include
-        layout="@layout/item_game_detail_footer"/>
-</LinearLayout>
+    <android.support.design.widget.AppBarLayout
+        android:id="@id/abl_game_detail"
+        style="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qm200dp"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@id/ctl_game_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="@style/ToolBarTitleText"
+            app:contentScrim="@color/colorPrimary"
+            app:expandedTitleMarginEnd="48dp"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleTextAppearance="@style/transparentText"
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed|enterAlways"
+            app:title="你是">
+
+            <android.support.v4.view.ViewPager
+                android:id="@id/vp_game_detail_top"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/toolbarHeight"
+                app:background="@color/colorPrimary"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/arrow_left"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/qm50dp"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.design.widget.TabLayout
+            android:id="@id/tb_game_detail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/guideBarHeight"
+            android:layout_gravity="bottom"
+            android:elevation="@dimen/qm4dp"
+            android:background="@color/colorPrimary"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@color/navigation_text_color" />
+        <android.support.v4.view.ViewPager
+            android:id="@id/vp_game_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+    </LinearLayout>
+
+    <com.baselibrary.view.ProgressHorizontal
+        android:id="@id/pbh_gamedonwload"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/qm40dp"
+        android:layout_gravity="bottom"
+        app:ProgressBackground="@color/colorAccent"
+        app:ProgressHorizontalBackground="@drawable/bg_round_blue_shape"
+        app:ProgressTextColor="@color/navigation_text_color"
+        app:ProgressTextSize="@dimen/sp_14"
+        android:elevation="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:layout_marginBottom="@dimen/qm4dp"
+        app:max="100"
+        app:progress="0" />
+
+
+</android.support.design.widget.CoordinatorLayout>

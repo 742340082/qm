@@ -10,6 +10,7 @@ import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.config.ConfigStateCode;
 import com.baselibrary.config.ConfigValues;
 import com.baselibrary.listener.OnRetryListener;
+import com.baselibrary.model.game.top.TotalResult;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.ToastUtils;
@@ -17,9 +18,8 @@ import com.baselibrary.utils.UIUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.IndexAdapter;
-import com.game.adapter.TopAdapter;
-import com.game.mvp.top.modle.TotalResult;
+import com.game.adapter.index.IndexAdapter;
+import com.game.adapter.GameTopAdapter;
 import com.game.mvp.top.total.presenter.TotalPresenter;
 import com.game.mvp.top.total.view.TotalView;
 
@@ -41,7 +41,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, BaseQuickA
     private TotalPresenter mPresenter;
     private String topType;
     private TotalResult totalResult;
-    private TopAdapter topAdapter;
+    private GameTopAdapter topAdapter;
 
     @Override
     public int getLayoutResId() {
@@ -120,7 +120,7 @@ public class TotalFragment extends BaseFragmnet implements TotalView, BaseQuickA
         mStatusLayoutManager.showContent();
 
         if (data.getPage() == 1) {
-            topAdapter = new TopAdapter(R.layout.item_game_top_total,totalResult.getData());
+            topAdapter = new GameTopAdapter(R.layout.item_game_top_total,totalResult.getData());
             topAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
             topAdapter.loadMoreEnd(true);
             topAdapter.setOnLoadMoreListener(this, rv_game_top);

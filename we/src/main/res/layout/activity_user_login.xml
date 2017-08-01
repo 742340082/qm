@@ -13,6 +13,7 @@
         android:gravity="center"
         app:navigationIcon="@drawable/arrow_left"
         app:title="@string/user_login"
+        android:elevation="@dimen/qm4dp"
         app:titleTextAppearance="@style/Toolbar.TitleText"
         app:titleTextColor="@color/navigation_text_color" />
 
@@ -24,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/qm10dp"
         android:layout_marginTop="@dimen/qm20dp"
-        android:background="@drawable/bg_green_circle_shape"
+        android:background="@drawable/bg_circle_green_shape"
         android:elevation="@dimen/qm3dp"
         android:translationZ="@dimen/qm3dp">
 
@@ -40,7 +41,10 @@
         android:id="@id/ll_user_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/viewBackground"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white"
+        android:elevation="@dimen/qm4dp"
         android:layout_below="@id/ll_user_header"
         android:orientation="vertical">
 
@@ -101,6 +105,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_user_account"
         android:layout_marginTop="@dimen/qm14dp"
+        android:layout_marginRight="@dimen/qm4dp"
+        android:layout_marginLeft="@dimen/qm4dp"
+        android:elevation="@dimen/qm4dp"
         android:background="@drawable/selector_bg_green_green"
         android:text="@string/user_login"
         android:textColor="@color/navigation_text_color"
@@ -149,6 +156,7 @@
                 android:layout_height="@dimen/qm1dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1.0"
+                android:layout_marginLeft="@dimen/qm4dp"
                 android:background="@color/graydeep" />
 
             <TextView
@@ -165,6 +173,7 @@
                 android:layout_height="@dimen/qm1dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1.0"
+                android:layout_marginRight="@dimen/qm4dp"
                 android:background="@color/graydeep" />
         </LinearLayout>
 
