@@ -23,7 +23,7 @@
         android:layout_marginRight="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
         android:elevation="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:orientation="vertical">
 
 
@@ -76,7 +76,7 @@
                 android:background="@drawable/selector_border_round_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/mister"
-                android:textColor="@color/selector_color_blue_black" />
+                android:textColor="@color/selector_color_blue_black_night" />
 
             <TextView
                 android:id="@id/tv_lady"
@@ -86,7 +86,7 @@
                 android:background="@drawable/selector_border_round_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/lady"
-                android:textColor="@color/selector_color_blue_black" />
+                android:textColor="@color/selector_color_blue_black_night" />
         </LinearLayout>
 
         <LinearLayout
@@ -249,7 +249,7 @@
                 android:background="@drawable/selector_border_round_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/flyme"
-                android:textColor="@color/selector_color_blue_black" />
+                android:textColor="@color/selector_color_blue_black_night" />
 
             <TextView
                 android:id="@id/tv_company"
@@ -259,7 +259,7 @@
                 android:background="@drawable/selector_border_round_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/company"
-                android:textColor="@color/selector_color_blue_black" />
+                android:textColor="@color/selector_color_blue_black_night" />
 
             <TextView
                 android:id="@id/tv_school"
@@ -269,7 +269,7 @@
                 android:background="@drawable/selector_border_round_blue_gray_bg_white_splash"
                 android:gravity="center"
                 android:text="@string/school"
-                android:textColor="@color/selector_color_blue_black" />
+                android:textColor="@color/selector_color_blue_black_night" />
         </LinearLayout>
 
     </LinearLayout>
@@ -282,7 +282,7 @@
         android:elevation="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_green_green"
+        android:background="@drawable/selector_bg_green_green_night"
         android:text="@string/sure"
         android:textColor="@color/navigation_text_color"
         android:textSize="@dimen/titleSize" />

@@ -40,9 +40,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.GameSearchAdapter;
-import com.game.adapter.GameSearchFirstAdapter;
-import com.game.adapter.GameSmallSearchAdapter;
+import com.game.adapter.gamesearch.GameSearchAdapter;
+import com.game.adapter.gamesearch.GameSearchFirstAdapter;
+import com.game.adapter.gamesearch.GameSmallSearchAdapter;
 import com.game.mvp.search.presenter.GameSearchPresenter;
 import com.game.mvp.search.view.GameSearchView;
 
@@ -53,6 +53,7 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Created by 74234 on 2017/6/17.
@@ -323,8 +324,8 @@ public class GameSearchActivity extends BaseActivity implements GameSearchView, 
             rl_game_top.setVisibility(View.GONE);
             Glide.with(UIUtils.getContext())
                     .load(game.getIcopath())
+                    .bitmapTransform(new RoundedCornersTransformation(UIUtils.getContext(),24,0))
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .centerCrop()
                     .into(iv_game_top_icon);
             tv_game_top_title.setText(game.getAppname());
             String size = GameUtil.byteSwitch(2, game.getSize_byte());

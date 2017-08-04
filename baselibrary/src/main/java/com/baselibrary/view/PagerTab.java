@@ -50,7 +50,7 @@ public class PagerTab extends ViewGroup {
 	private int mTabPadding = 24;// tab左右的内边距
 	private int mTabTextSize = 14; // tab文字大小
 	private int mTabBackgroundResId = R.drawable.selector_bg_yeelow_transparent;// tab背景资源
-	private int mTabTextColorResId = R.color.selector_color_yeelow_graydeep; // tab文字颜色
+	private int mTabTextColorResId = R.color.selector_color_yeelow_graydeep_night; // tab文字颜色
 	private int mTabCount;// tab的个数
 
 	private int mCurrentPosition = 0;// 当前光标所处的tab，规则是以光标的最左端所在的item的position

@@ -4,7 +4,7 @@
     android:layout_height="@dimen/qm30dp"
     android:layout_marginTop="@dimen/qm4dp"
     android:gravity="center_vertical"
-    android:background="@drawable/selector_bg_gray_white"
+    android:background="@drawable/selector_bg_gray_white_night"
     android:orientation="horizontal">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_marginLeft="@dimen/qm10dp"
         android:paddingLeft="@dimen/qm5dp"
         android:paddingRight="@dimen/qm5dp"
-        android:textColor="@color/navigation_text_color"
+        android:textColor="@color/white"
         android:textSize="@dimen/titleSize"
         android:id="@id/tv_game_detail_gamenews_title"
         android:gravity="center"

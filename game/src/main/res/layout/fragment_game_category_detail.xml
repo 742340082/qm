@@ -73,8 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="@dimen/qm6dp"
-                android:layout_margin="@dimen/qm4dp"
-                android:background="@drawable/selector_bg_gray_white"
+                android:layout_marginBottom="@dimen/qm4dp"
+                android:background="@drawable/selector_bg_gray_white_night"
                 android:visibility="gone" />
         </LinearLayout>
     </RelativeLayout>

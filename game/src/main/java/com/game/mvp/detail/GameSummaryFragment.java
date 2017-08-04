@@ -33,8 +33,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.GameDetailGameNews;
-import com.game.adapter.GameDetailRecommend;
+import com.game.adapter.gamedetail.GameDetailGameNews;
+import com.game.adapter.gamedetail.GameDetailRecommend;
 import com.game.config.ConfigGame;
 import com.game.mvp.detail.presenter.GameDetailPresenter;
 import com.game.mvp.detail.view.GameDetailSummaryView;
@@ -188,9 +188,7 @@ public class GameSummaryFragment extends BaseFragmnet implements GameDetailSumma
         //初始化游戏信息
         Glide.with(UIUtils.getContext())
                 .load(data.getIcopath())
-                .placeholder(R.drawable.lufei)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.drawable.lufei).fitCenter()
                 .into(iv_game_icon);
         tv_game_title.setText(data.getAppname());
         tv_game_version.setText(data.getVersion());

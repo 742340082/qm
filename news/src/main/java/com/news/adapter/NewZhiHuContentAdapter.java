@@ -13,6 +13,8 @@ import com.news.mvp.zhihu.modle.ZhihuStorie;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class NewZhiHuContentAdapter
         extends BaseQuickAdapter<ZhihuStorie, BaseViewHolder> {
 
@@ -24,9 +26,8 @@ public class NewZhiHuContentAdapter
     protected void convert(BaseViewHolder viewHolder, ZhihuStorie data) {
         Glide.with(UIUtils.getContext())
                 .load(data.getImageList().get(0))
-                .placeholder(R.drawable.lufei)
+                .bitmapTransform(new RoundedCornersTransformation(UIUtils.getContext(),10,0))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.drawable.lufei).centerCrop()
                 .into((ImageView) viewHolder.getView(R.id.iv_news_item_icon));
         ((TextView) viewHolder.getView(R.id.tv_news_item_title)).setText(data.getTitle());
     }

@@ -3,16 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/qm10dp"
-    android:background="@drawable/selector_bg_gray_white"
+    android:background="@drawable/selector_bg_gray_white_night"
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@id/iv_game_index_category_icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/selector_bg_gray_white"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/lufei" />
+    />
 
     <TextView
         android:id="@id/iv_game_index_category_title"

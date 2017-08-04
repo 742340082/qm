@@ -11,7 +11,8 @@
         android:layout_marginBottom="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
+        android:layout_marginTop="@dimen/qm1dp"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:elevation="@dimen/qm4dp"
         android:orientation="vertical">
 
@@ -26,7 +27,7 @@
             android:textSize="@dimen/titleSize" />
 
         <RelativeLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/qm10dp"
             android:layout_marginTop="@dimen/qm10dp">
@@ -36,7 +37,7 @@
                 android:layout_width="@dimen/qm80dp"
                 android:layout_height="@dimen/qm60dp"
                 android:layout_marginLeft="@dimen/qm10dp"
-                android:src="@drawable/lufei" />
+                 />
 
             <TextView
                 android:id="@id/tv_game_gamenews_desc"

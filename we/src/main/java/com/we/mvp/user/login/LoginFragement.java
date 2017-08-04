@@ -162,11 +162,8 @@ public class LoginFragement
                         Glide.with(getContext())
                                 .load(UserApi.USER_ICON_ROOT_PSTH + str + "/" + encodeString + ".jpg")
                                 .asBitmap()
-                                .placeholder(R.drawable.lufei)
                                 .skipMemoryCache(true)
                                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                .error(R.drawable.lufei)
-                                .centerCrop()
                                 .into(LoginFragement.this.civ_user_icon);
                     }
                 });

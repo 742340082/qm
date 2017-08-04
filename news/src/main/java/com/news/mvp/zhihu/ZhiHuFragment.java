@@ -2,9 +2,7 @@ package com.news.mvp.zhihu;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,16 +13,16 @@ import android.widget.LinearLayout;
 
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.baselibrary.config.ConfigStateCode;
-import com.baselibrary.config.ConfigValues;
 import com.baselibrary.listener.OnRetryListener;
 import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ToastUtils;
 import com.baselibrary.utils.UIUtils;
+import com.baselibrary.view.CarouselViewPager;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.news.R;
 import com.news.R2;
 import com.news.adapter.NewZhiHuContentAdapter;
-import com.news.adapter.NewZhiHuTabAdapter;
+import com.news.adapter.NewZhiHuHeaderAdapter;
 import com.news.config.ConfigNews;
 import com.news.mvp.detail.NewsDetailActivity;
 import com.news.mvp.zhihu.modle.ZhihuStorie;
@@ -210,7 +208,7 @@ public class ZhiHuFragment
             zhihuAdapter.openLoadAnimation(NewZhiHuContentAdapter.ALPHAIN);
             zhihuAdapter.setEnableLoadMore(true);
             zhihuAdapter.setOnLoadMoreListener(this, rv_news_content);
-            initTop(topStories);
+            initHeader(topStories);
             rv_news_content.setLayoutManager(new LinearLayoutManager(getContext(), 1, false));
             rv_news_content.setAdapter(zhihuAdapter);
 
@@ -232,37 +230,20 @@ public class ZhiHuFragment
         });
     }
 
-    private void initTop(final List<ZhihuTopStorie> topStories) {
+    private void initHeader(final List<ZhihuTopStorie> topStories) {
 
 
         View headerView = LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_news_content_header,
                 new FrameLayout(UIUtils.getContext()));
-        final ViewPager vp_news = (ViewPager) headerView.findViewById(R.id.vp_news);
+        final CarouselViewPager vp_news = (CarouselViewPager) headerView.findViewById(R.id.vp_news);
 
-        NewZhiHuTabAdapter zhiHuTabAdapter = new NewZhiHuTabAdapter(getContext());
+        NewZhiHuHeaderAdapter zhiHuTabAdapter = new NewZhiHuHeaderAdapter(getContext());
         zhiHuTabAdapter.addTabPage(topStories);
+        vp_news.setOffscreenPageLimit(3);
+        vp_news.setPageMargin(20);
         vp_news.setAdapter(zhiHuTabAdapter);
-        if (mHandler == null) {
-
-            mHandler = new Handler() {
-
-                @Override
-                public void handleMessage(Message msg) {
-                    int item = vp_news.getCurrentItem();
-                    if (item < topStories.size() - 1) {
-                        item++;
-                    } else {// 判断是否到达最后一个
-                        item = 0;
-                    }
-                    // Log.d(TAG, "轮播条:" + item);
-                    vp_news.setCurrentItem(item);
-                    mHandler.sendMessageDelayed(Message.obtain(),
-                            ConfigValues.VALUE_NEWS_CHANGE_TIME);
-                }
-            };
-        }
-        mHandler.sendMessageDelayed(Message.obtain(), ConfigValues.VALUE_NEWS_CHANGE_TIME);// 延时4s发送消息
-
+        int position=Integer.MAX_VALUE/2-(Integer.MAX_VALUE/2%topStories.size());
+        vp_news.setCurrentItem(position);
         zhihuAdapter.addHeaderView(headerView, 0, LinearLayout.VERTICAL);
     }
 }

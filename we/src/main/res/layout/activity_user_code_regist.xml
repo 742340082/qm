@@ -26,7 +26,7 @@
         android:elevation="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:orientation="vertical">
 
         <LinearLayout
@@ -58,7 +58,7 @@
                 android:layout_width="@dimen/qm100dp"
                 android:layout_height="@dimen/qm30dp"
                 android:layout_marginRight="@dimen/qm4dp"
-                android:background="@drawable/selector_bg_blue_gray"
+                android:background="@drawable/selector_bg_blue_gray_night"
                 android:enabled="false"
 
                 android:gravity="center"
@@ -103,7 +103,7 @@
         android:layout_marginLeft="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"
         android:elevation="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_green_green"
+        android:background="@drawable/selector_bg_green_green_night"
         android:textColor="@color/navigation_text_color"
         android:textSize="@dimen/titleSize" />
 

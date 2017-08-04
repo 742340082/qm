@@ -76,7 +76,7 @@
     <item name="Rl_game_category" type="id" />
     <item name="rl_game_category_header" type="id" />
     <item name="iv_game_category_header_icon" type="id" />
-    <item name="iv_game_category_header_title" type="id" />
+    <item name="tv_game_category_header_title" type="id" />
     <item name="rl_game_gamenews_header" type="id" />
     <item name="rl_game_index_header" type="id" />
     <item name="iv_game_index_category_icon" type="id" />
@@ -155,4 +155,10 @@
     <item name="tv_game_index_subject_title" type="id" />
     <item name="ll_game_top_tag" type="id" />
     <item name="tv_game_category_detail_selector_size_title" type="id" />
+    <item name="rv_game_newgame" type="id" />
+    <item name="srl_game_newgame" type="id" />
+    <item name="tv_game_newgame" type="id" />
+    <item name="tv_game_newgame_tag" type="id" />
+    <item name="rv_game_newgame_tag" type="id" />
+    <item name="ll_game_newgame" type="id" />
 </resources>

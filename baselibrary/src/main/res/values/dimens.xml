@@ -2,6 +2,9 @@
 <resources>
     <dimen name="qm300dp" >300dp</dimen>
     <dimen name="qm200dp" >200dp</dimen>
+    <dimen name="qm160dp" >160dp</dimen>
+    <dimen name="qm140dp" >140dp</dimen>
+    <dimen name="qm120dp" >120dp</dimen>
     <dimen name="qm100dp" >100dp</dimen>
     <dimen name="qm90dp" >90dp</dimen>
     <dimen name="qm80dp" >80dp</dimen>

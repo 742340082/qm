@@ -18,8 +18,8 @@ import com.baselibrary.utils.UIUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.index.IndexAdapter;
-import com.game.adapter.GameTopAdapter;
+import com.game.adapter.gameindex.IndexAdapter;
+import com.game.adapter.gametop.GameTopAdapter;
 import com.game.mvp.top.total.presenter.TotalPresenter;
 import com.game.mvp.top.total.view.TotalView;
 

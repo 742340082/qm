@@ -1,53 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_marginBottom="@dimen/qm5dp"
-    android:layout_marginLeft="@dimen/qm4dp"
-    android:layout_marginRight="@dimen/qm4dp"
-    android:layout_marginTop="@dimen/qm5dp"
-    android:elevation="@dimen/qm4dp"
-    android:background="@drawable/selector_bg_gray_white"
-    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@id/ll_game_subject"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/ll_game_subject"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/qm4dp"
+    android:background="@drawable/selector_bg_gray_white_night"
+    android:elevation="@dimen/qm4dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/qm4dp"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/qm10dp"
-            android:background="@drawable/selector_bg_gray_splash">
-
-            <TextView
-                android:id="@id/tv_game_subject_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="每日推荐"
-                android:textColor="@color/viewBackground"
-                android:textSize="@dimen/titleSize" />
-
-
-        </RelativeLayout>
+        android:layout_margin="@dimen/qm10dp"
+        android:background="@drawable/selector_bg_gray_splash">
 
         <TextView
-            android:id="@id/ll_game_subject_desc"
+            android:id="@id/tv_game_subject_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/qm10dp"
-            android:text="最新最好玩游戏大会"
+            android:text="每日推荐"
             android:textColor="@color/viewBackground"
-            android:textSize="@dimen/textSize" />
+            android:textSize="@dimen/titleSize" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@id/rv_game_index_subject"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/qm10dp"
-            android:layout_marginTop="@dimen/qm5dp" />
-    </LinearLayout>
-</FrameLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@id/ll_game_subject_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/qm10dp"
+        android:text="最新最好玩游戏大会"
+        android:textColor="@color/viewBackground"
+        android:textSize="@dimen/textSize" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@id/rv_game_index_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/qm10dp"
+        android:layout_marginTop="@dimen/qm5dp" />
+</LinearLayout>

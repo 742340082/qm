@@ -4,6 +4,7 @@
                 style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="@dimen/qm8dp"
                 android:orientation="vertical">
 
     <LinearLayout
@@ -30,7 +31,7 @@
             android:textColor="@color/navigation_text_color"
             android:textSize="20.0sp"
             android:text="网络异常"
-            android:background="@drawable/selector_bg_green_green"
+            android:background="@drawable/selector_bg_green_green_night"
             />
     </LinearLayout>
 </RelativeLayout>

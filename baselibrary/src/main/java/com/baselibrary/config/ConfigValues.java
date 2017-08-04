@@ -29,7 +29,7 @@ public abstract interface ConfigValues {
     int VALUE_SPLASH_BACK_TIME = 3;
 
     //默认连接超时时间单位毫秒
-    int VALUE_DEFAULT_WAIT = 500;
+    int VALUE_DEFAULT_WAIT = 0;
 
     //打开联系人列表的requestcode
     int VALUE_OPEN_CONTACTS_LIST = 3000;

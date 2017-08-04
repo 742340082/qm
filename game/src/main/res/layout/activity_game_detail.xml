@@ -27,7 +27,7 @@
             app:layout_scrollFlags="scroll|enterAlwaysCollapsed|enterAlways"
             app:title="你是">
 
-            <android.support.v4.view.ViewPager
+            <com.baselibrary.view.CarouselViewPager
                 android:id="@id/vp_game_detail_top"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -77,7 +77,7 @@
         android:layout_height="@dimen/qm40dp"
         android:layout_gravity="bottom"
         app:ProgressBackground="@color/colorAccent"
-        app:ProgressHorizontalBackground="@drawable/bg_round_blue_shape"
+        app:ProgressHorizontalBackground="@drawable/bg_round_blue_shape_night"
         app:ProgressTextColor="@color/navigation_text_color"
         app:ProgressTextSize="@dimen/sp_14"
         android:elevation="@dimen/qm4dp"

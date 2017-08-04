@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:gravity="center"
+    android:elevation="@dimen/qm8dp"
     android:layout_height="match_parent">
         <ImageView
             android:id="@+id/iv_content_error"

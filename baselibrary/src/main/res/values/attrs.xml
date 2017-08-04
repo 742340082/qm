@@ -3,6 +3,7 @@
     <attr name="progress" format="integer"/>
     <attr name="max" format="integer"/>
 
+
     <declare-styleable name="ProgressArc" >
         <attr name="BackgroundDrawable" format="reference"/>
         <attr name="ProgressColor" format="color"/>
@@ -18,4 +19,5 @@
         <attr name="ProgressTextColor" format="color"/>
         <attr name="ProgressTextSize" format="dimension"/>
     </declare-styleable>
+
 </resources>

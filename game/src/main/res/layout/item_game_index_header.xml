@@ -6,7 +6,7 @@
     android:layout_marginTop="@dimen/qm4dp"
     android:layout_marginRight="@dimen/qm4dp"
     android:layout_marginLeft="@dimen/qm4dp"
-    android:background="@drawable/selector_bg_gray_white"
+    android:background="@drawable/selector_bg_gray_white_night"
     android:elevation="@dimen/qm4dp"
     android:orientation="vertical">
 
@@ -22,8 +22,8 @@
             android:layout_height="@dimen/qm80dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
-            android:background="@drawable/selector_bg_gray_white"
-            android:src="@drawable/lufei" />
+            android:background="@drawable/selector_bg_gray_white_night"
+             />
 
         <ImageView
             android:id="@id/iv_game_top_icon2"
@@ -32,8 +32,8 @@
             android:layout_height="@dimen/qm80dp"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
-            android:background="@drawable/selector_bg_gray_white"
-            android:src="@drawable/lufei" />
+            android:background="@drawable/selector_bg_gray_white_night"
+          />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

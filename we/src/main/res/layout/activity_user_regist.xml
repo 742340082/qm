@@ -33,7 +33,7 @@
             android:id="@id/civ_user_icon"
             android:layout_width="@dimen/qm80dp"
             android:layout_height="@dimen/qm80dp"
-            android:src="@drawable/lufei"/>
+           />
     </LinearLayout>
 
 
@@ -45,7 +45,7 @@
         android:orientation="vertical"
         android:layout_marginRight="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:elevation="@dimen/qm4dp"
         android:layout_below="@+id/ll_user_header"
         android:layout_alignParentLeft="true"
@@ -83,7 +83,7 @@
                 android:paddingLeft="@dimen/qm10dp"
                 android:enabled="false"
                 android:paddingRight="@dimen/qm10dp"
-                android:background="@drawable/selector_bg_blue_gray"
+                android:background="@drawable/selector_bg_blue_gray_night"
                 android:textColor="@color/navigation_text_color"
                 android:textSize="@dimen/titleSize"/>
         </LinearLayout>
@@ -147,7 +147,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_user_account"
         android:layout_marginTop="@dimen/qm14dp"
-        android:background="@drawable/selector_bg_green_green"
+        android:background="@drawable/selector_bg_green_green_night"
         android:text="@string/user_regist"
         android:elevation="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"

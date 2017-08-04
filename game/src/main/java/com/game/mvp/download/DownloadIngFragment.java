@@ -7,7 +7,7 @@ import com.baselibrary.api.download.DownloadInfo;
 import com.baselibrary.base.fragment.BaseFragmnet;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.GameDownloadIngAdapter;
+import com.game.adapter.gamedownload.GameDownloadIngAdapter;
 import com.game.mvp.download.presenter.DownloadPresenter;
 import com.game.mvp.download.view.DownloadIngView;
 

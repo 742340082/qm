@@ -7,7 +7,7 @@
     android:layout_marginTop="@dimen/qm5dp"
     android:layout_marginLeft="@dimen/qm4dp"
     android:layout_marginRight="@dimen/qm4dp"
-    android:background="@drawable/selector_bg_gray_white"
+    android:background="@drawable/selector_bg_gray_white_night"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="@dimen/qm4dp"
     android:orientation="vertical">
@@ -50,7 +50,7 @@
         android:layout_marginLeft="@dimen/qm10dp"
         android:layout_marginRight="@dimen/qm10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/lufei" />
+        />
 
     <TextView
         android:id="@id/tv_game_subject_desc"

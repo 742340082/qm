@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@id/ll_game_newgame"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@color/navigation_text_color"
+        app:navigationIcon="@drawable/arrow_left"
+        android:elevation="@dimen/qm4dp"
+        android:layout_height="@dimen/toolbarHeight"
+        app:title="@string/game_newgame"
+        />
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@id/srl_game_newgame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/rv_game_newgame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

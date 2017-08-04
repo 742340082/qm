@@ -5,23 +5,25 @@ import java.util.Date;
 
 public class DateFormatter
 {
-    public static String DateFormat(long paramLong)
+    public static String DateFormat(long time)
     {
-        Date localDate = new Date(paramLong);
+        Date localDate = new Date(time);
         return new SimpleDateFormat("yyyyMMdd").format(localDate);
     }
 
-    public static String DoubanDateFormat(long paramLong)
+    public static String DoubanDateFormat(long time)
     {
-        Date localDate = new Date(paramLong);
+        Date localDate = new Date(time);
         return new SimpleDateFormat("yyyy-MM-dd").format(localDate);
     }
 
-    public static String ZhihuDailyDateFormat(long paramLong)
+    public static String ZhihuDailyDateFormat(long time)
     {
-        Date localDate = new Date(86400000L + paramLong);
+        Date localDate = new Date(86400000L + time);
         return new SimpleDateFormat("yyyyMMdd").format(localDate);
     }
+
+
 
     public  static String formatGapTime(long gaoTime)
     {

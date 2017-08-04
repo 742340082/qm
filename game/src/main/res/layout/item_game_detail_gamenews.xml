@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/selector_bg_gray_white"
+    android:background="@drawable/selector_bg_gray_white_night"
     android:layout_marginTop="@dimen/qm5dp"
     android:id="@id/ll_game_detail_gamenews"
     android:layout_marginRight="@dimen/qm4dp"

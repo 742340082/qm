@@ -14,6 +14,8 @@ import com.news.mvp.doubian.model.DouBianPosts;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class NewDouBianContentAdapter
         extends BaseMultiItemQuickAdapter<DouBianPosts, BaseViewHolder> {
     public   static  final int NEWS_DOUBIAN_NOIMG=1;
@@ -37,9 +39,8 @@ public class NewDouBianContentAdapter
                 viewHolder.setText(R.id.tv_news_item_title, douBianBean.getTitle());
                 Glide.with(UIUtils.getContext())
                         .load(douBianBean.getLarge_url())
-                        .placeholder(R.drawable.lufei)
+                        .bitmapTransform(new RoundedCornersTransformation(UIUtils.getContext(),10,0))
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .error(R.drawable.lufei).centerCrop()
                         .into((ImageView) viewHolder.getView(R.id.iv_news_item_icon));
                 break;
         }

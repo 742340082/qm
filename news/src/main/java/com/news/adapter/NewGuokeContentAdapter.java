@@ -14,6 +14,8 @@ import com.news.mvp.guoke.model.GuoKeResult;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+
 public class NewGuokeContentAdapter
         extends BaseQuickAdapter<GuoKeResult, BaseViewHolder> {
 
@@ -25,9 +27,8 @@ public class NewGuokeContentAdapter
         ViewUtil.initCutOff(viewHolder,viewHolder.getLayoutPosition());
         Glide.with(UIUtils.getContext())
                 .load(guoKeResult.getHeadline_img())
-                .placeholder(R.drawable.lufei)
+                .bitmapTransform(new RoundedCornersTransformation(UIUtils.getContext(),10,0))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .error(R.drawable.lufei).centerCrop()
                 .into((ImageView) viewHolder.getView(R.id.iv_news_item_icon));
         ((TextView) viewHolder.getView(R.id.tv_news_item_title)).setText(guoKeResult.getTitle());
     }

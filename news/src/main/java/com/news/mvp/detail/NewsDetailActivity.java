@@ -226,9 +226,7 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
         Glide.with(this)
                 .load(guokeDetail.getImage())
                 .asBitmap()
-                .placeholder(R.drawable.lufei)
                 .centerCrop()
-                .error(R.drawable.lufei)
                 .into(iv_news_item_icon);
         setCollapsingToolbarLayoutTitle(guokeDetail.getTitle());
         wv_news.loadDataWithBaseURL("x-data://base", mPresenter.convertGuokrContent(guokeDetail.getBody()), "text/html", "utf-8", null);
@@ -246,9 +244,6 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
                 Glide.with(this)
                         .load(zhiHuDetail.getImage())
                         .asBitmap()
-                        .placeholder(R.drawable.lufei)
-                        .centerCrop()
-                        .error(R.drawable.lufei)
                         .into(iv_news_item_icon);
     }
 
@@ -259,9 +254,6 @@ public class NewsDetailActivity extends BaseActivity implements NewsDetailView {
             Glide.with(this)
                     .load(doubanDetail.getLarge_url())
                     .asBitmap()
-                    .placeholder(R.drawable.lufei)
-                    .centerCrop()
-                    .error(R.drawable.lufei)
                     .into(iv_news_item_icon);
             setCollapsingToolbarLayoutTitle(doubanDetail.getTitle());
             wv_news.loadDataWithBaseURL("x-data://base", mPresenter.convertDoubanContent(doubanDetail), "text/html", "utf-8", null);

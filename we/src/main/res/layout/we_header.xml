@@ -18,7 +18,7 @@
         android:translationZ="@dimen/qm0dp"
         android:layout_margin="@dimen/qm4dp"
         android:layout_marginBottom="@dimen/qm1dp"
-        android:background="@drawable/bg_round_blue_shape">
+        android:background="@drawable/bg_round_blue_shape_night">
 
         <TextView
             android:id="@id/tv_header"
@@ -31,7 +31,6 @@
             android:layout_height="@dimen/qm70dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/qm10dp"
-            android:src="@drawable/lufei"
             android:stateListAnimator="@anim/fade_in"
             android:transitionName="@string/sharedelement"/>
 

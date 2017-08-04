@@ -119,6 +119,13 @@ public class UIUtils
     {
         context.startActivity(new Intent(context, aClass), ActivityOptions.makeSceneTransitionAnimation((BaseActivity)context, view, content).toBundle());
     }
+
+
+    @TargetApi(21)
+    public static void startActivityAndMaterAnimator(Context context, String content, View view,Intent intent)
+    {
+        context.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation((BaseActivity)context, view, content).toBundle());
+    }
     /**
      * 判断当前是否运行在主线程
      *

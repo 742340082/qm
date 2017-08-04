@@ -102,15 +102,15 @@ public class DownloadService extends Service {
         for (int i = 0; i < downloadInfos.size(); i++) {
             DownloadInfo downloadInfo = downloadInfos.get(i);
             Game game = DataSupport.where(new String[]{"game_id=? and downurl=?", downloadInfo.getGameID(), downloadInfo.getDonwloadUrl()}).findFirst(Game.class);
-            downloadInfo.setContentLength(Long.parseLong(game.getSize_byte()));
-            if (game != null) {
-                File downloadFile = getDownloadFile(UIUtils.getContext(), Integer.parseInt(game.getGame_id()));
-                if (downloadFile != null && downloadFile.exists()) {
-                    downloadInfo.setCurrentPosition(downloadFile.length());
-                    downloadInfo.setSaveFilePath(downloadFile);
-                } else {
-                    downloadInfo.setCurrentPosition(0);
-                }
+                downloadInfo.setContentLength(Long.parseLong(game.getSize_byte()));
+                if (game != null) {
+                    File downloadFile = getDownloadFile(UIUtils.getContext(), Integer.parseInt(game.getGame_id()));
+                    if (downloadFile != null && downloadFile.exists()) {
+                        downloadInfo.setCurrentPosition(downloadFile.length());
+                        downloadInfo.setSaveFilePath(downloadFile);
+                    } else {
+                        downloadInfo.setCurrentPosition(0);
+                    }
             }
 
             downloadInfo.setDownloadInfo(game);

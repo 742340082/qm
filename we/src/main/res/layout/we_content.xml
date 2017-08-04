@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/qm4dp"
+    android:layout_marginBottom="@dimen/qm10dp"
+    android:layout_marginLeft="@dimen/qm4dp"
+    android:layout_marginRight="@dimen/qm4dp"
+    android:layout_marginTop="@dimen/qm5dp"
+    android:background="@drawable/selector_bg_gray_white_night"
     android:orientation="vertical">
 
 
@@ -10,10 +16,10 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/qm50dp"
         android:layout_marginBottom="@dimen/qm4dp"
+        android:layout_marginTop="@dimen/qm5dp"
         android:layout_marginLeft="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
-        android:elevation="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:gravity="center_vertical">
 
         <ImageView
@@ -39,8 +45,7 @@
         android:layout_marginBottom="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
-        android:elevation="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:gravity="center_vertical">
 
         <ImageView
@@ -67,8 +72,7 @@
         android:layout_marginBottom="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
-        android:elevation="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:gravity="center_vertical">
 
         <ImageView
@@ -101,8 +105,7 @@
         android:layout_marginBottom="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
         android:layout_marginRight="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
-        android:elevation="@dimen/qm4dp"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:gravity="center_vertical">
 
         <ImageView

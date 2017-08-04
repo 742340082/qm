@@ -24,6 +24,44 @@ public abstract class CommonPagerAdapter<T>
         this.context = context;
         this.mInflater = LayoutInflater.from(this.context);
     }
+    @Override
+    public void destroyItem(ViewGroup viewGroup, int position, Object object)
+    {
+        viewGroup.removeView((View)object);
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+
+        int newPosition = position % dataS.size();
+        if (!StringUtil.isEmpty(titleS.get(newPosition)))
+        {
+            return titleS.get(newPosition);
+        }else
+        {
+            return null;
+        }
+
+    }
+    @Override
+    public int getCount()
+    {
+        return Integer.MAX_VALUE;
+    }
+
+
+    @Override
+    public Object instantiateItem(ViewGroup viewGroup, int position)
+    {
+        int newPosition = position % dataS.size();
+
+        ViewHolder localViewHolder = ViewHolder.get(this.context, null,viewGroup, getLayouId(), newPosition);
+
+        convert(localViewHolder, dataS.get(newPosition), newPosition);
+        viewGroup.addView(localViewHolder.getConvertView());
+        return localViewHolder.getConvertView();
+    }
+
     public void addTabPage(List<T> dataS, List<String> TitleS)
     {
         this.dataS =dataS;
@@ -33,41 +71,9 @@ public abstract class CommonPagerAdapter<T>
     {
         this.dataS =dataS;
     }
-    public abstract void convert(ViewHolder viewholder, T data, int position);
-
-    public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-    {
-        paramViewGroup.removeView((View)paramObject);
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-
-        if (!StringUtil.isEmpty(titleS.get(position)))
-        {
-            return titleS.get(position);
-        }else
-        {
-            return null;
-        }
-
-    }
-
-    public int getCount()
-    {
-        return dataS.size();
-    }
 
     public abstract int getLayouId();
-
-    public Object instantiateItem(ViewGroup viewGroup, int position)
-    {
-        ViewHolder localViewHolder = ViewHolder.get(this.context, null,viewGroup, getLayouId(), position);
-        convert(localViewHolder, dataS.get(position), position);
-        viewGroup.addView(localViewHolder.getConvertView());
-        return localViewHolder.getConvertView();
-    }
-
+    public abstract void convert(ViewHolder viewholder, T data, int position);
     public boolean isViewFromObject(View view, Object object)
     {
         return view == object;

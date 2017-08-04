@@ -19,7 +19,7 @@ import com.baselibrary.utils.UIUtils;
 import com.baselibrary.view.ProgressHorizontal;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.GameDetailPicAdapter;
+import com.game.adapter.gamedetail.GameDetailPicAdapter;
 import com.game.config.ConfigGame;
 
 import butterknife.BindView;
@@ -90,6 +90,7 @@ public class GameDetailActivity extends BaseActivity   {
                         GameDetailPicAdapter gameDetailPicAdapter = new GameDetailPicAdapter(UIUtils.getContext());
                         gameDetailPicAdapter.addTabPage(data.getScreenpath());
                         vp_game_detail_top.setAdapter(gameDetailPicAdapter);
+
                     }
                 });
     }

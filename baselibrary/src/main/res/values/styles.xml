@@ -61,50 +61,6 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
-    <style name="Tv16spBlack">
-        <item name="android:textSize">16.0sp</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
-    </style>
-
-    <style name="Tv16spGray">
-        <item name="android:textSize">16.0sp</item>
-        <item name="android:textColor">@color/graydeep</item>
-    </style>
-
-    <style name="Tv16spRed">
-        <item name="android:textSize">16.0sp</item>
-        <item name="android:textColor">@color/red</item>
-    </style>
-
-    <style name="Tv16spWhite">
-        <item name="android:textSize">14.0sp</item>
-        <item name="android:textColor">@color/viewBackground</item>
-    </style>
-
-    <style name="Tv14spWhite">
-        <item name="android:textSize">14.0sp</item>
-        <item name="android:textColor">@color/viewBackground</item>
-    </style>
-
-    <style name="Tv14spBlack">
-        <item name="android:textSize">14.0sp</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
-    </style>
-
-    <style name="Tv14spGray">
-        <item name="android:textSize">14.0sp</item>
-        <item name="android:textColor">@color/graydeep</item>
-    </style>
-
-    <style name="Tv14spRed">
-        <item name="android:textSize">14.0sp</item>
-        <item name="android:textColor">@color/red</item>
-    </style>
-
-    <style name="Tv12spBlack">
-        <item name="android:textSize">12.0sp</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
-    </style>
 
 
     <style name="Bottom_Tab_Style">
@@ -116,7 +72,7 @@
         <item name="android:drawablePadding">0dp</item>
         <item name="android:padding">0dp</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textColor">@color/selector_color_red_grayshallow</item>
+        <item name="android:textColor">@color/selector_color_red_grayshallow_night</item>
         <item name="android:gravity">center</item>
     </style>
 

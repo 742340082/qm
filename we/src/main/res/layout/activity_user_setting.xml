@@ -25,7 +25,7 @@
         android:layout_marginRight="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
         android:layout_marginTop="@dimen/qm5dp"
-        android:background="@drawable/selector_bg_gray_white"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:elevation="@dimen/qm4dp"
         android:orientation="vertical">
 
@@ -33,11 +33,10 @@
             android:id="@id/rl_user_account_safe"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:gravity="center_vertical">
 
             <TextView
-                style="@style/Tv14spBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -47,7 +46,6 @@
 
             <TextView
                 android:id="@id/tv_user_account"
-                style="@style/Tv14spGray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -62,11 +60,10 @@
             android:id="@id/rl_common"
             android:layout_width="fill_parent"
             android:layout_height="@dimen/qm50dp"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:gravity="center_vertical">
 
             <TextView
-                style="@style/Tv14spBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -84,12 +81,11 @@
         android:layout_marginTop="@dimen/qm10dp"
         android:layout_marginRight="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"
-        android:background="@drawable/selector_bg_gray_white"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:elevation="@dimen/qm4dp"
         android:gravity="center_vertical">
 
         <TextView
-            style="@style/Tv14spBlack"
             android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,7 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/cardView"
         android:layout_marginTop="@dimen/qm10dp"
-        android:background="@drawable/selector_bg_green_green"
+        android:background="@drawable/selector_bg_green_green_night"
         android:text="@string/exit_login"
         android:elevation="@dimen/qm4dp"
         android:layout_marginLeft="@dimen/qm4dp"

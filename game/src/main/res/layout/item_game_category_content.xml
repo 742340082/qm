@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/qm5dp"
     android:layout_marginBottom="@dimen/qm5dp"
-    android:background="@drawable/selector_bg_gray_white"
+    android:background="@drawable/selector_bg_gray_white_night"
     android:elevation="@dimen/qm4dp"
     android:layout_marginLeft="@dimen/qm4dp"
     android:layout_marginRight="@dimen/qm4dp"
@@ -13,12 +13,11 @@
     <RelativeLayout
         android:id="@id/Rl_game_category"
         android:layout_width="match_parent"
-        android:background="@drawable/selector_bg_gray_white"
+        android:background="@drawable/selector_bg_gray_white_night"
         android:layout_height="@dimen/qm40dp">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@id/iv_game_category_icon"
             android:layout_width="@dimen/qm30dp"
-            android:src="@drawable/lufei"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_height="@dimen/qm30dp" />
@@ -54,7 +53,7 @@
             android:gravity="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:text="游戏" />
         <include layout="@layout/cut_vertical_apart"/>
         <TextView
@@ -64,7 +63,7 @@
             android:gravity="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:text="游戏" />
         <include layout="@layout/cut_vertical_apart"/>
         <TextView
@@ -74,7 +73,7 @@
             android:gravity="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:text="游戏" />
         <include layout="@layout/cut_vertical_apart"/>
         <TextView
@@ -84,7 +83,7 @@
             android:gravity="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:text="游戏" />
     </LinearLayout>
     <include layout="@layout/cut_horizontal_apart"/>
@@ -100,7 +99,7 @@
             android:gravity="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:text="游戏" />
         <include layout="@layout/cut_vertical_apart"/>
         <TextView
@@ -110,7 +109,7 @@
             android:gravity="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:text="游戏" />
         <include layout="@layout/cut_vertical_apart"/>
         <TextView
@@ -120,7 +119,7 @@
             android:gravity="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:text="游戏" />
         <include layout="@layout/cut_vertical_apart"/>
         <TextView
@@ -130,7 +129,7 @@
             android:gravity="center"
             android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:text="游戏" />
     </LinearLayout>
 </LinearLayout>

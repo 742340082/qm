@@ -6,6 +6,7 @@ import com.baselibrary.model.game.category.detail.CategoryDetail;
 import com.baselibrary.model.game.detail.summary.GameSummary;
 import com.baselibrary.model.game.gamenews.GameNews;
 import com.baselibrary.model.game.index.Index;
+import com.baselibrary.model.game.newgame.NewGame;
 import com.baselibrary.model.game.search.GameSearch;
 import com.baselibrary.model.game.search.GameSearchFirst;
 import com.baselibrary.model.game.search.GameSmallSearch;
@@ -62,6 +63,8 @@ public interface GameApi {
     Observable<GameSummary> gameDetail(@Path("gameId") String gameId, @Path("packageName") String packageName);
     @GET("gameDetail-news-mareacode-999999-id-{gameId}-startKey-.html")
     Observable<GameSummary> gameStrategy(@Path("gameId") String gameId);
-
+    ////////////////////////////新游戏/////////////////////////////////////////////////
+    @GET("custom-gameNew-mareacode-999999.html")
+    Observable<NewGame> gameNewGame();
 
 }

@@ -5,7 +5,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.baselibrary.base.activity.BaseActivity;
 import com.baselibrary.utils.UIUtils;
@@ -36,8 +35,6 @@ public class SettingActivity
     RelativeLayout rl_user_account_safe;
     @BindView(R2.id.toolbar)
     Toolbar toolbar;
-    @BindView(R2.id.tv_header)
-    TextView tv_header;
     private User mMcbUser;
     private SettingPresence mPresence;
 

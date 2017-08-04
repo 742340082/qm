@@ -4,6 +4,7 @@
     style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="@dimen/qm8dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -25,7 +26,7 @@
             android:layout_height="40.0dip"
             android:layout_below="@+id/iv_network_error"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/selector_bg_green_green"
+            android:background="@drawable/selector_bg_green_green_night"
             android:text="数据为空"
             android:textColor="@color/navigation_text_color"
             android:textSize="20.0sp" />

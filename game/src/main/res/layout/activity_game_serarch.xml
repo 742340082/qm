@@ -10,8 +10,8 @@
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"
-        android:elevation="@dimen/qm4dp"
         android:background="@color/colorPrimary"
+        android:elevation="@dimen/qm4dp"
         app:contentInsetStart="8dp">
 
         <ImageView
@@ -23,20 +23,20 @@
         <com.baselibrary.view.ClearEditText
             android:id="@id/et_game_search"
             android:layout_width="match_parent"
-            android:layout_marginLeft="@dimen/qm20dp"
             android:layout_height="@dimen/qm30dp"
-            android:background="@drawable/bg_round_white_shape"
+            android:layout_marginLeft="@dimen/qm20dp"
+            android:background="@drawable/bg_round_white_shape_night"
             android:drawablePadding="@dimen/qm5dp"
             android:drawableRight="@drawable/icon_clear"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:gravity="center_vertical"
             android:hint="搜索游戏"
-            android:textColor="@color/textColorPrimary"
             android:imeOptions="actionSearch"
             android:maxLines="1"
             android:paddingLeft="@dimen/qm10dp"
             android:paddingRight="@dimen/qm10dp"
+            android:textColor="@color/textColorPrimary"
             android:textSize="@dimen/titleSize"
             android:transitionName="共享搜索" />
 
@@ -53,7 +53,7 @@
             android:layout_height="@dimen/qm400dp"
             android:layout_marginTop="@dimen/qm10dp"
             android:elevation="@dimen/qm4dp"
-            android:background="@drawable/selector_bg_gray_white"
+            android:background="@drawable/selector_bg_gray_white_night"
             android:layout_marginLeft="@dimen/qm10dp"
             android:layout_marginRight="@dimen/qm10dp"></com.baselibrary.view.shake.StellarMap>
 
@@ -63,7 +63,7 @@
             android:layout_height="@dimen/qm40dp"
             android:layout_below="@+id/stm_game_search_tags"
             android:layout_marginTop="@dimen/qm10dp"
-            android:background="@drawable/selector_bg_green_green"
+            android:background="@drawable/selector_bg_green_green_night"
             android:text="@string/switch_game_tag"
             android:stateListAnimator="@null"
             android:elevation="@dimen/qm4dp"

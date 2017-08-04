@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/qm50dp"
-    android:background="@drawable/selector_bg_gray_white"
+    android:background="@drawable/selector_bg_gray_white_night"
     android:orientation="horizontal">
 
     <ImageView
@@ -11,7 +11,7 @@
         android:layout_height="@dimen/qm30dp"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="@dimen/qm10dp"
-        android:src="@drawable/lufei" />
+        />
 
     <TextView
         android:id="@id/tv_game_search_tag_title"

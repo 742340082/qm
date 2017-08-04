@@ -8,7 +8,8 @@
     android:layout_marginRight="@dimen/qm4dp"
     android:layout_marginBottom="@dimen/qm4dp"
     android:elevation="@dimen/qm4dp"
-    android:background="@drawable/selector_bg_gray_white"
+    android:layout_marginTop="@dimen/qm1dp"
+    android:background="@drawable/selector_bg_gray_white_night"
     android:orientation="vertical"
     >
 
@@ -24,8 +25,8 @@
             android:layout_marginLeft="@dimen/qm10dp"
             android:visibility="invisible"
             android:layout_marginTop="@dimen/qm10dp"
-            android:background="@drawable/bg_round_white_shape"
-            android:src="@drawable/lufei" />
+            android:background="@drawable/bg_round_white_shape_night"
+             />
 
         <TextView
             android:id="@id/tv_news_item_title"

@@ -25,16 +25,18 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.index.IndexAdapter;
-import com.game.adapter.index.IndexHeaderAdapter;
+import com.game.adapter.gameindex.IndexAdapter;
+import com.game.adapter.gameindex.IndexHeaderAdapter;
 import com.game.config.ConfigGame;
 import com.game.mvp.detail.GameDetailActivity;
 import com.game.mvp.index.presenter.IndexPresenter;
 import com.game.mvp.index.view.IndexView;
+import com.game.mvp.newgame.NewGameActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Created by 74234 on 2017/5/18.
@@ -120,41 +122,68 @@ public class IndexFragment extends BaseFragmnet implements IndexView {
 
     @Override
     public void initHeader(PosterBlock posterBlock) {
+        //出初始化内容数据
         recommendAdapter = new IndexAdapter(null);
         recommendAdapter.openLoadAnimation(IndexAdapter.ALPHAIN);
         rv_game_index.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_game_index.setAdapter(recommendAdapter);
 
-        View headView =  View.inflate(UIUtils.getContext(), R.layout.item_game_index_header, new FrameLayout(UIUtils.getContext()));
-
+        //添加头部
+        View headView = View.inflate(UIUtils.getContext(), R.layout.item_game_index_header, new FrameLayout(UIUtils.getContext()));
         ImageView iv_game_top_icon1 = (ImageView) headView.findViewById(R.id.iv_game_top_icon1);
         ImageView iv_game_top_icon2 = (ImageView) headView.findViewById(R.id.iv_game_top_icon2);
         Glide.with(UIUtils.getContext())
                 .load(posterBlock.getRecPoster().get(0).getPoster())
+                .bitmapTransform(new RoundedCornersTransformation(UIUtils.getContext(),10,0))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
                 .into(iv_game_top_icon1);
         Glide.with(UIUtils.getContext())
                 .load(posterBlock.getRecPoster().get(1).getPoster())
+                .bitmapTransform(new RoundedCornersTransformation(UIUtils.getContext(),10,0))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
                 .into(iv_game_top_icon2);
 
         List<IndexRecBlock> recBlock = posterBlock.getRecBlock();
-        IndexHeaderAdapter indexHeaderAdapter = new IndexHeaderAdapter(R.layout.item_game_index_header_tag,recBlock);
+        IndexHeaderAdapter indexHeaderAdapter = new IndexHeaderAdapter(R.layout.item_game_index_header_tag, recBlock);
         RecyclerView rl_index_header = (RecyclerView) headView.findViewById(R.id.rl_game_index_header);
-        rl_index_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(),4));
+        rl_index_header.setLayoutManager(new GridLayoutManager(UIUtils.getContext(), 4));
         rl_index_header.setAdapter(indexHeaderAdapter);
+
+        //头部tag点击
+        indexHeaderAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                IndexRecBlock item = (IndexRecBlock) adapter.getItem(position);
+                switch (Integer.parseInt(item.getType()))
+                {
+                    case 2:
+                        //男生或者迷你
+                        break;
+                    case 6:
+                        //新游
+                        Intent intent = new Intent(IndexFragment.this.getContext(), NewGameActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 7:
+                        //无敌
+                        break;
+                    case 12:
+                        //单机
+                        break;
+                }
+            }
+        });
+
         recommendAdapter.addHeaderView(headView);
         recommendAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 AdListGame adListGame = (AdListGame) adapter.getItem(position);
                 Game game = adListGame.getGame();
-                if (game!=null) {
+                if (game != null) {
                     Intent intent = new Intent(getContext(), GameDetailActivity.class);
-                    intent.putExtra(ConfigGame.GAME_SEND_GAMEDETAIL_ID,game.getGame_id() );
-                    intent.putExtra(ConfigGame.GAME_SEND_GAMEDETAIL_APPNAME,game.getAppname() );
+                    intent.putExtra(ConfigGame.GAME_SEND_GAMEDETAIL_ID, game.getGame_id());
+                    intent.putExtra(ConfigGame.GAME_SEND_GAMEDETAIL_APPNAME, game.getAppname());
                     intent.putExtra(ConfigGame.GAME_SEND_GAMEDETAIL_PACKAGE, game.getPackag());
                     startActivity(intent);
                 }

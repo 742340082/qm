@@ -43,7 +43,7 @@
             android:elevation="@dimen/qm4dp"
 
             android:id="@id/rl_add_user_receive_address"
-            android:background="@drawable/selector_bg_green_green"
+            android:background="@drawable/selector_bg_green_green_night"
             >
 
                 <TextView

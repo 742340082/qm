@@ -1,8 +1,5 @@
 package com.game.mvp.gamenews;
 
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,13 +18,14 @@ import com.baselibrary.statusutils.StatusLayoutManager;
 import com.baselibrary.utils.ConfigStateCodeUtil;
 import com.baselibrary.utils.ToastUtils;
 import com.baselibrary.utils.UIUtils;
+import com.baselibrary.view.CarouselViewPager;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.game.R;
 import com.game.R2;
-import com.game.adapter.GameNewsAdapter;
-import com.game.adapter.GameNewsRlHeaderAdapter;
-import com.game.adapter.GameNewsVpHeaderAdapter;
-import com.game.adapter.index.IndexAdapter;
+import com.game.adapter.gameindex.IndexAdapter;
+import com.game.adapter.gamenews.GameNewsAdapter;
+import com.game.adapter.gamenews.GameNewsRlHeaderAdapter;
+import com.game.adapter.gamenews.GameNewsVpHeaderAdapter;
 import com.game.mvp.gamenews.presenter.GameNewsPresneter;
 import com.game.mvp.gamenews.view.GameNewsView;
 
@@ -50,8 +48,6 @@ public class GameNewsFragment extends BaseFragmnet implements GameNewsView, Base
     private GameNewsPresneter mPresenter;
     private GameNewsResult gameNewsResult;
     private GameNewsAdapter gameNewsAdapter;
-    private Handler mHandler;
-    private static long TOP_NEWS_CHANGE_TIME = 3000;
 
     @Override
     public int getLayoutResId() {
@@ -142,30 +138,17 @@ public class GameNewsFragment extends BaseFragmnet implements GameNewsView, Base
         rv_game_gamenews.setAdapter(gameNewsAdapter);
 
         View viewHeader =  LayoutInflater.from(UIUtils.getContext()).inflate(R.layout.item_game_gamenews_header, new FrameLayout(getContext()));
-        final ViewPager viewPager = (ViewPager) viewHeader.findViewById(R.id.vp_game_gamenews);
-        if (mHandler == null) {
+        final CarouselViewPager viewPager = (CarouselViewPager) viewHeader.findViewById(R.id.vp_game_gamenews);
 
-            mHandler = new Handler() {
-
-                @Override
-                public void handleMessage(Message msg) {
-                    int item = viewPager.getCurrentItem();
-                    if (item < gameNewsResult.getGallary().size() - 1) {
-                        item++;
-                    } else {// 判断是否到达最后一个
-                        item = 0;
-                    }
-                    // Log.d(TAG, "轮播条:" + item);
-                    viewPager.setCurrentItem(item);
-                    mHandler.sendMessageDelayed(Message.obtain(),
-                            TOP_NEWS_CHANGE_TIME);
-                }
-            };
-        }
-        mHandler.sendMessageDelayed(Message.obtain(), TOP_NEWS_CHANGE_TIME);// 延时4s发送消息
         GameNewsVpHeaderAdapter gameNewsTopAdapter = new GameNewsVpHeaderAdapter(UIUtils.getContext());
         gameNewsTopAdapter.addTabPage(gameNewsResult.getGallary());
+        //设置Page间间距
+        viewPager.setPageMargin(20);
+        viewPager.setOffscreenPageLimit(3);
         viewPager.setAdapter(gameNewsTopAdapter);
+        int position = Integer.MAX_VALUE / 2 - (Integer.MAX_VALUE / 2 % gameNewsResult.getGallary().size());
+        viewPager.setCurrentItem(position);
+
 
         List<GameNewsLink> links = gameNewsResult.getLinks();
         GameNewsRlHeaderAdapter gameNewsRlHeaderAdapter = new GameNewsRlHeaderAdapter(R.layout.item_game_category_header_tag,links);
