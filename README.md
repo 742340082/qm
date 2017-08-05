@@ -13,7 +13,7 @@
 ![](https://github.com/742340082/qm/blob/master/raw/news/news.jpg)
 ![](https://github.com/742340082/qm/blob/master/raw/news/newsdetail.jpg)
 ![](https://github.com/742340082/qm/blob/master/raw/we/addreceiveaddress.jpg)
-![](https://github.com/742340082/qm/blob/master/raw/we/receiveaddres.jpg)
+![](https://github.com/742340082/qm/blob/master/raw/we/receiveaddress.jpg)
 ![](https://github.com/742340082/qm/blob/master/raw/we/we.jpg)
 ![](https://github.com/742340082/qm/blob/master/raw/we/wedetail.jpg)
 
