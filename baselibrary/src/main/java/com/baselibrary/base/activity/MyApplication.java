@@ -10,10 +10,7 @@ import android.os.Process;
 import android.os.RemoteException;
 
 import com.baselibrary.api.download.DownloadAidl;
-import com.baselibrary.config.ConfigSdk;
 import com.baselibrary.service.DownloadService;
-import com.sina.weibo.sdk.WbSdk;
-import com.sina.weibo.sdk.auth.AuthInfo;
 
 import org.litepal.LitePalApplication;
 
@@ -73,15 +70,13 @@ public class MyApplication
     };
 
 
-
+    @Override
     public void onCreate() {
         super.onCreate();
         mHandler = new Handler();
         mContext = getApplicationContext();
         UiThreadId = Process.myUid();
 
-        AuthInfo authInfo = new AuthInfo(getContext(), ConfigSdk.WEIBO_APP_KEY, ConfigSdk.WEIBO_REDIRECT_URL, ConfigSdk.WEIBO_SCOPE);
-        WbSdk.install(getContext(), authInfo);
 
         Intent intent = new Intent(this, DownloadService.class);
         startService(intent);

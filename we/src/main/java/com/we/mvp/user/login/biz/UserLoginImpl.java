@@ -105,15 +105,18 @@ public class UserLoginImpl
     @Override
     public void qqLogin(final Tencent tencent) {
         new UserInfo(UIUtils.getContext(), tencent.getQQToken()).getUserInfo(new IUiListener() {
+            @Override
             public void onCancel() {
                 tencent.logout(UIUtils.getContext());
             }
 
+            @Override
             public void onComplete(Object obj) {
                 QQUserInfo qqUserInfo = mGson.fromJson(obj.toString(), QQUserInfo.class);
                 isThirdRegist(qqUserInfo, null, ConfigUser.USER_QQ_LOGIN, ConfigUser.USER_QQ_REGIST);
             }
 
+            @Override
             public void onError(UiError uiError) {
                 tencent.logout(UIUtils.getContext());
             }
@@ -133,7 +136,6 @@ public class UserLoginImpl
                 .subscribe(new Consumer<WeiboRrfreshToken>() {
                     @Override
                     public void accept(WeiboRrfreshToken weiboRrfreshToken) throws Exception {
-                        loginView.getWeiboToken(weiboRrfreshToken);
                     }
                 });
     }

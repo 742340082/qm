@@ -30,11 +30,6 @@ import com.baselibrary.view.LoadingDialog;
 import com.baselibrary.view.ProgressDialog;
 import com.baselibrary.view.SelectPictureDialog;
 import com.google.gson.Gson;
-import com.sina.weibo.sdk.auth.AccessTokenKeeper;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-import com.sina.weibo.sdk.auth.WbAuthListener;
-import com.sina.weibo.sdk.auth.WbConnectErrorMessage;
-import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
@@ -93,7 +88,6 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
     private Gson mGson;
     private Tencent mTencent;
     private loginListener iUiListener;
-    private SsoHandler mSsoHandler;
     private StatusLayoutManager mStatusLayoutManager;
     private ProgressDialog mProgressDialog;
 
@@ -238,7 +232,6 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
             dialog.show();
         }else {
             mDialog.show();
-            mSsoHandler.authorize(new AuthListener());
         }
     }
     @Override
@@ -249,7 +242,6 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
     @Override
     public void initData() {
         mGson = new Gson();
-        mSsoHandler = new SsoHandler(this);
 
         this.mPresence = new UserDetailPresence(this);
         if (this.mUser == null) {
@@ -310,6 +302,7 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
         ll_user_detail.addView(mStatusLayoutManager.getRootLayout(),ll_user_detail.getChildCount()-1);
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case ConfigValues.VALUE_FOLLOW_PHOTO_OBTAIN_PICTURE:
@@ -328,9 +321,6 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
                 break;
         }
         Tencent.onActivityResultData(requestCode, resultCode, data, this.iUiListener);
-        if (mSsoHandler != null) {
-            mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
-        }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -575,10 +565,12 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
         private loginListener() {
         }
 
+        @Override
         public void onCancel() {
             mDialog.dismiss();
         }
 
+        @Override
         public void onComplete(Object o) {
             QQLoginInfo qqLoginInfo = mGson.fromJson(o.toString(), QQLoginInfo.class);
             mTencent.setOpenId(qqLoginInfo.getOpenid());
@@ -586,31 +578,10 @@ public class UserDetailActivity extends BaseActivity implements UserDetailView, 
             mPresence.updateBindQQ(mTencent, mUser.getAccount());
         }
 
+        @Override
         public void onError(UiError uiError) {
             Logger.i("TAG", uiError.errorMessage);
         }
     }
 
-    //微博回调监听
-    class AuthListener implements WbAuthListener {
-
-
-        @Override
-        public void onSuccess(Oauth2AccessToken oauth2AccessToken) {
-            if (oauth2AccessToken.isSessionValid()) {
-                mPresence.updateBindWeibo(oauth2AccessToken.getToken(), oauth2AccessToken.getUid(), mUser.getAccount());
-                AccessTokenKeeper.writeAccessToken(UserDetailActivity.this, oauth2AccessToken); // 保存Token
-            }
-        }
-
-        @Override
-        public void cancel() {
-        mDialog.dismiss();
-        }
-
-        @Override
-        public void onFailure(WbConnectErrorMessage wbConnectErrorMessage) {
-            ToastUtils.makeShowToast(UIUtils.getContext(),wbConnectErrorMessage.getErrorMessage());
-        }
-    }
 }

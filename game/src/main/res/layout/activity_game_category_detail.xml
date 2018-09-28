@@ -4,35 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <android.support.v7.widget.Toolbar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbarHeight"
+        android:elevation="@dimen/qm4dp"
         android:background="@color/colorPrimary"
-        app:titleTextColor="@color/navigation_text_color"
         app:navigationIcon="@drawable/arrow_left"
-        android:layout_height="@dimen/toolbarHeight"/>
+        app:titleTextColor="@color/navigation_text_color" />
 
     <LinearLayout
         android:id="@id/ll_game_category"
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:elevation="@dimen/qm4dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
         <android.support.design.widget.TabLayout
             android:id="@id/tl_game_category_detail_tag"
             android:layout_width="match_parent"
-            android:visibility="gone"
-            app:tabSelectedTextColor="@color/colorAccent"
+            android:layout_height="@dimen/guideBarHeight"
             android:background="@color/colorPrimary"
-            app:tabMode="scrollable"
             android:elevation="@dimen/qm4dp"
-            app:tabTextColor="@color/navigation_text_color"
-            android:layout_height="@dimen/guideBarHeight" />
+            android:visibility="gone"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/colorAccent"
+            app:tabTextColor="@color/navigation_text_color" />
 
-        <include layout="@layout/cut_horizontal_apart" />
+
         <android.support.v4.view.ViewPager
             android:id="@id/vp_game_category_detail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 

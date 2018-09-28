@@ -1,6 +1,7 @@
 package com.yyp.qm.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,16 +26,20 @@ public class GuideAdpater
         this.inflater = LayoutInflater.from(context);
     }
 
+    @Override
     public void destroyItem(ViewGroup ViewGroup, int postion, Object object)
     {
         ViewGroup.removeView((View)object);
     }
 
+    @Override
     public int getCount()
     {
         return this.guides.size();
     }
 
+    @Override
+    @NonNull
     public View instantiateItem(ViewGroup ViewGroup, int position)
     {
         View localView = (View)this.guides.get(position);
@@ -53,6 +58,7 @@ public class GuideAdpater
         return localView;
     }
 
+    @Override
     public boolean isViewFromObject(View view, Object object)
     {
         return view == object;

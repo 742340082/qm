@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.concurrent.TimeUnit;
 
-import butterknife.BindView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -31,7 +30,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SplashActivity
         extends BaseActivity {
-    @BindView(R.id.iv_splash)
     ImageView mIv_splash;
 
 
@@ -72,6 +70,7 @@ public class SplashActivity
 
 
     public void initView() {
+        mIv_splash = findViewById(R.id.iv_splash);
         if (Build.VERSION.SDK_INT >= 21) {
             hideToobarAnd(Color.TRANSPARENT, Color.TRANSPARENT, true, false);
         }

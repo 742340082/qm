@@ -9,10 +9,10 @@ import org.litepal.crud.DataSupport;
  * Created by 74234 on 2017/5/19.
  */
 
-public class AdListGame extends DataSupport implements MultiItemEntity{
+public class AdListGame extends DataSupport implements MultiItemEntity {
     private IndexAdList subjectList;
     private Game game;
-    private  int id;
+    private int id;
 
     public int getId() {
         return id;
@@ -40,33 +40,32 @@ public class AdListGame extends DataSupport implements MultiItemEntity{
 
     @Override
     public int getItemType() {
-        if (subjectList!=null)
-        {
+        if (subjectList != null) {
             int type = subjectList.getType();
-            int itemTypeID=0;
-            switch (type)
-            {
+            int itemTypeID = 999;
+            switch (type) {
                 case 1:
                 case 13:
-                    itemTypeID= 2;
+                    itemTypeID = 2;
                     break;
                 case 15:
-                    itemTypeID= 3;
+                    itemTypeID = 3;
                     break;
                 case 4:
                 case 6:
                 case 3:
                 case 7:
                     //活动
-                    itemTypeID= 4;
+                    itemTypeID = 4;
                     break;
                 case 2:
-                    itemTypeID=5;
+                    itemTypeID = 5;
                     break;
+                default:
+                    itemTypeID = 2;
             }
             return itemTypeID;
-        }else
-        {
+        } else {
             return 1;
         }
     }

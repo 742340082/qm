@@ -8,7 +8,6 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/qm1dp"
         android:layout_height="@dimen/guideBarHeight"
         android:elevation="@dimen/qm4dp"
         android:background="@color/colorPrimary">

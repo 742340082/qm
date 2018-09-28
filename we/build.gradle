@@ -47,5 +47,4 @@ dependencies {
 
     api project(':address')
     api project(':baselibrary')
-    api files('libs/alipaySingle-20170510.jar')
 }

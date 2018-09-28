@@ -9,34 +9,37 @@
     <android.support.v7.widget.Toolbar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
-        android:elevation="@dimen/qm4dp"
+        android:layout_height="@dimen/toolbarHeight"
         android:background="@color/colorPrimary"
-        android:layout_height="@dimen/toolbarHeight">
+        android:elevation="@dimen/qm4dp">
+
         <TextView
             android:id="@id/tv_game_search"
             android:layout_width="@dimen/qm200dp"
+            android:layout_height="@dimen/qm30dp"
+            android:background="@drawable/bg_round_white_shape_night"
+            android:drawableLeft="@drawable/icon_gray_search"
+            android:drawablePadding="@dimen/qm5dp"
+            android:gravity="center_vertical"
             android:hint="搜索游戏"
             android:paddingLeft="@dimen/qm10dp"
-            android:drawablePadding="@dimen/qm5dp"
-            android:transitionName="共享搜索"
-            android:drawableLeft="@drawable/icon_gray_search"
-            android:gravity="center_vertical"
             android:textSize="@dimen/titleSize"
-            android:background="@drawable/bg_round_white_shape_night"
-            android:layout_height="@dimen/qm30dp" />
+            android:transitionName="共享搜索" />
     </android.support.v7.widget.Toolbar>
+
     <android.support.design.widget.TabLayout
         android:id="@id/tb_game"
         android:layout_width="match_parent"
         android:layout_height="@dimen/guideBarHeight"
-        android:elevation="@dimen/qm4dp"
         android:background="@color/colorPrimary"
+        android:elevation="@dimen/qm4dp"
         app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextColor="@color/navigation_text_color" />
 
-    <include layout="@layout/cut_horizontal_apart"/>
+
     <android.support.v4.view.ViewPager
         android:id="@id/vp_game"
+        android:elevation="@dimen/qm4dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

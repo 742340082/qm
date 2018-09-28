@@ -20,17 +20,12 @@ import com.baselibrary.utils.UIUtils;
 import com.baselibrary.view.NoScrollViewPager;
 import com.we.config.ConfigUser;
 import com.yyp.qm.R;
-import com.yyp.qm.R2;
-
-import butterknife.BindView;
 
 public class MainActivity
         extends BaseActivity {
 
 
-    @BindView(R2.id.tl_main)
     TabLayout tl_main;
-    @BindView(R2.id.vp_main)
     NoScrollViewPager vp_main;
     private  MainTab[] mMainTabs;
     private long mSecondClickTime;
@@ -45,6 +40,8 @@ public class MainActivity
 
     @Override
     public void initView() {
+        tl_main=findViewById(R.id.tl_main);
+        vp_main=findViewById(R.id.vp_main);
 
         mMainTabs=MainTab.values();
 
@@ -109,7 +106,7 @@ public class MainActivity
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent keyEvent) {
 
-        if (keyCode == keyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
 
             if (mSecondClickTime != 0L && mSecondClickTime - mFirstClickTime < 2000) {
                 killAll();

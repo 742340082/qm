@@ -27,11 +27,6 @@ import com.baselibrary.view.LoadingDialog;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
-import com.sina.weibo.sdk.auth.AccessTokenKeeper;
-import com.sina.weibo.sdk.auth.Oauth2AccessToken;
-import com.sina.weibo.sdk.auth.WbAuthListener;
-import com.sina.weibo.sdk.auth.WbConnectErrorMessage;
-import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
@@ -42,7 +37,6 @@ import com.we.config.ConfigUser;
 import com.we.mvp.user.UserActivity;
 import com.we.mvp.user.login.modle.QQLoginInfo;
 import com.we.mvp.user.login.modle.QQUserInfo;
-import com.we.mvp.user.login.modle.WeiboRrfreshToken;
 import com.we.mvp.user.login.modle.WeiboUserInfo;
 import com.we.mvp.user.login.presence.UserLoginPresence;
 import com.we.mvp.user.login.view.IUserLoginView;
@@ -82,7 +76,6 @@ public class LoginFragement
     private LoadingDialog mDialog;
     private UserLoginPresence mLoginPresence;
     private Tencent mTencent;
-    private SsoHandler mSsoHandler;
 
 
     @OnClick({R2.id.btn_login})
@@ -101,7 +94,6 @@ public class LoginFragement
     @OnClick(R2.id.ll_weibo_login)
     void weiBoLigin() {
         mDialog.show();
-        mSsoHandler.authorize(new AuthListener());
     }
 
 
@@ -122,17 +114,18 @@ public class LoginFragement
     public void initData() {
         mLoginPresence = new UserLoginPresence(this);
         mGson = new Gson();
-        mSsoHandler = new SsoHandler(getActivity());
     }
 
     @Override
     public void initListener() {
         this.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View paramAnonymousView) {
                 ((UserActivity) LoginFragement.this.getActivity()).onBackPressed();
             }
         });
         this.cb_password_visible_state.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     LoginFragement.this.mEt_password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
@@ -142,12 +135,15 @@ public class LoginFragement
             }
         });
         this.mEt_username.addTextChangedListener(new TextWatcher() {
+            @Override
             public void afterTextChanged(Editable editable) {
             }
 
+            @Override
             public void beforeTextChanged(CharSequence watcher, int start, int count, int after) {
             }
 
+            @Override
             public void onTextChanged(CharSequence textWatcher, int start, int before, int count) {
                 Observable.just(LoginFragement.this.mEt_username.getText().toString().trim())
                         .debounce(200L, TimeUnit.MILLISECONDS)
@@ -157,6 +153,7 @@ public class LoginFragement
                                 return Observable.just(str);
                             }
                         }).subscribe(new Consumer<String>() {
+                    @Override
                     public void accept(@NonNull String str) {
                         String encodeString = MD5Util.encode(str);
                         Glide.with(getContext())
@@ -250,9 +247,6 @@ public class LoginFragement
     public void WeiboCallBack(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 32973) {
-            if (mSsoHandler != null) {
-                mSsoHandler.authorizeCallBack(requestCode, resultCode, data);
-            }
         }
     }
 
@@ -285,11 +279,6 @@ public class LoginFragement
         return account;
     }
 
-    @Override
-    public void getWeiboToken(WeiboRrfreshToken weiboRrfreshToken) {
-        Oauth2AccessToken oauth2AccessToken = AccessTokenKeeper.readAccessToken(getContext());
-        mLoginPresence.weibologin(weiboRrfreshToken.getAccess_token(), oauth2AccessToken.getUid());
-    }
 
 
     @Override
@@ -305,10 +294,12 @@ public class LoginFragement
         private loginListener() {
         }
 
+        @Override
         public void onCancel() {
             mDialog.dismiss();
         }
 
+        @Override
         public void onComplete(Object o) {
             QQLoginInfo qqLoginInfo = mGson.fromJson(o.toString(), QQLoginInfo.class);
             Logger.i("TAG", qqLoginInfo.getOpenid());
@@ -317,31 +308,9 @@ public class LoginFragement
             mLoginPresence.qqLogin(LoginFragement.this.mTencent);
         }
 
+        @Override
         public void onError(UiError uiError) {
             Logger.i("TAG", uiError.errorMessage);
-        }
-    }
-
-    //微博回调监听
-    class AuthListener implements WbAuthListener {
-
-
-        @Override
-        public void onSuccess(Oauth2AccessToken oauth2AccessToken) {
-            if (oauth2AccessToken.isSessionValid()) {
-                mLoginPresence.weibologin(oauth2AccessToken.getToken(), oauth2AccessToken.getUid());
-                AccessTokenKeeper.writeAccessToken(getActivity(), oauth2AccessToken); // 保存Token
-            }
-        }
-
-        @Override
-        public void cancel() {
-            mDialog.dismiss();
-        }
-
-        @Override
-        public void onFailure(WbConnectErrorMessage wbConnectErrorMessage) {
-            ToastUtils.makeShowToast(UIUtils.getContext(), wbConnectErrorMessage.getErrorMessage());
         }
     }
 }

@@ -28,15 +28,15 @@ public class AddressPresenter {
         getAddressBiz.destoryLocation();
     }
 
-    public void startInputSeatch(String InputText,String city) {
-        getAddressBiz.startInputSeatch(InputText,city);
+    public void startInputSeatch(String InputText, String city) {
+        getAddressBiz.startInputSeatch(InputText, city);
     }
-    public      void  startLocation(AMap aMap)
-    {
+
+    public void startLocation(AMap aMap) {
         getAddressBiz.startLocation(aMap);
     }
-    public      void  initCityList()
-    {
+
+    public void initCityList() {
         getAddressBiz.initCityList();
     }
 }

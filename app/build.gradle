@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+
 android {
 //    signingConfigs {
 //        qm_release {
@@ -36,6 +37,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
+
     api project(':we')
     api project(':game')
     api project(':news')

@@ -3,4 +3,6 @@
     <item name="iv_tab_icon" type="id" />
     <item name="toolbar" type="id" />
     <item name="iv_back" type="id" />
+    <item name="btn_guide_enter" type="id" />
+
 </resources>
