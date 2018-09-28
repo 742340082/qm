@@ -1,1 +1,1 @@
-include ':baselibrary', ':game', ':news', ':we', ':qm', ':address'
+include ':baselibrary', ':game', ':news', ':we', ':address', ':app'

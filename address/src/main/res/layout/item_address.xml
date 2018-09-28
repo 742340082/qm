@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     >
 <RelativeLayout
-    android:id="@id/rl_address"
+    android:id="@+id/rl_address"
     android:layout_width="match_parent"
     android:layout_marginBottom="@dimen/qm4dp"
     android:layout_marginRight="@dimen/qm4dp"
@@ -15,7 +15,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@id/iv_address_location"
+        android:id="@+id/iv_address_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
@@ -38,7 +38,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@id/tv_address_current"
+                android:id="@+id/tv_address_current"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/current"
@@ -47,7 +47,7 @@
                 android:visibility="gone" />
 
             <TextView
-                android:id="@id/tv_address_title"
+                android:id="@+id/tv_address_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/qm20dp"
@@ -59,7 +59,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@id/tv_address_detail"
+            android:id="@+id/tv_address_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/qm20dp"

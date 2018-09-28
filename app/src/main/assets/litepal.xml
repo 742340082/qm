@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<litepal>
+    <dbname value="QM"></dbname>
+    <version value="1"></version>
+    <!--新闻-->
+    <list>
+        <!--知乎-->
+        <mapping class="com.news.mvp.zhihu.modle.ZhihuStorie"></mapping>
+        <mapping class="com.news.mvp.zhihu.modle.ZhihuTopStorie"></mapping>
+        <mapping class="com.news.mvp.detail.modle.ZhiHuDetail"></mapping>
+        <mapping class="com.news.mvp.zhihu.modle.Zhihu"></mapping>
+        <!--豆瓣-->
+        <mapping class="com.news.mvp.doubian.model.DouBianPosts"></mapping>
+        <mapping class="com.news.mvp.detail.modle.DoubanDetail"></mapping>
+        <mapping class="com.news.mvp.doubian.model.DouBianThumbs"></mapping>
+        <!--果壳-->
+        <mapping class="com.news.mvp.guoke.model.GuoKeResult"></mapping>
+        <mapping class="com.news.mvp.detail.modle.GuokeDetail"></mapping>
+        <mapping class="com.news.mvp.guoke.model.GuoKe"></mapping>
+    </list>
+    <!--游戏-->
+    <list>
+        <mapping class="com.baselibrary.model.game.Game"></mapping>
+        <!--推荐-->
+        <mapping class="com.baselibrary.model.game.index.IndexExt"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexAdList"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexResult"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexRecPoster"></mapping>
+        <mapping class="com.baselibrary.model.game.index.IndexRecBlock"></mapping>
+
+        <!--分类-->
+        <mapping class="com.baselibrary.model.game.category.CategoryResult"></mapping>
+        <mapping class="com.baselibrary.model.game.category.CategoryData"></mapping>
+        <mapping class="com.baselibrary.model.game.category.CategoryLink"></mapping>
+        <mapping class="com.baselibrary.model.game.category.CategoryTag"></mapping>
+        <!--分类详细页-->
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailSubType"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailSizeOption"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailResult"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailSizeOption"></mapping>
+        <mapping class="com.baselibrary.model.game.category.detail.CategoryDetailTag"></mapping>
+
+        <!--排行-->
+        <mapping class="com.baselibrary.model.game.top.TotalResult"></mapping>
+
+        <!--咨询-->
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsData"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsExt"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsGallary"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsLink"></mapping>
+        <mapping class="com.baselibrary.model.game.gamenews.GameNewsResult"></mapping>
+
+        <!--搜索-->
+        <mapping class="com.baselibrary.model.game.search.GameSearchResult"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSearchHotWord"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSearchSuggestWord"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSearchFirstResult"></mapping>
+        <mapping class="com.baselibrary.model.game.search.GameSmallSearchResult"></mapping>
+
+        <!--下载游戏-->
+        <mapping class="com.baselibrary.api.download.DownloadInfo"></mapping>
+    </list>
+</litepal>

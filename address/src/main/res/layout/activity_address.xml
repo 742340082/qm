@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@id/toolbar"
+        android:id="@+id/toolbar"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/toolbarHeight"
         android:elevation="@dimen/qm4dp"
@@ -21,20 +21,20 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@id/iv_back"
+                android:id="@+id/iv_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/arrow_left" />
 
             <LinearLayout
-                android:id="@id/ll_address_city"
+                android:id="@+id/ll_address_city"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@id/tv_address_city"
+                    android:id="@+id/tv_address_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -46,7 +46,7 @@
                     android:textSize="@dimen/titleSize" />
 
                 <ImageView
-                    android:id="@id/iv_address_city"
+                    android:id="@+id/iv_address_city"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -58,7 +58,7 @@
 
 
             <com.baselibrary.view.ClearEditText
-                android:id="@id/et_address_search"
+                android:id="@+id/et_address_search"
                 android:layout_marginTop="@dimen/qm10dp"
                 android:layout_marginBottom="@dimen/qm10dp"
                 android:layout_marginLeft="@dimen/qm10dp"
@@ -82,7 +82,7 @@
                 android:textSize="@dimen/titleSize"
                  />
             <TextView
-                android:id="@id/tv_address_cancle_search"
+                android:id="@+id/tv_address_cancle_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -96,7 +96,7 @@
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
-        android:id="@id/rl_address"
+        android:id="@+id/rl_address"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -110,12 +110,12 @@
                 android:layout_height="@dimen/qm200dp">
 
                 <com.amap.api.maps.MapView
-                    android:id="@id/mv_address"
+                    android:id="@+id/mv_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <ImageButton
-                    android:id="@id/ib_address_location"
+                    android:id="@+id/ib_address_location"
                     android:layout_width="@dimen/qm30dp"
                     android:layout_height="@dimen/qm30dp"
                     android:layout_alignParentBottom="true"
@@ -128,7 +128,7 @@
             </RelativeLayout>
 
             <android.support.design.widget.TabLayout
-                android:id="@id/tl_address"
+                android:id="@+id/tl_address"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/guideBarHeight"
                 android:background="@color/colorPrimary"
@@ -139,13 +139,13 @@
                 app:tabTextColor="@color/navigation_text_color" />
 
             <android.support.v4.view.ViewPager
-                android:id="@id/vp_address"
+                android:id="@+id/vp_address"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/ll_address_search_list"
+            android:id="@+id/ll_address_search_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
@@ -153,38 +153,38 @@
             android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@id/rv_address_search_list"
+                android:id="@+id/rv_address_search_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/ll_address_city_list"
+            android:id="@+id/ll_address_city_list"
             android:layout_width="match_parent"
             android:visibility="gone"
             android:layout_height="match_parent"
             android:background="@color/AppBackground"
             android:orientation="vertical">
             <RelativeLayout
-                android:id="@id/rl_address_city_list"
+                android:id="@+id/rl_address_city_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
                 <android.support.v7.widget.RecyclerView
-                    android:id="@id/rv_address_city_list"
+                    android:id="@+id/rv_address_city_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
                 <com.baselibrary.view.QuickIndexBar
                     android:layout_width="@dimen/qm20dp"
                     android:clickable="true"
-                    android:id="@id/qi_address"
+                    android:id="@+id/qi_address"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="@dimen/qm70dp"
                     android:layout_marginBottom="@dimen/qm70dp"
                     android:layout_height="match_parent" />
                 <TextView
                     android:layout_centerInParent="true"
-                    android:id="@id/tv_address_quickindex_title"
+                    android:id="@+id/tv_address_quickindex_title"
                     android:layout_width="@dimen/qm80dp"
                     android:layout_height="@dimen/qm80dp"
                     android:gravity="center"

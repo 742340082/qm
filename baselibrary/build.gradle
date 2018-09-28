@@ -1,14 +1,12 @@
-    apply plugin: 'com.android.library'
+apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "28.0.2"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 27
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -21,37 +19,37 @@ android {
     }
 }
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.3.0'
-    compile 'com.android.support:recyclerview-v7:25.3.0'
-    compile 'com.android.support:support-v4:25.3.0'
-    compile 'com.android.support:design:25.3.0'
-    compile 'com.android.support:cardview-v7:25.3.0'
+    testImplementation 'junit:junit:4.12'
+    api 'com.android.support:appcompat-v7:27.1.1'
+    api 'com.android.support:recyclerview-v7:27.1.1'
+    api 'com.android.support:support-v4:27.1.1'
+    api 'com.android.support:design:27.1.1'
+    api 'com.android.support:cardview-v7:27.1.1'
     //网络请求
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    api 'com.squareup.retrofit2:retrofit:2.2.0'
+    api 'com.squareup.retrofit2:converter-gson:2.2.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    api 'io.reactivex.rxjava2:rxandroid:2.0.1'
     //注解获取控件框架
-    compile 'com.jakewharton:butterknife:8.5.1'
+    api 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     //数据库框架
-    compile 'org.litepal.android:core:1.5.1'
+    api 'org.litepal.android:core:1.5.1'
     //运行时权限
-    compile 'com.yanzhenjie:permission:1.0.5'
+    api 'com.yanzhenjie:permission:1.0.5'
     //万能adapter
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.3'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.3'
     //我的Ui显示
-    compile 'de.hdodenhof:circleimageview:2.1.0'
+    api 'de.hdodenhof:circleimageview:2.1.0'
     //图片加载库
-    compile 'com.github.bumptech.glide:glide:3.6.0'
-    compile 'jp.wasabeef:glide-transformations:2.0.2'
+    api 'com.github.bumptech.glide:glide:3.6.0'
+    api 'jp.wasabeef:glide-transformations:2.0.2'
     //新浪微博
-    compile 'com.sina.weibo.sdk:core:2.0.3:openDefaultRelease@aar'
+    api 'com.sina.weibo.sdk:core:2.0.3:openDefaultRelease@aar'
 
 
 }
