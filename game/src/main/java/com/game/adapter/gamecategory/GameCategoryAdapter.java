@@ -80,7 +80,14 @@ public class GameCategoryAdapter extends BaseQuickAdapter<CategoryData,BaseViewH
                         if (view instanceof TextView)
                         {
                            final TextView textView = (TextView) view;
-                            textView.setText(tags.get(k).getName());
+                            String name;
+                           try {
+                               name = tags.get(k).getName();
+                           }catch (Exception e)
+                           {
+                               name="";
+                           }
+                            textView.setText(name);
 
                             textView.setOnClickListener(new View.OnClickListener() {
                                 @Override
